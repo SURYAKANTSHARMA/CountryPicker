@@ -1,5 +1,5 @@
 //
-//  CLCountryCell.swift
+//  CountryCell.swift
 //  CountryCodeInSwift3
 //
 //  Created by cl-macmini-68 on 09/02/17.
