@@ -5,7 +5,7 @@ This library is for county picker used in many app for selecting country code of
 
 ## Getting Started
 
-This project use swift 3.2 and xcode 9.0. You can download locally and run the code. You can customize and use according to your need. Or you can find another project named 'TestCountryPickerFramework' which include the framework for CountryPicker. Just just have to added Framework. and the demo code is there in sample project 'TestCountryPickerFramework' also.
+This project use swift 4.0 and xcode 9.0. You can download locally and run the code. You can customize and use according to your need. Or you can find another project named 'TestCountryPickerFramework' which include the framework for CountryPicker. Just just have to added Framework. and the demo code is there in sample project 'TestCountryPickerFramework' also.
 
 ## Contributing
 
