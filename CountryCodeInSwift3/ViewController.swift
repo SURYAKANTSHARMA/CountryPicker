@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CountryPicker
 class ViewController: UIViewController  {
   //MARK:- IBOutlet
   @IBOutlet weak var countryCodeButton: UIButton!
@@ -18,7 +18,7 @@ class ViewController: UIViewController  {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    
+   
     let country = CountryManager.currentCountry
     countryCodeButton.setTitle(country?.dialingCode(), for: .normal)
     countryImageView.image = country?.flag

@@ -119,7 +119,7 @@ class CountryPickerController: UIViewController {
   }
   
   //MARK:- Cross Button Action
-  func crossButtonClicked(_ sender : UIBarButtonItem){
+  @objc func crossButtonClicked(_ sender : UIBarButtonItem){
     self.dismiss(animated: true, completion: nil)
   }
   
