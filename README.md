@@ -14,17 +14,17 @@ Any contribution making project better is welcome.
 ## ScreenShots
 After running the project by default current country get selected as below.
 
-![defaultopenimage](https://user-images.githubusercontent.com/6416095/32143334-fade5698-bc64-11e7-8ced-6cd30987974e.png)
+![defaultopenimage](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot1.png)
 
 
 
 On clicking on this button country picker open with the option of choose or filter the require country.
-![step2image](https://user-images.githubusercontent.com/6416095/33226731-3052939a-d149-11e7-85eb-03a808f869bd.png)
+![step2image](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot2.png)
 
 
-After selecting selected country with image will apear on your button.
-![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 52](https://user-images.githubusercontent.com/6416095/32143470-debef3f8-bc66-11e7-8460-502e5cff1491.png)
-![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 56](https://user-images.githubusercontent.com/6416095/32143474-ed599846-bc66-11e7-8521-8b1bf629b06d.png)
+After selecting selected country with image will appear on your button.
+![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 52](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot3.png)
+![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 56](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot4.png)
 
 
 ## Authors
