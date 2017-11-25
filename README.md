@@ -19,7 +19,7 @@ After running the project by default current country get selected as below.
 
 
 On clicking on this button country picker open with the option of choose or filter the require country.
-![step2image](https://user-images.githubusercontent.com/6416095/32143344-40f55c80-bc65-11e7-98d7-5429654940a2.png)
+![step2image](https://user-images.githubusercontent.com/6416095/33226731-3052939a-d149-11e7-85eb-03a808f869bd.png)
 
 
 After selecting selected country with image will apear on your button.
