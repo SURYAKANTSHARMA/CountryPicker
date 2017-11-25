@@ -9,10 +9,7 @@
 import UIKit
 
 class CountryPickerController: UIViewController {
-  
-  
   //MARK:- Variables
-  var tableView: UITableView!
   fileprivate var countries = [Country]()
   fileprivate var filterCountries = [Country]()
   fileprivate var applySearch = false
@@ -25,44 +22,44 @@ class CountryPickerController: UIViewController {
   
   public var labelFont = UIFont.systemFont(ofSize: 14.0) {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   public var labelColor = UIColor.black {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   
   public var detailFont = UIFont.systemFont(ofSize: 11.0) {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   public var detailColor = UIColor.lightGray {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   
   public var separatorLineColor = UIColor.lightGray {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   
   public var isHideFlagImage: Bool = false {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
   
   public var isHideDiallingCode: Bool = false {
     willSet {
-      self.tableView?.reloadData()
+      self.tableView.reloadData()
     }
   }
-  
+  var tableView =  UITableView()
 
   //MARK:- View life cycle
   override func viewWillLayoutSubviews() {
@@ -71,33 +68,31 @@ class CountryPickerController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    self.view.addSubview(tableView)
     self.view.backgroundColor = UIColor.white
-    self.tableView.backgroundColor = UIColor.white
+    self.automaticallyAdjustsScrollViewInsets = false
     
-    navigationController?.navigationBar.isTranslucent = false
+    setUpTableView()
     let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(CountryPickerController.crossButtonClicked(_:)))
     self.navigationItem.leftBarButtonItem = uiBarButtonItem
     
     let nib = UINib(nibName: "CountryTableViewCell", bundle: nil)
     tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.separatorStyle = .none
-    
+   
     searchController = UISearchController(searchResultsController: nil)
     searchController?.hidesNavigationBarDuringPresentation = true
     searchController?.dimsBackgroundDuringPresentation = false
     searchController?.searchBar.barStyle = .default
     searchController?.searchBar.sizeToFit()
-    searchController?.searchBar.delegate = self;
+    searchController?.searchBar.delegate = self
     searchController?.searchBar.placeholder = "search country name here.."
-    tableView.tableHeaderView = searchController?.searchBar
+   if #available(iOS 11.0, *) {
+        self.navigationItem.searchController = searchController
+       searchController?.hidesNavigationBarDuringPresentation = false
+    } else {
+        tableView.tableHeaderView = searchController!.searchBar
+    }
     self.definesPresentationContext = true
-    
-  }
+}
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
@@ -107,13 +102,46 @@ class CountryPickerController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(true)
   }
-  
+  private func setUpTableView() {
+    self.view.addSubview(tableView)
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    if #available(iOS 11.0, *) {
+        tableView.contentInsetAdjustmentBehavior = .never
+    } else {
+        // Fallback on earlier versions
+    }
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.separatorStyle = .none
+    tableView.contentInset = UIEdgeInsets.zero
+    //tableView.backgroundColor = .black
+    
+    if #available(iOS 11.0, *) {
+    NSLayoutConstraint.activate([
+    tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+    tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+    tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+    tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    
+    ])
+    } else {
+    // Fallback on earlier versions
+      NSLayoutConstraint.activate([
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        tableView.topAnchor.constraint(equalTo: view.topAnchor),
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+   }
+    
   @discardableResult
   class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country)->Void) -> CountryPickerController{
     let controller = CountryPickerController()
     controller._presentingViewController = viewController
     controller.callBack = callBack
     let navigationController = UINavigationController(rootViewController: controller)
+    //navigationController.navigationBar.barTintColor = UIColor.lightGray.withAlphaComponent(0.1)
     controller._presentingViewController?.present(navigationController, animated: true, completion: nil)
     return controller
   }
@@ -245,7 +273,5 @@ extension CountryPickerController: UISearchBarDelegate {
     searchBar.endEditing(true)
   }
 }
-
-
 
 
