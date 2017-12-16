@@ -9,12 +9,13 @@
 import UIKit
 
 class CountryPickerController: UIViewController {
+ 
   //MARK:- Variables
-  fileprivate var countries = [Country]()
-  fileprivate var filterCountries = [Country]()
-  fileprivate var applySearch = false
+  var countries = [Country]()
+  var filterCountries = [Country]()
+  var applySearch = false
   fileprivate var _presentingViewController: UIViewController?
-  fileprivate var callBack : (( _ chosenCountry: Country) -> Void)?
+  var callBack : (( _ choosenCountry: Country) -> Void)?
   fileprivate var searchController: UISearchController?
   
   public var statusBarStyle : UIStatusBarStyle? = .default
@@ -122,7 +123,6 @@ class CountryPickerController: UIViewController {
     tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
     tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-    
     ])
     } else {
     // Fallback on earlier versions
@@ -137,7 +137,7 @@ class CountryPickerController: UIViewController {
     
   @discardableResult
   class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country)->Void) -> CountryPickerController{
-    let controller = CountryPickerController()
+    let controller = CountryPickerWithSectionViewController()
     controller._presentingViewController = viewController
     controller.callBack = callBack
     let navigationController = UINavigationController(rootViewController: controller)
@@ -208,8 +208,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
       cell.separatorLine.backgroundColor = self.separatorLineColor
       return cell
     }
-    
-    return UITableViewCell()
+    fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
   }
   
   //MARK:- TableView Delegate
@@ -232,18 +231,9 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 50.0
   }
- 
 }
-
-extension CountryPickerController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-  }
-}
-
-
 
 extension CountryPickerController: UISearchBarDelegate {
-  
   // MARK: - SearchBar Delegate
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     //code for filter

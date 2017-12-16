@@ -29,14 +29,12 @@ class ViewController: UIViewController  {
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
-    let countryController = CountryPickerController.presentController(on: self) { (country: Country) in
+    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
       self.countryImageView.image = country.flag
       self.countryCodeButton.setTitle(country.dialingCode(), for: .normal)
 
     }
     countryController.detailColor = UIColor.red
-    
-  }
-  
+   }
 }
 

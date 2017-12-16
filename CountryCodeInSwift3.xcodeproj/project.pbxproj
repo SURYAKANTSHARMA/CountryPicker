@@ -21,6 +21,7 @@
 		72BF3C401E4D8F3D0002A99E /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF3C371E4D8F3D0002A99E /* Country.swift */; };
 		72BF3C411E4D8F3D0002A99E /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BF3C381E4D8F3D0002A99E /* CountryManager.swift */; };
 		72BF3C421E4D8F3D0002A99E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72BF3C391E4D8F3D0002A99E /* Images.xcassets */; };
+		E073F3181FE5842E00197587 /* CountryPickerWithSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E073F3171FE5842E00197587 /* CountryPickerWithSectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		72BF3C371E4D8F3D0002A99E /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		72BF3C381E4D8F3D0002A99E /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
 		72BF3C391E4D8F3D0002A99E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E073F3171FE5842E00197587 /* CountryPickerWithSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerWithSectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				72BF3C371E4D8F3D0002A99E /* Country.swift */,
 				72BF3C381E4D8F3D0002A99E /* CountryManager.swift */,
 				72BF3C391E4D8F3D0002A99E /* Images.xcassets */,
+				E073F3171FE5842E00197587 /* CountryPickerWithSectionViewController.swift */,
 			);
 			path = CountryManager;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3606D6271E079D7D00EB417A /* ViewController.swift in Sources */,
+				E073F3181FE5842E00197587 /* CountryPickerWithSectionViewController.swift in Sources */,
 				3606D6251E079D7D00EB417A /* AppDelegate.swift in Sources */,
 				72BF3C3F1E4D8F3D0002A99E /* Constant.swift in Sources */,
 				72BF3C3A1E4D8F3D0002A99E /* CountryTableViewCell.swift in Sources */,
