@@ -43,6 +43,8 @@ class ViewController: UIViewController  {
 Any contribution making project better is welcome.
 
 ## ScreenShots
+![countrypickerdemo](https://user-images.githubusercontent.com/6416095/34318079-4dcec342-e7e4-11e7-9d33-933db60d4836.gif)
+
 After running the project by default current country get selected as below.
 
 ![defaultopenimage](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot1.png)
