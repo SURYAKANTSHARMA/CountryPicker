@@ -125,8 +125,8 @@
 				72BF3C361E4D8F3D0002A99E /* Constant.swift */,
 				72BF3C371E4D8F3D0002A99E /* Country.swift */,
 				72BF3C381E4D8F3D0002A99E /* CountryManager.swift */,
-				72BF3C391E4D8F3D0002A99E /* Images.xcassets */,
 				E073F3171FE5842E00197587 /* CountryPickerWithSectionViewController.swift */,
+				72BF3C391E4D8F3D0002A99E /* Images.xcassets */,
 			);
 			path = CountryManager;
 			sourceTree = "<group>";

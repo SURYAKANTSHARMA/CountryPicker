@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController  {
   //MARK:- IBOutlet
   @IBOutlet weak var countryCodeButton: UIButton!
@@ -19,8 +20,8 @@ class ViewController: UIViewController  {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
    
-    let country = CountryManager.currentCountry
-    countryCodeButton.setTitle(country?.dialingCode(), for: .normal)
+    let country = CountryManager.shared.currentCountry
+    countryCodeButton.setTitle(country?.dialingCode, for: .normal)
     countryImageView.image = country?.flag
     countryCodeButton.clipsToBounds = true
     
@@ -31,7 +32,7 @@ class ViewController: UIViewController  {
     
     let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
       self.countryImageView.image = country.flag
-      self.countryCodeButton.setTitle(country.dialingCode(), for: .normal)
+      self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
     }
     countryController.detailColor = UIColor.red

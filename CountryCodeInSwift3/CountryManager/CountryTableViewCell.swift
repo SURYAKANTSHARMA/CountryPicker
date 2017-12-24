@@ -16,5 +16,12 @@ class CountryTableViewCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var diallingCodeLabel: UILabel!
   @IBOutlet weak var separatorLine: UIImageView!
-   
+    
+    var country: Country! {
+        didSet {
+            nameLabel?.text = country.countryName
+            diallingCodeLabel?.text = country.dialingCode
+            flagImageView?.image = country.flag
+        }
+    }
 }
