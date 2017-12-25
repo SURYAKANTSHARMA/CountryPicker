@@ -6,7 +6,9 @@ This library is for country picker used in many app for selecting country code o
 ## Getting Started
 
 This project use swift 4.0 and xcode 9.0. You can download locally and run the code. You can customize and use according to your need. 
+
 Example:
+
 ```swift
 class ViewController: UIViewController  {
   //MARK:- IBOutlet
@@ -29,15 +31,17 @@ class ViewController: UIViewController  {
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
+
     let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
       self.countryImageView.image = country.flag
       self.countryCodeButton.setTitle(country.dialingCode(), for: .normal)
 
     }
     countryController.detailColor = UIColor.red
-   }
+   }  
 }
 ```
+
 
 ## Contributing
 
@@ -80,6 +84,11 @@ This project use swift 4.0 and xcode 9.0. You can download locally and run the c
 Any contribution making project better is welcome.
 
 ## ScreenShots
+
+<img src= "https://user-images.githubusercontent.com/6416095/34318079-4dcec342-e7e4-11e7-9d33-933db60d4836.gif" width="200" height = "400">
+
+Above is a Gif demo.
+
 After running the project by default current country get selected as below.
 
 ![defaultopenimage](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot1.png)
