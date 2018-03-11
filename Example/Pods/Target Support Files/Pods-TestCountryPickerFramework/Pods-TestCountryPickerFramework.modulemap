@@ -1,0 +1,6 @@
+framework module Pods_TestCountryPickerFramework {
+  umbrella header "Pods-TestCountryPickerFramework-umbrella.h"
+
+  export *
+  module * { export * }
+}

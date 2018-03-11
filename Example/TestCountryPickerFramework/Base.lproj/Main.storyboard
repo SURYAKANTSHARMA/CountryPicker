@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O0l-1Z-8PS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="bSY-ej-0XY">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="O0l-1Z-8PS" customClass="ViewController" customModule="CountryCodeInSwift3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DdQ-N4-djM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zpf-qi-Wtk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sxh-pT-lsG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbI-xG-7mA">
+                                <rect key="frame" x="145" y="316" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="fBb-ow-5P7"/>
+                                    <constraint firstAttribute="width" constant="35" id="iWP-zK-rUv"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofv-wr-sb6">
+                                <rect key="frame" x="145" y="316" width="85" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="abw-e7-jmE"/>
+                                    <constraint firstAttribute="height" constant="35" id="i2b-na-rNE"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="+91">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="countryCodeButtonClicked:" destination="O0l-1Z-8PS" eventType="touchUpInside" id="RPx-kA-duD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ofv-wr-sb6" firstAttribute="centerY" secondItem="sxh-pT-lsG" secondAttribute="centerY" id="5b3-pf-6e5"/>
+                            <constraint firstItem="fbI-xG-7mA" firstAttribute="leading" secondItem="ofv-wr-sb6" secondAttribute="leading" id="JSm-n1-bba"/>
+                            <constraint firstItem="fbI-xG-7mA" firstAttribute="centerY" secondItem="ofv-wr-sb6" secondAttribute="centerY" id="KZE-iC-Vsg"/>
+                            <constraint firstItem="ofv-wr-sb6" firstAttribute="centerX" secondItem="sxh-pT-lsG" secondAttribute="centerX" id="vO6-oB-SO0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vjC-5M-P1O"/>
+                    </view>
+                    <connections>
+                        <outlet property="countryCodeButton" destination="ofv-wr-sb6" id="Qb5-AU-DzT"/>
+                        <outlet property="countryImageView" destination="fbI-xG-7mA" id="lZY-6c-ocZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pYN-jd-baC" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9" y="-190"/>
+        </scene>
+    </scenes>
+</document>
