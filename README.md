@@ -2,11 +2,18 @@
 
 This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country cell.
 
+## Installation
+
+CountryPicker is available through Cocoapods.
+
+#### [CocoaPods](http://cocoapods.org):
+Add the following line to your Podfile:
+
+```ruby
+pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.4’
+```
 
 ## Getting Started
-
-This project use swift 4.0 and xcode 9.0. You can download locally and run the code. You can customize and use according to your need. 
-
 Example:
 
 ```swift
