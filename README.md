@@ -10,7 +10,7 @@ CountryPicker is available through Cocoapods.
 Add the following line to your Podfile:
 
 ```ruby
-pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.4’
+pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.5’
 ```
 
 ## Getting Started
