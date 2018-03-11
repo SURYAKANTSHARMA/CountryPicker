@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/Constant.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/Country.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryManager.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryPickerController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryPickerWithSectionViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>
