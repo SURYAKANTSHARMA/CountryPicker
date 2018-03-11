@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CountryPicker"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "This library is for country picker used in many app for selecting country code of user"
 
   # This description is used to generate tags and improve search results.
