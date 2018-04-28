@@ -2,6 +2,8 @@
 
 This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country cell.
 
+### If you like CountryPicker, give it a ★ at the top right of this page.
+
 ## Installation
 
 CountryPicker is available through Cocoapods.
