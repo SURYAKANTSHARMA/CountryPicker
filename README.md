@@ -82,7 +82,7 @@ After selecting selected country with image will appear on your button.
 
 ***Suryakant Sharma**(https://github.com/SURYAKANTSHARMA)
 
-See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project. Thanks from bottom of my heart to inspiration behind <a href="https://github.com/hardeep-singh">Hardeep Singh</a>
 
 ## License
 
