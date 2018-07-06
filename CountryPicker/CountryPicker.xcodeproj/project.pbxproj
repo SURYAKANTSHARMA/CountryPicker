@@ -7,30 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EB20EF429B000CAFE5 /* Constant.swift */; };
+		9A4F58F220EF429C000CAFE5 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */; };
+		9A4F58F320EF429C000CAFE5 /* CountryPickerWithSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */; };
+		9A4F58F420EF429C000CAFE5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EE20EF429C000CAFE5 /* Country.swift */; };
+		9A4F58F520EF429C000CAFE5 /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */; };
+		9A4F58F620EF429C000CAFE5 /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */; };
+		9A4F58FE20EF42AA000CAFE5 /* CountryPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */; };
+		9A4F590020EF42AA000CAFE5 /* CountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0519E282054FDE500C77B45 /* CountryPicker.framework */; };
 		E03F5FE22055163C00FA5B61 /* CountryPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */; };
-		E03F5FEB2055165B00FA5B61 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FE52055165A00FA5B61 /* Constant.swift */; };
-		E03F5FEC2055165B00FA5B61 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FE62055165A00FA5B61 /* Country.swift */; };
-		E03F5FED2055165B00FA5B61 /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FE72055165A00FA5B61 /* CountryManager.swift */; };
-		E03F5FEE2055165B00FA5B61 /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FE82055165B00FA5B61 /* CountryPickerController.swift */; };
-		E03F5FEF2055165B00FA5B61 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FE92055165B00FA5B61 /* CountryCell.swift */; };
-		E03F5FF02055165B00FA5B61 /* CountryPickerWithSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5FEA2055165B00FA5B61 /* CountryPickerWithSectionViewController.swift */; };
 		E0519E2D2054FDE500C77B45 /* CountryPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E0519E2B2054FDE500C77B45 /* CountryPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9A4F590120EF42AA000CAFE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E0519E1F2054FDE500C77B45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0519E272054FDE500C77B45;
+			remoteInfo = CountryPicker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		9A4F58EB20EF429B000CAFE5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerWithSectionViewController.swift; sourceTree = "<group>"; };
+		9A4F58EE20EF429C000CAFE5 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
+		9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerController.swift; sourceTree = "<group>"; };
+		9A4F58FB20EF42AA000CAFE5 /* CountryPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerTests.swift; sourceTree = "<group>"; };
+		9A4F58FF20EF42AA000CAFE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CountryPickerController.bundle; sourceTree = "<group>"; };
-		E03F5FE52055165A00FA5B61 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/Constant.swift; sourceTree = "<absolute>"; };
-		E03F5FE62055165A00FA5B61 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Country.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/Country.swift; sourceTree = "<absolute>"; };
-		E03F5FE72055165A00FA5B61 /* CountryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryManager.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryManager.swift; sourceTree = "<absolute>"; };
-		E03F5FE82055165B00FA5B61 /* CountryPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryPickerController.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryPickerController.swift; sourceTree = "<absolute>"; };
-		E03F5FE92055165B00FA5B61 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryCell.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryCell.swift; sourceTree = "<absolute>"; };
-		E03F5FEA2055165B00FA5B61 /* CountryPickerWithSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CountryPickerWithSectionViewController.swift; path = /Users/suryakantsharma/Documents/GitHub/CountryPicker/CountryPicker/CountryPicker/CountryPickerWithSectionViewController.swift; sourceTree = "<absolute>"; };
 		E0519E282054FDE500C77B45 /* CountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0519E2B2054FDE500C77B45 /* CountryPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
 		E0519E2C2054FDE500C77B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9A4F58F820EF42AA000CAFE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4F590020EF42AA000CAFE5 /* CountryPicker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0519E242054FDE500C77B45 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,10 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A4F58FC20EF42AA000CAFE5 /* CountryPickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */,
+				9A4F58FF20EF42AA000CAFE5 /* Info.plist */,
+			);
+			path = CountryPickerTests;
+			sourceTree = "<group>";
+		};
 		E0519E1E2054FDE500C77B45 = {
 			isa = PBXGroup;
 			children = (
 				E0519E2A2054FDE500C77B45 /* CountryPicker */,
+				9A4F58FC20EF42AA000CAFE5 /* CountryPickerTests */,
 				E0519E292054FDE500C77B45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				E0519E282054FDE500C77B45 /* CountryPicker.framework */,
+				9A4F58FB20EF42AA000CAFE5 /* CountryPickerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,12 +94,12 @@
 		E0519E2A2054FDE500C77B45 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
-				E03F5FE52055165A00FA5B61 /* Constant.swift */,
-				E03F5FE62055165A00FA5B61 /* Country.swift */,
-				E03F5FE92055165B00FA5B61 /* CountryCell.swift */,
-				E03F5FE72055165A00FA5B61 /* CountryManager.swift */,
-				E03F5FE82055165B00FA5B61 /* CountryPickerController.swift */,
-				E03F5FEA2055165B00FA5B61 /* CountryPickerWithSectionViewController.swift */,
+				9A4F58EB20EF429B000CAFE5 /* Constant.swift */,
+				9A4F58EE20EF429C000CAFE5 /* Country.swift */,
+				9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */,
+				9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */,
+				9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */,
+				9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */,
 				E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */,
 				E0519E2B2054FDE500C77B45 /* CountryPicker.h */,
 				E0519E2C2054FDE500C77B45 /* Info.plist */,
@@ -87,6 +121,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9A4F58FA20EF42AA000CAFE5 /* CountryPickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A4F590320EF42AA000CAFE5 /* Build configuration list for PBXNativeTarget "CountryPickerTests" */;
+			buildPhases = (
+				9A4F58F720EF42AA000CAFE5 /* Sources */,
+				9A4F58F820EF42AA000CAFE5 /* Frameworks */,
+				9A4F58F920EF42AA000CAFE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A4F590220EF42AA000CAFE5 /* PBXTargetDependency */,
+			);
+			name = CountryPickerTests;
+			productName = CountryPickerTests;
+			productReference = 9A4F58FB20EF42AA000CAFE5 /* CountryPickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E0519E272054FDE500C77B45 /* CountryPicker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0519E302054FDE500C77B45 /* Build configuration list for PBXNativeTarget "CountryPicker" */;
@@ -111,12 +163,17 @@
 		E0519E1F2054FDE500C77B45 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "SuryaKant Sharma";
 				TargetAttributes = {
+					9A4F58FA20EF42AA000CAFE5 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
 					E0519E272054FDE500C77B45 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,11 +191,19 @@
 			projectRoot = "";
 			targets = (
 				E0519E272054FDE500C77B45 /* CountryPicker */,
+				9A4F58FA20EF42AA000CAFE5 /* CountryPickerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9A4F58F920EF42AA000CAFE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0519E262054FDE500C77B45 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,22 +215,72 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9A4F58F720EF42AA000CAFE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A4F58FE20EF42AA000CAFE5 /* CountryPickerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0519E232054FDE500C77B45 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E03F5FEC2055165B00FA5B61 /* Country.swift in Sources */,
-				E03F5FF02055165B00FA5B61 /* CountryPickerWithSectionViewController.swift in Sources */,
-				E03F5FEB2055165B00FA5B61 /* Constant.swift in Sources */,
-				E03F5FEF2055165B00FA5B61 /* CountryCell.swift in Sources */,
-				E03F5FEE2055165B00FA5B61 /* CountryPickerController.swift in Sources */,
-				E03F5FED2055165B00FA5B61 /* CountryManager.swift in Sources */,
+				9A4F58F620EF429C000CAFE5 /* CountryPickerController.swift in Sources */,
+				9A4F58F420EF429C000CAFE5 /* Country.swift in Sources */,
+				9A4F58F220EF429C000CAFE5 /* CountryCell.swift in Sources */,
+				9A4F58F320EF429C000CAFE5 /* CountryPickerWithSectionViewController.swift in Sources */,
+				9A4F58F520EF429C000CAFE5 /* CountryManager.swift in Sources */,
+				9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9A4F590220EF42AA000CAFE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0519E272054FDE500C77B45 /* CountryPicker */;
+			targetProxy = 9A4F590120EF42AA000CAFE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		9A4F590420EF42AA000CAFE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CountryPickerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suryakant.CountryPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A4F590520EF42AA000CAFE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CountryPickerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suryakant.CountryPickerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E0519E2E2054FDE500C77B45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -325,6 +440,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9A4F590320EF42AA000CAFE5 /* Build configuration list for PBXNativeTarget "CountryPickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A4F590420EF42AA000CAFE5 /* Debug */,
+				9A4F590520EF42AA000CAFE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E0519E222054FDE500C77B45 /* Build configuration list for PBXProject "CountryPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
