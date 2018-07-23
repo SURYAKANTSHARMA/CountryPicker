@@ -2,21 +2,21 @@ PODS:
   - CountryPicker (1.0.4)
 
 DEPENDENCIES:
-  - CountryPicker (from `https://github.com/SURYAKANTSHARMA/CountryPicker/`, tag `1.0.4`)
+  - CountryPicker (from `https://github.com/SURYAKANTSHARMA/CountryPicker/`, tag `1.0.5`)
 
 EXTERNAL SOURCES:
   CountryPicker:
     :git: https://github.com/SURYAKANTSHARMA/CountryPicker/
-    :tag: 1.0.4
+    :tag: 1.0.5
 
 CHECKOUT OPTIONS:
   CountryPicker:
     :git: https://github.com/SURYAKANTSHARMA/CountryPicker/
-    :tag: 1.0.4
+    :tag: 1.0.5
 
 SPEC CHECKSUMS:
   CountryPicker: d07b751509488a10223b54c61437149915532c25
 
-PODFILE CHECKSUM: b22a555909ac9676479ee4720bc456cf81770214
+PODFILE CHECKSUM: aa80c1c9c3fc6db2c70cdec9a087d4f95b0d5c65
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
