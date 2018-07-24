@@ -1,4 +1,4 @@
-![text2image_x98161_20180724_122825](https://user-images.githubusercontent.com/6416095/43135379-d319c29c-8f62-11e8-8bc3-05a5e15c56e7.jpg)
+![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
 
 # CountryPicker
 
