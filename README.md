@@ -4,6 +4,13 @@ This library is for country picker used in many app for selecting country code o
 
 ### If you like CountryPicker, give it a ★ at the top right of this page.
 
+## Features
+
+- [x] Navigate through search and index title of section e.g (in Contact app in iOS)
+- [x] Added Unit Tests
+- [x] Pods integrated
+- [x] Best practices followed
+
 ## Installation
 
 CountryPicker is available through Cocoapods.
