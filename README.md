@@ -11,6 +11,11 @@ This library is for country picker used in many app for selecting country code o
 - [x] Pods integrated
 - [x] Best practices followed
 
+## Requirements
+
+- iOS 9.0+
+- Xcode 9+
+
 ## Installation
 
 CountryPicker is available through Cocoapods.
