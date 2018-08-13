@@ -12,9 +12,7 @@ import UIKit
 open class Country {
     
     // MARK :- Variable
-    var countryCode: String
-    var imagePath: String
-    private var image: UIImage? = nil
+    open var countryCode: String
     
     /// Name of the country
     open var countryName: String
@@ -36,6 +34,11 @@ open class Country {
         image  = flagImg
         return image
     }
+    
+    
+    var imagePath: String
+    private var image: UIImage? = nil
+    
     
     // MARK: - Functions
     init(countryCode code: String) {
