@@ -1,21 +1,6 @@
-![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
-
 # CountryPicker
 
 This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country cell.
-
-### If you like CountryPicker, give it a ★ at the top right of this page.
-
-## Features
-
-- [x] Navigate through search and index title of section e.g (in Contact app in iOS)
-- [x] Pods integrated
-- [x] Best practices followed
-
-## Requirements
-
-- iOS 9.0+
-- Xcode 9+
 
 ## Installation
 
@@ -25,7 +10,7 @@ CountryPicker is available through Cocoapods.
 Add the following line to your Podfile:
 
 ```ruby
-pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.5’
+pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.4’
 ```
 
 ## Getting Started
@@ -95,7 +80,7 @@ After selecting selected country with image will appear on your button.
 
 ***Suryakant Sharma**(https://github.com/SURYAKANTSHARMA)
 
-See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project. Thanks from bottom of my heart to inspiration behind <a href="https://github.com/hardeep-singh">Hardeep Singh</a>
+See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project.
 
 ## License
 

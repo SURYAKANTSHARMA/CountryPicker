@@ -115,7 +115,7 @@
 				E0519E472054FF6B00C77B45 /* Frameworks */,
 				E0519E482054FF6B00C77B45 /* Resources */,
 				E0519E6F2055021000C77B45 /* Embed Frameworks */,
-				0DF67F1B7FCB66CAB116752F /* [CP] Copy Pods Resources */,
+				4EB925B0699D92D309F7A7E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,24 +174,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0DF67F1B7FCB66CAB116752F /* [CP] Copy Pods Resources */ = {
+		4EB925B0699D92D309F7A7E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-resources.sh",
-				"${PODS_ROOT}/../../CountryPicker/CountryPicker/tickMark.png",
-				"${PODS_CONFIGURATION_BUILD_DIR}/CountryPicker/CountryPickerController.bundle",
+				"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CountryPicker/CountryPicker.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/tickMark.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CountryPickerController.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D331992B7D201D3CEB91627B /* [CP] Check Pods Manifest.lock */ = {
