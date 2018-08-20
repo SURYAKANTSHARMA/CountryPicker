@@ -13,7 +13,7 @@ open class CountryManager {
     
     // MARK: - variable
     private(set) var countries = [Country]()
-    open static var  shared : CountryManager = {
+    public static var  shared : CountryManager = {
         let countryManager = CountryManager()
         do { try countryManager.loadCountries()
         } catch {

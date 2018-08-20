@@ -20,7 +20,7 @@
     "git": "https://github.com/SURYAKANTSHARMA/CountryPicker",
     "tag": "1.0.6"
   },
-  "source_files": "CountryPicker/CountryPicker/**/*.{swift}",
+  "source_files": "CountryPicker/CountryPicker/**/*.{swift},CountryPicker/CountryPickerTests/**/*.{swift}",
   "exclude_files": "Classes/Exclude",
   "resources": "CountryPicker/CountryPicker/*.{png}",
   "resource_bundles": {
