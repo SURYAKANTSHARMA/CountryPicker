@@ -1,20 +1,20 @@
 ![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
 
 # CountryPicker
+A simple, customizable Country picker for picking country or dialing code.  
+This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
-This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country cell.
-
-### If you like CountryPicker, give it a ★ at the top right of this page.
+## If you like CountryPicker, give it a ★ at the top right of this page.
 
 ## Features
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
-- [x] Pods integrated
+- [x] cocoa Pods integrated
 - [x] Best practices followed
 
 ## Requirements
 
-- iOS 9.0+
+- iOS 10.0+
 - Xcode 9+
 
 ## Installation
@@ -25,13 +25,15 @@ CountryPicker is available through Cocoapods.
 Add the following line to your Podfile:
 
 ```ruby
-pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.5’
+pod 'SKCountryPicker'
 ```
-
+current version is 1.0.6 compatible with Swift 4.1 as well Swift 3.3 
 ## Getting Started
 Example:
 
 ```swift
+import UIKit
+import SKCountryPicker
 class ViewController: UIViewController  {
   //MARK:- IBOutlet
   @IBOutlet weak var countryCodeButton: UIButton!
@@ -58,6 +60,7 @@ class ViewController: UIViewController  {
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
     }
+    // can customize the countryPicker here e.g font and color
     countryController.detailColor = UIColor.red
    }
 }
