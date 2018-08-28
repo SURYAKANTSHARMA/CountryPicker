@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CountryPicker
+import SKCountryPicker
 
 class ViewController: UIViewController  {
     //MARK:- IBOutlet
