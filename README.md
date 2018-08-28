@@ -31,7 +31,7 @@ Add the following line to your Podfile:
 ```ruby
 pod 'SKCountryPicker'
 ```
-current version is 1.0.6 compatible with Swift 4.1 as well Swift 3.3 
+current version compatible with Swift 4.1 as well Swift 3.3 
 ## Getting Started
 Example:
 
