@@ -145,7 +145,6 @@ open class CountryPickerController: UIViewController {
         controller.presentingVC = viewController
         controller.callBack = callBack
         let navigationController = UINavigationController(rootViewController: controller)
-        //navigationController.navigationBar.barTintColor = UIColor.lightGray.withAlphaComponent(0.1)
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
     }

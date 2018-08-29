@@ -9,10 +9,12 @@
 import UIKit
 
 open class CountryPickerWithSectionViewController: CountryPickerController {
+    
     // MARK: - Variables
     var sections: [Character] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var sectionCoutries =  [Character: [Country]]()
     var searchHeaderTitle: Character = "A"
+    
     // MARK: - View Life Cycle
     override open func viewDidLoad() {
         super.viewDidLoad()
