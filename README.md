@@ -1,9 +1,10 @@
+[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
+[![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 ![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
 
 # CountryPicker
 
-[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
-[![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
+
 A simple, customizable Country picker for picking country or dialing code.  
 This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
