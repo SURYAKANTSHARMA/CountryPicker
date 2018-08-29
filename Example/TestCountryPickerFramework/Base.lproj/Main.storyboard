@@ -62,17 +62,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHD-Iz-bdZ">
+                                <rect key="frame" x="52" y="149" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show With Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Pr-hQm">
+                                <rect key="frame" x="121" y="154" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ofv-wr-sb6" firstAttribute="centerY" secondItem="sxh-pT-lsG" secondAttribute="centerY" id="5b3-pf-6e5"/>
                             <constraint firstItem="Qn9-ly-arN" firstAttribute="top" secondItem="u08-Yi-RAT" secondAttribute="bottom" constant="22" id="A4W-XF-rl2"/>
+                            <constraint firstItem="InG-Pr-hQm" firstAttribute="centerY" secondItem="XHD-Iz-bdZ" secondAttribute="centerY" id="J5G-5R-8mv"/>
                             <constraint firstItem="fbI-xG-7mA" firstAttribute="leading" secondItem="ofv-wr-sb6" secondAttribute="leading" id="JSm-n1-bba"/>
                             <constraint firstItem="fbI-xG-7mA" firstAttribute="centerY" secondItem="ofv-wr-sb6" secondAttribute="centerY" id="KZE-iC-Vsg"/>
                             <constraint firstItem="Qn9-ly-arN" firstAttribute="leading" secondItem="u08-Yi-RAT" secondAttribute="leading" id="Lv3-2r-yYW"/>
                             <constraint firstItem="aUa-jb-iph" firstAttribute="centerY" secondItem="Qn9-ly-arN" secondAttribute="centerY" id="OBy-Ha-Z67"/>
+                            <constraint firstItem="InG-Pr-hQm" firstAttribute="leading" secondItem="XHD-Iz-bdZ" secondAttribute="trailing" constant="20" id="St9-Fh-AeG"/>
                             <constraint firstItem="liT-ne-VeH" firstAttribute="centerY" secondItem="u08-Yi-RAT" secondAttribute="centerY" id="bXC-6D-G70"/>
+                            <constraint firstItem="XHD-Iz-bdZ" firstAttribute="top" secondItem="Qn9-ly-arN" secondAttribute="bottom" constant="23" id="hxn-Wk-LF0"/>
                             <constraint firstItem="aUa-jb-iph" firstAttribute="leading" secondItem="Qn9-ly-arN" secondAttribute="trailing" constant="20" id="lVW-SW-kcM"/>
+                            <constraint firstItem="XHD-Iz-bdZ" firstAttribute="leading" secondItem="Qn9-ly-arN" secondAttribute="leading" id="o9B-zY-BpC"/>
                             <constraint firstItem="u08-Yi-RAT" firstAttribute="leading" secondItem="vjC-5M-P1O" secondAttribute="leading" constant="52" id="rsa-Vg-xhv"/>
                             <constraint firstItem="ofv-wr-sb6" firstAttribute="centerX" secondItem="sxh-pT-lsG" secondAttribute="centerX" id="vO6-oB-SO0"/>
                             <constraint firstItem="u08-Yi-RAT" firstAttribute="top" secondItem="DdQ-N4-djM" secondAttribute="bottom" constant="22" id="wxW-SQ-EcN"/>
@@ -85,6 +98,7 @@
                         <outlet property="countryImageView" destination="fbI-xG-7mA" id="lZY-6c-ocZ"/>
                         <outlet property="showCountryFlagSwitch" destination="Qn9-ly-arN" id="UhV-Ob-vMU"/>
                         <outlet property="showDialingCodeSwitch" destination="u08-Yi-RAT" id="YJK-an-naZ"/>
+                        <outlet property="showWithSectionsSwitch" destination="XHD-Iz-bdZ" id="qes-1E-QhZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYN-jd-baC" sceneMemberID="firstResponder"/>

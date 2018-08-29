@@ -72,7 +72,6 @@ open class CountryPickerController: UIViewController {
         
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
-            searchController?.hidesNavigationBarDuringPresentation = false
         } else {
             tableView.tableHeaderView = searchController!.searchBar
         }

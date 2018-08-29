@@ -16,7 +16,7 @@ class ViewController: UIViewController  {
     let contryPickerController = CountryPickerController()
     
     @IBOutlet weak var showDialingCodeSwitch: UISwitch!
-    
+    @IBOutlet weak var showWithSectionsSwitch: UISwitch!
     @IBOutlet weak var showCountryFlagSwitch: UISwitch!
     //MARK:- Func
     override func viewDidLoad() {
@@ -32,14 +32,24 @@ class ViewController: UIViewController  {
     
     
     @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
-        
-        let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
-            self.countryImageView.image = country.flag
-            self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
-            
+        switch showWithSectionsSwitch.isOn {
+        case true:
+            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
+                self.countryImageView.image = country.flag
+                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+                
+            }
+            countryController.detailColor = UIColor.red
+            countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
+            countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
+        case false:
+            let countryController = CountryPickerController.presentController(on: self) { (country: Country) in
+                self.countryImageView.image = country.flag
+                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+            }
+            countryController.detailColor = UIColor.red
+            countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
+            countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         }
-        countryController.detailColor = UIColor.red
-        countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
-        countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
     }
 }
