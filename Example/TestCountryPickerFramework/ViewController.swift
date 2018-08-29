@@ -15,6 +15,9 @@ class ViewController: UIViewController  {
     @IBOutlet weak var countryImageView: UIImageView!
     let contryPickerController = CountryPickerController()
     
+    @IBOutlet weak var showDialingCodeSwitch: UISwitch!
+    
+    @IBOutlet weak var showCountryFlagSwitch: UISwitch!
     //MARK:- Func
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,5 +39,7 @@ class ViewController: UIViewController  {
             
         }
         countryController.detailColor = UIColor.red
+        countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
+        countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
     }
 }
