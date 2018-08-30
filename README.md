@@ -79,6 +79,11 @@ Any contribution making project better is welcome.
 
 
 ## ScreenShots
+In Example Project  
+
+<img src= "https://user-images.githubusercontent.com/6416095/44832120-2c425400-ac47-11e8-9b3d-d96474942f46.gif" width="200" height = "400"> 
+
+Demo   
 
 <img src= "https://user-images.githubusercontent.com/6416095/34318079-4dcec342-e7e4-11e7-9d33-933db60d4836.gif" width="200" height = "400">
 
