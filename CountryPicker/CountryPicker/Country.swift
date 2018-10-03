@@ -38,8 +38,7 @@ open class Country {
     
     var imagePath: String
     private var image: UIImage? = nil
-    
-    
+
     // MARK: - Functions
     public init(countryCode code: String) {
         self.countryCode = code

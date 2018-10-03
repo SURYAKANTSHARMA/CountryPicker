@@ -10,6 +10,7 @@ import UIKit
 
 
 class CountryCell: UITableViewCell {
+    
     // MARK: - Variables
     static let reuseIdentifier = String(describing: CountryCell.self)
     
@@ -44,6 +45,7 @@ class CountryCell: UITableViewCell {
        imageView.translatesAutoresizingMaskIntoConstraints = false
        return imageView
     }()
+    
     // MARK: - Model
     var country: Country! {
         didSet {
@@ -57,6 +59,7 @@ class CountryCell: UITableViewCell {
         super.layoutSubviews()
         setUpView()
     }
+    
     // MARK: - View SetUp
     private func setUpView() {
         setUpFlagImageView()
@@ -77,6 +80,7 @@ class CountryCell: UITableViewCell {
         flagImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         flagImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    
     private func setUpLabels() {
         addSubview(nameLabel)
         addSubview(diallingCodeLabel)
