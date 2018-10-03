@@ -41,7 +41,7 @@ open class Country {
     
     
     // MARK: - Functions
-    init(countryCode code: String) {
+    public init(countryCode code: String) {
         self.countryCode = code
         countryName = mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
