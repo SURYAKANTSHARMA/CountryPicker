@@ -4,8 +4,6 @@
 target 'TestCountryPickerFramework' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod ‘CountryPicker’, :path => '../CountryPicker.podspec'
-  #pod ‘CountryPicker’, :git => ‘https://github.com/SURYAKANTSHARMA/CountryPicker/’, :tag => ‘1.0.4’
-  # Pods for TestCountryPickerFramework
+  pod 'SKCountryPicker'
 
 end

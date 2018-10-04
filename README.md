@@ -1,15 +1,44 @@
+[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
+[![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
+![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
+
 # CountryPicker
 
-This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country cell.
 
+A simple, customizable Country picker for picking country or dialing code.  
+This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
+## If you like CountryPicker, give it a ★ at the top right of this page.
+
+## Features
+
+- [x] Navigate through search and index title of section e.g (in Contact app in iOS)
+- [x] cocoa Pods integrated
+- [x] Best practices followed
+
+## Requirements
+
+- iOS 10.0+
+- Xcode 9+
+## Example 
+ To run the example project, clone the repo, and run pod update from the Example directory first. 
+## Installation
+
+CountryPicker is available through Cocoapods.
+
+#### [CocoaPods](http://cocoapods.org):
+Add the following line to your Podfile:
+
+```ruby
+pod 'SKCountryPicker'
+```
+current version compatible with Swift 4.1 as well Swift 3.3 
 ## Getting Started
-
-This project use swift 4.0 and xcode 9.0. You can download locally and run the code. You can customize and use according to your need. 
-
 Example:
 
 ```swift
+import UIKit
+import SKCountryPicker
 class ViewController: UIViewController  {
   //MARK:- IBOutlet
   @IBOutlet weak var countryCodeButton: UIButton!
@@ -36,6 +65,7 @@ class ViewController: UIViewController  {
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
     }
+    // can customize the countryPicker here e.g font and color
     countryController.detailColor = UIColor.red
    }
 }
@@ -49,6 +79,11 @@ Any contribution making project better is welcome.
 
 
 ## ScreenShots
+In Example Project  
+
+<img src= "https://user-images.githubusercontent.com/6416095/44832120-2c425400-ac47-11e8-9b3d-d96474942f46.gif" width="200" height = "400"> 
+
+Demo   
 
 <img src= "https://user-images.githubusercontent.com/6416095/34318079-4dcec342-e7e4-11e7-9d33-933db60d4836.gif" width="200" height = "400">
 
@@ -71,9 +106,9 @@ After selecting selected country with image will appear on your button.
 
 ## Authors
 
-***Suryakant Sharma**(https://github.com/SURYAKANTSHARMA)
+[***Suryakant Sharma**](https://github.com/SURYAKANTSHARMA)
 
-See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPicker/contributors) who participated in this project. Thanks from bottom of my heart to inspiration behind <a href="https://github.com/hardeep-singh">Hardeep Singh</a>
 
 ## License
 

@@ -12,9 +12,7 @@ import UIKit
 open class Country {
     
     // MARK :- Variable
-    var countryCode: String
-    var imagePath: String
-    private var image: UIImage? = nil
+    open var countryCode: String
     
     /// Name of the country
     open var countryName: String
@@ -37,8 +35,12 @@ open class Country {
         return image
     }
     
+    
+    var imagePath: String
+    private var image: UIImage? = nil
+
     // MARK: - Functions
-    init(countryCode code: String) {
+    public init(countryCode code: String) {
         self.countryCode = code
         countryName = mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"

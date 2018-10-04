@@ -116,7 +116,6 @@
 				E0519E482054FF6B00C77B45 /* Resources */,
 				E0519E6F2055021000C77B45 /* Embed Frameworks */,
 				4EB925B0699D92D309F7A7E8 /* [CP] Embed Pods Frameworks */,
-				C28C1FCC17422C535FA9FCC7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,33 +181,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/CountryPicker/CountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SKCountryPicker/SKCountryPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKCountryPicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C28C1FCC17422C535FA9FCC7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/CountryPicker/CountryPickerController.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CountryPickerController.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D331992B7D201D3CEB91627B /* [CP] Check Pods Manifest.lock */ = {
@@ -381,10 +362,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TestCountryPickerFramework/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GitHub.CountryPicker.TestCountryPickerFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -400,10 +382,11 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = TestCountryPickerFramework/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GitHub.CountryPicker.TestCountryPickerFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

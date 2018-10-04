@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "CountryPicker"
-  s.version      = "1.0.6"
-  s.summary      = "This library is for country picker used in many app for selecting country code of user"
+  s.name         = "SKCountryPicker"
+  s.version      = "1.1.6"
+  s.summary      = "A simple, customizable Country picker for picking country or dialing code."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
   s.author             = { "SuryaKant Sharma" => "suryakantsharma84@gmail.com" }
   # Or just: s.author    = "SuryaKant Sharma"
   # s.authors            = { "SuryaKant Sharma" => "suryakantsharma84@gmail.com" }
-  s.social_media_url   = "http://twitter.com/SuryaKant Sharma"
+  # s.social_media_url   = "http://twitter.com/SuryaKant Sharma"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "1.0.6" }
+  s.source       = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "1.1.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

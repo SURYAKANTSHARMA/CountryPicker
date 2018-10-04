@@ -72,7 +72,6 @@ open class CountryPickerController: UIViewController {
         
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
-            searchController?.hidesNavigationBarDuringPresentation = false
         } else {
             tableView.tableHeaderView = searchController!.searchBar
         }
@@ -94,8 +93,17 @@ open class CountryPickerController: UIViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadCountries()
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = false
+        }
     }
     
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = true
+        }
+    }
     
     private func setUpTableView() {
         
@@ -136,7 +144,6 @@ open class CountryPickerController: UIViewController {
         controller.presentingVC = viewController
         controller.callBack = callBack
         let navigationController = UINavigationController(rootViewController: controller)
-        //navigationController.navigationBar.barTintColor = UIColor.lightGray.withAlphaComponent(0.1)
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
     }

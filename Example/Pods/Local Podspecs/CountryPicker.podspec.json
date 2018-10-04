@@ -1,6 +1,6 @@
 {
   "name": "CountryPicker",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "summary": "This library is for country picker used in many app for selecting country code of user",
   "description": "CountryPicker is module for selecting country of the user by searching",
   "homepage": "https://github.com/SURYAKANTSHARMA/CountryPicker",
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/SURYAKANTSHARMA/CountryPicker",
-    "tag": "{s.version}"
+    "tag": "1.0.6"
   },
   "source_files": "CountryPicker/CountryPicker/**/*.{swift}",
   "exclude_files": "Classes/Exclude",
