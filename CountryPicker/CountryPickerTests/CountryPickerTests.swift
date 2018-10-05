@@ -10,7 +10,7 @@ import XCTest
 @testable import CountryPicker
 
 class CountryPickerTests: XCTestCase {
-    
+
     var country: Country!
     var countryManager: CountryManager!
     var totalCountries = 249
@@ -19,35 +19,34 @@ class CountryPickerTests: XCTestCase {
         country = Country(countryCode: "IN")
         countryManager = CountryManager.shared
     }
-    
+
     override func tearDown() {
         super.tearDown()
         country = nil
         countryManager = nil
     }
-    
+
     func testCountry() {
         XCTAssert(country.countryName.capitalized == "India", "Countryname is faulty")
         XCTAssert(country.dialingCode! ==  "+91", "Dialing Code is faulty")
         XCTAssertNotNil(country.flag)
     }
-    
+
     func testCountryManager() {
-        XCTAssert(countryManager.currentCountry!.countryCode == ((Locale.current as NSLocale).object(forKey: .countryCode) as! String) , "faulty default country")
-        XCTAssert(countryManager.countries.count == totalCountries , "Fault in loading countries")
-        XCTAssert(countryManager.countries[0].countryName < countryManager.countries[1].countryName , "Faulty in sorting")
+        XCTAssert(countryManager.currentCountry!.countryCode == ((Locale.current as NSLocale).object(forKey: .countryCode) as! String), "faulty default country")
+        XCTAssert(countryManager.countries.count == totalCountries, "Fault in loading countries")
+        XCTAssert(countryManager.countries[0].countryName < countryManager.countries[1].countryName, "Faulty in sorting")
     }
-    
+
     func testPerformanceLoadAndSortCountries() {
         self.measure {
             do {
                 try countryManager.loadCountries()
-            }
-            catch {
+            } catch {
                 print(error.localizedDescription)
             }
-            
+
         }
     }
-    
+
 }
