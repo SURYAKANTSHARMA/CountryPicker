@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 open class Country {
-    
-    // MARK :- Variable
+
+    // MARK:- Variable
     open var countryCode: String
-    
+
     /// Name of the country
     open var countryName: String
     /// Return dialing code for country instance
@@ -27,17 +27,16 @@ open class Country {
     /// Image (Flag) of country
     open var flag: UIImage? {
         if image != nil {
-            return image;
+            return image
         }
         let bundle = Bundle(for: Country.self)
         let flagImg = UIImage(named: imagePath, in: bundle, compatibleWith: nil)
         image  = flagImg
         return image
     }
-    
-    
+
     var imagePath: String
-    private var image: UIImage? = nil
+    private var image: UIImage?
 
     // MARK: - Functions
     public init(countryCode code: String) {
@@ -45,12 +44,12 @@ open class Country {
         countryName = mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
     }
-    
+
     func countryName(with locale: NSLocale) -> String {
         let localisedCountryName = locale.displayName(forKey: NSLocale.Key.countryCode, value: self.countryCode)!
         return localisedCountryName
     }
-    
+
     func countryName(withLocaleIdentifier localeIdentifier: String) -> String {
         let locale = NSLocale(localeIdentifier: localeIdentifier)
         return self.countryName(with: locale)
@@ -62,5 +61,3 @@ func mapCountryName(_ countryCode: String) -> String {
     let localisedCountryName = locale.displayName(forKey: NSLocale.Key.countryCode, value: countryCode)!
     return localisedCountryName
 }
-
-

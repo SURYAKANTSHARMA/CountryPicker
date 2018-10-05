@@ -9,7 +9,7 @@
 import UIKit
 
 open class CountryPickerController: UIViewController {
-    
+
     // MARK: - Variables
     var countries = [Country]()
     var filterCountries = [Country]()
@@ -19,9 +19,9 @@ open class CountryPickerController: UIViewController {
     var searchController: UISearchController?
     let bundle = Bundle(for: CountryPickerController.self)
     var tableView =  UITableView()
-    
+
     /// Properties for countryPicker controller
-    public var statusBarStyle : UIStatusBarStyle? = .default
+    public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     public var labelFont = UIFont.systemFont(ofSize: 14.0) {
         willSet {
@@ -58,8 +58,7 @@ open class CountryPickerController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    
+
     // MARK: - View life cycle
     fileprivate func setUpsSearchController() {
         searchController = UISearchController(searchResultsController: nil)
@@ -69,7 +68,7 @@ open class CountryPickerController: UIViewController {
         searchController?.searchBar.sizeToFit()
         searchController?.searchBar.delegate = self
         searchController?.searchBar.placeholder = "search country name here.."
-        
+
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
             searchController?.hidesNavigationBarDuringPresentation = false
@@ -77,7 +76,7 @@ open class CountryPickerController: UIViewController {
             tableView.tableHeaderView = searchController!.searchBar
         }
     }
-    
+
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -90,15 +89,14 @@ open class CountryPickerController: UIViewController {
         setUpsSearchController()
         self.definesPresentationContext = true
     }
-    
+
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadCountries()
     }
-    
-    
+
     private func setUpTableView() {
-        
+
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
@@ -111,7 +109,7 @@ open class CountryPickerController: UIViewController {
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets.zero
         //tableView.backgroundColor = .black
-        
+
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -129,9 +127,9 @@ open class CountryPickerController: UIViewController {
                 ])
         }
     }
-    
+
     @discardableResult
-    open class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country)->Void) -> CountryPickerController {
+    open class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerController {
         let controller = CountryPickerController()
         controller.presentingVC = viewController
         controller.callBack = callBack
@@ -140,12 +138,12 @@ open class CountryPickerController: UIViewController {
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
     }
-    
+
     // MARK: - Cross Button Action
-    @objc func crossButtonClicked(_ sender : UIBarButtonItem){
+    @objc func crossButtonClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Others
     func loadCountries() {
         countries = CountryManager.shared.allCountries()
@@ -163,15 +161,15 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             return filterCountries.count
         }
     }
-    
+
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell {
             cell.accessoryType = .none
             cell.checkMarkImageView.isHidden = true
             let image =  UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             cell.checkMarkImageView.image = image
-            
+
             var country: Country
             if applySearch {
                 country = filterCountries[indexPath.row]
@@ -181,7 +179,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
                 cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
             }
-            
+
             cell.country = country
             setUpCellProperties(cell: cell)
             return cell
@@ -197,7 +195,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.diallingCodeLabel.isHidden = self.isHideDiallingCode
         cell.separatorLineView.backgroundColor = self.separatorLineColor
     }
-    
+
     // MARK: - TableView Delegate
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch applySearch {
@@ -214,11 +212,11 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }
-    
+
 }
 
 // MARK: - UISearchBarDelegate
@@ -230,13 +228,12 @@ extension CountryPickerController: UISearchBarDelegate {
             applySearch = true
             filterCountries = []
             let searchString = searchBar.text
-            for country in countries{
-                if ((country.countryName.uppercased()) as NSString).hasPrefix((searchString?.uppercased())!){
+            for country in countries {
+                if ((country.countryName.uppercased()) as NSString).hasPrefix((searchString?.uppercased())!) {
                     self.filterCountries.append(country)
                 }
             }
-        }
-        else{
+        } else {
             applySearch = false
         }
         // Reload the tableview.
@@ -252,5 +249,3 @@ extension CountryPickerController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
 }
-
-
