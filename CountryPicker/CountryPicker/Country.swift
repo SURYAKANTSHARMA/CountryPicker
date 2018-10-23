@@ -18,12 +18,13 @@ open class Country {
     open var countryName: String
     /// Return dialing code for country instance
     open var dialingCode: String? {
-        if let digitCountryCode = isoToDigitCountryCodeDictionary[countryCode] as? String {
-            return "+" + digitCountryCode
+        guard let digitCountryCode = isoToDigitCountryCodeDictionary[countryCode] as? String else {
+            print("Please check your Constant file it not contain key for \(countryCode) with countryName: \(countryName)")
+            return nil
         }
-        print("Please check your Constant file it not contain key for \(countryCode) with countryName: \(countryName)")
-        return nil
+        return "+" + digitCountryCode
     }
+    
     /// Image (Flag) of country
     open var flag: UIImage? {
         if image != nil {
@@ -31,7 +32,7 @@ open class Country {
         }
         let bundle = Bundle(for: Country.self)
         let flagImg = UIImage(named: imagePath, in: bundle, compatibleWith: nil)
-        image  = flagImg
+        image = flagImg
         return image
     }
 
