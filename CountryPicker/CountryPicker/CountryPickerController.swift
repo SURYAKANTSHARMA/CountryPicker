@@ -14,65 +14,42 @@ open class CountryPickerController: UIViewController {
     var countries = [Country]()
     var filterCountries = [Country]()
     var applySearch = false
-    var presentingVC: UIViewController?
-    var callBack : (( _ choosenCountry: Country) -> Void)?
-    var searchController: UISearchController?
+    
+    var callBack: (( _ choosenCountry: Country) -> Void)?
+    
     let bundle = Bundle(for: CountryPickerController.self)
-    var tableView =  UITableView()
+    
+    //MARK: View and ViewController
+    var presentingVC: UIViewController?
+    var searchController = UISearchController(searchResultsController: nil)
+    let tableView =  UITableView()
 
     /// Properties for countryPicker controller
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
-    public var labelFont = UIFont.systemFont(ofSize: 14.0) {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var labelColor = UIColor.black {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var detailFont = UIFont.systemFont(ofSize: 11.0) {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var detailColor = UIColor.lightGray {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var separatorLineColor = UIColor.lightGray {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var isHideFlagImage: Bool = false {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
-    public var isHideDiallingCode: Bool = false {
-        willSet {
-            self.tableView.reloadData()
-        }
-    }
+    
+    // MARK: Cell Ui values
+    public let labelFont = UIFont.systemFont(ofSize: 14.0)
+    public let labelColor = UIColor.black
+    public let detailFont = UIFont.systemFont(ofSize: 11.0)
+    public let detailColor = UIColor.lightGray
+    public let separatorLineColor = UIColor.lightGray
+    public let isHideFlagImage: Bool = false
+    public let isHideDiallingCode: Bool = false
 
     // MARK: - View life cycle
     fileprivate func setUpsSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController?.hidesNavigationBarDuringPresentation = true
-        searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.searchBar.barStyle = .default
-        searchController?.searchBar.sizeToFit()
-        searchController?.searchBar.delegate = self
-        searchController?.searchBar.placeholder = "search country name here.."
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barStyle = .default
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "search country name here.."
 
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
         } else {
-            tableView.tableHeaderView = searchController!.searchBar
+            tableView.tableHeaderView = searchController.searchBar
         }
     }
 
@@ -178,21 +155,17 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             let image =  UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             cell.checkMarkImageView.image = image
 
-            var country: Country
-            if applySearch {
-                country = filterCountries[indexPath.row]
-            } else {
-                country = countries[indexPath.row]
-            }
+            let country: Country = applySearch ? filterCountries[indexPath.row] : countries[indexPath.row]
+            
             if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
-                cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
+                cell.checkMarkImageView.isHidden = (country.countryCode == alreadySelectedCountry.countryCode) ? false : true
             }
 
             cell.country = country
             setUpCellProperties(cell: cell)
             return cell
         }
-        fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
+        fatalError("Cell with Identifier CountryTableViewCell can't be dequed")
     }
     func setUpCellProperties(cell: CountryCell) {
         cell.nameLabel.font = self.labelFont
@@ -202,10 +175,12 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.flagImageView.isHidden = self.isHideFlagImage
         cell.diallingCodeLabel.isHidden = self.isHideDiallingCode
         cell.separatorLineView.backgroundColor = self.separatorLineColor
+        tableView.reloadData()
     }
 
     // MARK: - TableView Delegate
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         switch applySearch {
         case true:
             let country = filterCountries[indexPath.row]

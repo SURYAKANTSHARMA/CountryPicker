@@ -9,27 +9,28 @@
 import UIKit
 
 open class CountryPickerWithSectionViewController: CountryPickerController {
-    
+
     // MARK: - Variables
-    var sections: [Character] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var sections: [Character] = []
     var sectionCoutries =  [Character: [Country]]()
     var searchHeaderTitle: Character = "A"
-    
+
     // MARK: - View Life Cycle
     override open func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = nil
         tableView.delegate = nil
-        
     }
+
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchSectionCountries()
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+
     func fetchSectionCountries() {
+        sections = countries.map({ String($0.countryName.prefix(1)).first! }).unique
         for section in sections {
             let sectionCountries = countries.filter({ (country) -> Bool in
                 return country.countryName.first! == section
@@ -37,8 +38,9 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
             sectionCoutries[section] = sectionCountries
         }
     }
+
     @discardableResult
-    open override class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country)->Void) -> CountryPickerWithSectionViewController {
+    open override class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController()
         controller.presentingVC = viewController
         controller.callBack = callBack
@@ -47,22 +49,24 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
     }
+
 }
 
-// MARK : - TableView DataSource
-extension CountryPickerWithSectionViewController  {
+// MARK: - TableView DataSource
+extension CountryPickerWithSectionViewController {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return applySearch ? 1 : sections.count
     }
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return applySearch ? filterCountries.count : numberOfRowFor(section: section)
     }
-    
+
     func numberOfRowFor(section: Int) -> Int {
         let character = sections[section]
         return sectionCoutries[character]!.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return applySearch ? String(searchHeaderTitle) : sections[section].description
     }
@@ -70,10 +74,10 @@ extension CountryPickerWithSectionViewController  {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell {
             cell.accessoryType = .none
             cell.checkMarkImageView.isHidden = true
-            
+
             let image = UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             cell.checkMarkImageView.image = image
-            
+
             var country: Country
             if applySearch {
                 country = filterCountries[indexPath.row]
@@ -81,11 +85,11 @@ extension CountryPickerWithSectionViewController  {
                 let character = sections[indexPath.section]
                 country = sectionCoutries[character]![indexPath.row]
             }
-            
+
             if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
                 cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
             }
-            
+
             cell.country = country
             setUpCellProperties(cell: cell)
             return cell
@@ -93,7 +97,7 @@ extension CountryPickerWithSectionViewController  {
         fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
     }
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sections.map{String($0)}
+        return sections.map {String($0)}
     }
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return sections.index(of: Character(title))!
@@ -109,6 +113,7 @@ extension CountryPickerWithSectionViewController {
         }
     }
 }
+
 // MARK: - TableViewDelegate
 extension CountryPickerWithSectionViewController {
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,3 +134,15 @@ extension CountryPickerWithSectionViewController {
     }
 }
 
+// MARK: - Array Extenstion
+extension Array where Element: Equatable {
+    var unique: [Element] {
+        var uniqueValues: [Element] = []
+        forEach { item in
+            if !uniqueValues.contains(item) {
+                uniqueValues += [item]
+            }
+        }
+        return uniqueValues
+    }
+}

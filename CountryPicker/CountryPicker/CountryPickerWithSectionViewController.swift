@@ -30,7 +30,8 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
 
     func fetchSectionCountries() {
-        sections = countries.map({ String($0.countryName.prefix(1)).first! }).unique
+        sections = countries.map({ String($0.countryName.prefix(1)).first! }).removeDuplicates()
+        
         for section in sections {
             let sectionCountries = countries.filter({ (country) -> Bool in
                 return country.countryName.first! == section
@@ -135,11 +136,11 @@ extension CountryPickerWithSectionViewController {
 
 // MARK: - Array Extenstion
 extension Array where Element: Equatable {
-    var unique: [Element] {
-        var uniqueValues: [Element] = []
-        forEach { item in
-            if !uniqueValues.contains(item) {
-                uniqueValues += [item]
+    func removeDuplicates() -> [Element] {
+        var uniqueValues = [Element]()
+        forEach {
+            if !uniqueValues.contains($0) {
+                uniqueValues.append($0)
             }
         }
         return uniqueValues
