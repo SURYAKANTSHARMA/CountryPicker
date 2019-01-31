@@ -39,7 +39,8 @@ class ViewController: UIViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
             }
-            countryController.detailColor = UIColor.red
+            //countryController.detailColor = UIColor.blue
+           // countryController.labelColor = UIColor.green
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
             countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         case false:
@@ -47,7 +48,8 @@ class ViewController: UIViewController {
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
-            countryController.detailColor = UIColor.red
+            countryController.detailColor = UIColor.blue
+            countryController.labelColor = UIColor.green
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
             countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         }
