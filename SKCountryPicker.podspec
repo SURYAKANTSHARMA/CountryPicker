@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SKCountryPicker"
-  s.version      = "1.1.9"
+  s.version      = "1.2.0"
   s.summary      = "A simple, customizable Country picker for picking country or dialing code."
 
   # This description is used to generate tags and improve search results.

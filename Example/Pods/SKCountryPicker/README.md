@@ -1,6 +1,6 @@
 [![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
-![my_tweet 1](https://user-images.githubusercontent.com/6416095/43136625-f56e1984-8f66-11e8-86f8-c2cd2882d1cc.png)
+![CountryPicker](https://user-images.githubusercontent.com/6416095/50628070-6fe1fd00-0f5c-11e9-9e9b-7e6dac866d43.png)
 
 # CountryPicker
 
