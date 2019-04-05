@@ -13,7 +13,7 @@ This library is for country picker used in many app for selecting country code o
 ## Features
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
-- [x] cocoa Pods integrated
+- [x] Cocoa Pods integrated
 - [x] Best practices followed
 
 ## Requirements
