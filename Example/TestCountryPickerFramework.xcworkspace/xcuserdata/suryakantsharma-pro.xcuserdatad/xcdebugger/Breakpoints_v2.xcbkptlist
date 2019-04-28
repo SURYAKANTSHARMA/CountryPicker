@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+            timestampString = "578128798.596786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "testDismiss()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+            timestampString = "578128798.5980051"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "TestCountryPickerFrameworkUITests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.1697659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.172767"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.__allocating_init(selector: ObjectiveC.Selector) -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.175844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.init(selector: ObjectiveC.Selector) -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.178385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.__allocating_init() -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.180751"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.init() -&gt; TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.183278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestCountryPickerFrameworkUITests.TestCountryPickerFrameworkUITests.__deallocating_deinit"
+                  moduleName = "TestCountryPickerFrameworkUITests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suryakantsharma-pro/Documents/GitHub/CountryPicker/Example/TestCountryPickerFrameworkUITests/TestCountryPickerFrameworkUITests.swift"
+                  timestampString = "578128457.185303"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

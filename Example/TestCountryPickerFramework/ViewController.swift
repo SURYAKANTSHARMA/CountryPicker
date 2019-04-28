@@ -23,14 +23,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        self.addAccessibilityLabel()
         let country = CountryManager.shared.currentCountry
         countryCodeButton.setTitle(country?.dialingCode, for: .normal)
         countryImageView.image = country?.flag
         countryCodeButton.clipsToBounds = true
-
+        countryCodeButton.accessibilityLabel = Accessibility.selectCountryPicker
     }
-
+    
+    private func addAccessibilityLabel() {
+        showWithSectionsSwitch.accessibilityLabel = "show countries with section"
+        showCountryFlagSwitch.accessibilityLabel = "show countries with section"
+        showDialingCodeSwitch.accessibilityLabel = "show countries with section"
+    }
+    
     @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
         switch showWithSectionsSwitch.isOn {
         case true:
@@ -39,8 +45,8 @@ class ViewController: UIViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
             }
-            //countryController.detailColor = UIColor.blue
-           // countryController.labelColor = UIColor.green
+            countryController.detailColor = UIColor.blue
+            countryController.labelColor = UIColor.green
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
             countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         case false:

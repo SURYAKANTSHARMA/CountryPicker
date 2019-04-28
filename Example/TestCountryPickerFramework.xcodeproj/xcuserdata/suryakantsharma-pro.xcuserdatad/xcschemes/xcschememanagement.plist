@@ -4,25 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CountryPicker.xcscheme_^#shared#^_</key>
+		<key>TestCountryPickerFramework.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>TestTarget.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0D5BDA7F22741FEA00A055D4</key>
+		<key>0D05B21E227577C900AE528E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0D5BDA8B22746C6000A055D4</key>
+		<key>0D5BDAE5227481D700A055D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0519E492054FF6B00C77B45</key>
 		<dict>
 			<key>primary</key>
 			<true/>

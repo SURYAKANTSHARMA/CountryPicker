@@ -51,6 +51,7 @@ class CountryCell: UITableViewCell {
             nameLabel.text = country.countryName
             diallingCodeLabel.text = country.dialingCode
             flagImageView.image = country.flag
+            self.accessibilityLabel = country.countryName
         }
     }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0519E272054FDE500C77B45"
-               BuildableName = "CountryPicker.framework"
-               BlueprintName = "CountryPicker"
-               ReferencedContainer = "container:CountryPicker.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A4F58FA20EF42AA000CAFE5"
-               BuildableName = "CountryPickerTests.xctest"
-               BlueprintName = "CountryPickerTests"
-               ReferencedContainer = "container:CountryPicker.xcodeproj">
+               BlueprintIdentifier = "54C6FACDD624A17E91FD4254581F4CCF"
+               BuildableName = "SKCountryPicker.framework"
+               BlueprintName = "SKCountryPicker"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,27 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A4F58FA20EF42AA000CAFE5"
-               BuildableName = "CountryPickerTests.xctest"
-               BlueprintName = "CountryPickerTests"
-               ReferencedContainer = "container:CountryPicker.xcodeproj">
+               BlueprintIdentifier = "0D05B21E227577C900AE528E"
+               BuildableName = "TestCountryPickerFrameworkTests.xctest"
+               BlueprintName = "TestCountryPickerFrameworkTests"
+               ReferencedContainer = "container:../TestCountryPickerFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0519E272054FDE500C77B45"
-            BuildableName = "CountryPicker.framework"
-            BlueprintName = "CountryPicker"
-            ReferencedContainer = "container:CountryPicker.xcodeproj">
+            BlueprintIdentifier = "54C6FACDD624A17E91FD4254581F4CCF"
+            BuildableName = "SKCountryPicker.framework"
+            BlueprintName = "SKCountryPicker"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0519E272054FDE500C77B45"
-            BuildableName = "CountryPicker.framework"
-            BlueprintName = "CountryPicker"
-            ReferencedContainer = "container:CountryPicker.xcodeproj">
+            BlueprintIdentifier = "54C6FACDD624A17E91FD4254581F4CCF"
+            BuildableName = "SKCountryPicker.framework"
+            BlueprintName = "SKCountryPicker"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -97,10 +82,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0519E272054FDE500C77B45"
-            BuildableName = "CountryPicker.framework"
-            BlueprintName = "CountryPicker"
-            ReferencedContainer = "container:CountryPicker.xcodeproj">
+            BlueprintIdentifier = "54C6FACDD624A17E91FD4254581F4CCF"
+            BuildableName = "SKCountryPicker.framework"
+            BlueprintName = "SKCountryPicker"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
