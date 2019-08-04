@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CountryPicker"
-  s.version      = "1.0.6"
+  s.version      = "1.0.7"
   s.summary      = "This library is for country picker used in many app for selecting country code of user"
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "1.0.6" }
+  s.source       = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "1.1.9" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
