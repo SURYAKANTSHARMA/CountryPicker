@@ -2,4 +2,4 @@ osx_image: xcode10.2
 language: swift
 xcode_project: CountryPicker/CountryPicker.xcodeproj
 script:
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project CountryPicker.xcodeproj -scheme CountryPicker -sdk $TEST_SDK -destination "platform=iOS Simulator, ONLY_ACTIVE_ARCH=YES
+  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project CountryPicker.xcodeproj -scheme CountryPicker -destination 'platform=iOS Simulator,OS=12.2,name=iPhone 7' ONLY_ACTIVE_ARCH=YES
