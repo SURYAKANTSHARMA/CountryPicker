@@ -60,7 +60,10 @@ class ViewController: UIViewController  {
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
-    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
+    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+      
+      guard let `self` = self else { return }
+      
       self.countryImageView.image = country.flag
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
