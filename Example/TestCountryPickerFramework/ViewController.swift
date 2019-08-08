@@ -40,11 +40,14 @@ class ViewController: UIViewController {
     @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
         switch showWithSectionsSwitch.isOn {
         case true:
-            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
+            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+                
+                guard let `self` = self else { return }
+                
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
-
             }
+            
             countryController.detailColor = UIColor.blue
             countryController.labelColor = UIColor.green
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
