@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         case true:
             let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
                 
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
