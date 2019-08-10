@@ -50,9 +50,14 @@ class ViewController: UIViewController  {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
    
-    let country = CountryManager.shared.currentCountry
-    countryCodeButton.setTitle(country?.dialingCode, for: .normal)
-    countryImageView.image = country?.flag
+    guard let country = CountryManager.shared.currentCountry else {
+        self.countryCodeButton.setTitle("Pick Country", for: .normal)
+        self.countryImageView.isHidden = true
+        return
+    }
+    
+    countryCodeButton.setTitle(country.dialingCode, for: .normal)
+    countryImageView.image = country.flag
     countryCodeButton.clipsToBounds = true
     
   }
@@ -60,7 +65,10 @@ class ViewController: UIViewController  {
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
-    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
+    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+      
+      guard let self = self else { return }
+      
       self.countryImageView.image = country.flag
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
