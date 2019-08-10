@@ -18,8 +18,8 @@ This library is for country picker used in many app for selecting country code o
 
 ## Requirements
 
-- iOS 10.0+
-- Xcode 9+
+- iOS 10.0+ Support latest release iOS 12
+- Xcode 10.2 Support latest Xcode 10.2
 ## Example 
  To run the example project, clone the repo, and run pod update from the Example directory first. 
 ## Installation
@@ -28,11 +28,15 @@ CountryPicker is available through Cocoapods.
 
 #### [CocoaPods](http://cocoapods.org):
 Add the following line to your Podfile:
-
 ```ruby
 pod 'SKCountryPicker'
 ```
-current version compatible with Swift 4.1 as well Swift 3.3 
+Current version compatible with Swift 5
+If you want support Swift 4.1/3.3
+
+```ruby
+pod 'SKCountryPicker' '~> 1.2.0'
+```
 ## Getting Started
 Example:
 
@@ -59,7 +63,6 @@ class ViewController: UIViewController  {
     countryCodeButton.setTitle(country.dialingCode, for: .normal)
     countryImageView.image = country.flag
     countryCodeButton.clipsToBounds = true
-    
   }
   
   
