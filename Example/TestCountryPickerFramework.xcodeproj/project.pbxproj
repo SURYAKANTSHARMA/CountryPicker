@@ -14,7 +14,8 @@
 		0D5BDAE12274813100A055D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5BDAE02274813100A055D4 /* Assets.xcassets */; };
 		0D5BDAE9227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAE8227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift */; };
 		0D5BDAF1227485C300A055D4 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAF0227485C300A055D4 /* Accessibility.swift */; };
-		21E51D69CB6A7D14B5FEBFD4 /* Pods_TestCountryPickerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 685F212E14BCEE56739C50C5 /* Pods_TestCountryPickerFramework.framework */; };
+		4DBAB05B1849939B9FB32E3F /* Pods_TestCountryPickerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 685F212E14BCEE56739C50C5 /* Pods_TestCountryPickerFramework.framework */; };
+		6316ED4522FD5A2C00C25D73 /* SKCountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */; };
 		E0519E4E2054FF6B00C77B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		0D5BDAEA227481D700A055D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D5BDAF0227485C300A055D4 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 		1494C46E3DE66FB36920DE57 /* Pods-TestCountryPickerFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCountryPickerFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework.release.xcconfig"; sourceTree = "<group>"; };
+		6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SKCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		685F212E14BCEE56739C50C5 /* Pods_TestCountryPickerFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestCountryPickerFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0519E4A2054FF6B00C77B45 /* TestCountryPickerFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCountryPickerFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E51D69CB6A7D14B5FEBFD4 /* Pods_TestCountryPickerFramework.framework in Frameworks */,
+				6316ED4522FD5A2C00C25D73 /* SKCountryPicker.framework in Frameworks */,
+				4DBAB05B1849939B9FB32E3F /* Pods_TestCountryPickerFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +140,7 @@
 		E0519E5F2054FF8100C77B45 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */,
 				E0519E602054FF8100C77B45 /* CountryPicker.framework */,
 				685F212E14BCEE56739C50C5 /* Pods_TestCountryPickerFramework.framework */,
 			);
@@ -254,7 +258,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SKCountryPicker/SKCountryPicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -265,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		98F11BD204F1D89C776C0AA2 /* [CP] Check Pods Manifest.lock */ = {
@@ -477,6 +481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -498,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

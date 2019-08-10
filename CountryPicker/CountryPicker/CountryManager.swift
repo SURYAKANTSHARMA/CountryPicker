@@ -14,6 +14,12 @@ open class CountryManager {
     // MARK: - variable
     private(set) var countries = [Country]()
     
+    private var countriesFilePath: String? {
+        let bundle = Bundle(for: CountryManager.self)
+        let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
+        return countriesPath
+    }
+    
     public static var shared: CountryManager = {
         let countryManager = CountryManager()
         do { try countryManager.loadCountries()
@@ -27,28 +33,32 @@ open class CountryManager {
     
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
-        if let countryCode = (Locale.current as NSLocale).object(forKey: .countryCode) as? String {
-            let country = Country(countryCode: countryCode)
-            return country
+        
+        let locale = Locale.current as NSLocale
+        
+        guard let countryCode = locale.object(forKey: .countryCode) as? String else {
+            return nil
         }
-        return nil
+        
+        return Country(countryCode: countryCode)
     }
     
-    private init() {
-    }
+    private init() {}
     
     func loadCountries() throws {
-        let bundle = Bundle(for: CountryManager.self)
-        if let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist"),
-            let  array = (NSArray(contentsOfFile: countriesPath) as? [String]) {
-            self.countries.removeAll()
-            array.forEach {
-                self.countries.append(Country(countryCode: $0))
-            }
-            self.countries = self.countries.sorted { $0.countryName < $1.countryName }
-        } else {
-            throw "Missing array of countries plist in CountryPicker"
+        
+        guard let countriesFilePath = countriesFilePath,
+              let countryCodes = NSArray(contentsOfFile: countriesFilePath) as? [String] else {
+              throw "Missing array of countries plist in CountryPicker"
         }
+        
+        // Clear old loaded countries
+        countries.removeAll()
+        
+        // Request for fresh copy of sorted country list
+        let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
+        
+        countries.append(contentsOf: sortedCountries)
     }
 
     func allCountries() -> [Country] {
