@@ -101,7 +101,7 @@ extension CountryPickerWithSectionViewController {
         return sections.map {String($0)}
     }
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return sections.index(of: Character(title))!
+        return sections.firstIndex(of: Character(title))!
     }
 }
 
