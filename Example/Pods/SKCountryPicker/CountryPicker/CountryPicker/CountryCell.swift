@@ -51,7 +51,6 @@ class CountryCell: UITableViewCell {
             nameLabel.text = country.countryName
             diallingCodeLabel.text = country.dialingCode
             flagImageView.image = country.flag
-            self.accessibilityLabel = country.countryName
         }
     }
 
@@ -77,8 +76,7 @@ class CountryCell: UITableViewCell {
             flagImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
             flagImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         }
-        
-        flagImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        flagImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
         flagImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
 
