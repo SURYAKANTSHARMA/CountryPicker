@@ -13,13 +13,13 @@ This library is for country picker used in many app for selecting country code o
 ## Features
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
-- [x] cocoa Pods integrated
+- [x] Cocoa Pods integrated
 - [x] Best practices followed
 
 ## Requirements
 
-- iOS 10.0+
-- Xcode 9+
+- iOS 10.0+ Support latest release iOS 12
+- Xcode 10.2 Support latest Xcode 10.2
 ## Example 
  To run the example project, clone the repo, and run pod update from the Example directory first. 
 ## Installation
@@ -28,11 +28,15 @@ CountryPicker is available through Cocoapods.
 
 #### [CocoaPods](http://cocoapods.org):
 Add the following line to your Podfile:
-
 ```ruby
 pod 'SKCountryPicker'
 ```
-current version compatible with Swift 4.1 as well Swift 3.3 
+Current version compatible with Swift 5
+If you want support Swift 4.1/3.3
+
+```ruby
+pod 'SKCountryPicker' '~> 1.2.0'
+```
 ## Getting Started
 Example:
 
@@ -50,17 +54,24 @@ class ViewController: UIViewController  {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
    
-    let country = CountryManager.shared.currentCountry
-    countryCodeButton.setTitle(country?.dialingCode, for: .normal)
-    countryImageView.image = country?.flag
-    countryCodeButton.clipsToBounds = true
+    guard let country = CountryManager.shared.currentCountry else {
+        self.countryCodeButton.setTitle("Pick Country", for: .normal)
+        self.countryImageView.isHidden = true
+        return
+    }
     
+    countryCodeButton.setTitle(country.dialingCode, for: .normal)
+    countryImageView.image = country.flag
+    countryCodeButton.clipsToBounds = true
   }
   
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
-    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { (country: Country) in
+    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+      
+      guard let self = self else { return }
+      
       self.countryImageView.image = country.flag
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 

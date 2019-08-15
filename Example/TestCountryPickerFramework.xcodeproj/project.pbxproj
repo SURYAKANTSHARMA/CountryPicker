@@ -98,7 +98,6 @@
 				E8B04602EE422A4BE83FF702 /* Pods-TestCountryPickerFramework.debug.xcconfig */,
 				9251ED843C744E82819FB8B3 /* Pods-TestCountryPickerFramework.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -489,7 +488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.GitHub.CountryPicker.TestCountryPickerFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -511,7 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.GitHub.CountryPicker.TestCountryPickerFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
