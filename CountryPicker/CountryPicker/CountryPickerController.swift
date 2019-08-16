@@ -283,9 +283,11 @@ extension CountryPickerController: UISearchBarDelegate {
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        applySearch = false
+        let searchTextTrimmed = searchBar.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard let searchText = searchBar.text?.lowercased() else {
+        guard let searchText = searchTextTrimmed, searchText.isEmpty == false else {
+            self.applySearch = false
+            self.filterCountries.removeAll()
             self.tableView.reloadData()
             return
         }
