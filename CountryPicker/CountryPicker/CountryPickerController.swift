@@ -298,17 +298,20 @@ extension CountryPickerController: UISearchBarDelegate {
         let filteredCountries = countries.compactMap { (country) -> Country? in
 
             // Filter country by country name first character
-            if country.countryName.lowercased().contains(searchText) {
+            if CountryManager.shared.defaultFilter == .countryName,
+                country.countryName.lowercased().contains(searchText) {
                 return country
             }
 
-            // Filter country by country code
-            if country.countryCode.lowercased().contains(searchText) {
+            // Filter country by country code and utilise `CountryFilterOptions`
+            if CountryManager.shared.filters.contains(.countryCode),
+                country.countryCode.lowercased().contains(searchText) {
                 return country
             }
 
-            // Filter country by digit country code
-            if let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
+            // Filter country by digit country code and utilise `CountryFilterOptions`
+            if CountryManager.shared.filters.contains(.countryDialCode),
+                let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
                 return country
             }
 

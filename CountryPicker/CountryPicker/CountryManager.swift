@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 
+
+/// Country filtering options
+public enum CountryFilterOptions {
+    /// Filter countries by country name
+    case countryName
+    
+    /// Filter countries by country code
+    case countryCode
+    
+    /// Filter countries by country dial code
+    case countryDialCode
+}
+
 open class CountryManager {
     
     // MARK: - variable
@@ -42,6 +55,14 @@ open class CountryManager {
         
         return Country(countryCode: countryCode)
     }
+    
+    /// Default country filter option
+    internal let defaultFilter: CountryFilterOptions = .countryName
+    
+    /// Exposed country filter options and should be configured by user
+    ///
+    /// - Note: By default, countries can be filtered by there country names
+    public var filters: [CountryFilterOptions] = [.countryName]
     
     private init() {}
     
