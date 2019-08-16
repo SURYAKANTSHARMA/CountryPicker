@@ -86,6 +86,21 @@ class ViewController: UIViewController  {
 }
 ```
 
+## Filter Options
+There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by country picker default is configured to filter countries based on `countryName`. 
+If you want to add/remove filter options, do as follows: 
+
+```swift 
+
+ // Adding filter
+ CountryManager.shared.addFilter(.countryCode)
+ 
+ // Removing filter 
+ CountryManager.shared.removeFilter(.countryCode)
+ 
+ // Removing all filters 
+ CountryManager.shared.clearAllFilters() 
+```
 
 ## Contributing
 
