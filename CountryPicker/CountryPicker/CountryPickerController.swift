@@ -56,7 +56,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    private var checkMarkImage: UIImage? {
+    internal var checkMarkImage: UIImage? {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
     
@@ -199,7 +199,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
-            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
+            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
         }
         
         cell.country = country

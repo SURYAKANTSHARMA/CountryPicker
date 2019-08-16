@@ -110,34 +110,38 @@ extension CountryPickerWithSectionViewController {
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell {
-            cell.accessoryType = .none
-            cell.checkMarkImageView.isHidden = true
-
-            let image = UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-            cell.checkMarkImageView.image = image
-
-            var country: Country
-            if applySearch {
-                country = filterCountries[indexPath.row]
-            } else {
-                let character = sections[indexPath.section]
-                country = sectionCoutries[character]![indexPath.row]
-            }
-
-            if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
-                cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
-            }
-
-            cell.country = country
-            setUpCellProperties(cell: cell)
-            return cell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell else {
+            fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
         }
-        fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
+        
+        cell.accessoryType = .none
+        cell.checkMarkImageView.isHidden = true
+        cell.checkMarkImageView.image = checkMarkImage
+
+        var country: Country
+        
+        if applySearch {
+            country = filterCountries[indexPath.row]
+        } else {
+            let character = sections[indexPath.section]
+            country = sectionCoutries[character]![indexPath.row]
+        }
+
+        if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
+            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
+        }
+
+        cell.country = country
+        setUpCellProperties(cell: cell)
+        
+        return cell
     }
+    
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sections.map {String($0)}
     }
+    
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return sections.firstIndex(of: Character(title))!
     }
