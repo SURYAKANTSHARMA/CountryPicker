@@ -1,3 +1,4 @@
+[![Travis CI](https://api.travis-ci.org/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://travis-ci.org/SURYAKANTSHARMA/CountryPicker) 
 [![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 ![CountryPicker](https://user-images.githubusercontent.com/6416095/50628070-6fe1fd00-0f5c-11e9-9e9b-7e6dac866d43.png)
@@ -13,6 +14,7 @@ This library is for country picker used in many app for selecting country code o
 ## Features
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
+- [x] Auto scroll to previous selected country
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
 
@@ -31,7 +33,7 @@ Add the following line to your Podfile:
 ```ruby
 pod 'SKCountryPicker'
 ```
-Current version compatible with Swift 5
+Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
@@ -124,7 +126,6 @@ See also the list of [contributors](https://github.com/SURYAKANTSHARMA/CountyPic
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
 
 
 
