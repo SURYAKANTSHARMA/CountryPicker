@@ -29,13 +29,48 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         tableView.delegate = self
     }
 
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        /// Request for previous country and automatically scroll table view to item
+        if let previousCountry = CountryManager.shared.lastCountrySelected {
+           let previousCountryFirstCharacter = previousCountry.countryName.first!
+           scrollToCountryWithAnimation(atSectionTitle: previousCountryFirstCharacter, onCountry: previousCountry)
+        }
+        
+    }
+    
+    ///
+    /// Automatically scrolls the `TableView` to a particular section on expected chosen country.
+    ///
+    /// Under the hood, it tries to find several indexes for section title and expectd chosen country otherwise execution stops.
+    /// Then constructs an `IndexPath` and scrolls the rows to that particular path with animation (If enabled).
+    ///
+    /// - Parameter sectionTitle: Character value as table section title.
+    /// - Parameter country: Expected chosen country
+    /// - Parameter animated: Scrolling animation state and by default its set to `True`.
+    
+    func scrollToCountryWithAnimation(atSectionTitle sectionTitle: Character, onCountry country: Country, animated: Bool = true) {
+        
+        // Find country index
+        let countryMatchIndex = sectionCoutries[sectionTitle]?.firstIndex(where: { $0.countryCode == country.countryCode})
+        
+        // Find section title index
+        let countrySectionKeyIndexes = sectionCoutries.keys.map { $0 }.sorted()
+        let countryMatchSectionIndex = countrySectionKeyIndexes.firstIndex(of: sectionTitle)
+        
+        if let itemIndexPath = countryMatchIndex, let sectionIndexPath = countryMatchSectionIndex {
+            let previousCountryIndex = IndexPath(item: itemIndexPath, section: sectionIndexPath)
+            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+        }
+    }
+    
+    
     func fetchSectionCountries() {
         sections = countries.map({ String($0.countryName.prefix(1)).first! }).removeDuplicates()
         
         for section in sections {
-            let sectionCountries = countries.filter({ (country) -> Bool in
-                return country.countryName.first! == section
-            })
+            let sectionCountries = countries.filter({ $0.countryName.first! == section })
             sectionCoutries[section] = sectionCountries
         }
     }
@@ -45,9 +80,10 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         let controller = CountryPickerWithSectionViewController()
         controller.presentingVC = viewController
         controller.callBack = callBack
+        
         let navigationController = UINavigationController(rootViewController: controller)
-        //navigationController.navigationBar.barTintColor = UIColor.lightGray.withAlphaComponent(0.1)
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
+        
         return controller
     }
 
@@ -59,6 +95,7 @@ extension CountryPickerWithSectionViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return applySearch ? 1 : sections.count
     }
+    
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return applySearch ? filterCountries.count : numberOfRowFor(section: section)
     }
@@ -71,6 +108,7 @@ extension CountryPickerWithSectionViewController {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return applySearch ? String(searchHeaderTitle) : sections[section].description
     }
+    
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell {
             cell.accessoryType = .none
@@ -130,6 +168,7 @@ extension CountryPickerWithSectionViewController {
             self.callBack?(country)
             CountryManager.shared.lastCountrySelected = country
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
 }
