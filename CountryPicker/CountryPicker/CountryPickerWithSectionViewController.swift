@@ -30,15 +30,35 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
 
     open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = true
+        }
         
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = CountryManager.shared.lastCountrySelected {
            let previousCountryFirstCharacter = previousCountry.countryName.first!
            scrollToCountryWithAnimation(atSectionTitle: previousCountryFirstCharacter, onCountry: previousCountry)
         }
-        
     }
+    
+    @discardableResult
+    open override class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerWithSectionViewController {
+        let controller = CountryPickerWithSectionViewController()
+        controller.presentingVC = viewController
+        controller.callBack = callBack
+        
+        let navigationController = UINavigationController(rootViewController: controller)
+        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
+        
+        return controller
+    }
+
+}
+
+
+// MARK: - Internal Methods
+internal extension CountryPickerWithSectionViewController {
     
     ///
     /// Automatically scrolls the `TableView` to a particular section on expected chosen country.
@@ -74,20 +94,8 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
             sectionCoutries[section] = sectionCountries
         }
     }
-
-    @discardableResult
-    open override class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerWithSectionViewController {
-        let controller = CountryPickerWithSectionViewController()
-        controller.presentingVC = viewController
-        controller.callBack = callBack
-        
-        let navigationController = UINavigationController(rootViewController: controller)
-        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
-        
-        return controller
-    }
-
 }
+
 
 // MARK: - TableView DataSource
 extension CountryPickerWithSectionViewController {

@@ -110,6 +110,11 @@ open class CountryPickerController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
+        
+        /// Request for previous country and automatically scroll table view to item
+        if let previousCountry = CountryManager.shared.lastCountrySelected {
+            scrollToCountryWithAnimation(onCountry: previousCountry)
+        }
     }
     
     private func setUpTableView() {
@@ -161,13 +166,38 @@ open class CountryPickerController: UIViewController {
     @objc func crossButtonClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: - Others
+}
+
+
+// MARK: - Internal Methods 
+internal extension CountryPickerController {
+
     func loadCountries() {
         countries = CountryManager.shared.allCountries()
         tableView.reloadData()
     }
+    
+    ///
+    /// Automatically scrolls the `TableView` to a particular section on expected chosen country.
+    ///
+    /// Under the hood, it tries to find several indexes for section title and expectd chosen country otherwise execution stops.
+    /// Then constructs an `IndexPath` and scrolls the rows to that particular path with animation (If enabled).
+    ///
+    /// - Parameter country: Expected chosen country
+    /// - Parameter animated: Scrolling animation state and by default its set to `False`.
+    
+    func scrollToCountryWithAnimation(onCountry country: Country, animated: Bool = false) {
+        
+        // Find country index
+        let countryMatchIndex = countries.firstIndex(where: { $0.countryCode == country.countryCode})
+        
+        if let itemIndexPath = countryMatchIndex {
+            let previousCountryIndex = IndexPath(item: itemIndexPath, section: 0)
+            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+        }
+    }
 }
+
 
 // MARK: - TableView DataSource
 extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
