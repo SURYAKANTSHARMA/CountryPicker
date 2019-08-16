@@ -38,7 +38,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = CountryManager.shared.lastCountrySelected {
            let previousCountryFirstCharacter = previousCountry.countryName.first!
-           scrollToCountryWithAnimation(atSectionTitle: previousCountryFirstCharacter, onCountry: previousCountry)
+           scrollToCountry(previousCountry, withSection: previousCountryFirstCharacter)
         }
     }
     
@@ -66,11 +66,11 @@ internal extension CountryPickerWithSectionViewController {
     /// Under the hood, it tries to find several indexes for section title and expectd chosen country otherwise execution stops.
     /// Then constructs an `IndexPath` and scrolls the rows to that particular path with animation (If enabled).
     ///
-    /// - Parameter sectionTitle: Character value as table section title.
     /// - Parameter country: Expected chosen country
+    /// - Parameter sectionTitle: Character value as table section title.
     /// - Parameter animated: Scrolling animation state and by default its set to `False`.
     
-    func scrollToCountryWithAnimation(atSectionTitle sectionTitle: Character, onCountry country: Country, animated: Bool = false) {
+    func scrollToCountry(_ country: Country, withSection sectionTitle: Character, animated: Bool = false) {
         
         // Find country index
         let countryMatchIndex = sectionCoutries[sectionTitle]?.firstIndex(where: { $0.countryCode == country.countryCode})

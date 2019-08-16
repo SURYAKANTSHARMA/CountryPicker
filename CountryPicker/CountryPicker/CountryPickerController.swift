@@ -113,7 +113,7 @@ open class CountryPickerController: UIViewController {
         
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = CountryManager.shared.lastCountrySelected {
-            scrollToCountryWithAnimation(onCountry: previousCountry)
+            scrollToCountry(previousCountry)
         }
     }
     
@@ -186,7 +186,7 @@ internal extension CountryPickerController {
     /// - Parameter country: Expected chosen country
     /// - Parameter animated: Scrolling animation state and by default its set to `False`.
     
-    func scrollToCountryWithAnimation(onCountry country: Country, animated: Bool = false) {
+    func scrollToCountry(_ country: Country, animated: Bool = false) {
         
         // Find country index
         let countryMatchIndex = countries.firstIndex(where: { $0.countryCode == country.countryCode})
