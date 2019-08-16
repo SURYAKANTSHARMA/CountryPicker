@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             self.countryImageView.isHidden = true
             return
         }
-                
+        
         countryCodeButton.setTitle(country.dialingCode, for: .normal)
         countryImageView.image = country.flag
         countryCodeButton.clipsToBounds = true
@@ -45,6 +45,23 @@ class ViewController: UIViewController {
     @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
         presentCountryPickerScene(withSelectionControlEnabled: showWithSectionsSwitch.isOn)
     }
+    
+    @IBAction func filterByCountryCode(_ sender: UISwitch) {
+        if sender.isOn {
+            CountryManager.shared.addFilter(.countryCode)
+        } else {
+            CountryManager.shared.removeFilter(.countryCode)
+        }
+    }
+    
+    @IBAction func filterByDialCode(_ sender: UISwitch) {
+        if sender.isOn {
+            CountryManager.shared.addFilter(.countryDialCode)
+        } else {
+            CountryManager.shared.removeFilter(.countryDialCode)
+        }
+    }
+    
 }
 
 
