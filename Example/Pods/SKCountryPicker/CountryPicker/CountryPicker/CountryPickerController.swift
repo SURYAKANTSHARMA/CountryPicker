@@ -27,40 +27,37 @@ open class CountryPickerController: UIViewController {
     /// Properties for countryPicker controller
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
-    public var labelFont = UIFont.systemFont(ofSize: 14.0) {
-        didSet {
-            self.tableView.reloadData()
-        }
+    
+    public var labelFont: UIFont = UIFont.systemFont(ofSize: 14.0) {
+        didSet { self.tableView.reloadData() }
     }
-    public var labelColor = UIColor.black {
-        didSet {
-            self.tableView.reloadData()
-        }
+    
+    public var labelColor: UIColor = UIColor.black {
+        didSet { self.tableView.reloadData() }
     }
-    public var detailFont = UIFont.systemFont(ofSize: 11.0) {
-        didSet {
-            self.tableView.reloadData()
-        }
+    
+    public var detailFont: UIFont = UIFont.systemFont(ofSize: 11.0) {
+        didSet { self.tableView.reloadData() }
     }
-    public var detailColor = UIColor.lightGray {
-        didSet {
-            self.tableView.reloadData()
-        }
+    
+    public var detailColor: UIColor = UIColor.lightGray {
+        didSet { self.tableView.reloadData() }
     }
-    public var separatorLineColor = UIColor.lightGray {
-        didSet {
-            self.tableView.reloadData()
-        }
+    
+    public var separatorLineColor: UIColor = UIColor.lightGray {
+        didSet { self.tableView.reloadData() }
     }
+    
     public var isHideFlagImage: Bool = false {
-        didSet {
-            self.tableView.reloadData()
-        }
+        didSet { self.tableView.reloadData() }
     }
+    
     public var isHideDiallingCode: Bool = false {
-        didSet {
-            self.tableView.reloadData()
-        }
+        didSet { self.tableView.reloadData() }
+    }
+    
+    internal var checkMarkImage: UIImage? {
+        return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
     
     // MARK: - View life cycle
@@ -77,19 +74,27 @@ open class CountryPickerController: UIViewController {
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
+        
+        definesPresentationContext = true
     }
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        setUpTableView()
+        
+        // Setup view bar buttons
         let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(CountryPickerController.crossButtonClicked(_:)))
-        self.navigationItem.leftBarButtonItem = uiBarButtonItem
+        navigationItem.leftBarButtonItem = uiBarButtonItem
+        
+        // Setup table view and cells
+        setUpTableView()
+        
         let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
+        
+        // Setup search controller view
         setUpsSearchController()
-        self.definesPresentationContext = true
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -105,23 +110,29 @@ open class CountryPickerController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
+        
+        /// Request for previous country and automatically scroll table view to item
+        if let previousCountry = CountryManager.shared.lastCountrySelected {
+            scrollToCountry(previousCountry)
+        }
     }
     
     private func setUpTableView() {
         
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
             // Fallback on earlier versions
         }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets.zero
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        //tableView.backgroundColor = .black
         
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
@@ -155,13 +166,38 @@ open class CountryPickerController: UIViewController {
     @objc func crossButtonClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    // MARK: - Others
+}
+
+
+// MARK: - Internal Methods 
+internal extension CountryPickerController {
+
     func loadCountries() {
         countries = CountryManager.shared.allCountries()
         tableView.reloadData()
     }
+    
+    ///
+    /// Automatically scrolls the `TableView` to a particular section on expected chosen country.
+    ///
+    /// Under the hood, it tries to find several indexes for section title and expectd chosen country otherwise execution stops.
+    /// Then constructs an `IndexPath` and scrolls the rows to that particular path with animation (If enabled).
+    ///
+    /// - Parameter country: Expected chosen country
+    /// - Parameter animated: Scrolling animation state and by default its set to `False`.
+    
+    func scrollToCountry(_ country: Country, animated: Bool = false) {
+        
+        // Find country index
+        let countryMatchIndex = countries.firstIndex(where: { $0.countryCode == country.countryCode})
+        
+        if let itemIndexPath = countryMatchIndex {
+            let previousCountryIndex = IndexPath(item: itemIndexPath, section: 0)
+            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+        }
+    }
 }
+
 
 // MARK: - TableView DataSource
 extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
@@ -176,28 +212,32 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell {
-            cell.accessoryType = .none
-            cell.checkMarkImageView.isHidden = true
-            let image =  UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-            cell.checkMarkImageView.image = image
-            
-            var country: Country
-            if applySearch {
-                country = filterCountries[indexPath.row]
-            } else {
-                country = countries[indexPath.row]
-            }
-            if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
-                cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false: true
-            }
-            
-            cell.country = country
-            setUpCellProperties(cell: cell)
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountryCell.reuseIdentifier) as? CountryCell else {
+            fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
         }
-        fatalError("Cell with Identifier CountryTableViewCell cann't dequed")
+        
+        cell.accessoryType = .none
+        cell.checkMarkImageView.isHidden = true
+        cell.checkMarkImageView.image = checkMarkImage
+        
+        var country: Country
+        
+        if applySearch {
+            country = filterCountries[indexPath.row]
+        } else {
+            country = countries[indexPath.row]
+        }
+        
+        if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
+            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
+        }
+        
+        cell.country = country
+        setUpCellProperties(cell: cell)
+        
+        return cell
     }
+    
     func setUpCellProperties(cell: CountryCell) {
         cell.nameLabel.font = self.labelFont
         cell.nameLabel.textColor = self.labelColor
