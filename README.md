@@ -14,6 +14,7 @@ This library is for country picker used in many app for selecting country code o
 ## Features
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
+- [x] Auto scroll to previous selected country
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
 
@@ -32,7 +33,7 @@ Add the following line to your Podfile:
 ```ruby
 pod 'SKCountryPicker'
 ```
-Current version compatible with Swift 5
+Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
