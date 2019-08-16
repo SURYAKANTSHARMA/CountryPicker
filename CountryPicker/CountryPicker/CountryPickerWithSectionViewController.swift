@@ -48,9 +48,9 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     ///
     /// - Parameter sectionTitle: Character value as table section title.
     /// - Parameter country: Expected chosen country
-    /// - Parameter animated: Scrolling animation state and by default its set to `True`.
+    /// - Parameter animated: Scrolling animation state and by default its set to `False`.
     
-    func scrollToCountryWithAnimation(atSectionTitle sectionTitle: Character, onCountry country: Country, animated: Bool = true) {
+    func scrollToCountryWithAnimation(atSectionTitle sectionTitle: Character, onCountry country: Country, animated: Bool = false) {
         
         // Find country index
         let countryMatchIndex = sectionCoutries[sectionTitle]?.firstIndex(where: { $0.countryCode == country.countryCode})
