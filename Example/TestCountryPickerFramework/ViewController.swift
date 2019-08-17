@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var showDialingCodeSwitch: UISwitch!
     @IBOutlet weak var showWithSectionsSwitch: UISwitch!
     @IBOutlet weak var showCountryFlagSwitch: UISwitch!
+    @IBOutlet weak var pickCountryButton: UIButton!
     
     // MARK: - Func
     override func viewDidLoad() {
@@ -34,6 +35,10 @@ class ViewController: UIViewController {
         countryImageView.image = country.flag
         countryCodeButton.clipsToBounds = true
         countryCodeButton.accessibilityLabel = Accessibility.selectCountryPicker
+        
+        pickCountryButton.layer.cornerRadius = 10
+        pickCountryButton.clipsToBounds = true
+        
     }
     
     private func addAccessibilityLabel() {
@@ -42,10 +47,8 @@ class ViewController: UIViewController {
         showDialingCodeSwitch.accessibilityLabel = "show countries with section"
     }
     
-    @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
-        presentCountryPickerScene(withSelectionControlEnabled: showWithSectionsSwitch.isOn)
-    }
     
+    // MARK: - IBAction Methods
     @IBAction func filterByCountryCode(_ sender: UISwitch) {
         if sender.isOn {
             CountryManager.shared.addFilter(.countryCode)
@@ -62,9 +65,14 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func pickCountryAction(_ sender: UIButton) {
+        presentCountryPickerScene(withSelectionControlEnabled: showWithSectionsSwitch.isOn)
+    }
+    
 }
 
 
+/// MARK: - Private Methods 
 private extension ViewController {
     
     /// Dynamically presents country picker scene with an option of including `Selection Control`.

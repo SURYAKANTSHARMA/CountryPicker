@@ -43,7 +43,6 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Dialing Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liT-ne-VeH">
                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="31"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u08-Yi-RAT">
@@ -58,7 +57,6 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Country Flag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUa-jb-iph">
                                                                 <rect key="frame" x="0.0" y="0.0" width="286" height="31"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qn9-ly-arN">
@@ -73,7 +71,6 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show With Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="InG-Pr-hQm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="31"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHD-Iz-bdZ">
@@ -100,7 +97,6 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Country Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02q-c1-uYW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="31"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-qz-BG0">
@@ -118,7 +114,6 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Dial Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfQ-iI-Ria">
                                                                 <rect key="frame" x="0.0" y="0.0" width="285" height="31"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="25P-lz-fEa">
@@ -158,15 +153,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="i2b-na-rNE"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                         <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="+91">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="countryCodeButtonClicked:" destination="O0l-1Z-8PS" eventType="touchUpInside" id="RPx-kA-duD"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -174,11 +166,28 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ply-4I-sqN">
+                                <rect key="frame" x="30" y="794" width="354" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Vd8-a5-AlQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Pick Country">
+                                    <color key="titleColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickCountryAction:" destination="O0l-1Z-8PS" eventType="touchUpInside" id="c99-X7-aaE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="vjC-5M-P1O" firstAttribute="bottom" secondItem="Ply-4I-sqN" secondAttribute="bottom" constant="8" id="8TN-wh-BIi"/>
                             <constraint firstItem="4Tj-6H-iZC" firstAttribute="leading" secondItem="vjC-5M-P1O" secondAttribute="leading" constant="30" id="PTM-tj-AxD"/>
+                            <constraint firstItem="Ply-4I-sqN" firstAttribute="leading" secondItem="vjC-5M-P1O" secondAttribute="leading" constant="30" id="Tio-M6-tps"/>
                             <constraint firstItem="vjC-5M-P1O" firstAttribute="trailing" secondItem="4Tj-6H-iZC" secondAttribute="trailing" constant="30" id="b9N-oB-hGD"/>
+                            <constraint firstItem="vjC-5M-P1O" firstAttribute="trailing" secondItem="Ply-4I-sqN" secondAttribute="trailing" constant="30" id="cki-p8-aeH"/>
                             <constraint firstItem="4Tj-6H-iZC" firstAttribute="centerX" secondItem="sxh-pT-lsG" secondAttribute="centerX" id="tAn-li-K9p"/>
                             <constraint firstItem="4Tj-6H-iZC" firstAttribute="top" secondItem="vjC-5M-P1O" secondAttribute="top" constant="50" id="tlN-vr-56X"/>
                         </constraints>
@@ -187,6 +196,7 @@
                     <connections>
                         <outlet property="countryCodeButton" destination="ofv-wr-sb6" id="Qb5-AU-DzT"/>
                         <outlet property="countryImageView" destination="fbI-xG-7mA" id="lZY-6c-ocZ"/>
+                        <outlet property="pickCountryButton" destination="Ply-4I-sqN" id="vMG-tT-Arj"/>
                         <outlet property="showCountryFlagSwitch" destination="Qn9-ly-arN" id="UhV-Ob-vMU"/>
                         <outlet property="showDialingCodeSwitch" destination="u08-Yi-RAT" id="YJK-an-naZ"/>
                         <outlet property="showWithSectionsSwitch" destination="XHD-Iz-bdZ" id="qes-1E-QhZ"/>
