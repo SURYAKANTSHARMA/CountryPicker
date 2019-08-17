@@ -101,6 +101,8 @@ open class CountryPickerController: UIViewController {
         let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         // Setup search controller view
         setUpsSearchController()
