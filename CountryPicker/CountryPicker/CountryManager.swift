@@ -63,7 +63,7 @@ open class CountryManager {
     /// Exposed country filter options and should be configured by user
     ///
     /// - Note: By default, countries can be filtered by there country names
-    internal var filters: [CountryFilterOption] = [.countryName]
+    internal var filters: Set<CountryFilterOption> = [.countryName]
     
     
     private init() {}
@@ -99,16 +99,7 @@ public extension CountryManager {
     /// - Parameter filter: New filter to be added
     
     func addFilter(_ filter: CountryFilterOption) {
-        
-        var filterSets = Set(self.filters)
-        
-        if filterSets.contains(filter) {
-            return
-        }
-        
-        filterSets.insert(filter)
-        self.filters.removeAll()
-        self.filters.append(contentsOf: Array(filterSets))
+        filters.insert(filter)
     }
     
     
@@ -127,7 +118,7 @@ public extension CountryManager {
     
     func clearAllFilters() {
         filters.removeAll()
-        filters.append(defaultFilter) // Set default filter option
+        filters.insert(defaultFilter) // Set default filter option
     }
 }
 
