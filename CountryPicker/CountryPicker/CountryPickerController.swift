@@ -41,7 +41,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var labelFont: UIFont = UIFont.systemFont(ofSize: 14.0) {
+    public var labelFont: UIFont = UIFont.systemFont(ofSize: 15.0) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -49,7 +49,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var detailFont: UIFont = UIFont.systemFont(ofSize: 11.0) {
+    public var detailFont: UIFont = UIFont.systemFont(ofSize: 12.0) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -105,8 +105,6 @@ open class CountryPickerController: UIViewController {
         let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableView.automaticDimension
         
         // Setup search controller view
         setUpsSearchController()
@@ -147,7 +145,8 @@ open class CountryPickerController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets.zero
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
@@ -283,7 +282,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 60.0
     }
     
 }
