@@ -263,7 +263,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.diallingCodeLabel.font = detailFont
         cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor
-        cell.styleFlagView(flagStyle)
+        cell.applyFlagStyle(flagStyle)
     }
     
     // MARK: - TableView Delegate

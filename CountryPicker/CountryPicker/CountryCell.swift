@@ -141,7 +141,7 @@ extension CountryCell {
     ///
     /// - Parameter style: Flag style kind
     
-    func styleFlagView(_ style: CountryFlagStyle) {
+    func applyFlagStyle(_ style: CountryFlagStyle) {
         
         // Cleae all constraints from flag image view
         NSLayoutConstraint.deactivate(flagImageView.constraints)
@@ -149,7 +149,7 @@ extension CountryCell {
         
         switch style {
         case .corner:
-            // Corner style 
+            // Corner style
             flagImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
             flagImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
             flagImageView.layer.cornerRadius = 4
