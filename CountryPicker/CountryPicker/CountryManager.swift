@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 
+
+/// Country filtering options
+public enum CountryFilterOption {
+    /// Filter countries by country name
+    case countryName
+    
+    /// Filter countries by country code
+    case countryCode
+    
+    /// Filter countries by country dial code
+    case countryDialCode
+}
+
 open class CountryManager {
     
     // MARK: - variable
@@ -29,8 +42,6 @@ open class CountryManager {
         return countryManager
     }()
     
-    var lastCountrySelected: Country?
-    
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
         
@@ -43,7 +54,20 @@ open class CountryManager {
         return Country(countryCode: countryCode)
     }
     
+    
+    internal var lastCountrySelected: Country?
+    
+    /// Default country filter option
+    internal let defaultFilter: CountryFilterOption = .countryName
+    
+    /// Exposed country filter options and should be configured by user
+    ///
+    /// - Note: By default, countries can be filtered by there country names
+    internal var filters: Set<CountryFilterOption> = [.countryName]
+    
+    
     private init() {}
+    
     
     func loadCountries() throws {
         
@@ -65,6 +89,39 @@ open class CountryManager {
         return countries
     }
 }
+
+
+// MARK: - Country Filter Methods
+public extension CountryManager {
+    
+    ///  Adds a new filter into `filters` collection with no duplicates
+    ///
+    /// - Parameter filter: New filter to be added
+    
+    func addFilter(_ filter: CountryFilterOption) {
+        filters.insert(filter)
+    }
+    
+    
+    /// Removes a given filter from `filters` collection
+    ///
+    /// - Parameter filter: A filter to b removed
+    
+    func removeFilter(_ filter: CountryFilterOption) {
+        filters = filters.filter { $0 != filter }
+    }
+    
+    
+    /// Removes all stored filters from `filter` collection
+    ///
+    /// - Note: By default, it configures a default filter ~ `CountryFilterOptions.countryName`
+    
+    func clearAllFilters() {
+        filters.removeAll()
+        filters.insert(defaultFilter) // Set default filter option
+    }
+}
+
 
 // MARK: - Error Handling
 extension String: Error {}

@@ -1,6 +1,6 @@
 {
   "name": "SKCountryPicker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "summary": "A simple, customizable Country picker for picking country or dialing code.",
   "description": "CountryPicker is module for selecting country of the user by searching",
   "homepage": "https://github.com/SURYAKANTSHARMA/CountryPicker",
@@ -18,7 +18,7 @@
   "swift_version": "5.0",
   "source": {
     "git": "https://github.com/SURYAKANTSHARMA/CountryPicker",
-    "tag": "1.2.1"
+    "tag": "1.2.2"
   },
   "source_files": "CountryPicker/CountryPicker/**/*.{swift}",
   "exclude_files": "Classes/Exclude",
