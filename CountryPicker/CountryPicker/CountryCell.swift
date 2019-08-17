@@ -128,5 +128,22 @@ extension CountryCell {
         separatorLineView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         separatorLineView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
     }
+    
+    
+    /// Hides dialing code label
+    ///
+    /// - Parameter state: Visibility boolean state. By default it's set to `True`
+    func hideDialCode(_ state: Bool = true) {
+        diallingCodeLabel.isHidden = state
+    }
+    
+    
+    /// Hides country flag view
+    ///
+    /// - Parameter state: Visibility boolean state. By default it's set to `True`
+    func hideFlag(_ state: Bool = true) {
+        countryFlagStackView.isHidden = state
+    }
+    
 }
 

@@ -247,12 +247,15 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setUpCellProperties(cell: CountryCell) {
-        cell.nameLabel.font = self.labelFont
-        cell.nameLabel.textColor = self.labelColor
-        cell.diallingCodeLabel.font = self.detailFont
-        cell.diallingCodeLabel.textColor = self.detailColor
-        cell.flagImageView.isHidden = self.isHideFlagImage
-        cell.diallingCodeLabel.isHidden = self.isHideDiallingCode
+        
+        // Auto-hide flag & dial labels
+        cell.hideFlag(isHideFlagImage)
+        cell.hideDialCode(isHideDiallingCode)
+        
+        cell.nameLabel.font = labelFont
+        cell.nameLabel.textColor = labelColor
+        cell.diallingCodeLabel.font = detailFont
+        cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor
     }
     
