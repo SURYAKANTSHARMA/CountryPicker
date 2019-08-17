@@ -95,6 +95,7 @@ private extension ViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
+            countryController.flagStyle = .circular
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
             countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         case false:
@@ -108,6 +109,7 @@ private extension ViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
+            countryController.flagStyle = .corner
             countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
             countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
         }

@@ -22,6 +22,10 @@ class CountryCell: UITableViewCell {
         return imageView
     }()
 
+    var flagStyle: CountryFlagStyle {
+        return CountryFlagStyle.normal
+    }
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -128,6 +132,42 @@ extension CountryCell {
         separatorLineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         separatorLineView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         separatorLineView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+    }
+    
+    
+    /// Apply some styling on flag image view
+    ///
+    /// - Note: By default, `CountryFlagStyle.nromal` style is applied on the flag image view.
+    ///
+    /// - Parameter style: Flag style kind
+    
+    func styleFlagView(_ style: CountryFlagStyle) {
+        
+        // Cleae all constraints from flag image view
+        NSLayoutConstraint.deactivate(flagImageView.constraints)
+        layoutIfNeeded()
+        
+        switch style {
+        case .corner:
+            // Corner style 
+            flagImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            flagImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+            flagImageView.layer.cornerRadius = 4
+            flagImageView.clipsToBounds = true
+            flagImageView.contentMode = .scaleAspectFill
+        case .circular:
+            // Circular style
+            flagImageView.widthAnchor.constraint(equalToConstant: 34).isActive = true
+            flagImageView.heightAnchor.constraint(equalToConstant: 34).isActive = true
+            flagImageView.layer.cornerRadius = 34 / 2
+            flagImageView.clipsToBounds = true
+            flagImageView.contentMode = .scaleAspectFill
+        default:
+            // Apply default styling
+            flagImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+            flagImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+            flagImageView.contentMode = .scaleToFill
+        }
     }
     
     

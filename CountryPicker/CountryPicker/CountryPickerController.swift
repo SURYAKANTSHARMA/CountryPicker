@@ -37,6 +37,10 @@ open class CountryPickerController: UIViewController {
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     
+    public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal {
+        didSet { self.tableView.reloadData() }
+    }
+    
     public var labelFont: UIFont = UIFont.systemFont(ofSize: 14.0) {
         didSet { self.tableView.reloadData() }
     }
@@ -259,6 +263,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.diallingCodeLabel.font = detailFont
         cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor
+        cell.styleFlagView(flagStyle)
     }
     
     // MARK: - TableView Delegate
