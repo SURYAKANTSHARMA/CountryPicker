@@ -44,6 +44,7 @@ class CountryCell: UITableViewCell {
 
     let flagImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = UIView.ContentMode.scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
