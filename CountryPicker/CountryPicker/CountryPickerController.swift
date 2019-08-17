@@ -53,7 +53,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var separatorLineColor: UIColor = UIColor.lightGray {
+    public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0) {
         didSet { self.tableView.reloadData() }
     }
     
