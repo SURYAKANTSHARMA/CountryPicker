@@ -11,7 +11,7 @@ import UIKit
 
 
 /// Country filtering options
-public enum CountryFilterOptions {
+public enum CountryFilterOption {
     /// Filter countries by country name
     case countryName
     
@@ -58,12 +58,12 @@ open class CountryManager {
     internal var lastCountrySelected: Country?
     
     /// Default country filter option
-    internal let defaultFilter: CountryFilterOptions = .countryName
+    internal let defaultFilter: CountryFilterOption = .countryName
     
     /// Exposed country filter options and should be configured by user
     ///
     /// - Note: By default, countries can be filtered by there country names
-    internal var filters: [CountryFilterOptions] = [.countryName]
+    internal var filters: [CountryFilterOption] = [.countryName]
     
     
     private init() {}
@@ -98,7 +98,7 @@ public extension CountryManager {
     ///
     /// - Parameter filter: New filter to be added
     
-    func addFilter(_ filter: CountryFilterOptions) {
+    func addFilter(_ filter: CountryFilterOption) {
         
         var filterSets = Set(self.filters)
         
@@ -116,7 +116,7 @@ public extension CountryManager {
     ///
     /// - Parameter filter: A filter to b removed
     
-    func removeFilter(_ filter: CountryFilterOptions) {
+    func removeFilter(_ filter: CountryFilterOption) {
         filters = filters.filter { $0 != filter }
     }
     
