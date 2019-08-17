@@ -8,6 +8,21 @@
 
 import UIKit
 
+
+/// Country flag styles
+public enum CountryFlagStyle {
+    
+    // Corner style will be applied
+    case corner
+    
+    // Circular style will be applied
+    case circular
+    
+    // Rectangle style will be applied
+    case normal
+}
+
+
 open class CountryPickerController: UIViewController {
     
     // MARK: - Variables

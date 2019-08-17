@@ -209,7 +209,6 @@
 		5FE4034051CC758FFFDE9593D2E1ECDB /* GY@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52FB174CF5628B15957E27C66D4A7A64 /* GY@2x.png */; };
 		6012CA2F31E60398C3B65505DB18911D /* UG.png in Resources */ = {isa = PBXBuildFile; fileRef = 30735D53BA3B69E985469DB5F75D43CD /* UG.png */; };
 		62B90EE76F9D6FCC4D820434746EACD5 /* KI@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B9189D002CEAE95706764F2FA907ED /* KI@2x.png */; };
-		631A9BEA2308450900962232 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A9BE92308450900962232 /* Enums.swift */; };
 		6343ED6F9516DBECB358FE16B110111B /* CountryPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 485DCD3FCE4332DD3B4869033850BB16 /* CountryPickerController.bundle */; };
 		64059E67429D1B88DC3DEE3063822B51 /* CZ.png in Resources */ = {isa = PBXBuildFile; fileRef = 816698E10B8863EA0DF3B2ABED1A8615 /* CZ.png */; };
 		64228C345052861ABAE393E9290EEFF4 /* IN.png in Resources */ = {isa = PBXBuildFile; fileRef = D69FD0E7D78D6A2CDD992DCC4B3CF8A3 /* IN.png */; };
@@ -748,7 +747,6 @@
 		62035424BD6BB698AD59E21DF082875C /* CD@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "CD@2x.png"; path = "CountryPicker/CountryPicker/CountryPickerController.bundle/CD@2x.png"; sourceTree = "<group>"; };
 		628DB67DD5A892677E392AB0AB149B81 /* AO.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = AO.png; path = CountryPicker/CountryPicker/CountryPickerController.bundle/AO.png; sourceTree = "<group>"; };
 		62C8D67B33AAA6D350FB7D4F2B14039E /* KN.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = KN.png; path = CountryPicker/CountryPicker/CountryPickerController.bundle/KN.png; sourceTree = "<group>"; };
-		631A9BE92308450900962232 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		64498467524F084AEF00CF649C73EADA /* BA.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = BA.png; path = CountryPicker/CountryPicker/CountryPickerController.bundle/BA.png; sourceTree = "<group>"; };
 		645DE9098F037565B92752A07039EE1A /* AI@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "AI@2x.png"; path = "CountryPicker/CountryPicker/CountryPickerController.bundle/AI@2x.png"; sourceTree = "<group>"; };
 		64931DA9060A058A4381BB0F6F82CD44 /* WF.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = WF.png; path = CountryPicker/CountryPicker/CountryPickerController.bundle/WF.png; sourceTree = "<group>"; };
@@ -1641,14 +1639,6 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		631A9BE62308448200962232 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				631A9BE92308450900962232 /* Enums.swift */,
-			);
-			name = Helper;
-			sourceTree = "<group>";
-		};
 		A0653EA217AF5FA3B39795A22A39C235 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1714,7 +1704,6 @@
 		D32A5D8D77B23CC2ECAD2EE7259AAD22 /* SKCountryPicker */ = {
 			isa = PBXGroup;
 			children = (
-				631A9BE62308448200962232 /* Helper */,
 				269A9A60ABDEFB7BDE22BE864428521C /* Constant.swift */,
 				403F65E207BA742F638C24DAB702B1F8 /* Country.swift */,
 				82EA2654F9F8A4EAD22B531FA3B488D9 /* CountryCell.swift */,
@@ -2375,7 +2364,6 @@
 				5E1CFF1C7D6C15457225A6B6F8A0CBE0 /* CountryManager.swift in Sources */,
 				07250E7B8EB9ED86CBF2AA3C6EAAEEE3 /* CountryPickerController.swift in Sources */,
 				668E911D0082893FE8E4E84D9DF6356D /* CountryPickerWithSectionViewController.swift in Sources */,
-				631A9BEA2308450900962232 /* Enums.swift in Sources */,
 				76C43A95B07BA05580BB4D6700F589B0 /* SKCountryPicker-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

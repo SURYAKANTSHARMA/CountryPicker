@@ -9,6 +9,20 @@
 import Foundation
 import UIKit
 
+
+/// Country filtering options
+public enum CountryFilterOption {
+    /// Filter countries by country name
+    case countryName
+    
+    /// Filter countries by country code
+    case countryCode
+    
+    /// Filter countries by country dial code
+    case countryDialCode
+}
+
+
 open class CountryManager {
     
     // MARK: - variable
