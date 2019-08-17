@@ -49,7 +49,6 @@ class ViewController: UIViewController  {
   //MARK:- IBOutlet
   @IBOutlet weak var countryCodeButton: UIButton!
   @IBOutlet weak var countryImageView: UIImageView!
-  let contryPickerController = CountryPickerController()
   
   //MARK:- Func
   override func viewDidLoad() {
@@ -70,6 +69,9 @@ class ViewController: UIViewController  {
   
   @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
     
+    // Invoke below static method to present country picker without section control
+    // CountryPickerController.presentController(on: self) { ... } 
+    
     let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
       
       guard let self = self else { return }
@@ -84,6 +86,21 @@ class ViewController: UIViewController  {
 }
 ```
 
+## Filter Options
+There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by country picker default is configured to filter countries based on `countryName`. 
+If you want to add/remove filter options, do as follows: 
+
+```swift 
+
+ // Adding filter
+ CountryManager.shared.addFilter(.countryCode)
+ 
+ // Removing filter 
+ CountryManager.shared.removeFilter(.countryCode)
+ 
+ // Removing all filters 
+ CountryManager.shared.clearAllFilters() 
+```
 
 ## Contributing
 

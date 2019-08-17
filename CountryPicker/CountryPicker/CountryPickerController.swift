@@ -11,10 +11,19 @@ import UIKit
 open class CountryPickerController: UIViewController {
     
     // MARK: - Variables
-    var countries = [Country]()
-    var filterCountries = [Country]()
-    var applySearch = false
+    var countries = [Country]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
+    var filterCountries = [Country]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var applySearch = false
     var callBack: (( _ choosenCountry: Country) -> Void)?
     
     let bundle = Bundle(for: CountryPickerController.self)
@@ -174,7 +183,6 @@ internal extension CountryPickerController {
 
     func loadCountries() {
         countries = CountryManager.shared.allCountries()
-        tableView.reloadData()
     }
     
     ///
@@ -272,30 +280,55 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - UISearchBarDelegate
 extension CountryPickerController: UISearchBarDelegate {
-    // MARK: - SearchBar Delegate
+    
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //code for filter
-        if searchBar.text != ""{
-            applySearch = true
-            filterCountries = []
-            let searchString = searchBar.text
-            for country in countries {
-                if ((country.countryName.uppercased()) as NSString).hasPrefix((searchString?.uppercased())!) {
-                    self.filterCountries.append(country)
-                }
-            }
-        } else {
-            applySearch = false
+        
+        let searchTextTrimmed = searchBar.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard let searchText = searchTextTrimmed, searchText.isEmpty == false else {
+            self.applySearch = false
+            self.filterCountries.removeAll()
+            self.tableView.reloadData()
+            return
         }
-        // Reload the tableview.
-        tableView.reloadData()
+        
+        applySearch = true
+        filterCountries.removeAll()
+        
+        let filteredCountries = countries.compactMap { (country) -> Country? in
+
+            // Filter country by country name first character
+            if CountryManager.shared.defaultFilter == .countryName,
+                country.countryName.lowercased().contains(searchText) {
+                return country
+            }
+
+            // Filter country by country code and utilise `CountryFilterOptions`
+            if CountryManager.shared.filters.contains(.countryCode),
+                country.countryCode.lowercased().contains(searchText) {
+                return country
+            }
+
+            // Filter country by digit country code and utilise `CountryFilterOptions`
+            if CountryManager.shared.filters.contains(.countryDialCode),
+                let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
+                return country
+            }
+
+            return nil
+        }
+        
+        // Append filtered countries
+        filterCountries.append(contentsOf: filteredCountries)
     }
+    
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
         searchBar.text = ""
         applySearch = false
-        searchBar.resignFirstResponder()
         tableView.reloadData()
     }
+    
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }

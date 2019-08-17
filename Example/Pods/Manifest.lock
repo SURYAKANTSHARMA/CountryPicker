@@ -1,5 +1,5 @@
 PODS:
-  - SKCountryPicker (1.2.1)
+  - SKCountryPicker (1.2.2)
 
 DEPENDENCIES:
   - SKCountryPicker (from `~/Desktop/Projects/CountryPicker/CountryPicker/`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "~/Desktop/Projects/CountryPicker/CountryPicker/"
 
 SPEC CHECKSUMS:
-  SKCountryPicker: 0e77bec7088e86512420368043a33b7431cb98e8
+  SKCountryPicker: 92fd6cec17e1e1848543edca29cf18a3db93517a
 
 PODFILE CHECKSUM: 8d56dfc05758c4375d3ce04b988542d61b2500cb
 
