@@ -16,13 +16,19 @@ open class Country {
 
     /// Name of the country
     open var countryName: String
-    /// Return dialing code for country instance
+    
+    /// - Returns: Dialing code for country instance with a `+` sign
     open var dialingCode: String? {
-        guard let digitCountryCode = isoToDigitCountryCodeDictionary[countryCode] as? String else {
-            print("Please check your Constant file it not contain key for \(countryCode) with countryName: \(countryName)")
+        guard let digitCountrycode = digitCountrycode else {
             return nil
         }
-        return "+" + digitCountryCode
+        
+        return "+" + digitCountrycode
+    }
+    
+    /// - Returns: Digit country code without a `+` sign
+    open var digitCountrycode: String? {
+        return isoToDigitCountryCodeDictionary[countryCode] as? String
     }
     
     /// Image (Flag) of country
