@@ -22,6 +22,7 @@ public enum CountryFilterOption {
     case countryDialCode
 }
 
+
 open class CountryManager {
     
     // MARK: - variable

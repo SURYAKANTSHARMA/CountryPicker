@@ -15,6 +15,8 @@ This library is for country picker used in many app for selecting country code o
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
 - [x] Auto scroll to previous selected country
+- [x] Fitlering country options 
+- [x] Styling view options 
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
 
@@ -87,7 +89,7 @@ class ViewController: UIViewController  {
 ```
 
 ## Filter Options
-There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by country picker default is configured to filter countries based on `countryName`. 
+There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by default country picker has been configured to filter countries based on `countryName`. 
 If you want to add/remove filter options, do as follows: 
 
 ```swift 
@@ -100,6 +102,23 @@ If you want to add/remove filter options, do as follows:
  
  // Removing all filters 
  CountryManager.shared.clearAllFilters() 
+```
+
+## Styling Options
+There are few styling options provided by the library such auto-hiding or styling views.
+```swift 
+
+let countryController = CountryPickerWithSectionViewController.presentController(on: self) { ... } 
+
+// Styling country flag image view 
+countryController.flagStyle = .corner    // E.g .corner, ,circular or .normal 
+
+// Hiding  flag image view 
+countryController.isHideFlagImage = true // False 
+
+// Hiding country dial code 
+countryController.isHideDiallingCode = true  // False
+
 ```
 
 ## Contributing
