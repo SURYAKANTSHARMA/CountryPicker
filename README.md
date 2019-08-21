@@ -120,13 +120,13 @@ Incase you want to retrieve  `country` info
 ```swift 
 
 // Get country based on digit code e.g: 60, +255
-CountryManager.shared.country(withDigitCode: )
+CountryManager.shared.country(withDigitCode: "255")
 
 // Get country based on country name
-CountryManager.shared.country(withName: )
+CountryManager.shared.country(withName: "Tanzania")
 
 // Get country based on country code e.g: MY, TZ
-CountryManager.shared.country(withCode: )
+CountryManager.shared.country(withCode: "MY")
 
 ```
 
