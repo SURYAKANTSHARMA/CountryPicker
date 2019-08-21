@@ -96,8 +96,8 @@ private extension ViewController {
             }
             
             countryController.flagStyle = .circular
-            countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
-            countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
+            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
         case false:
             // Present country picker without `Section Control` enabled
             let countryController = CountryPickerController.presentController(on: self) { [weak self] (country: Country) in
@@ -110,8 +110,8 @@ private extension ViewController {
             }
             
             countryController.flagStyle = .corner
-            countryController.isHideFlagImage = !showCountryFlagSwitch.isOn
-            countryController.isHideDiallingCode = !showDialingCodeSwitch.isOn
+            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
         }
     }
 }

@@ -76,11 +76,11 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var isHideFlagImage: Bool = false {
+    public var isCountryFlagHidden: Bool = false {
         didSet { self.tableView.reloadData() }
     }
     
-    public var isHideDiallingCode: Bool = false {
+    public var isCountryDialHidden: Bool = false {
         didSet { self.tableView.reloadData() }
     }
     
@@ -269,8 +269,8 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     func setUpCellProperties(cell: CountryCell) {
         
         // Auto-hide flag & dial labels
-        cell.hideFlag(isHideFlagImage)
-        cell.hideDialCode(isHideDiallingCode)
+        cell.hideFlag(isCountryFlagHidden)
+        cell.hideDialCode(isCountryDialHidden)
         
         cell.nameLabel.font = labelFont
         cell.nameLabel.textColor = labelColor
