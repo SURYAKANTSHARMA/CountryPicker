@@ -1,9 +1,9 @@
-[![Travis CI](https://api.travis-ci.org/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://travis-ci.org/SURYAKANTSHARMA/CountryPicker) 
-[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
-[![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 ![CountryPicker](https://user-images.githubusercontent.com/6416095/50628070-6fe1fd00-0f5c-11e9-9e9b-7e6dac866d43.png)
 
 # CountryPicker
+[![Travis CI](https://api.travis-ci.org/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://travis-ci.org/SURYAKANTSHARMA/CountryPicker) 
+[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
+[![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 
 
 A simple, customizable Country picker for picking country or dialing code.  
@@ -15,7 +15,7 @@ This library is for country picker used in many app for selecting country code o
 
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
 - [x] Auto scroll to previous selected country
-- [x] Fitlering country options 
+- [x] Filtering country options 
 - [x] Styling view options 
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
@@ -24,8 +24,18 @@ This library is for country picker used in many app for selecting country code o
 
 - iOS 10.0+ Support latest release iOS 12
 - Xcode 10.2 Support latest Xcode 10.2
-## Example 
- To run the example project, clone the repo, and run pod update from the Example directory first. 
+
+## Demo Project
+To run the example project, clone the repo, and run pod update from the Example directory first. 
+
+<img src= "Usage Resource/SKCountryPickerDemo.gif" width="200" height = "400"> 
+
+## Screenshots 
+| Home Scene        | Country Picker Scene  | Filtering Scene |
+|:-----------------:|:---------------------:| :--------------:|
+|<img src= "Usage Resource/SKCountryPickerHomeScene.png" width="166" height = "330">|<img src= "Usage Resource/SKCountryPickerScene.png" width="166" height = "330">| <img src= "Usage Resource/SKCountryPickerFilterScene.png" width="166" height = "330">|
+
+
 ## Installation
 
 CountryPicker is available through Cocoapods.
@@ -82,6 +92,7 @@ class ViewController: UIViewController  {
       self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
 
     }
+    
     // can customize the countryPicker here e.g font and color
     countryController.detailColor = UIColor.red
    }
@@ -90,6 +101,7 @@ class ViewController: UIViewController  {
 
 ## Filter Options
 There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by default country picker has been configured to filter countries based on `countryName`. 
+
 If you want to add/remove filter options, do as follows: 
 
 ```swift 
@@ -124,34 +136,6 @@ countryController.isHideDiallingCode = true  // False
 ## Contributing
 
 Any contribution making project better is welcome.
-
-
-
-## ScreenShots
-In Example Project  
-
-<img src= "https://user-images.githubusercontent.com/6416095/44832120-2c425400-ac47-11e8-9b3d-d96474942f46.gif" width="200" height = "400"> 
-
-Demo   
-
-<img src= "https://user-images.githubusercontent.com/6416095/34318079-4dcec342-e7e4-11e7-9d33-933db60d4836.gif" width="200" height = "400">
-
-Above is a Gif demo.
-
-After running the project by default current country get selected as below.
-
-![defaultopenimage](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot1.png)
-
-
-
-On clicking on this button country picker open with the option of choose or filter the require country.
-![step2image](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot2.png)
-
-
-After selecting selected country with image will appear on your button.
-![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 52](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot3.png)
-![simulator screen shot - iphone 5s - 2017-10-29 at 17 32 56](https://github.com/senseiphoneX/CountyPicker/blob/master/Usage%20Resource/screenshot4.png)
-
 
 ## Authors
 
