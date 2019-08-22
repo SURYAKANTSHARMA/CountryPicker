@@ -121,6 +121,47 @@ public extension CountryManager {
         filters.removeAll()
         filters.insert(defaultFilter) // Set default filter option
     }
+    
+    
+    /// Requests for a `Country` instance based on country code
+    ///
+    /// - Parameter code: A country code
+    /// - Returns: A country instance
+    
+    func country(withCode code: String) -> Country? {
+        return countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
+    }
+    
+    
+    /// Requests for a `Country` instance based on country name
+    ///
+    ///
+    func country(withName countryName: String) -> Country? {
+        return countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
+    }
+    
+    
+    /// Requests for a `Country` instance based on country digit code
+    ///
+    /// Note: Country dial code should not include a plus sign at the beginning e.g: +255, +60.
+    ///
+    /// - Parameter dialCode:
+    func country(withDigitCode dialCode: String) -> Country? {
+        return countries.first(where: { (country) -> Bool in
+            guard let countryDialCode = country.digitCountrycode else {
+                return false
+            }
+            
+            var dialCode = dialCode
+            
+            // Remove a plus sign if does exists
+            if dialCode.contains("+"), let plusSignIndex = dialCode.firstIndex(of: "+") {
+                dialCode.remove(at: plusSignIndex)
+            }
+            
+            return dialCode == countryDialCode
+        })
+    }
 }
 
 

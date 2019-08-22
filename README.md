@@ -7,6 +7,7 @@
 
 
 A simple, customizable Country picker for picking country or dialing code.  
+
 This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
 ## If you like CountryPicker, give it a ★ at the top right of this page.
@@ -103,7 +104,6 @@ class ViewController: UIViewController  {
 There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by default country picker has been configured to filter countries based on `countryName`. 
 
 If you want to add/remove filter options, do as follows: 
-
 ```swift 
 
  // Adding filter
@@ -116,6 +116,20 @@ If you want to add/remove filter options, do as follows:
  CountryManager.shared.clearAllFilters() 
 ```
 
+Incase you want to retrieve  `country` info 
+```swift 
+
+// Get country based on digit code e.g: 60, +255
+CountryManager.shared.country(withDigitCode: "255")
+
+// Get country based on country name
+CountryManager.shared.country(withName: "Tanzania")
+
+// Get country based on country code e.g: MY, TZ
+CountryManager.shared.country(withCode: "MY")
+
+```
+
 ## Styling Options
 There are few styling options provided by the library such auto-hiding or styling views.
 ```swift 
@@ -125,11 +139,11 @@ let countryController = CountryPickerWithSectionViewController.presentController
 // Styling country flag image view 
 countryController.flagStyle = .corner    // E.g .corner, ,circular or .normal 
 
-// Hiding  flag image view 
-countryController.isHideFlagImage = true // False 
+// Hide flag image view 
+countryController.isCountryFlagHidden = true // False 
 
-// Hiding country dial code 
-countryController.isHideDiallingCode = true  // False
+// Hide country dial code 
+countryController.isCountryDialHidden = true  // False
 
 ```
 
