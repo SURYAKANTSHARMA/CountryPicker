@@ -18,6 +18,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Auto scroll to previous selected country
 - [x] Filtering country options 
 - [x] Styling view options 
+- [x] Image size are optimized 
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
 
