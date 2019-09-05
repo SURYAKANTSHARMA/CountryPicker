@@ -260,5 +260,6 @@ let isoToDigitCountryCodeDictionary: NSDictionary = [
     "VE": "58",
     "VN": "84",
     "VG": "1",
-    "VI": "1"
+    "VI": "1",
+    "XK": "383"
 ]

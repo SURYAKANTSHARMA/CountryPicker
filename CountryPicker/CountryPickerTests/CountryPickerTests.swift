@@ -13,7 +13,7 @@ class CountryPickerTests: XCTestCase {
     // Create SUT objects
     var country: Country!
     var countryManager: CountryManager!
-    var totalCountries = 249
+    var totalCountries = 250
     override func setUp() {
         super.setUp()
         // 1. Given 2. Then
