@@ -95,7 +95,6 @@ open class CountryPickerController: UIViewController {
         searchController.searchBar.barStyle = .default
         searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Search country name here.."
         
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
