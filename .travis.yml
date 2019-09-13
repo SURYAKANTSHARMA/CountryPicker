@@ -3,4 +3,5 @@ language: swift
 xcode_project: CountryPicker/CountryPicker.xcodeproj
 script:
   - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project CountryPicker/CountryPicker.xcodeproj -scheme CountryPicker -destination 'platform=iOS Simulator,OS=12.2,name=iPhone 7' ONLY_ACTIVE_ARCH=YES
-  after_script: bash <(curl -s https://codecov.io/bash) -t e1f3926e-a5a4-470b-93ed-6c90137b1068
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t e1f3926e-a5a4-470b-93ed-6c90137b1068
