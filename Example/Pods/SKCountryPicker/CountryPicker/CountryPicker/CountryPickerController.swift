@@ -8,6 +8,21 @@
 
 import UIKit
 
+
+/// Country flag styles
+public enum CountryFlagStyle {
+    
+    // Corner style will be applied
+    case corner
+    
+    // Circular style will be applied
+    case circular
+    
+    // Rectangle style will be applied
+    case normal
+}
+
+
 open class CountryPickerController: UIViewController {
     
     // MARK: - Variables
@@ -37,7 +52,11 @@ open class CountryPickerController: UIViewController {
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     
-    public var labelFont: UIFont = UIFont.systemFont(ofSize: 14.0) {
+    public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal {
+        didSet { self.tableView.reloadData() }
+    }
+    
+    public var labelFont: UIFont = UIFont.systemFont(ofSize: 15.0) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -45,7 +64,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var detailFont: UIFont = UIFont.systemFont(ofSize: 11.0) {
+    public var detailFont: UIFont = UIFont.systemFont(ofSize: 12.0) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -53,15 +72,15 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var separatorLineColor: UIColor = UIColor.lightGray {
+    public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0) {
         didSet { self.tableView.reloadData() }
     }
     
-    public var isHideFlagImage: Bool = false {
+    public var isCountryFlagHidden: Bool = false {
         didSet { self.tableView.reloadData() }
     }
     
-    public var isHideDiallingCode: Bool = false {
+    public var isCountryDialHidden: Bool = false {
         didSet { self.tableView.reloadData() }
     }
     
@@ -141,7 +160,8 @@ open class CountryPickerController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets.zero
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableView.automaticDimension
         
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
@@ -247,13 +267,17 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setUpCellProperties(cell: CountryCell) {
-        cell.nameLabel.font = self.labelFont
-        cell.nameLabel.textColor = self.labelColor
-        cell.diallingCodeLabel.font = self.detailFont
-        cell.diallingCodeLabel.textColor = self.detailColor
-        cell.flagImageView.isHidden = self.isHideFlagImage
-        cell.diallingCodeLabel.isHidden = self.isHideDiallingCode
+        
+        // Auto-hide flag & dial labels
+        cell.hideFlag(isCountryFlagHidden)
+        cell.hideDialCode(isCountryDialHidden)
+        
+        cell.nameLabel.font = labelFont
+        cell.nameLabel.textColor = labelColor
+        cell.diallingCodeLabel.font = detailFont
+        cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor
+        cell.applyFlagStyle(flagStyle)
     }
     
     // MARK: - TableView Delegate
@@ -273,7 +297,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 60.0
     }
     
 }
