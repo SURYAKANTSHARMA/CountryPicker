@@ -272,7 +272,12 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.hideDialCode(isCountryDialHidden)
         
         cell.nameLabel.font = labelFont
-        cell.nameLabel.textColor = labelColor
+        if #available(iOS 13.0, *) {
+            cell.nameLabel.textColor = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            cell.nameLabel.textColor = labelColor
+        }
         cell.diallingCodeLabel.font = detailFont
         cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor
