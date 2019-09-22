@@ -23,6 +23,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
 - [x] Dark mode supported in iOS 13
+- [x] Support Dynamic font size for ContentSizeCategory  
 
 ## Requirements
 
