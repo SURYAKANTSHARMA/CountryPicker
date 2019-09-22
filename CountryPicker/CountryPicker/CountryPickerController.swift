@@ -56,7 +56,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var labelFont: UIFont = UIFont.systemFont(ofSize: 15.0) {
+    public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -64,7 +64,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var detailFont: UIFont = UIFont.systemFont(ofSize: 12.0) {
+    public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline) {
         didSet { self.tableView.reloadData() }
     }
     
