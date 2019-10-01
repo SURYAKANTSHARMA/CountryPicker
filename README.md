@@ -58,7 +58,7 @@ pod 'SKCountryPicker' '~> 1.2.0'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
-The steps required to add a dependency through Carhage are described [here](https://github.com/Carthage/Carthage#getting-started) but lets add them here for good measure.
+The steps required to use Carthage for dependency management are described [here](https://github.com/Carthage/Carthage#getting-started) but lets add them to this README as well for good measure.
 
 First you need to add the following line to your Cartfile
 
@@ -76,7 +76,11 @@ Next run
 carthage update --platform iOS
 ```
 
-once Carthage finishes building your dependencies, you need to add them to your project.
+This will have Carthage:
+- Fetch the source code for CountryPicker from Github
+- Compile the source code into a framework for you to use
+
+once Carthage finishes building, you need to add the framework to your project.
 
 In Xcode:
 
