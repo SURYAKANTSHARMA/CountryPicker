@@ -27,10 +27,17 @@ open class CountryManager {
     
     // MARK: - variable
     private(set) var countries = [Country]()
+    private(set) var dialingCodes = [String: String]()
     
     private var countriesFilePath: String? {
         let bundle = Bundle(for: CountryManager.self)
         let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
+        return countriesPath
+    }
+
+    private var dialingCodesPath: String? {
+        let bundle = Bundle(for: CountryManager.self)
+        let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/dialingcodes", ofType: "plist")
         return countriesPath
     }
     
@@ -48,11 +55,12 @@ open class CountryManager {
         
         let locale = Locale.current as NSLocale
         
-        guard let countryCode = locale.object(forKey: .countryCode) as? String else {
+        guard let countryCode = locale.object(forKey: .countryCode) as? String,
+            let dialingCode = dialingCodes[countryCode] else {
             return nil
         }
         
-        return Country(countryCode: countryCode)
+        return Country(countryCode: countryCode, dialingCode: dialingCode)
     }
     
     
@@ -76,14 +84,20 @@ open class CountryManager {
               let countryCodes = NSArray(contentsOfFile: countriesFilePath) as? [String] else {
               throw "Missing array of countries plist in CountryPicker"
         }
-        
-        // Clear old loaded countries
-        countries.removeAll()
-        
-        // Request for fresh copy of sorted country list
-        let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
-        
-        countries.append(contentsOf: sortedCountries)
+
+        guard let dialingCodesPath = dialingCodesPath,
+            let dialingCodes = NSDictionary(contentsOfFile: dialingCodesPath) as? [String: String] else {
+                throw "Missing dictionary of dialing codes in Country Picker"
+        }
+
+        let sortedCountries: [Country] = countryCodes.compactMap {
+            if let dialingCode = dialingCodes[$0] {
+                return Country(countryCode: $0, dialingCode: dialingCode)
+            }
+            return nil
+        }.sorted { $0.countryName < $1.countryName }
+
+        self.countries = sortedCountries
     }
 
     func allCountries() -> [Country] {
@@ -147,20 +161,9 @@ public extension CountryManager {
     ///
     /// - Parameter dialCode:
     func country(withDigitCode dialCode: String) -> Country? {
-        return countries.first(where: { (country) -> Bool in
-            guard let countryDialCode = country.digitCountrycode else {
-                return false
-            }
-            
-            var dialCode = dialCode
-            
-            // Remove a plus sign if does exists
-            if dialCode.contains("+"), let plusSignIndex = dialCode.firstIndex(of: "+") {
-                dialCode.remove(at: plusSignIndex)
-            }
-            
-            return dialCode == countryDialCode
-        })
+        return countries.first {
+            return $0.dialingCode.contains(dialCode)
+        }
     }
 }
 

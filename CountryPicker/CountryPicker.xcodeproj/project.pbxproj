@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EB20EF429B000CAFE5 /* Constant.swift */; };
 		9A4F58F220EF429C000CAFE5 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */; };
 		9A4F58F320EF429C000CAFE5 /* CountryPickerWithSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */; };
 		9A4F58F420EF429C000CAFE5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EE20EF429C000CAFE5 /* Country.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		0D5BDA8022741FEA00A055D4 /* CountryPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A4F58EB20EF429B000CAFE5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerWithSectionViewController.swift; sourceTree = "<group>"; };
 		9A4F58EE20EF429C000CAFE5 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 		E0519E2A2054FDE500C77B45 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
-				9A4F58EB20EF429B000CAFE5 /* Constant.swift */,
 				9A4F58EE20EF429C000CAFE5 /* Country.swift */,
 				9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */,
 				9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */,
@@ -279,7 +276,6 @@
 				9A4F58F220EF429C000CAFE5 /* CountryCell.swift in Sources */,
 				9A4F58F320EF429C000CAFE5 /* CountryPickerWithSectionViewController.swift in Sources */,
 				9A4F58F520EF429C000CAFE5 /* CountryManager.swift in Sources */,
-				9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

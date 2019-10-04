@@ -339,7 +339,7 @@ extension CountryPickerController: UISearchBarDelegate {
 
             // Filter country by digit country code and utilise `CountryFilterOptions`
             if CountryManager.shared.filters.contains(.countryDialCode),
-                let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
+                country.dialingCode.contains(searchText) {
                 return country
             }
 

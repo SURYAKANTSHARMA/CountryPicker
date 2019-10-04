@@ -17,19 +17,8 @@ open class Country {
     /// Name of the country
     open var countryName: String
     
-    /// - Returns: Dialing code for country instance with a `+` sign
-    open var dialingCode: String? {
-        guard let digitCountrycode = digitCountrycode else {
-            return nil
-        }
-        
-        return "+" + digitCountrycode
-    }
-    
-    /// - Returns: Digit country code without a `+` sign
-    open var digitCountrycode: String? {
-        return isoToDigitCountryCodeDictionary[countryCode] as? String
-    }
+    /// Dialing code of the country
+    open var dialingCode: String
     
     /// Image (Flag) of country
     open var flag: UIImage? {
@@ -46,8 +35,9 @@ open class Country {
     private var image: UIImage?
 
     // MARK: - Functions
-    public init(countryCode code: String) {
+    public init(countryCode code: String, dialingCode: String) {
         self.countryCode = code
+        self.dialingCode = "+\(dialingCode)"
         countryName = mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
     }
