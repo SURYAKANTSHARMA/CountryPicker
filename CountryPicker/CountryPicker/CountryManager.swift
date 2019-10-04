@@ -56,7 +56,7 @@ open class CountryManager {
         let locale = Locale.current as NSLocale
         
         guard let countryCode = locale.object(forKey: .countryCode) as? String,
-            let dialingCode = dialingCodes[countryCode] else {
+            let dialingCode = dialingCodes[countryCode.lowercased()] else {
             return nil
         }
         
@@ -90,14 +90,12 @@ open class CountryManager {
                 throw "Missing dictionary of dialing codes in Country Picker"
         }
 
-        let sortedCountries: [Country] = countryCodes.compactMap {
-            if let dialingCode = dialingCodes[$0] {
-                return Country(countryCode: $0, dialingCode: dialingCode)
-            }
-            return nil
+        let sortedCountries: [Country] = countryCodes.map {
+            Country(countryCode: $0.lowercased(), dialingCode: dialingCodes[$0.lowercased()])
         }.sorted { $0.countryName < $1.countryName }
 
         self.countries = sortedCountries
+        self.dialingCodes = dialingCodes
     }
 
     func allCountries() -> [Country] {
@@ -162,7 +160,7 @@ public extension CountryManager {
     /// - Parameter dialCode:
     func country(withDigitCode dialCode: String) -> Country? {
         return countries.first {
-            return $0.dialingCode.contains(dialCode)
+            return $0.dialingCode?.contains(dialCode) ?? false
         }
     }
 }

@@ -12,13 +12,13 @@ import UIKit
 open class Country {
 
     // MARK:- Variable
-    open var countryCode: String
+    open private(set) var countryCode: String
 
     /// Name of the country
-    open var countryName: String
+    open private(set) var countryName: String
     
     /// Dialing code of the country
-    open var dialingCode: String
+    open private(set) var dialingCode: String?
     
     /// Image (Flag) of country
     open var flag: UIImage? {
@@ -35,9 +35,9 @@ open class Country {
     private var image: UIImage?
 
     // MARK: - Functions
-    public init(countryCode code: String, dialingCode: String) {
+    public init(countryCode code: String, dialingCode: String? = nil) {
         self.countryCode = code
-        self.dialingCode = "+\(dialingCode)"
+        if let dialingCode = dialingCode { self.dialingCode = "+\(dialingCode)"}
         countryName = mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
     }

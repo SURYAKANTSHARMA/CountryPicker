@@ -17,7 +17,7 @@ class CountryPickerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // 1. Given 2. Then
-        country = Country(countryCode: "IN")
+        country = Country(countryCode: "IN", dialingCode: "91")
         countryManager = CountryManager.shared
     }
     
@@ -30,7 +30,7 @@ class CountryPickerTests: XCTestCase {
     func testCountryProperties() {
         //  3. Then
         XCTAssert(country.countryName == "India", "Countryname is faulty")
-        XCTAssert(country.dialingCode! ==  "+91", "Dialing Code is faulty")
+        XCTAssert(country.dialingCode ==  "+91", "Dialing Code is faulty")
         XCTAssertEqual(country.countryCode, "IN", "CountryCode is faulty")
         let path = "CountryPickerController.bundle/IN"
         let bundle = Bundle(for: Country.self)
@@ -38,10 +38,6 @@ class CountryPickerTests: XCTestCase {
         XCTAssertNotNil(image, "Image is absent in the bundle")
         XCTAssertNotNil(country.flag, "country \(country.countryCode) image is absent in the bundle")
         XCTAssertEqual(image!, country.flag!, "images are not equal")
-        
-        // check negitive edge case
-        country.countryCode.append("s")
-        XCTAssertNil(country.dialingCode)
     }
     
     func testCountryNameInLocale() {
@@ -55,6 +51,11 @@ class CountryPickerTests: XCTestCase {
     }
     
     func testCountryManager() {
+        do {
+            try countryManager.loadCountries()
+        } catch {
+            XCTFail("Failed to initialize country manager")
+        }
         let currentCountryCode = ((Locale.current as NSLocale).object(forKey: .countryCode) as! String)
         XCTAssert(countryManager.currentCountry!.countryCode == currentCountryCode, "faulty default country")
         XCTAssert(countryManager.countries.count == totalCountries, "Fault in loading countries")
