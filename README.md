@@ -99,6 +99,14 @@ The final step is to add the `copy-frameworks` build script to your "Build Phase
 
 Done!
 
+#### [SPM](https://swift.org/package-manager/)
+
+Add the following line to your Package.swift file in the dependencies section:
+
+```swift
+.package(url: "https://github.com/SURYAKANTSHARMA/CountryPicker.git, from "1.2.7")
+```
+
 ## Getting Started
 Example:
 
