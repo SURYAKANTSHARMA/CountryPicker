@@ -2,6 +2,7 @@
 
 # CountryPicker
 [![Travis CI](https://api.travis-ci.org/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://travis-ci.org/SURYAKANTSHARMA/CountryPicker) 
+[![codecov](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker/branch/master/graph/badge.svg)](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker)
 [![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 
@@ -17,15 +18,17 @@ This library is for country picker used in many app for selecting country code o
 - [x] Navigate through search and index title of section e.g (in Contact app in iOS)
 - [x] Auto scroll to previous selected country
 - [x] Filtering country options 
-- [x] Styling view options 
+- [x] Styling view options
 - [x] Image size are optimized 
 - [x] Cocoa Pods integrated
 - [x] Best practices followed
+- [x] Dark mode supported in iOS 13
+- [x] Support Dynamic font size for ContentSizeCategory  
 
 ## Requirements
 
-- iOS 10.0+ Support latest release iOS 12
-- Xcode 10.2 Support latest Xcode 10.2
+- iOS 10.0+ Support latest release iOS 13
+- Xcode 10.2+ Support latest Xcode 11
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first. 
@@ -33,9 +36,9 @@ To run the example project, clone the repo, and run pod update from the Example 
 <img src= "Usage Resource/SKCountryPickerDemo.gif" width="200" height = "400"> 
 
 ## Screenshots 
-| Home Scene        | Country Picker Scene  | Filtering Scene |
-|:-----------------:|:---------------------:| :--------------:|
-|<img src= "Usage Resource/SKCountryPickerHomeScene.png" width="166" height = "330">|<img src= "Usage Resource/SKCountryPickerScene.png" width="166" height = "330">| <img src= "Usage Resource/SKCountryPickerFilterScene.png" width="166" height = "330">|
+| Home Scene        | Country Picker Scene  | Filtering Scene | Dark Mode Scene |
+|:-----------------:|:---------------------:| :--------------:| :--------------:| 
+|<img src= "Usage Resource/SKCountryPickerHomeScene.png" width="166" height = "330">|<img src= "Usage Resource/SKCountryPickerScene.png" width="166" height = "330">| <img src= "Usage Resource/SKCountryPickerFilterScene.png" width="166" height = "330">| <img src= "Usage Resource/DarkMode.png" width="166" height = "330">|
 
 
 ## Installation
