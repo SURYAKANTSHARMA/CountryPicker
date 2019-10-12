@@ -28,12 +28,14 @@ class CountryCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let diallingCodeLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

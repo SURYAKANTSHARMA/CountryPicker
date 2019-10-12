@@ -56,7 +56,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var labelFont: UIFont = UIFont.systemFont(ofSize: 15.0) {
+    public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -64,7 +64,7 @@ open class CountryPickerController: UIViewController {
         didSet { self.tableView.reloadData() }
     }
     
-    public var detailFont: UIFont = UIFont.systemFont(ofSize: 12.0) {
+    public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline) {
         didSet { self.tableView.reloadData() }
     }
     
@@ -95,7 +95,6 @@ open class CountryPickerController: UIViewController {
         searchController.searchBar.barStyle = .default
         searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Search country name here.."
         
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
@@ -168,7 +167,7 @@ open class CountryPickerController: UIViewController {
                 tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
                 tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
                 tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
                 ])
         } else {
             // Fallback on earlier versions
@@ -273,7 +272,12 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         cell.hideDialCode(isCountryDialHidden)
         
         cell.nameLabel.font = labelFont
-        cell.nameLabel.textColor = labelColor
+        if #available(iOS 13.0, *) {
+            cell.nameLabel.textColor = UIColor.label
+        } else {
+            // Fallback on earlier versions
+            cell.nameLabel.textColor = labelColor
+        }
         cell.diallingCodeLabel.font = detailFont
         cell.diallingCodeLabel.textColor = detailColor
         cell.separatorLineView.backgroundColor = self.separatorLineColor

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GP5-yV-uQx">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GP5-yV-uQx">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,6 +48,7 @@
                                                                 <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </switch>
                                                         </subviews>
+                                                        <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="CNg-15-mCz">
                                                         <rect key="frame" x="0.0" y="95" width="354" height="31"/>
@@ -81,6 +80,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-s3-TL9">
                                                 <rect key="frame" x="0.0" y="207" width="354" height="126"/>
@@ -157,7 +157,7 @@
                                                         <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="+91">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                     </button>
                                                 </subviews>
@@ -181,7 +181,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vjC-5M-P1O" firstAttribute="bottom" secondItem="Ply-4I-sqN" secondAttribute="bottom" constant="8" id="8TN-wh-BIi"/>
                             <constraint firstItem="4Tj-6H-iZC" firstAttribute="leading" secondItem="vjC-5M-P1O" secondAttribute="leading" constant="30" id="PTM-tj-AxD"/>
@@ -210,7 +210,6 @@
         <!--Navigation Controller-->
         <scene sceneID="JS1-Bf-eCt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jHj-fg-FWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="GP5-yV-uQx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="d65-PR-0pr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -224,6 +223,7 @@
                         <segue destination="O0l-1Z-8PS" kind="relationship" relationship="rootViewController" id="i8w-MC-7aN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jHj-fg-FWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1048" y="-190"/>
         </scene>
