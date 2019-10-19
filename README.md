@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker/branch/master/graph/badge.svg)](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker)
 [![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 
 
@@ -22,6 +23,8 @@ This library is for country picker used in many app for selecting country code o
 - [x] Styling view options
 - [x] Image size are optimized
 - [x] Cocoa Pods integrated
+- [x] Carthage integrated
+- [x] Swift package manager integrated
 - [x] Best practices followed
 - [x] Dark mode supported in iOS 13
 - [x] Support Dynamic font size for ContentSizeCategory  
