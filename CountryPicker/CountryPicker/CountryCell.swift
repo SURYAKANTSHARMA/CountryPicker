@@ -65,6 +65,7 @@ class CountryCell: UITableViewCell {
         setUpLabels()
         setUpSepratorView()
         setUpCheckMarkImageView()
+        addAccessibilityLabels()
     }
 
     private func setUpFlagImageView() {
@@ -110,4 +111,17 @@ class CountryCell: UITableViewCell {
         checkMarkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
     }
 
+    private func addAccessibilityLabels(){
+         self.accessibilityHint = "Double tap to select country"
+         var labelStr = country.countryName
+
+          if let dialingCode = country.dialingCode, !self.diallingCodeLabel.isHidden {
+             labelStr += " with dialing code \(dialingCode)"
+         }
+
+          if !self.checkMarkImageView.isHidden{
+             labelStr += ", selected"
+         }
+          self.accessibilityLabel = labelStr
+     }
 }
