@@ -67,7 +67,7 @@ open class CountryPickerController: UIViewController {
         searchController?.searchBar.barStyle = .default
         searchController?.searchBar.sizeToFit()
         searchController?.searchBar.delegate = self
-        searchController?.searchBar.placeholder = "search country name here.."
+        searchController?.searchBar.placeholder = "Search country name here.."
 
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = searchController
@@ -81,6 +81,8 @@ open class CountryPickerController: UIViewController {
         view.backgroundColor = UIColor.white
         setUpTableView()
         let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(CountryPickerController.crossButtonClicked(_:)))
+         uiBarButtonItem.accessibilityLabel = "Cancel"
+         uiBarButtonItem.accessibilityHint = "Double tap to dismiss country picker"
         self.navigationItem.leftBarButtonItem = uiBarButtonItem
         let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
