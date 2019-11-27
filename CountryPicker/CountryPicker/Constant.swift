@@ -8,7 +8,7 @@
 
 import Foundation
 
-let isoToDigitCountryCodeDictionary: NSDictionary = [
+let isoToDigitCountryCodeDictionary: [String: String] = [
     "AX": "352",
     "AQ": "672",
     "IL": "972",
@@ -109,7 +109,6 @@ let isoToDigitCountryCodeDictionary: NSDictionary = [
     "ID": "62",
     "IQ": "964",
     "IE": "353",
-    "IL": "972",
     "IT": "39",
     "JM": "1",
     "JP": "81",
