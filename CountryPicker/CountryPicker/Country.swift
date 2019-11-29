@@ -28,7 +28,7 @@ open class Country {
     
     /// - Returns: Digit country code without a `+` sign
     open var digitCountrycode: String? {
-        return isoToDigitCountryCodeDictionary[countryCode] as? String
+        return isoToDigitCountryCodeDictionary[countryCode]
     }
     
     /// Image (Flag) of country
