@@ -67,11 +67,11 @@ open class CountryManager {
     
     func loadCountries() throws {
         
-        guard let countriesFilePathIs = countriesFilePath else {
+        guard let countriesFilePath = countriesFilePath else {
             return
         }
         
-        let url = URL(fileURLWithPath: countriesFilePathIs)
+        let url = URL(fileURLWithPath: countriesFilePath)
         
         guard let rawData = try? Data(contentsOf: url),
             let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
