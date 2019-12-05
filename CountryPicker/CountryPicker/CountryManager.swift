@@ -68,14 +68,14 @@ open class CountryManager {
     func loadCountries() throws {
         
         guard let countriesFilePath = countriesFilePath else {
-            return
+            throw "Missing contries file path"
         }
         
         let url = URL(fileURLWithPath: countriesFilePath)
         
         guard let rawData = try? Data(contentsOf: url),
             let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
-                fatalError("Failed to load countries list.")
+                throw "Missing array of countries plist in CountryPicker"
         }
         
         // Clear old loaded countries
