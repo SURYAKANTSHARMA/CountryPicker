@@ -11,6 +11,7 @@ import Foundation
 let isoToDigitCountryCodeDictionary: [String: String] = [
     "AX": "352",
     "AQ": "672",
+    "IL": "972",
     "AF": "93",
     "AL": "355",
     "DZ": "213",
@@ -108,7 +109,6 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "ID": "62",
     "IQ": "964",
     "IE": "353",
-    "IL": "972",
     "IT": "39",
     "JM": "1",
     "JP": "81",
