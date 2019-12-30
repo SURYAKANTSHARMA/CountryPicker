@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GP5-yV-uQx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VVc-Wf-JDa">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -167,7 +167,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ply-4I-sqN">
-                                <rect key="frame" x="30" y="706" width="354" height="60"/>
+                                <rect key="frame" x="30" y="657" width="354" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Vd8-a5-AlQ"/>
@@ -205,12 +205,96 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYN-jd-baC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="-190"/>
+            <point key="canvasLocation" x="760.86956521739137" y="-190.17857142857142"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Picker View-->
+        <scene sceneID="bDG-GD-y9Y">
+            <objects>
+                <navigationController id="tg6-In-Rvg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Picker View" id="kbJ-s0-4MP"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="BF7-0Z-wva">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ik5-Fz-GXV" kind="relationship" relationship="rootViewController" id="TP1-FX-9y0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7b-KK-JQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-139" y="515"/>
+        </scene>
+        <!--Picker View Example-->
+        <scene sceneID="btL-Lq-jli">
+            <objects>
+                <viewController id="ik5-Fz-GXV" customClass="PickerViewController" customModule="TestCountryPickerFramework" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4rt-Mh-DqX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-0p-dyi" customClass="CountryPickerView" customModule="SKCountryPicker">
+                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
+                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-dE-seP">
+                                <rect key="frame" x="15" y="96" width="384" height="69"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on text field to open country picker." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT6-bs-7gt">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Your Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdx-va-wbO">
+                                        <rect key="frame" x="0.0" y="19" width="384" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2D0-lX-86v"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzc-cF-sn9">
+                                <rect key="frame" x="30" y="563" width="354" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="trailing" secondItem="E6c-xo-iyb" secondAttribute="trailing" id="5fY-dQ-4Ba"/>
+                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" id="6hu-5y-ZYk"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="bottom" secondItem="Zlc-0p-dyi" secondAttribute="bottom" id="AZc-tq-S3S"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="kzc-cF-sn9" secondAttribute="trailing" constant="30" id="DPZ-ho-66H"/>
+                            <constraint firstItem="6AQ-dE-seP" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" constant="15" id="ErW-Ma-K2W"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="6AQ-dE-seP" secondAttribute="trailing" constant="15" id="Fx7-xY-gTw"/>
+                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="top" secondItem="kzc-cF-sn9" secondAttribute="bottom" constant="10" id="Unx-eM-Dbd"/>
+                            <constraint firstItem="kzc-cF-sn9" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" constant="30" id="a3b-oY-gZB"/>
+                            <constraint firstItem="6AQ-dE-seP" firstAttribute="top" secondItem="E6c-xo-iyb" secondAttribute="top" constant="8" id="vbN-nd-Srx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E6c-xo-iyb"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Picker View Example" id="GlB-oG-IcR"/>
+                    <connections>
+                        <outlet property="storyboardLabel" destination="kzc-cF-sn9" id="qay-G9-hNC"/>
+                        <outlet property="storyboardPickerView" destination="Zlc-0p-dyi" id="0b8-zg-9ky"/>
+                        <outlet property="textField" destination="wdx-va-wbO" id="mla-T7-cYP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxV-GV-dgO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="514.95535714285711"/>
+        </scene>
+        <!--All Features-->
         <scene sceneID="JS1-Bf-eCt">
             <objects>
                 <navigationController id="GP5-yV-uQx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="All Features" id="8uf-cw-emA"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="d65-PR-0pr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -225,7 +309,27 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHj-fg-FWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1048" y="-190"/>
+            <point key="canvasLocation" x="-139.13043478260872" y="-190.17857142857142"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ei7-Kr-s8A">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="VVc-Wf-JDa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hRS-Bs-MYT"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tHc-R1-kTj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GP5-yV-uQx" kind="relationship" relationship="viewControllers" id="bSa-D8-wBa"/>
+                        <segue destination="tg6-In-Rvg" kind="relationship" relationship="viewControllers" id="zIB-Iv-Jb2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFz-1n-js4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1049.2753623188407" y="-190.17857142857142"/>
         </scene>
     </scenes>
 </document>
