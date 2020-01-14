@@ -107,7 +107,7 @@ Done!
 
 Add the following line to your Package.swift file in the dependencies section:
 
-```swift
+```
 .package(url: "https://github.com/SURYAKANTSHARMA/CountryPicker.git, from "1.2.7")
 ```
 
