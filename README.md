@@ -129,7 +129,6 @@ class ViewController: UIViewController  {
 
     guard let country = CountryManager.shared.currentCountry else {
         self.countryCodeButton.setTitle("Pick Country", for: .normal)
-        self.countryImageView.isHidden = true
         return
     }
 
