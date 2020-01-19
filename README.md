@@ -129,7 +129,8 @@ class ViewController: UIViewController  {
 
     guard let country = CountryManager.shared.currentCountry else {
         self.countryCodeButton.setTitle("Pick Country", for: .normal)
-        return
+      
+      return
     }
 
     countryCodeButton.setTitle(country.dialingCode, for: .normal)
