@@ -88,7 +88,7 @@ open class CountryPickerView: UIPickerView {
         self.scrollToSelectedCountry()
     }
     
-    // MARK:- Public API..
+    // MARK: - Public API
     private func scrollToSelectedCountry() {
         guard let selectedCountry = selectedCountry else {
             return
@@ -128,7 +128,6 @@ extension CountryPickerView: UIPickerViewDataSource {
 
 }
 
-
 extension CountryPickerView: UIPickerViewDelegate {
     
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -154,5 +153,4 @@ extension CountryPickerView: UIPickerViewDelegate {
         let country = CountryManager.shared.countries[row]
         didSelectCountryCallback?(country)
     }
-    
 }

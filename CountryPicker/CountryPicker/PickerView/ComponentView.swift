@@ -8,7 +8,6 @@
 
 import UIKit
 
-// Mark:- Component View
 internal class ComponentView: UIView {
     
     private(set) var imageView: UIImageView = UIImageView()
@@ -29,14 +28,14 @@ internal class ComponentView: UIView {
         imageView.contentMode = .scaleAspectFill
         self.addSubview(imageView)
         
-        // Label
+        // Country name label
         countryNameLabel.tag = 102
         countryNameLabel.text = "United State"
         countryNameLabel.textColor = .black
         countryNameLabel.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(countryNameLabel)
         
-        // Label
+        // Dialling code label
         diallingCodeLabel.tag = 103
         diallingCodeLabel.textColor = .darkGray
         diallingCodeLabel.font = UIFont.systemFont(ofSize: 11)
@@ -61,27 +60,26 @@ internal class ComponentView: UIView {
         self.imageView.frame = imageViewFrame
         
         // CountryName Label Size
-        let x = imageViewFrame.maxX + 5
-        var y: CGFloat = 0.0
+        let xPoint = imageViewFrame.maxX + 5
+        var yPoint: CGFloat = 0.0
         let paddingWidth = self.frame.size.width - (imageViewFrame.maxX + (padding * 2))
         
         let labelMaxSize = CGSize(width: paddingWidth, height: (height - 10) / 2.0)
         let countryNameSize = countryNameLabel.sizeThatFits(labelMaxSize)
        
         let diallingCodeSize = diallingCodeLabel.sizeThatFits(labelMaxSize)
-        y = max((height - (countryNameSize.height + diallingCodeSize.height)) / 2.0, 0.0)
+        yPoint = max((height - (countryNameSize.height + diallingCodeSize.height)) / 2.0, 0.0)
         
-        let countryNameLabelFrame = CGRect(x: x, y: y, width: countryNameSize.width, height: countryNameSize.height)
+        let countryNameLabelFrame = CGRect(x: xPoint, y: yPoint, width: countryNameSize.width, height: countryNameSize.height)
         countryNameLabel.frame = countryNameLabelFrame
         
-        y += countryNameSize.height
-        let diallingCodeLabelFrame = CGRect(x: x, y: y, width: diallingCodeSize.width, height: diallingCodeSize.height)
+        yPoint += countryNameSize.height
+        let diallingCodeLabelFrame = CGRect(x: xPoint, y: yPoint, width: diallingCodeSize.width, height: diallingCodeSize.height)
         diallingCodeLabel.frame = diallingCodeLabelFrame
         
         let maxWidthRequired = countryNameSize.width + (padding * 2) + imageSize
         maxWdith = maxWidthRequired
     }
-    
 }
 
 extension Country: Equatable {
@@ -89,4 +87,3 @@ extension Country: Equatable {
         return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
     }
 }
-
