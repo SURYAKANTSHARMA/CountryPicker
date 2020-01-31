@@ -52,7 +52,6 @@ internal class ComponentView: UIView {
         
         // Cell Size
         let height = self.frame.size.height
-        //let width = self.frame.size.width
         
         // Image Size
         let imageSize = (height - (padding * 2))

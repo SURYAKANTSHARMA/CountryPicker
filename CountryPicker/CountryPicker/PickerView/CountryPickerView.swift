@@ -8,10 +8,6 @@
 
 import UIKit
 
-//public protocol ActionView {
-//    func showOnView(countryPicker: CountryPickerView)
-//}
-
 open class CountryPickerView: UIPickerView {
     
     private var selectedCountry: Country? {
@@ -38,9 +34,7 @@ open class CountryPickerView: UIPickerView {
         guard countryCode.count > 0 else {
             return
         }
-        
         var tempList = countryCode
-        
         let list = allCountryList.filter { (country) -> Bool in
             if let index = tempList.firstIndex(of: country.countryCode) {
                 tempList.remove(at: index)
@@ -48,9 +42,7 @@ open class CountryPickerView: UIPickerView {
             }
             return false
         }
-        
         self.pickList = list
-        
     }
 
     init() {
@@ -78,10 +70,6 @@ open class CountryPickerView: UIPickerView {
         self.dataSource = self
         
     }
-     
-    deinit {
-        print("Picker view nil...")
-    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -93,7 +81,7 @@ open class CountryPickerView: UIPickerView {
         guard let selectedCountry = selectedCountry else {
             return
         }
-        if let index =  CountryManager.shared.countries.lastIndex(where: { $0 == selectedCountry }) {
+        if let index =  CountryManager.shared.countries.firstIndex(where: { $0 == selectedCountry }) {
             self.selectRow(index, inComponent: 0, animated: false)
         }
     }

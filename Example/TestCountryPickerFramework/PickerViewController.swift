@@ -30,38 +30,27 @@ class PickerViewController: UIViewController {
         
         let picketView = CountryPickerView.loadPickerView { [weak self] (country) in
             
-            guard let weakSelf = self,
+            guard let self = self,
                 let digitCountrycode = country.digitCountrycode else {
                 return
             }
-            
             let text = "\(digitCountrycode) \(country.countryCode)"
-            weakSelf.textField.text = text
-        
-            print("SELECTED Country\n\(country.countryName)")
-            print("\(String(describing: country.dialingCode))")
-            print("\(country.countryCode)")
-            print("\(String(describing: country.digitCountrycode))")
-            
+            self.textField.text = text
         }
         
         // Set pick list menually.
         picketView.setPickList(codes: "AQ", "IL", "AF", "AL", "DZ", "IN")
-        
         textField.inputView = picketView
     }
     
     private func setupStoryboardPickerViewCallback() {
         storyboardPickerView.onSelectCountry { [weak self] (country) in
-            
-            guard let weakSelf = self,
+            guard let self = self,
                 let digitCountrycode = country.digitCountrycode else {
                 return
             }
-            
             let text = "\(digitCountrycode) \(country.countryCode)"
-            weakSelf.storyboardLabel.text = text
-            
+            self.storyboardLabel.text = text
         }
     }
     
