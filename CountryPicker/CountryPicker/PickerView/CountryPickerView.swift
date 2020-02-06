@@ -31,7 +31,7 @@ open class CountryPickerView: UIPickerView {
     }
     
     private func updatePickList() {
-        guard countryCode.count > 0 else {
+        if countryCode.isEmpty {
             return
         }
         var tempList = countryCode
