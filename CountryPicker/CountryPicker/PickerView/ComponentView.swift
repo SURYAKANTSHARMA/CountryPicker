@@ -69,11 +69,13 @@ internal class ComponentView: UIView {
         let diallingCodeSize = diallingCodeLabel.sizeThatFits(labelMaxSize)
         yPoint = max((height - (countryNameSize.height + diallingCodeSize.height)) / 2.0, 0.0)
         
-        let countryNameLabelFrame = CGRect(x: xPoint, y: yPoint, width: countryNameSize.width, height: countryNameSize.height)
+        let countryNameLabelFrame = CGRect(x: xPoint, y: yPoint, width: countryNameSize.width,
+                                           height: countryNameSize.height)
         countryNameLabel.frame = countryNameLabelFrame
         
         yPoint += countryNameSize.height
-        let diallingCodeLabelFrame = CGRect(x: xPoint, y: yPoint, width: diallingCodeSize.width, height: diallingCodeSize.height)
+        let diallingCodeLabelFrame = CGRect(x: xPoint, y: yPoint, width: diallingCodeSize.width,
+                                            height: diallingCodeSize.height)
         diallingCodeLabel.frame = diallingCodeLabelFrame
         
         let maxWidthRequired = countryNameSize.width + (padding * 2) + imageSize
@@ -82,7 +84,7 @@ internal class ComponentView: UIView {
 }
 
 extension Country: Equatable {
-    public static func ==(lhs: Country, rhs: Country) -> Bool {
+    public static func == (lhs: Country, rhs: Country) -> Bool {
         return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
     }
 }

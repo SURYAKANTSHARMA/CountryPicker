@@ -118,7 +118,8 @@ extension CountryPickerView: UIPickerViewDataSource {
 
 extension CountryPickerView: UIPickerViewDelegate {
     
-    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
+                           forComponent component: Int, reusing view: UIView?) -> UIView {
         var reuseableView = view as? ComponentView
         if reuseableView == nil {
             let rect = CGRect(x: 0, y: 0, width: 200, height: 40.0)
