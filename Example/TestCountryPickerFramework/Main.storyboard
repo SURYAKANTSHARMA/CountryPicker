@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VVc-Wf-JDa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VVc-Wf-JDa">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -211,7 +211,7 @@
         <scene sceneID="bDG-GD-y9Y">
             <objects>
                 <navigationController id="tg6-In-Rvg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Picker View" id="kbJ-s0-4MP"/>
+                    <tabBarItem key="tabBarItem" title="Picker View" image="2.circle.fill" catalog="system" id="kbJ-s0-4MP"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="BF7-0Z-wva">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -235,46 +235,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-0p-dyi" customClass="CountryPickerView" customModule="SKCountryPicker">
-                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
-                            </pickerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-dE-seP">
-                                <rect key="frame" x="15" y="96" width="384" height="69"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on text field to open country picker." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT6-bs-7gt">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Your Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdx-va-wbO">
-                                        <rect key="frame" x="0.0" y="19" width="384" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="2D0-lX-86v"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzc-cF-sn9">
-                                <rect key="frame" x="30" y="563" width="354" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqz-QU-SCI">
+                                <rect key="frame" x="20" y="98" width="374" height="30"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="1. ">
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="systemBold" size="14"/>
+                                            <font key="NSOriginalFont" metaFont="systemBold" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Country picker example with storyboard">
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="system"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-SM-1b1">
+                                <rect key="frame" x="0.0" y="128" width="414" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzc-cF-sn9">
+                                        <rect key="frame" x="0.0" y="10" width="414" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlc-0p-dyi" customClass="CountryPickerView" customModule="SKCountryPicker">
+                                        <rect key="frame" x="47" y="34" width="320" height="216"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Zlc-0p-dyi" firstAttribute="centerX" secondItem="BSi-SM-1b1" secondAttribute="centerX" id="GSB-cv-Hen"/>
+                                    <constraint firstItem="kzc-cF-sn9" firstAttribute="centerX" secondItem="BSi-SM-1b1" secondAttribute="centerX" id="JvH-WC-oia"/>
+                                    <constraint firstItem="Zlc-0p-dyi" firstAttribute="top" secondItem="kzc-cF-sn9" secondAttribute="bottom" id="LIX-8j-5FU"/>
+                                    <constraint firstItem="kzc-cF-sn9" firstAttribute="leading" secondItem="BSi-SM-1b1" secondAttribute="leading" id="Oik-d0-QDJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zlc-0p-dyi" secondAttribute="bottom" id="pDv-dx-EeQ"/>
+                                    <constraint firstItem="kzc-cF-sn9" firstAttribute="top" secondItem="BSi-SM-1b1" secondAttribute="top" constant="10" id="wJz-9w-9Dm"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT6-bs-7gt">
+                                <rect key="frame" x="20" y="398" width="374" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="sBi-yS-ppY"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="2. ">
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="systemBold" size="14"/>
+                                            <font key="NSOriginalFont" metaFont="systemBold" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Country picker example with UITextField">
+                                        <attributes>
+                                            <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="system"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gji-2e-20O">
+                                <rect key="frame" x="0.0" y="420" width="414" height="393"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6AQ-dE-seP">
+                                        <rect key="frame" x="20" y="10" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Your Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wdx-va-wbO">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="2D0-lX-86v"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6AQ-dE-seP" secondAttribute="trailing" constant="20" id="NVw-67-DBq"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6AQ-dE-seP" secondAttribute="bottom" constant="200" id="TRy-IY-byV"/>
+                                    <constraint firstItem="6AQ-dE-seP" firstAttribute="leading" secondItem="gji-2e-20O" secondAttribute="leading" constant="20" id="oOL-rU-Rb2"/>
+                                    <constraint firstItem="6AQ-dE-seP" firstAttribute="top" secondItem="gji-2e-20O" secondAttribute="top" constant="10" id="tJx-Sj-6kU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="trailing" secondItem="E6c-xo-iyb" secondAttribute="trailing" id="5fY-dQ-4Ba"/>
-                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" id="6hu-5y-ZYk"/>
-                            <constraint firstItem="E6c-xo-iyb" firstAttribute="bottom" secondItem="Zlc-0p-dyi" secondAttribute="bottom" id="AZc-tq-S3S"/>
-                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="kzc-cF-sn9" secondAttribute="trailing" constant="30" id="DPZ-ho-66H"/>
-                            <constraint firstItem="6AQ-dE-seP" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" constant="15" id="ErW-Ma-K2W"/>
-                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="6AQ-dE-seP" secondAttribute="trailing" constant="15" id="Fx7-xY-gTw"/>
-                            <constraint firstItem="Zlc-0p-dyi" firstAttribute="top" secondItem="kzc-cF-sn9" secondAttribute="bottom" constant="10" id="Unx-eM-Dbd"/>
-                            <constraint firstItem="kzc-cF-sn9" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" constant="30" id="a3b-oY-gZB"/>
-                            <constraint firstItem="6AQ-dE-seP" firstAttribute="top" secondItem="E6c-xo-iyb" secondAttribute="top" constant="8" id="vbN-nd-Srx"/>
+                            <constraint firstItem="gji-2e-20O" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" id="0bg-bD-zoZ"/>
+                            <constraint firstItem="gji-2e-20O" firstAttribute="trailing" secondItem="E6c-xo-iyb" secondAttribute="trailing" id="5Mv-C2-47w"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="tT6-bs-7gt" secondAttribute="trailing" constant="20" id="Jab-ns-hmX"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="bottom" secondItem="gji-2e-20O" secondAttribute="bottom" id="OOe-qy-xbA"/>
+                            <constraint firstItem="E6c-xo-iyb" firstAttribute="trailing" secondItem="BSi-SM-1b1" secondAttribute="trailing" id="QFW-8a-x3k"/>
+                            <constraint firstItem="BSi-SM-1b1" firstAttribute="top" secondItem="E6c-xo-iyb" secondAttribute="top" constant="40" id="Qmf-uO-fJq"/>
+                            <constraint firstItem="tT6-bs-7gt" firstAttribute="leading" secondItem="E6c-xo-iyb" secondAttribute="leading" constant="20" id="adT-z8-FAK"/>
+                            <constraint firstItem="BSi-SM-1b1" firstAttribute="centerX" secondItem="4rt-Mh-DqX" secondAttribute="centerX" id="d00-dV-bMG"/>
+                            <constraint firstItem="gji-2e-20O" firstAttribute="top" secondItem="tT6-bs-7gt" secondAttribute="bottom" constant="5" id="exY-hW-eIN"/>
+                            <constraint firstItem="Nqz-QU-SCI" firstAttribute="leading" secondItem="4rt-Mh-DqX" secondAttribute="leading" constant="20" id="fgr-rN-P3m"/>
+                            <constraint firstItem="tT6-bs-7gt" firstAttribute="top" secondItem="BSi-SM-1b1" secondAttribute="bottom" constant="20" id="gF9-cO-fJ9"/>
+                            <constraint firstItem="BSi-SM-1b1" firstAttribute="top" secondItem="Nqz-QU-SCI" secondAttribute="bottom" id="n9G-EN-ObF"/>
+                            <constraint firstAttribute="trailing" secondItem="Nqz-QU-SCI" secondAttribute="trailing" constant="20" id="puT-Ce-R1e"/>
+                            <constraint firstItem="Nqz-QU-SCI" firstAttribute="top" secondItem="E6c-xo-iyb" secondAttribute="top" constant="10" id="sdD-mG-PEt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E6c-xo-iyb"/>
                     </view>
@@ -289,11 +359,11 @@
             </objects>
             <point key="canvasLocation" x="915.94202898550736" y="514.95535714285711"/>
         </scene>
-        <!--All Features-->
+        <!--Table View-->
         <scene sceneID="JS1-Bf-eCt">
             <objects>
                 <navigationController id="GP5-yV-uQx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Features" id="8uf-cw-emA"/>
+                    <tabBarItem key="tabBarItem" title="Table View" image="1.circle.fill" catalog="system" id="8uf-cw-emA"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="d65-PR-0pr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -332,4 +402,8 @@
             <point key="canvasLocation" x="-1049.2753623188407" y="-190.17857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="2.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
