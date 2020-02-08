@@ -41,6 +41,20 @@ class PickerViewController: UIViewController {
         // Set pick list menually.
         picketView.setPickList(codes: "AQ", "IL", "AF", "AL", "DZ", "IN")
         textField.inputView = picketView
+        
+        let toolBar =  UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        toolBar.barStyle = .default
+        toolBar.sizeToFit()
+
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneButtonTapped))
+        toolBar.items = [doneButton]
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonTapped() {
+        self.textField.resignFirstResponder()
     }
     
     private func setupStoryboardPickerViewCallback() {
@@ -52,9 +66,5 @@ class PickerViewController: UIViewController {
             let text = "\(digitCountrycode) \(country.countryCode)"
             self.storyboardLabel.text = text
         }
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.textField.resignFirstResponder()
     }
 }
