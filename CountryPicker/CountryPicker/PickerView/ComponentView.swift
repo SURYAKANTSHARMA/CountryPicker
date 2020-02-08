@@ -10,13 +10,13 @@ import UIKit
 
 internal class ComponentView: UIView {
     
-    private(set) var imageView: UIImageView = UIImageView()
-    private(set) var countryNameLabel: UILabel = UILabel()
-    private(set) var diallingCodeLabel: UILabel = UILabel()
+    private(set) var imageView = UIImageView()
+    private(set) var countryNameLabel = UILabel()
+    private(set) var diallingCodeLabel = UILabel()
     
-    var padding: CGFloat = 0.0
-    
+    internal var padding: CGFloat = 0.0
     private(set) var maxWdith: CGFloat = 0.09
+    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -40,7 +40,6 @@ internal class ComponentView: UIView {
         diallingCodeLabel.textColor = .darkGray
         diallingCodeLabel.font = UIFont.systemFont(ofSize: 11)
         self.addSubview(diallingCodeLabel)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -83,8 +82,3 @@ internal class ComponentView: UIView {
     }
 }
 
-extension Country: Equatable {
-    public static func == (lhs: Country, rhs: Country) -> Bool {
-        return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
-    }
-}

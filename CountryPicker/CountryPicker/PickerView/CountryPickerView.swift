@@ -24,6 +24,9 @@ open class CountryPickerView: UIPickerView {
     }
     
     private var allCountryList: [Country] = [Country]()
+    
+    private var didSelectCountryCallback: ((_ country: Country) -> Void)?
+    
     private var pickList: [Country] = [Country]() {
         didSet {
             self.reloadComponent(0)
@@ -55,7 +58,7 @@ open class CountryPickerView: UIPickerView {
         configure()
     }
     
-    private var didSelectCountryCallback: ((_ country: Country) -> Void)?
+    
     public func onSelectCountry(callback: @escaping (_ country: Country) -> Void) {
         self.didSelectCountryCallback = callback
     }
@@ -68,7 +71,6 @@ open class CountryPickerView: UIPickerView {
         
         self.delegate = self
         self.dataSource = self
-        
     }
     
     open override func layoutSubviews() {
@@ -101,9 +103,9 @@ open class CountryPickerView: UIPickerView {
         let countryPicker = CountryPickerView()
         return countryPicker
     }
-    
 }
 
+// MARK: UIPickerViewDataSource methods
 extension CountryPickerView: UIPickerViewDataSource {
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -116,6 +118,7 @@ extension CountryPickerView: UIPickerViewDataSource {
 
 }
 
+// MARK: UIPickerViewDelegate methods
 extension CountryPickerView: UIPickerViewDelegate {
     
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int,
@@ -129,9 +132,9 @@ extension CountryPickerView: UIPickerViewDelegate {
         let country = CountryManager.shared.countries[row]
         reuseableView?.imageView.image = country.flag
         reuseableView?.countryNameLabel.text = country.countryName
-        reuseableView?.diallingCodeLabel.text = country.dialingCode ?? ""
-        return reuseableView!
+        reuseableView?.diallingCodeLabel.text = country.dialingCode
         
+        return reuseableView!
     }
     
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
