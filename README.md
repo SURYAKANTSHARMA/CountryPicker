@@ -40,9 +40,9 @@ To run the example project, clone the repo, and run pod update from the Example 
 <img src= "Usage Resource/SKCountryPickerDemo.gif" width="200" height = "400">
 
 ## Screenshots
-| Home Scene        | Country Picker Scene  | Filtering Scene | Dark Mode Scene |
+| Home Scene        | Country Picker Scene  | Filtering Scene | Dark Mode Scene | Picker View |
 |:-----------------:|:---------------------:| :--------------:| :--------------:|
-|<img src= "Usage Resource/SKCountryPickerHomeScene.png" width="166" height = "330">|<img src= "Usage Resource/SKCountryPickerScene.png" width="166" height = "330">| <img src= "Usage Resource/SKCountryPickerFilterScene.png" width="166" height = "330">| <img src= "Usage Resource/DarkMode.png" width="166" height = "330">|
+|<img src= "Usage Resource/SKCountryPickerHomeScene.png" width="166" height = "330">|<img src= "Usage Resource/SKCountryPickerScene.png" width="166" height = "330">| <img src= "Usage Resource/SKCountryPickerFilterScene.png" width="166" height = "330">| <img src= "Usage Resource/DarkMode.png" width="166" height = "330">|  <img src= "Usage Resource/pickerView.png" width="166" height = "330">|
 
 
 ## Installation
@@ -112,7 +112,7 @@ Add the following line to your Package.swift file in the dependencies section:
 
 ## Getting Started
 Example:
-
+Please  check [example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/Example) project for customization and different option available.
 ```swift
 import UIKit
 import SKCountryPicker
