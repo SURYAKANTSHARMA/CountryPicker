@@ -16,6 +16,7 @@
 		0D5BDAE9227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAE8227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift */; };
 		0D5BDAF1227485C300A055D4 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAF0227485C300A055D4 /* Accessibility.swift */; };
 		6316ED4522FD5A2C00C25D73 /* SKCountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */; };
+		9657E56C2399137000B4B89B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657E56B2399137000B4B89B /* PickerViewController.swift */; };
 		E0519E4E2054FF6B00C77B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		0D5BDAF0227485C300A055D4 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 		6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SKCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9251ED843C744E82819FB8B3 /* Pods-TestCountryPickerFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCountryPickerFramework.release.xcconfig"; path = "Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework.release.xcconfig"; sourceTree = "<group>"; };
+		9657E56B2399137000B4B89B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		E0519E4A2054FF6B00C77B45 /* TestCountryPickerFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCountryPickerFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0519E602054FF8100C77B45 /* CountryPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CountryPicker.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CountryPicker-eutcsetggvjzfcbwbqtcjiwvefxd/Build/Products/Release-iphonesimulator/CountryPicker.framework"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */,
 				0D5BDAC3227473CF00A055D4 /* Info.plist */,
 				0D5BDAF0227485C300A055D4 /* Accessibility.swift */,
+				9657E56B2399137000B4B89B /* PickerViewController.swift */,
 			);
 			path = TestCountryPickerFramework;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9657E56C2399137000B4B89B /* PickerViewController.swift in Sources */,
 				0D5BDADD22747EE100A055D4 /* AppDelegate.swift in Sources */,
 				0D5BDADF2274811400A055D4 /* ViewController.swift in Sources */,
 				0D5BDAF1227485C300A055D4 /* Accessibility.swift in Sources */,
