@@ -28,7 +28,9 @@ This library is for country picker used in many app for selecting country code o
 - [x] Swift package manager integrated
 - [x] Best practices followed
 - [x] Dark mode supported in iOS 13
-- [x] Support Dynamic font size for ContentSizeCategory  
+- [x] Support Dynamic font size for ContentSizeCategory
+- [x] Unit tested added
+- [x] Picker view support added with customization 
 
 ## Requirements
 
