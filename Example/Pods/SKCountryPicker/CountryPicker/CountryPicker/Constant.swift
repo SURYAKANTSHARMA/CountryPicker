@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ISO 3166-1 alpha-2 two-letter country codes.
 let isoToDigitCountryCodeDictionary: [String: String] = [
     "AX": "352",
     "AQ": "672",

@@ -74,3 +74,9 @@ func mapCountryName(_ countryCode: String) -> String {
     }
     return localisedCountryName
 }
+
+extension Country: Equatable {
+    public static func == (lhs: Country, rhs: Country) -> Bool {
+        return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
+    }
+}

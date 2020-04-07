@@ -10,14 +10,13 @@
 		0A6765B78F579BCC73F3E6E2 /* Pods_TestCountryPickerFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75EA50E4A5FBF447AB5A2A6 /* Pods_TestCountryPickerFramework.framework */; };
 		0D5BDAD722747EE100A055D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D5BDACC22747EE000A055D4 /* LaunchScreen.storyboard */; };
 		0D5BDADC22747EE100A055D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D5BDAD222747EE100A055D4 /* Main.storyboard */; };
-		0D5BDADD22747EE100A055D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAD322747EE100A055D4 /* AppDelegate.swift */; };
 		0D5BDADF2274811400A055D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDADE2274811400A055D4 /* ViewController.swift */; };
 		0D5BDAE12274813100A055D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D5BDAE02274813100A055D4 /* Assets.xcassets */; };
 		0D5BDAE9227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAE8227481D700A055D4 /* TestCountryPickerFrameworkUITests.swift */; };
 		0D5BDAF1227485C300A055D4 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BDAF0227485C300A055D4 /* Accessibility.swift */; };
 		6316ED4522FD5A2C00C25D73 /* SKCountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */; };
+		85CCB465243CB4B400E986D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CCB464243CB4B400E986D7 /* AppDelegate.swift */; };
 		9657E56C2399137000B4B89B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657E56B2399137000B4B89B /* PickerViewController.swift */; };
-		E0519E4E2054FF6B00C77B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +47,6 @@
 		0D5BDACA22747EE000A055D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D5BDACC22747EE000A055D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D5BDAD222747EE100A055D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0D5BDAD322747EE100A055D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D5BDADE2274811400A055D4 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D5BDAE02274813100A055D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D5BDAE6227481D700A055D4 /* TestCountryPickerFrameworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestCountryPickerFrameworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,10 +54,10 @@
 		0D5BDAEA227481D700A055D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D5BDAF0227485C300A055D4 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 		6316ED4422FD5A2C00C25D73 /* SKCountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SKCountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85CCB464243CB4B400E986D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9251ED843C744E82819FB8B3 /* Pods-TestCountryPickerFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCountryPickerFramework.release.xcconfig"; path = "Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework.release.xcconfig"; sourceTree = "<group>"; };
 		9657E56B2399137000B4B89B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		E0519E4A2054FF6B00C77B45 /* TestCountryPickerFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCountryPickerFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0519E602054FF8100C77B45 /* CountryPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CountryPicker.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CountryPicker-eutcsetggvjzfcbwbqtcjiwvefxd/Build/Products/Release-iphonesimulator/CountryPicker.framework"; sourceTree = "<group>"; };
 		E8B04602EE422A4BE83FF702 /* Pods-TestCountryPickerFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestCountryPickerFramework.debug.xcconfig"; path = "Target Support Files/Pods-TestCountryPickerFramework/Pods-TestCountryPickerFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		F75EA50E4A5FBF447AB5A2A6 /* Pods_TestCountryPickerFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestCountryPickerFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,13 +124,12 @@
 		E0519E4C2054FF6B00C77B45 /* TestCountryPickerFramework */ = {
 			isa = PBXGroup;
 			children = (
-				0D5BDAD322747EE100A055D4 /* AppDelegate.swift */,
+				85CCB464243CB4B400E986D7 /* AppDelegate.swift */,
 				0D5BDACA22747EE000A055D4 /* Info.plist */,
 				0D5BDACC22747EE000A055D4 /* LaunchScreen.storyboard */,
 				0D5BDAE02274813100A055D4 /* Assets.xcassets */,
 				0D5BDADE2274811400A055D4 /* ViewController.swift */,
 				0D5BDAD222747EE100A055D4 /* Main.storyboard */,
-				E0519E4D2054FF6B00C77B45 /* AppDelegate.swift */,
 				0D5BDAC3227473CF00A055D4 /* Info.plist */,
 				0D5BDAF0227485C300A055D4 /* Accessibility.swift */,
 				9657E56B2399137000B4B89B /* PickerViewController.swift */,
@@ -309,10 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9657E56C2399137000B4B89B /* PickerViewController.swift in Sources */,
-				0D5BDADD22747EE100A055D4 /* AppDelegate.swift in Sources */,
 				0D5BDADF2274811400A055D4 /* ViewController.swift in Sources */,
+				85CCB465243CB4B400E986D7 /* AppDelegate.swift in Sources */,
 				0D5BDAF1227485C300A055D4 /* Accessibility.swift in Sources */,
-				E0519E4E2054FF6B00C77B45 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
