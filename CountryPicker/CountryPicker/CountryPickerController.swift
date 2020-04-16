@@ -114,7 +114,10 @@ open class CountryPickerController: UIViewController {
         }
         
         // Setup view bar buttons
-        let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(CountryPickerController.crossButtonClicked(_:)))
+        let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
+                                              target: self,
+                                              action: #selector(self.crossButtonClicked(_:)))
+        
         navigationItem.leftBarButtonItem = uiBarButtonItem
         
         // Setup table view and cells
@@ -185,10 +188,11 @@ open class CountryPickerController: UIViewController {
     }
     
     @discardableResult
-    open class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerController {
+    open class func presentController(on viewController: UIViewController,
+                                      handler:@escaping (_ country: Country) -> Void) -> CountryPickerController {
         let controller = CountryPickerController()
         controller.presentingVC = viewController
-        controller.callBack = callBack
+        controller.callBack = handler
         let navigationController = UINavigationController(rootViewController: controller)
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
@@ -333,7 +337,7 @@ extension CountryPickerController: UISearchBarDelegate {
             }
 
             // Filter country by country code and utilise `CountryFilterOptions`
-            if CountryManager.shared.filters.contains(.countryCode),countryMatchFound {
+            if CountryManager.shared.filters.contains(.countryCode), countryMatchFound {
                 return country
             }
 
@@ -356,7 +360,7 @@ extension CountryPickerController: UISearchBarDelegate {
         applySearch = false
         tableView.reloadData()
     }
-    
+
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
