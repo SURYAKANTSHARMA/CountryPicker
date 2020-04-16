@@ -232,13 +232,9 @@ internal extension CountryPickerController {
 
 // MARK: - TableView DataSource
 extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch applySearch {
-        case false:
-            return countries.count
-        case true:
-            return filterCountries.count
-        }
+        return applySearch ? filterCountries.count : countries.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -259,8 +255,8 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             country = countries[indexPath.row]
         }
         
-        if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
-            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
+        if let lastSelectedCountry = CountryManager.shared.lastCountrySelected {
+            cell.checkMarkImageView.isHidden = country.countryCode == lastSelectedCountry.countryCode ? false : true
         }
         
         cell.country = country
@@ -290,18 +286,18 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - TableView Delegate
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch applySearch {
-        case true:
-            let country = filterCountries[indexPath.row]
-            self.callBack?(country)
-            CountryManager.shared.lastCountrySelected = country
-            self.dismiss(animated: false, completion: nil)
-        case false:
-            let country = countries[indexPath.row]
-            self.callBack?(country)
-            CountryManager.shared.lastCountrySelected = country
+        var selectedCountry = countries[indexPath.row]
+        var dismissWithAnimation = true
+        
+        if applySearch {
+            selectedCountry = filterCountries[indexPath.row]
+            dismissWithAnimation = !applySearch
         }
-        self.dismiss(animated: true, completion: nil)
+        
+        self.callBack?(selectedCountry)
+        CountryManager.shared.lastCountrySelected = selectedCountry
+            
+        self.dismiss(animated: dismissWithAnimation, completion: nil)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -328,16 +324,16 @@ extension CountryPickerController: UISearchBarDelegate {
         filterCountries.removeAll()
         
         let filteredCountries = countries.compactMap { (country) -> Country? in
-
+            
+            let countryMatchFound = country.countryName.lowercased().contains(searchText)
+            
             // Filter country by country name first character
-            if CountryManager.shared.defaultFilter == .countryName,
-                country.countryName.lowercased().contains(searchText) {
+            if CountryManager.shared.defaultFilter == .countryName, countryMatchFound {
                 return country
             }
 
             // Filter country by country code and utilise `CountryFilterOptions`
-            if CountryManager.shared.filters.contains(.countryCode),
-                country.countryCode.lowercased().contains(searchText) {
+            if CountryManager.shared.filters.contains(.countryCode),countryMatchFound {
                 return country
             }
 
