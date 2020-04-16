@@ -22,6 +22,7 @@ public enum CountryFilterOption {
     case countryDialCode
 }
 
+
 open class CountryManager {
     
     // MARK: - variable
@@ -44,13 +45,9 @@ open class CountryManager {
     
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
-        
-        let locale = Locale.current as NSLocale
-        
-        guard let countryCode = locale.object(forKey: .countryCode) as? String else {
+        guard let countryCode = Locale.current.regionCode else {
             return nil
         }
-        
         return Country(countryCode: countryCode)
     }
     
@@ -68,12 +65,17 @@ open class CountryManager {
     
     private init() {}
     
-    
     func loadCountries() throws {
         
-        guard let countriesFilePath = countriesFilePath,
-              let countryCodes = NSArray(contentsOfFile: countriesFilePath) as? [String] else {
-              throw "Missing array of countries plist in CountryPicker"
+        guard let countriesFilePath = countriesFilePath else {
+            throw "Missing contries file path"
+        }
+        
+        let url = URL(fileURLWithPath: countriesFilePath)
+        
+        guard let rawData = try? Data(contentsOf: url),
+            let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
+                throw "Missing array of countries plist in CountryPicker"
         }
         
         // Clear old loaded countries
@@ -81,13 +83,14 @@ open class CountryManager {
         
         // Request for fresh copy of sorted country list
         let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
-        
         countries.append(contentsOf: sortedCountries)
+        
     }
 
     func allCountries() -> [Country] {
         return countries
     }
+    
 }
 
 
@@ -119,6 +122,47 @@ public extension CountryManager {
     func clearAllFilters() {
         filters.removeAll()
         filters.insert(defaultFilter) // Set default filter option
+    }
+    
+    
+    /// Requests for a `Country` instance based on country code
+    ///
+    /// - Parameter code: A country code
+    /// - Returns: A country instance
+    
+    func country(withCode code: String) -> Country? {
+        return countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
+    }
+    
+    
+    /// Requests for a `Country` instance based on country name
+    ///
+    ///
+    func country(withName countryName: String) -> Country? {
+        return countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
+    }
+    
+    
+    /// Requests for a `Country` instance based on country digit code
+    ///
+    /// Note: Country dial code should not include a plus sign at the beginning e.g: +255, +60.
+    ///
+    /// - Parameter dialCode:
+    func country(withDigitCode dialCode: String) -> Country? {
+        return countries.first(where: { (country) -> Bool in
+            guard let countryDialCode = country.digitCountrycode else {
+                return false
+            }
+            
+            var dialCode = dialCode
+            
+            // Remove a plus sign if does exists
+            if dialCode.contains("+"), let plusSignIndex = dialCode.firstIndex(of: "+") {
+                dialCode.remove(at: plusSignIndex)
+            }
+            
+            return dialCode == countryDialCode
+        })
     }
 }
 

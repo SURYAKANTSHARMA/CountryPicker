@@ -28,7 +28,7 @@ open class Country {
     
     /// - Returns: Digit country code without a `+` sign
     open var digitCountrycode: String? {
-        return isoToDigitCountryCodeDictionary[countryCode] as? String
+        return isoToDigitCountryCodeDictionary[countryCode]
     }
     
     /// Image (Flag) of country
@@ -52,19 +52,31 @@ open class Country {
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
     }
 
-    func countryName(with locale: NSLocale) -> String {
-        let localisedCountryName = locale.displayName(forKey: NSLocale.Key.countryCode, value: self.countryCode)!
+    func countryName(with locale: Locale) -> String {
+        guard let localisedCountryName = locale.localizedString(forRegionCode: self.countryCode) else {
+            let message = "Failed to localised country name for Country Code:- \(self.countryCode)"
+            fatalError(message)
+        }
         return localisedCountryName
     }
 
     func countryName(withLocaleIdentifier localeIdentifier: String) -> String {
-        let locale = NSLocale(localeIdentifier: localeIdentifier)
+        let locale = Locale(identifier: localeIdentifier)
         return self.countryName(with: locale)
     }
 }
 
 func mapCountryName(_ countryCode: String) -> String {
-    let locale = NSLocale(localeIdentifier: NSLocale.preferredLanguages[0])
-    let localisedCountryName = locale.displayName(forKey: NSLocale.Key.countryCode, value: countryCode)!
+    let locale = Locale(identifier: Locale.preferredLanguages.first!)
+    guard let localisedCountryName = locale.localizedString(forRegionCode: countryCode) else {
+        let message = "Failed to localised country name for Country Code:- \(countryCode)"
+        fatalError(message)
+    }
     return localisedCountryName
+}
+
+extension Country: Equatable {
+    public static func == (lhs: Country, rhs: Country) -> Bool {
+        return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
+    }
 }

@@ -13,7 +13,7 @@ class CountryPickerTests: XCTestCase {
     // Create SUT objects
     var country: Country!
     var countryManager: CountryManager!
-    var totalCountries = 249
+    var totalCountries = 250
     override func setUp() {
         super.setUp()
         // 1. Given 2. Then
@@ -48,14 +48,14 @@ class CountryPickerTests: XCTestCase {
         let identifier = "ne_IN"
         let countryNameInNepaliIndia = country.countryName(withLocaleIdentifier: identifier)
         XCTAssertEqual(countryNameInNepaliIndia, "भारत", "country name in phone locale with \(identifier) is faulty")
-        let locale = Locale(identifier: "ne_IN") as NSLocale
+        let locale = Locale(identifier: "ne_IN")
         let countryNameInLocale = country.countryName(with: locale)
         XCTAssertEqual(countryNameInLocale, "भारत", "Country name in phone locale \(locale) is faulty")
         
     }
     
     func testCountryManager() {
-        let currentCountryCode = ((Locale.current as NSLocale).object(forKey: .countryCode) as! String)
+        let currentCountryCode = Locale.current.regionCode!
         XCTAssert(countryManager.currentCountry!.countryCode == currentCountryCode, "faulty default country")
         XCTAssert(countryManager.countries.count == totalCountries, "Fault in loading countries")
         XCTAssert(countryManager.countries[0].countryName < countryManager.countries[1].countryName, "Faulty in sorting")

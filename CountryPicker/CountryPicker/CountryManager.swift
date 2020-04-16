@@ -45,13 +45,9 @@ open class CountryManager {
     
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
-        
-        let locale = Locale.current as NSLocale
-        
-        guard let countryCode = locale.object(forKey: .countryCode) as? String else {
+        guard let countryCode = Locale.current.regionCode else {
             return nil
         }
-        
         return Country(countryCode: countryCode)
     }
     
@@ -69,12 +65,17 @@ open class CountryManager {
     
     private init() {}
     
-    
     func loadCountries() throws {
         
-        guard let countriesFilePath = countriesFilePath,
-              let countryCodes = NSArray(contentsOfFile: countriesFilePath) as? [String] else {
-              throw "Missing array of countries plist in CountryPicker"
+        guard let countriesFilePath = countriesFilePath else {
+            throw "Missing contries file path"
+        }
+        
+        let url = URL(fileURLWithPath: countriesFilePath)
+        
+        guard let rawData = try? Data(contentsOf: url),
+            let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
+                throw "Missing array of countries plist in CountryPicker"
         }
         
         // Clear old loaded countries
@@ -82,13 +83,14 @@ open class CountryManager {
         
         // Request for fresh copy of sorted country list
         let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
-        
         countries.append(contentsOf: sortedCountries)
+        
     }
 
     func allCountries() -> [Country] {
         return countries
     }
+    
 }
 
 

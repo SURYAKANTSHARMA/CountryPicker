@@ -28,19 +28,21 @@ class CountryCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let diallingCodeLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     let separatorLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.gray
+        view.backgroundColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 1).isActive = true
         return view
@@ -48,7 +50,7 @@ class CountryCell: UITableViewCell {
 
     let flagImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = UIView.ContentMode.scaleToFill
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
