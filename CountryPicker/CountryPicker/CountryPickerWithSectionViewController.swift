@@ -72,6 +72,8 @@ internal extension CountryPickerWithSectionViewController {
     
     func scrollToCountry(_ country: Country, withSection sectionTitle: Character, animated: Bool = false) {
         
+        if applySearch { return }
+        
         // Find country index
         let countryMatchIndex = sectionCoutries[sectionTitle]?.firstIndex(where: { $0.countryCode == country.countryCode})
         
