@@ -43,10 +43,11 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
     
     @discardableResult
-    open override class func presentController(on viewController: UIViewController, callBack:@escaping (_ chosenCountry: Country) -> Void) -> CountryPickerWithSectionViewController {
+    open override class func presentController(on viewController: UIViewController,
+                                               handler:@escaping (_ country: Country) -> Void) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController()
         controller.presentingVC = viewController
-        controller.callBack = callBack
+        controller.callBack = handler
         
         let navigationController = UINavigationController(rootViewController: controller)
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
@@ -71,6 +72,8 @@ internal extension CountryPickerWithSectionViewController {
     /// - Parameter animated: Scrolling animation state and by default its set to `False`.
     
     func scrollToCountry(_ country: Country, withSection sectionTitle: Character, animated: Bool = false) {
+        
+        if applySearch { return }
         
         // Find country index
         let countryMatchIndex = sectionCoutries[sectionTitle]?.firstIndex(where: { $0.countryCode == country.countryCode})
