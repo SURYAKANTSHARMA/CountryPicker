@@ -295,13 +295,13 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         
         if applySearch {
             selectedCountry = filterCountries[indexPath.row]
-            dismissWithAnimation = !applySearch
+            dismissWithAnimation = false
         }
         
-        self.callBack?(selectedCountry)
+        callBack?(selectedCountry)
         CountryManager.shared.lastCountrySelected = selectedCountry
             
-        self.dismiss(animated: dismissWithAnimation, completion: nil)
+        dismiss(animated: dismissWithAnimation, completion: nil)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
