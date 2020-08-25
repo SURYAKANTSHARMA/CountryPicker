@@ -160,11 +160,17 @@ extension CountryPickerWithSectionViewController {
 
 // MARK: - Override SearchBar Delegate
 extension CountryPickerWithSectionViewController {
+    
     public override func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         super.searchBar(searchBar, textDidChange: searchText)
         if !searchText.isEmpty {
             searchHeaderTitle = searchText.first ?? "A"
         }
+    }
+    
+    public override func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        super.searchBarCancelButtonClicked(searchBar)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

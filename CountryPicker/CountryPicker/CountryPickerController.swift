@@ -45,7 +45,7 @@ open class CountryPickerController: UIViewController {
     
     //MARK: View and ViewController
     var presentingVC: UIViewController?
-    var searchController = UISearchController(searchResultsController: nil)
+    public var searchController = UISearchController(searchResultsController: nil)
     let tableView =  UITableView()
     
     /// Properties for countryPicker controller
@@ -357,7 +357,6 @@ extension CountryPickerController: UISearchBarDelegate {
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = ""
-        applySearch = false
         tableView.reloadData()
     }
 
