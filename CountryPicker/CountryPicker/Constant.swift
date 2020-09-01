@@ -66,7 +66,7 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "CR": "506",
     "HR": "385",
     "CU": "53",
-    "CY": "537",
+    "CY": "357",
     "CZ": "420",
     "DK": "45",
     "DJ": "253",
