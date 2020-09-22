@@ -129,7 +129,6 @@ extension CountryPickerView: UIPickerViewDelegate {
             reuseableView = ComponentView(frame: rect)
         }
         
-//         let country = CountryManager.shared.countries[row]
         let country = pickList[row]
         reuseableView?.imageView.image = country.flag
         reuseableView?.countryNameLabel.text = country.countryName
@@ -143,7 +142,6 @@ extension CountryPickerView: UIPickerViewDelegate {
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//         let country = CountryManager.shared.countries[row]
         let country = pickList[row]
         didSelectCountryCallback?(country)
     }
