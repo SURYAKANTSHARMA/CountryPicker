@@ -1,0 +1,6 @@
+framework module SKCountryPicker {
+  umbrella header "SKCountryPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
