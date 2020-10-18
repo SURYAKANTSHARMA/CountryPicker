@@ -26,27 +26,28 @@ public enum CountryFlagStyle {
 open class CountryPickerController: UIViewController {
     
     // MARK: - Variables
-    var countries = [Country]() {
+    internal var countries = [Country]() {
         didSet {
             tableView.reloadData()
         }
     }
     
-    var filterCountries = [Country]() {
+    internal var filterCountries = [Country]() {
         didSet {
             tableView.reloadData()
         }
     }
     
-    var applySearch = false
-    var callBack: (( _ choosenCountry: Country) -> Void)?
+    internal var applySearch = false
+    // To be set by client
+    public var callBack: (( _ choosenCountry: Country) -> Void)?
     
     let bundle = Bundle(for: CountryPickerController.self)
     
     //MARK: View and ViewController
-    var presentingVC: UIViewController?
-    var searchController = UISearchController(searchResultsController: nil)
-    let tableView =  UITableView()
+    internal var presentingVC: UIViewController?
+    internal var searchController = UISearchController(searchResultsController: nil)
+    internal let tableView =  UITableView()
     public var favoriteCountriesLocaleIdentifiers = [String]() {
         didSet {
             self.loadCountries()
@@ -99,7 +100,7 @@ open class CountryPickerController: UIViewController {
     }
     
     // MARK: - View life cycle
-    fileprivate func setUpsSearchController() {
+    private func setUpsSearchController() {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.barStyle = .default
@@ -209,7 +210,7 @@ open class CountryPickerController: UIViewController {
     }
     
     // MARK: - Cross Button Action
-    @objc func crossButtonClicked(_ sender: UIBarButtonItem) {
+    @objc private func crossButtonClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -280,7 +281,6 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setUpCellProperties(cell: CountryCell) {
-        
         // Auto-hide flag & dial labels
         cell.hideFlag(isCountryFlagHidden)
         cell.hideDialCode(isCountryDialHidden)
@@ -314,7 +314,8 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         dismiss(animated: dismissWithAnimation, completion: nil)
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath)
+        -> CGFloat {
         return 60.0
     }
     

@@ -11,9 +11,9 @@ import UIKit
 open class CountryPickerWithSectionViewController: CountryPickerController {
 
     // MARK: - Variables
-    var sections: [Character] = []
-    var sectionCoutries =  [Character: [Country]]()
-    var searchHeaderTitle: Character = "A"
+    private var sections: [Character] = []
+    private var sectionCoutries =  [Character: [Country]]()
+    private var searchHeaderTitle: Character = "A"
 
     // MARK: - View Life Cycle
     override open func viewDidLoad() {
@@ -30,7 +30,6 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
 
     open override func viewDidAppear(_ animated: Bool) {
-        
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
