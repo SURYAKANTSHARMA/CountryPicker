@@ -199,7 +199,7 @@ open class CountryPickerController: UIViewController {
     }
     
     @discardableResult
-    open class func presentController(on viewController: UIViewController,
+    open func presentController(on viewController: UIViewController,
                                       handler:@escaping (_ country: Country) -> Void) -> CountryPickerController {
         let controller = CountryPickerController()
         controller.presentingVC = viewController

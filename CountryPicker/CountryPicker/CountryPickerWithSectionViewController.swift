@@ -42,7 +42,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
     
     @discardableResult
-    open override class func presentController(on viewController: UIViewController,
+    open override func presentController(on viewController: UIViewController,
                                                handler:@escaping (_ country: Country) -> Void) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController()
         controller.presentingVC = viewController
