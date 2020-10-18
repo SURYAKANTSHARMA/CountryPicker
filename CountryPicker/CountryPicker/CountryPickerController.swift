@@ -47,7 +47,17 @@ open class CountryPickerController: UIViewController {
     var presentingVC: UIViewController?
     var searchController = UISearchController(searchResultsController: nil)
     let tableView =  UITableView()
-    
+    public var favoriteCountriesLocaleIdentifiers = [String]() {
+        didSet {
+            self.loadCountries()
+            self.tableView.reloadData()
+        }
+    }
+    internal var isFavoriteEnable: Bool { return !favoriteCountry.isEmpty }
+    internal var favoriteCountry: [Country] {
+        return self.favoriteCountriesLocaleIdentifiers
+            .compactMap { CountryManager.shared.country(withCode: $0) }
+    }
     /// Properties for countryPicker controller
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
@@ -209,7 +219,7 @@ open class CountryPickerController: UIViewController {
 internal extension CountryPickerController {
 
     func loadCountries() {
-        countries = CountryManager.shared.allCountries()
+        countries = CountryManager.shared.allCountries(favoriteCountriesLocaleIdentifiers)
     }
     
     ///
@@ -348,7 +358,7 @@ extension CountryPickerController: UISearchBarDelegate {
             }
 
             return nil
-        }
+        }.removeDuplicates()
         
         // Append filtered countries
         filterCountries.append(contentsOf: filteredCountries)
