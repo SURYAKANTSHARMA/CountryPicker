@@ -23,7 +23,6 @@ public enum CountryFlagStyle {
 }
 
 public enum SKCountryPickerError: Error {
-    case cannotLoadCountry
     case reason(String)
 }
 
@@ -204,7 +203,7 @@ open class CountryPickerController: UIViewController {
     
     @discardableResult
     open func presentController(on viewController: UIViewController,
-                                      handler:@escaping ((Result<Country,SKCountryPickerError>) -> Void)) -> CountryPickerController {
+                                      handler:@escaping (Result<Country,SKCountryPickerError>) -> Void) -> CountryPickerController {
         let controller = CountryPickerController()
         controller.presentingVC = viewController
         controller.callBack = handler

@@ -25,7 +25,7 @@ open class CountryPickerView: UIPickerView {
     
     private var allCountryList: [Country] = [Country]()
     
-    private var didSelectCountryCallback: ((_ country: Country) -> Void)?
+    private var didSelectCountryCallback: ((Result<Country,SKCountryPickerError>) -> Void)?
     
     private var pickList: [Country] = [Country]() {
         didSet {
@@ -59,7 +59,8 @@ open class CountryPickerView: UIPickerView {
     }
     
     
-    public func onSelectCountry(callback: @escaping (_ country: Country) -> Void) {
+    public func onSelectCountry(callback: @escaping
+        (Result<Country, SKCountryPickerError>) -> Void) {
         self.didSelectCountryCallback = callback
     }
     
@@ -93,7 +94,7 @@ open class CountryPickerView: UIPickerView {
         self.countryCode = codes
     }
     
-    public static func loadPickerView(didSelectCountry: @escaping (_ country: Country) -> Void) -> CountryPickerView {
+    public static func loadPickerView(didSelectCountry: @escaping (Result<Country,SKCountryPickerError>) -> Void) -> CountryPickerView {
         let countryPicker = CountryPickerView()
         countryPicker.didSelectCountryCallback = didSelectCountry
         return countryPicker
@@ -143,6 +144,6 @@ extension CountryPickerView: UIPickerViewDelegate {
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let country = pickList[row]
-        didSelectCountryCallback?(country)
+        didSelectCountryCallback?(.success(country))
     }
 }

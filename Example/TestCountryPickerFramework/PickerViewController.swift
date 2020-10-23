@@ -28,14 +28,19 @@ class PickerViewController: UIViewController {
     
     private func setupPickerViewForTextField() {
         
-        let picketView = CountryPickerView.loadPickerView { [weak self] (country) in
+        let picketView = CountryPickerView.loadPickerView { [weak self] result in
             
-            guard let self = self,
-                let digitCountrycode = country.digitCountrycode else {
-                return
+            guard let self = self else { return }
+            do {
+                let country = try result.get()
+                guard let digitCountrycode = country.digitCountrycode else {
+                    return
+                }
+                let text = "\(digitCountrycode) \(country.countryCode)"
+                self.textField.text = text
+            } catch {
+                print(error.localizedDescription)
             }
-            let text = "\(digitCountrycode) \(country.countryCode)"
-            self.textField.text = text
         }
         
         // Set pick list menually.
@@ -58,13 +63,19 @@ class PickerViewController: UIViewController {
     }
     
     private func setupStoryboardPickerViewCallback() {
-        storyboardPickerView.onSelectCountry { [weak self] (country) in
-            guard let self = self,
-                let digitCountrycode = country.digitCountrycode else {
-                return
+        storyboardPickerView.onSelectCountry { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let country = try result.get()
+                guard let digitCountrycode = country.digitCountrycode else {
+                    return
+                }
+                let text = "\(digitCountrycode) \(country.countryCode)"
+                self.storyboardLabel.text = text
+            } catch {
+                print(error.localizedDescription)
             }
-            let text = "\(digitCountrycode) \(country.countryCode)"
-            self.storyboardLabel.text = text
+            
         }
     }
 }

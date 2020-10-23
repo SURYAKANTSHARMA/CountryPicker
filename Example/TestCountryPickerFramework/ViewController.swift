@@ -121,7 +121,6 @@ private extension ViewController {
                 }
                 
             }
-            
             countryController.flagStyle = .corner
             countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
             countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
