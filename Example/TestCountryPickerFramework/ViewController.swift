@@ -88,13 +88,18 @@ private extension ViewController {
         switch selectionControlEnabled {
         case true:
             // Present country picker with `Section Control` enabled
-            let countryController = CountryPickerWithSectionViewController().presentController(on: self) { [weak self] (country: Country) in
+            let countryController = CountryPickerWithSectionViewController().presentController(on: self) { [weak self] result in
                 
                 guard let self = self else { return }
+                do {
+                    let country = try result.get()
+                    self.countryImageView.isHidden = false
+                    self.countryImageView.image = country.flag
+                    self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+                } catch {
+                    print(error.localizedDescription)
+                }
                 
-                self.countryImageView.isHidden = false
-                self.countryImageView.image = country.flag
-                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
             countryController.flagStyle = .circular
@@ -103,13 +108,18 @@ private extension ViewController {
             countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         case false:
             // Present country picker without `Section Control` enabled
-            let countryController = CountryPickerController().presentController(on: self) { [weak self] (country: Country) in
+            let countryController = CountryPickerController().presentController(on: self) { [weak self]  result in
                 
                 guard let self = self else { return }
+                do {
+                    let country = try result.get()
+                    self.countryImageView.isHidden = false
+                    self.countryImageView.image = country.flag
+                    self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+                } catch {
+                    print(error.localizedDescription)
+                }
                 
-                self.countryImageView.isHidden = false
-                self.countryImageView.image = country.flag
-                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
             countryController.flagStyle = .corner

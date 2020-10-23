@@ -43,7 +43,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     
     @discardableResult
     open override func presentController(on viewController: UIViewController,
-                                               handler:@escaping (_ country: Country) -> Void) -> CountryPickerWithSectionViewController {
+                                        handler: @escaping ((Result<Country,SKCountryPickerError>) -> Void)) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController()
         controller.presentingVC = viewController
         controller.callBack = handler
@@ -199,14 +199,13 @@ extension CountryPickerWithSectionViewController {
         }
     }
 }
-
 // MARK: - TableViewDelegate
 extension CountryPickerWithSectionViewController {
     override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch applySearch {
         case true:
             let country = filterCountries[indexPath.row]
-            self.callBack?(country)
+            self.callBack?(.success(country))
             CountryManager.shared.lastCountrySelected = country
             self.dismiss(animated: false, completion: nil)
         case false:
@@ -226,9 +225,10 @@ extension CountryPickerWithSectionViewController {
                 #if DEBUG
                   print("fail to get country")
                 #endif
+                callBack?(.failure(.reason("filterCountries")))
                 return
             }
-            callBack?(_country)
+            callBack?(.success(_country))
             self.dismiss(animated: true, completion: nil)
         }
      }

@@ -22,6 +22,10 @@ public enum CountryFlagStyle {
     case normal
 }
 
+public enum SKCountryPickerError: Error {
+    case cannotLoadCountry
+    case reason(String)
+}
 
 open class CountryPickerController: UIViewController {
     
@@ -40,7 +44,7 @@ open class CountryPickerController: UIViewController {
     
     internal var applySearch = false
     // To be set by client
-    public var callBack: (( _ choosenCountry: Country) -> Void)?
+    public var callBack: ((Result<Country,SKCountryPickerError>) -> Void)?
     
     let bundle = Bundle(for: CountryPickerController.self)
     
@@ -200,7 +204,7 @@ open class CountryPickerController: UIViewController {
     
     @discardableResult
     open func presentController(on viewController: UIViewController,
-                                      handler:@escaping (_ country: Country) -> Void) -> CountryPickerController {
+                                      handler:@escaping ((Result<Country,SKCountryPickerError>) -> Void)) -> CountryPickerController {
         let controller = CountryPickerController()
         controller.presentingVC = viewController
         controller.callBack = handler
@@ -308,7 +312,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             dismissWithAnimation = false
         }
         
-        callBack?(selectedCountry)
+        callBack?(.success(selectedCountry))
         CountryManager.shared.lastCountrySelected = selectedCountry
             
         dismiss(animated: dismissWithAnimation, completion: nil)
