@@ -42,7 +42,11 @@ open class CountryPickerController: UIViewController {
     // To be set by client
     public var callBack: (( _ choosenCountry: Country) -> Void)?
     
-    let bundle = Bundle(for: CountryPickerController.self)
+    #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+    #else
+        let bundle = Bundle(for: CountryPickerController.self)
+    #endif
     
     //MARK: View and ViewController
     internal var presentingVC: UIViewController?
