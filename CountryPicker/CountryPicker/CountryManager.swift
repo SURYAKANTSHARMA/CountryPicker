@@ -29,7 +29,12 @@ open class CountryManager {
     private(set) var countries = [Country]()
     
     private var countriesFilePath: String? {
-        let bundle = Bundle(for: CountryManager.self)
+        #if SWIFT_PACKAGE
+            let bundle = Bundle.module
+        #else
+            let bundle = Bundle(for: CountryManager.self)
+        #endif
+        
         let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
         return countriesPath
     }

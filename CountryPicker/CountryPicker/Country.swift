@@ -36,7 +36,13 @@ open class Country {
         if image != nil {
             return image
         }
-        let bundle = Bundle(for: Country.self)
+        
+        #if SWIFT_PACKAGE
+            let bundle = Bundle.module
+        #else
+            let bundle = Bundle(for: Country.self)
+        #endif
+        
         let flagImg = UIImage(named: imagePath, in: bundle, compatibleWith: nil)
         image = flagImg
         return image
