@@ -33,7 +33,11 @@ class CountryPickerTests: XCTestCase {
         XCTAssert(country.dialingCode! ==  "+91", "Dialing Code is faulty")
         XCTAssertEqual(country.countryCode, "IN", "CountryCode is faulty")
         let path = "CountryPickerController.bundle/IN"
-        let bundle = Bundle(for: Country.self)
+        #if SWIFT_PACKAGE
+            let bundle = Bundle.module
+        #else
+            let bundle = Bundle(for: Country.self)
+        #endif
         let image = UIImage(named: path, in: bundle, compatibleWith: nil)
         XCTAssertNotNil(image, "Image is absent in the bundle")
         XCTAssertNotNil(country.flag, "country \(country.countryCode) image is absent in the bundle")

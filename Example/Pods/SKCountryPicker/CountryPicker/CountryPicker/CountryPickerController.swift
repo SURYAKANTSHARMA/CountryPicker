@@ -41,7 +41,11 @@ open class CountryPickerController: UIViewController {
     var applySearch = false
     var callBack: (( _ choosenCountry: Country) -> Void)?
     
-    let bundle = Bundle(for: CountryPickerController.self)
+    #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+    #else
+        let bundle = Bundle(for: CountryPickerController.self)
+    #endif
     
     //MARK: View and ViewController
     var presentingVC: UIViewController?

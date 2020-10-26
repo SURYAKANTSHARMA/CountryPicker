@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -24,7 +24,12 @@ let package = Package(
         .target(
             name: "CountryPicker",
             dependencies: [],
-            path: "CountryPicker/CountryPicker"),
+            path: "CountryPicker/CountryPicker",
+            resources: [
+                .copy("CountryPickerController.bundle")
+            ]
+        ),
+            
         .testTarget(
             name: "CountryPicker/CountryPicker",
             dependencies: ["CountryPicker"],
