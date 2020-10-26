@@ -93,8 +93,9 @@ internal extension CountryPickerWithSectionViewController {
         if isFavoriteEnable {
             sections.append(contentsOf: "")
         }
-        sections = countries.map({ String($0.countryName.prefix(1)).first! }).removeDuplicates()
-        
+        sections = countries.map { String($0.countryName.prefix(1)).first! }
+            .removeDuplicates()
+            .sorted(by: <)
         for section in sections {
             let sectionCountries = countries.filter({ $0.countryName.first! == section })
             sectionCoutries[section] = sectionCountries
