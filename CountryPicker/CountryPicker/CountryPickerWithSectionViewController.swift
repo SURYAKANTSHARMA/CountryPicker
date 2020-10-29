@@ -89,8 +89,13 @@ internal extension CountryPickerWithSectionViewController {
     
     
     func fetchSectionCountries() {
-        sections = countries.map({ String($0.countryName.prefix(1)).first! }).removeDuplicates()
-        
+        // For Favourite case we need first section empty
+        if isFavoriteEnable {
+            sections.append(contentsOf: "")
+        }
+        sections = countries.map { String($0.countryName.prefix(1)).first! }
+            .removeDuplicates()
+            .sorted(by: <)
         for section in sections {
             let sectionCountries = countries.filter({ $0.countryName.first! == section })
             sectionCoutries[section] = sectionCountries
@@ -103,20 +108,42 @@ internal extension CountryPickerWithSectionViewController {
 extension CountryPickerWithSectionViewController {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return applySearch ? 1 : sections.count
+        if applySearch {
+            return 1
+        }
+        return isFavoriteEnable ? sections.count + 1 : sections.count
     }
     
     override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return applySearch ? filterCountries.count : numberOfRowFor(section: section)
+        guard !applySearch else { return filterCountries.count }
+        return numberOfRowFor(section: section)
     }
 
     func numberOfRowFor(section: Int) -> Int {
+        if isFavoriteEnable {
+            if section == 0 {
+               return favoriteCountry.count
+            }
+            let character = sections[section-1]
+            return sectionCoutries[character]!.count
+        }
         let character = sections[section]
         return sectionCoutries[character]!.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return applySearch ? String(searchHeaderTitle) : sections[section].description
+        guard !applySearch else {
+            return String(searchHeaderTitle)
+        }
+        
+        if isFavoriteEnable {
+            if section == 0 {
+                return nil
+            }
+            return sections[section-1].description
+        }
+
+        return sections[section].description
     }
     
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,6 +160,13 @@ extension CountryPickerWithSectionViewController {
         
         if applySearch {
             country = filterCountries[indexPath.row]
+        } else if isFavoriteEnable {
+            if indexPath.section == 0 {
+                country = favoriteCountry[indexPath.row]
+            } else {
+                let character = sections[indexPath.section-1]
+                country = sectionCoutries[character]![indexPath.row]
+            }
         } else {
             let character = sections[indexPath.section]
             country = sectionCoutries[character]![indexPath.row]
@@ -177,14 +211,28 @@ extension CountryPickerWithSectionViewController {
             CountryManager.shared.lastCountrySelected = country
             self.dismiss(animated: false, completion: nil)
         case false:
-            let character = sections[indexPath.section]
-            let country = sectionCoutries[character]![indexPath.row]
-            self.callBack?(country)
-            CountryManager.shared.lastCountrySelected = country
+            var country: Country?
+            if isFavoriteEnable {
+                if indexPath.section == 0 {
+                    country = favoriteCountry[indexPath.row]
+                } else {
+                    let character = sections[indexPath.section-1]
+                    country = sectionCoutries[character]![indexPath.row]
+                }
+            } else {
+                let character = sections[indexPath.section]
+                country = sectionCoutries[character]![indexPath.row]
+            }
+            guard let _country = country else {
+                #if DEBUG
+                  print("fail to get country")
+                #endif
+                return
+            }
+            callBack?(_country)
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        self.dismiss(animated: true, completion: nil)
-    }
+     }
 }
 
 // MARK: - Array Extenstion

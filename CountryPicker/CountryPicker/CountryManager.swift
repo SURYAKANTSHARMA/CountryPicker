@@ -43,7 +43,9 @@ open class CountryManager {
         let countryManager = CountryManager()
         do { try countryManager.loadCountries()
         } catch {
-            print(error.localizedDescription)
+            #if DEBUG
+              print(error.localizedDescription)
+            #endif
         }
         return countryManager
     }()
@@ -92,8 +94,9 @@ open class CountryManager {
         
     }
 
-    func allCountries() -> [Country] {
-        return countries
+    func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country] {
+          favoriteCountriesLocaleIdentifiers.compactMap {
+            country(withCode: $0) } + countries
     }
     
 }
