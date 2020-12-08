@@ -49,6 +49,13 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         controller.callBack = handler
         
         let navigationController = UINavigationController(rootViewController: controller)
+        
+        if #available(iOS 13.0, *) {
+            
+        } else {
+            navigationController.modalPresentationStyle = .overFullScreen
+        }
+        
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         
         return controller
