@@ -50,9 +50,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         
         let navigationController = UINavigationController(rootViewController: controller)
         
-        if #available(iOS 13.0, *) {
-            
-        } else {
+        if #available(iOS 13.0, *) { } else {
             navigationController.modalPresentationStyle = .overFullScreen
         }
         
