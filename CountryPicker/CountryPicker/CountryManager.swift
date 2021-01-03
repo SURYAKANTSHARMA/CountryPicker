@@ -41,7 +41,8 @@ open class CountryManager {
     
     public static var shared: CountryManager = {
         let countryManager = CountryManager()
-        do { try countryManager.loadCountries()
+        do {
+            try countryManager.loadCountries()
         } catch {
             #if DEBUG
               print(error.localizedDescription)
@@ -139,7 +140,7 @@ public extension CountryManager {
     /// - Returns: A country instance
     
     func country(withCode code: String) -> Country? {
-        return countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
+         countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
     }
     
     
@@ -147,7 +148,7 @@ public extension CountryManager {
     ///
     ///
     func country(withName countryName: String) -> Country? {
-        return countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
+         countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
     }
     
     
@@ -157,7 +158,7 @@ public extension CountryManager {
     ///
     /// - Parameter dialCode:
     func country(withDigitCode dialCode: String) -> Country? {
-        return countries.first(where: { (country) -> Bool in
+         countries.first(where: { (country) -> Bool in
             guard let countryDialCode = country.digitCountrycode else {
                 return false
             }

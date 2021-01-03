@@ -20,9 +20,7 @@ class CountryTests: XCTestCase {
         XCTAssertEqual(sut.dialingCode, "+91")
         XCTAssertEqual(sut.digitCountrycode, "91")
         XCTAssertNotNil(sut.flag)
-        
         XCTAssertEqual(sut.imagePath, "CountryPickerController.bundle/IN")
-        
     }
     
     func test_CountryNameWithLocal_returnRightCountryName() {
@@ -51,5 +49,10 @@ class CountryTests: XCTestCase {
     
     func test_mapCountryCode_returnRightCountryName() {
         XCTAssertEqual(mapCountryName("US"), "United States")
+    }
+    
+    func test_equalCountries() {
+        XCTAssertEqual(Country(countryCode: "IN"), Country(countryCode: "IN"))
+        XCTAssertNotEqual(Country(countryCode: "IN"), Country(countryCode: "US"))
     }
 }

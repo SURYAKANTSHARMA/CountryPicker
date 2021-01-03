@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85DFED1C25A1A905000BB85C /* CountryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DFED1B25A1A905000BB85C /* CountryTest.swift */; };
 		9657E56E2399167400B4B89B /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657E56D2399167300B4B89B /* CountryPickerView.swift */; };
 		9687D64223A3C11E00AC0D8D /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687D64123A3C11E00AC0D8D /* ComponentView.swift */; };
 		9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EB20EF429B000CAFE5 /* Constant.swift */; };
@@ -15,7 +16,7 @@
 		9A4F58F420EF429C000CAFE5 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EE20EF429C000CAFE5 /* Country.swift */; };
 		9A4F58F520EF429C000CAFE5 /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */; };
 		9A4F58F620EF429C000CAFE5 /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */; };
-		9A4F58FE20EF42AA000CAFE5 /* CountryPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */; };
+		9A4F58FE20EF42AA000CAFE5 /* CountryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58FD20EF42AA000CAFE5 /* CountryManagerTests.swift */; };
 		9A4F590020EF42AA000CAFE5 /* CountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0519E282054FDE500C77B45 /* CountryPicker.framework */; };
 		E03F5FE22055163C00FA5B61 /* CountryPickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */; };
 		E0519E2D2054FDE500C77B45 /* CountryPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E0519E2B2054FDE500C77B45 /* CountryPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0D5BDA8022741FEA00A055D4 /* CountryPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85DFED1B25A1A905000BB85C /* CountryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTest.swift; sourceTree = "<group>"; };
 		9657E56D2399167300B4B89B /* CountryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
 		9687D64123A3C11E00AC0D8D /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		9A4F58EB20EF429B000CAFE5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
 		9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerController.swift; sourceTree = "<group>"; };
 		9A4F58FB20EF42AA000CAFE5 /* CountryPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerTests.swift; sourceTree = "<group>"; };
+		9A4F58FD20EF42AA000CAFE5 /* CountryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryManagerTests.swift; sourceTree = "<group>"; };
 		9A4F58FF20EF42AA000CAFE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CountryPickerController.bundle; sourceTree = "<group>"; };
 		E0519E282054FDE500C77B45 /* CountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +90,8 @@
 		9A4F58FC20EF42AA000CAFE5 /* CountryPickerTests */ = {
 			isa = PBXGroup;
 			children = (
-				9A4F58FD20EF42AA000CAFE5 /* CountryPickerTests.swift */,
+				9A4F58FD20EF42AA000CAFE5 /* CountryManagerTests.swift */,
+				85DFED1B25A1A905000BB85C /* CountryTest.swift */,
 				9A4F58FF20EF42AA000CAFE5 /* Info.plist */,
 			);
 			path = CountryPickerTests;
@@ -118,8 +121,8 @@
 			children = (
 				9A4F58EB20EF429B000CAFE5 /* Constant.swift */,
 				9A4F58EE20EF429C000CAFE5 /* Country.swift */,
-				9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */,
 				9A4F58EF20EF429C000CAFE5 /* CountryManager.swift */,
+				9A4F58EC20EF429B000CAFE5 /* CountryCell.swift */,
 				9A4F58F020EF429C000CAFE5 /* CountryPickerController.swift */,
 				9A4F58ED20EF429B000CAFE5 /* CountryPickerWithSectionViewController.swift */,
 				E03F5FDE2055163C00FA5B61 /* CountryPickerController.bundle */,
@@ -280,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A4F58FE20EF42AA000CAFE5 /* CountryPickerTests.swift in Sources */,
+				85DFED1C25A1A905000BB85C /* CountryTest.swift in Sources */,
+				9A4F58FE20EF42AA000CAFE5 /* CountryManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
