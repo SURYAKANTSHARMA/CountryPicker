@@ -21,5 +21,13 @@ class CountryCellTests: XCTestCase {
         XCTAssertEqual(sut.diallingCodeLabel.text, "+91")
         XCTAssertNotNil(sut.flagImageView)
         XCTAssertEqual(sut.flagStyle, .normal)
+        
+        
+        sut.country = Country(countryCode: "US")
+        
+        XCTAssertEqual(sut.nameLabel.text, "United States")
+        XCTAssertEqual(sut.diallingCodeLabel.text, "+1")
+        XCTAssertNotNil(sut.flagImageView)
+        XCTAssertEqual(sut.flagStyle, .normal)
     }
 }

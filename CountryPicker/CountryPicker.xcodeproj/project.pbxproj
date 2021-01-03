@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		85DFED1C25A1A905000BB85C /* CountryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DFED1B25A1A905000BB85C /* CountryTests.swift */; };
 		85DFED3625A1C9B6000BB85C /* CountryCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DFED2E25A1C974000BB85C /* CountryCellTests.swift */; };
+		85DFED4625A2214A000BB85C /* CountryPickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DFED4525A2214A000BB85C /* CountryPickerViewTests.swift */; };
 		9657E56E2399167400B4B89B /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9657E56D2399167300B4B89B /* CountryPickerView.swift */; };
 		9687D64223A3C11E00AC0D8D /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687D64123A3C11E00AC0D8D /* ComponentView.swift */; };
 		9A4F58F120EF429C000CAFE5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4F58EB20EF429B000CAFE5 /* Constant.swift */; };
@@ -37,6 +38,7 @@
 		0D5BDA8022741FEA00A055D4 /* CountryPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85DFED1B25A1A905000BB85C /* CountryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTests.swift; sourceTree = "<group>"; };
 		85DFED2E25A1C974000BB85C /* CountryCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellTests.swift; sourceTree = "<group>"; };
+		85DFED4525A2214A000BB85C /* CountryPickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewTests.swift; sourceTree = "<group>"; };
 		9657E56D2399167300B4B89B /* CountryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
 		9687D64123A3C11E00AC0D8D /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		9A4F58EB20EF429B000CAFE5 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				9A4F58FD20EF42AA000CAFE5 /* CountryManagerTests.swift */,
 				85DFED1B25A1A905000BB85C /* CountryTests.swift */,
 				85DFED2E25A1C974000BB85C /* CountryCellTests.swift */,
+				85DFED4525A2214A000BB85C /* CountryPickerViewTests.swift */,
 				9A4F58FF20EF42AA000CAFE5 /* Info.plist */,
 			);
 			path = CountryPickerTests;
@@ -289,6 +292,7 @@
 				85DFED1C25A1A905000BB85C /* CountryTests.swift in Sources */,
 				85DFED3625A1C9B6000BB85C /* CountryCellTests.swift in Sources */,
 				9A4F58FE20EF42AA000CAFE5 /* CountryManagerTests.swift in Sources */,
+				85DFED4625A2214A000BB85C /* CountryPickerViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
