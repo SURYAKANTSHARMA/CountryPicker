@@ -63,7 +63,7 @@ class CountryPickerTests: XCTestCase {
         XCTAssert(countryManager.currentCountry!.countryCode == currentCountryCode, "faulty default country")
         XCTAssert(countryManager.countries.count == totalCountries, "Fault in loading countries")
         XCTAssert(countryManager.countries[0].countryName < countryManager.countries[1].countryName, "Faulty in sorting")
-        XCTAssert(countryManager.allCountries().count != 0, "Cann't load countries")
+        XCTAssert(countryManager.allCountries([]).count != 0, "Cann't load countries")
     }
     
     func testPerformanceLoadAndSortCountries() {
