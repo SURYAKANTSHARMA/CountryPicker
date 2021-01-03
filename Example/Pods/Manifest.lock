@@ -1,16 +1,16 @@
 PODS:
-  - SKCountryPicker (1.2.8)
+  - SKCountryPicker (1.2.9)
 
 DEPENDENCIES:
-  - SKCountryPicker
+  - SKCountryPicker (from `~/Documents/Projects/CountryPicker/`)
 
-SPEC REPOS:
-  trunk:
-    - SKCountryPicker
+EXTERNAL SOURCES:
+  SKCountryPicker:
+    :path: "~/Documents/Projects/CountryPicker/"
 
 SPEC CHECKSUMS:
-  SKCountryPicker: d475635e3b2eca17a6909955eef628a298e24652
+  SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
 
-PODFILE CHECKSUM: 16f6a16b58894cb5f4f4351a2027b69efec0b2cd
+PODFILE CHECKSUM: 510734b5937899af281d623cac863363dab48dd7
 
 COCOAPODS: 1.8.4

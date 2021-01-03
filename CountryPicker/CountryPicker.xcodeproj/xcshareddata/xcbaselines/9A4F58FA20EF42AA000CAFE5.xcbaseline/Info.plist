@@ -35,6 +35,37 @@
 				<string>com.apple.platform.iphonesimulator</string>
 			</dict>
 		</dict>
+		<key>BFAB8672-6E8A-45D3-9C13-7F2BDFD9192A</key>
+		<dict>
+			<key>localComputer</key>
+			<dict>
+				<key>busSpeedInMHz</key>
+				<integer>100</integer>
+				<key>cpuCount</key>
+				<integer>1</integer>
+				<key>cpuKind</key>
+				<string>Dual-Core Intel Core i7</string>
+				<key>cpuSpeedInMHz</key>
+				<integer>2500</integer>
+				<key>logicalCPUCoresPerPackage</key>
+				<integer>4</integer>
+				<key>modelCode</key>
+				<string>MacBookPro14,1</string>
+				<key>physicalCPUCoresPerPackage</key>
+				<integer>2</integer>
+				<key>platformIdentifier</key>
+				<string>com.apple.platform.macosx</string>
+			</dict>
+			<key>targetArchitecture</key>
+			<string>x86_64</string>
+			<key>targetDevice</key>
+			<dict>
+				<key>modelCode</key>
+				<string>iPod9,1</string>
+				<key>platformIdentifier</key>
+				<string>com.apple.platform.iphonesimulator</string>
+			</dict>
+		</dict>
 		<key>D3660A8F-BFFC-4CFD-9B5D-394733148F7C</key>
 		<dict>
 			<key>localComputer</key>
