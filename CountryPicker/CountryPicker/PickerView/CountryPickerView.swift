@@ -17,9 +17,9 @@ open class CountryPickerView: UIPickerView {
             }
         }
     }
-    
+    private let rowHeight: CGFloat = 45.0
     // ISO 3166-1 alpha-2 two-letter country codes.
-    private var countryCode: [String] = [String]() {
+    private var countryCodes: [String] = [String]() {
         didSet {
             self.updatePickList()
         }
@@ -29,7 +29,7 @@ open class CountryPickerView: UIPickerView {
     
     private var didSelectCountryCallback: ((_ country: Country) -> Void)?
     
-    private var pickList: [Country] = [Country]() {
+    private(set) var pickList: [Country] = [Country]() {
         didSet {
             self.reloadComponent(0)
         }
@@ -94,7 +94,7 @@ open class CountryPickerView: UIPickerView {
         self.countryCodes = codes
     }
     
-    public static func loadPickerView(allCountryList: [Country], selectedCountry: Country?, didSelectCountry: @escaping (_ country: Country) -> Void) -> CountryPickerView {
+    public static func loadPickerView(allCountryList: [Country], selectedCountry: Country? = nil, didSelectCountry: @escaping (_ country: Country) -> Void) -> CountryPickerView {
         let countryPicker = CountryPickerView(allCountryList: allCountryList, selectedCountry: selectedCountry)
         countryPicker.didSelectCountryCallback = didSelectCountry
         return countryPicker
@@ -134,7 +134,7 @@ extension CountryPickerView: UIPickerViewDelegate {
     }
     
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 45.0
+        return rowHeight
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
