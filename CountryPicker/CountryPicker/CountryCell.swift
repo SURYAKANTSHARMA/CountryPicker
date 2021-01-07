@@ -78,7 +78,7 @@ class CountryCell: UITableViewCell {
     }()
     
     
-    private var countryFlagStackView: UIStackView = UIStackView()
+    private(set) var countryFlagStackView: UIStackView = UIStackView()
     private var countryCheckStackView: UIStackView = UIStackView()
     
     

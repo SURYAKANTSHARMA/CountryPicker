@@ -10,13 +10,7 @@ import UIKit
 
 open class CountryPickerView: UIPickerView {
     
-    private var selectedCountry: Country? {
-        didSet {
-            if selectedCountry != nil {
-               self.scrollToSelectedCountry()
-            }
-        }
-    }
+    private var selectedCountry: Country?
     private let rowHeight: CGFloat = 45.0
     // ISO 3166-1 alpha-2 two-letter country codes.
     private var countryCodes: [String] = [String]() {
@@ -36,9 +30,6 @@ open class CountryPickerView: UIPickerView {
     }
     
     private func updatePickList() {
-        if countryCodes.isEmpty {
-            return
-        }
         var tempList = countryCodes
         let list = allCountryList.filter { (country) -> Bool in
             if let index = tempList.firstIndex(of: country.countryCode) {

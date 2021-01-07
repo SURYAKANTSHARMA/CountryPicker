@@ -14,25 +14,40 @@ class CountryPickerViewTests: XCTestCase {
     
     let countries = [Country(countryCode: "IN"), Country(countryCode: "US")]
     
-    func init_shouldLoadView_with_givenCountries() {
+    func test_init_shouldLoadView_with_givenCountries() {
         let sut = makeSUT()
         let numberOfComponent = sut.dataSource?.numberOfComponents(in: sut)
         XCTAssertEqual(numberOfComponent, 1)
         let numberOfRows = sut.dataSource?.pickerView(sut, numberOfRowsInComponent: 0)
         XCTAssertEqual(numberOfRows, countries.count)
         // Should be default selected for index 0
-        XCTAssertEqual(sut.selectedRow(inComponent: 1), 0)
+        XCTAssertEqual(sut.selectedRow(inComponent: 0), 0)
     }
     
-    func shouldAbletoCall_Callback_when_userSelectCountry() {
+    func test_shouldAbletoCall_Callback_when_userSelectCountry() {
         let countries = [Country(countryCode: "IN"), Country(countryCode: "US")]
         var logCallbackCounter = 0
         var selectedCountry: Country?
         let sut = CountryPickerView.loadPickerView(allCountryList: countries) { country in
-            logCallbackCounter += 0
+            logCallbackCounter += 1
             selectedCountry = country
         }
         
+        sut.pickerView(sut, didSelectRow: 0, inComponent: 0)
+        
+        XCTAssertEqual(selectedCountry, countries[0])
+        XCTAssertEqual(logCallbackCounter, 1)
+    }
+    
+    func test_shouldAbletoCallCallback_whenCallbackSetExplictly() {
+        let countries = [Country(countryCode: "IN"), Country(countryCode: "US")]
+        var logCallbackCounter = 0
+        var selectedCountry: Country?
+        let sut = CountryPickerView(allCountryList: countries)
+        sut.onSelectCountry { country in
+            logCallbackCounter += 1
+            selectedCountry = country
+        }
         sut.pickerView(sut, didSelectRow: 0, inComponent: 0)
         
         XCTAssertEqual(selectedCountry, countries[0])
@@ -77,6 +92,13 @@ class CountryPickerViewTests: XCTestCase {
         
         let numberOfRows = sut.dataSource?.pickerView(sut, numberOfRowsInComponent: 0)
         XCTAssertEqual(numberOfRows, 1)
+    }
+    
+    func test_scrollToSelectCountry_shouldNotScroll_ifSelectedCountryIsNil() {
+        let sut = CountryPickerView(allCountryList: countries, selectedCountry: nil)
+        
+        XCTAssertEqual(sut.selectedRow(inComponent: 0), 0)
+        
     }
     
     // MARK :- Helpers
