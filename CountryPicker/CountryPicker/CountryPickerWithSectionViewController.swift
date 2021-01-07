@@ -122,7 +122,7 @@ extension CountryPickerWithSectionViewController {
     func numberOfRowFor(section: Int) -> Int {
         if isFavoriteEnable {
             if section == 0 {
-               return favoriteCountry.count
+               return favoriteCountries.count
             }
             let character = sections[section-1]
             return sectionCoutries[character]!.count
@@ -162,7 +162,7 @@ extension CountryPickerWithSectionViewController {
             country = filterCountries[indexPath.row]
         } else if isFavoriteEnable {
             if indexPath.section == 0 {
-                country = favoriteCountry[indexPath.row]
+                country = favoriteCountries[indexPath.row]
             } else {
                 let character = sections[indexPath.section-1]
                 country = sectionCoutries[character]![indexPath.row]
@@ -214,7 +214,7 @@ extension CountryPickerWithSectionViewController {
             var country: Country?
             if isFavoriteEnable {
                 if indexPath.section == 0 {
-                    country = favoriteCountry[indexPath.row]
+                    country = favoriteCountries[indexPath.row]
                 } else {
                     let character = sections[indexPath.section-1]
                     country = sectionCoutries[character]![indexPath.row]
