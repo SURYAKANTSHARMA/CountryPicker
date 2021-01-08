@@ -11,9 +11,9 @@ import UIKit
 open class CountryPickerWithSectionViewController: CountryPickerController {
 
     // MARK: - Variables
-    private var sections: [Character] = []
-    private var sectionCoutries =  [Character: [Country]]()
-    private var searchHeaderTitle: Character = "A"
+    private(set) var sections: [Character] = []
+    private(set) var sectionCoutries =  [Character: [Country]]()
+    private(set) var searchHeaderTitle: Character = "A"
 
     // MARK: - View Life Cycle
     override open func viewDidLoad() {

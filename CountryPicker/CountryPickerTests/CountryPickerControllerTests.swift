@@ -208,16 +208,6 @@ class countryPickerControllerTests: XCTestCase {
 }
 
 
-private extension UIViewController {
-    func startLifeCycle() {
-        _ = view
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
-        beginAppearanceTransition(true, animated: true)
-        endAppearanceTransition()
-    }
-}
-
 private extension UIBarButtonItem {
     func simulateTap() {
         target!.performSelector(onMainThread: action!, with: nil, waitUntilDone: true)
