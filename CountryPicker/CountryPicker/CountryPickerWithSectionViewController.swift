@@ -84,12 +84,13 @@ internal extension CountryPickerWithSectionViewController {
         let countrySectionKeyIndexes = sectionCoutries.keys.map { $0 }.sorted()
         let countryMatchSectionIndex = countrySectionKeyIndexes.firstIndex(of: sectionTitle)
         
-        if let itemIndexPath = countryMatchIndex, let sectionIndexPath = countryMatchSectionIndex {
-            let previousCountryIndex = IndexPath(item: itemIndexPath, section: sectionIndexPath)
-            if (self.tableView.numberOfSections > previousCountryIndex.section && self.tableView.numberOfRows(inSection: previousCountryIndex.section) > previousCountryIndex.row) {
-                self.tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
-            }
+        guard let row = countryMatchIndex, var section = countryMatchSectionIndex else {
+            return
         }
+        if isFavoriteEnable { // If favourite enable first section is by default reserved for favourite
+            section += 1
+        }
+        tableView.scrollToRow(at: IndexPath(row: row, section: section), at: .middle, animated: true)
     }
     
     
@@ -102,7 +103,7 @@ internal extension CountryPickerWithSectionViewController {
             .removeDuplicates()
             .sorted(by: <)
         for section in sections {
-            let sectionCountries = countries.filter({ $0.countryName.first! == section })
+            let sectionCountries = countries.filter({ $0.countryName.first! == section }).removeDuplicates()
             sectionCoutries[section] = sectionCountries
         }
     }

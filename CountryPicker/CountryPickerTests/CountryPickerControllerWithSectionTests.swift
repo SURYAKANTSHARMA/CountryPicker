@@ -303,6 +303,20 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         XCTAssertNotNil(isIndiaCellVisible)
     }
     
+    func test_scrollToPreviousShould_scrollToPreviousCountryInTableView_whenFavouriteEnable() {
+        let sut = makeSUT()
+        let india = Country(countryCode: "IN")
+        sut.loadCountries()
+        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
+        CountryManager.shared.lastCountrySelected = india
+        sut.scrollToPreviousCountryIfNeeded()
+        let isIndiaCellCount = sut.tableView.visibleCells.filter { cell in
+            guard let cell = cell as? CountryCell else { return false }
+            return cell.country == india
+        }.compactMap{$0}.count
+        XCTAssertEqual(isIndiaCellCount, 1)
+    }
+    
     //MARK: - Helpers
     func makeSUT(presentingVC: UIViewController = UIViewController(), callback:((Country) -> Void)? = nil) -> CountryPickerWithSectionViewController {
         let sut = CountryPickerWithSectionViewController.presentController(on: presentingVC) { country in
