@@ -86,7 +86,9 @@ internal extension CountryPickerWithSectionViewController {
         
         if let itemIndexPath = countryMatchIndex, let sectionIndexPath = countryMatchSectionIndex {
             let previousCountryIndex = IndexPath(item: itemIndexPath, section: sectionIndexPath)
-            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+            if (self.tableView.numberOfSections > previousCountryIndex.section && self.tableView.numberOfRows(inSection: previousCountryIndex.section) > previousCountryIndex.row) {
+                self.tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+            }
         }
     }
     
