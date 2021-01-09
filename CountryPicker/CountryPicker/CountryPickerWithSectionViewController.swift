@@ -33,7 +33,10 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
-        
+        scrollToPreviousCountryIfNeeded()
+    }
+    
+    internal func scrollToPreviousCountryIfNeeded() {
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = CountryManager.shared.lastCountrySelected {
            let previousCountryFirstCharacter = previousCountry.countryName.first!
@@ -207,9 +210,7 @@ extension CountryPickerWithSectionViewController {
         switch applySearch {
         case true:
             let country = filterCountries[indexPath.row]
-            self.callBack?(country)
-            CountryManager.shared.lastCountrySelected = country
-            self.dismiss(animated: false, completion: nil)
+            triggerCallbackAndDismiss(with: country)
         case false:
             var country: Country?
             if isFavoriteEnable {
@@ -229,10 +230,15 @@ extension CountryPickerWithSectionViewController {
                 #endif
                 return
             }
-            callBack?(_country)
-            self.dismiss(animated: true, completion: nil)
+            triggerCallbackAndDismiss(with: _country)
         }
      }
+    
+    private func triggerCallbackAndDismiss(with country: Country) {
+        callBack?(country)
+        CountryManager.shared.lastCountrySelected = country
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - Array Extenstion

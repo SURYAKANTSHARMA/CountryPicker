@@ -26,9 +26,7 @@ class CountryPickerTests: XCTestCase {
         
         XCTAssertFalse(countryManager.countries.isEmpty)
         XCTAssert(countryManager.allCountries([]).count != 0, "Cann't load countries")
-        XCTAssertNil(countryManager.lastCountrySelected)
         XCTAssertEqual(countryManager.defaultFilter, .countryName)
-       
     }
     
     func test_currentCountryCode() {
@@ -55,10 +53,11 @@ class CountryPickerTests: XCTestCase {
     
     
     func test_addFilter_shouldAbleToInsertFilter() {
-        XCTAssertEqual(countryManager.filters, [.countryName])
+        countryManager.addFilter(.countryName)
+        XCTAssertTrue(countryManager.filters.contains(.countryName))
         countryManager.addFilter(.countryDialCode)
-        
-        XCTAssertEqual(countryManager.filters, [.countryName, .countryDialCode])
+        XCTAssertTrue(countryManager.filters.contains(.countryDialCode))
+        XCTAssertTrue(countryManager.filters.contains(.countryName))
     }
     
     func test_removeFilter_shouldAbleToRemoveFilter() {

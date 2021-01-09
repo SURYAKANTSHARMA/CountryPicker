@@ -14,6 +14,5 @@ extension UIViewController {
         view.setNeedsLayout()
         view.layoutIfNeeded()
         beginAppearanceTransition(true, animated: true)
-        endAppearanceTransition()
     }
 }

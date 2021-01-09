@@ -23,7 +23,7 @@ class countryPickerControllerTests: XCTestCase {
        
         var logCallbackCounter = 0
         var selectedCountry: Country?
-        
+         
         let callback:(Country) -> Void = { country in
             logCallbackCounter += 1
             selectedCountry = country
@@ -31,7 +31,6 @@ class countryPickerControllerTests: XCTestCase {
         let sut = makeSUT(callback: callback)
         let country = Country(countryCode: "IN")
         sut.callBack?(country)
-        
         
         XCTAssertEqual(selectedCountry, country)
         XCTAssertEqual(logCallbackCounter, 1)
@@ -214,7 +213,7 @@ private extension UIBarButtonItem {
     }
 }
 
-private extension UISearchBar {
+extension UISearchBar {
     func simulateSearch(text: String) {
         self.text = text
         delegate?.searchBar?(self, textDidChange: text)

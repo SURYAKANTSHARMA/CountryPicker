@@ -16,8 +16,8 @@ extension UITableView {
         cell(at: row)?.textLabel?.text
     }
     
-    func select(row: Int) {
-        let indexPath = IndexPath(row: row, section: 0)
+    func select(row: Int, section: Int = 0) {
+        let indexPath = IndexPath(row: row, section: section)
         self.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         self.delegate?.tableView?(self, didSelectRowAt: indexPath)
     }
