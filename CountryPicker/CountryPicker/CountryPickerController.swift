@@ -58,8 +58,8 @@ open class CountryPickerController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    internal var isFavoriteEnable: Bool { return !favoriteCountry.isEmpty }
-    internal var favoriteCountry: [Country] {
+    internal var isFavoriteEnable: Bool { return !favoriteCountries.isEmpty }
+    internal var favoriteCountries: [Country] {
         return self.favoriteCountriesLocaleIdentifiers
             .compactMap { CountryManager.shared.country(withCode: $0) }
     }
@@ -106,7 +106,6 @@ open class CountryPickerController: UIViewController {
     // MARK: - View life cycle
     private func setUpsSearchController() {
         searchController.hidesNavigationBarDuringPresentation = true
-        searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.barStyle = .default
         searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
@@ -332,7 +331,7 @@ extension CountryPickerController: UISearchBarDelegate {
         
         let searchTextTrimmed = searchBar.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard let searchText = searchTextTrimmed, searchText.isEmpty == false else {
+        guard let searchText = searchTextTrimmed, !searchText.isEmpty else {
             self.applySearch = false
             self.filterCountries.removeAll()
             self.tableView.reloadData()
@@ -342,29 +341,8 @@ extension CountryPickerController: UISearchBarDelegate {
         applySearch = true
         filterCountries.removeAll()
         
-        let filteredCountries = countries.compactMap { (country) -> Country? in
-            
-            let countryMatchFound = country.countryName.lowercased().contains(searchText)
-            
-            // Filter country by country name first character
-            if CountryManager.shared.defaultFilter == .countryName, countryMatchFound {
-                return country
-            }
-
-            // Filter country by country code and utilise `CountryFilterOptions`
-            if CountryManager.shared.filters.contains(.countryCode), countryMatchFound {
-                return country
-            }
-
-            // Filter country by digit country code and utilise `CountryFilterOptions`
-            if CountryManager.shared.filters.contains(.countryDialCode),
-                let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
-                return country
-            }
-
-            return nil
-        }.removeDuplicates()
-        
+        let filteredCountries = CountryPickerEngine().filterCountries(searchText: searchText)
+    
         // Append filtered countries
         filterCountries.append(contentsOf: filteredCountries)
     }

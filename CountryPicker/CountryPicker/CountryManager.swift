@@ -26,7 +26,7 @@ public enum CountryFilterOption {
 open class CountryManager {
     
     // MARK: - variable
-    private(set) var countries = [Country]()
+    public var countries = [Country]()
     
     private var countriesFilePath: String? {
         #if SWIFT_PACKAGE

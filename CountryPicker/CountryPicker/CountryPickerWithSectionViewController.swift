@@ -11,9 +11,9 @@ import UIKit
 open class CountryPickerWithSectionViewController: CountryPickerController {
 
     // MARK: - Variables
-    private var sections: [Character] = []
-    private var sectionCoutries =  [Character: [Country]]()
-    private var searchHeaderTitle: Character = "A"
+    private(set) var sections: [Character] = []
+    private(set) var sectionCoutries =  [Character: [Country]]()
+    private(set) var searchHeaderTitle: Character = "A"
 
     // MARK: - View Life Cycle
     override open func viewDidLoad() {
@@ -33,7 +33,10 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
         }
-        
+        scrollToPreviousCountryIfNeeded()
+    }
+    
+    internal func scrollToPreviousCountryIfNeeded() {
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = CountryManager.shared.lastCountrySelected {
            let previousCountryFirstCharacter = previousCountry.countryName.first!
@@ -81,10 +84,13 @@ internal extension CountryPickerWithSectionViewController {
         let countrySectionKeyIndexes = sectionCoutries.keys.map { $0 }.sorted()
         let countryMatchSectionIndex = countrySectionKeyIndexes.firstIndex(of: sectionTitle)
         
-        if let itemIndexPath = countryMatchIndex, let sectionIndexPath = countryMatchSectionIndex {
-            let previousCountryIndex = IndexPath(item: itemIndexPath, section: sectionIndexPath)
-            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
+        guard let row = countryMatchIndex, var section = countryMatchSectionIndex else {
+            return
         }
+        if isFavoriteEnable { // If favourite enable first section is by default reserved for favourite
+            section += 1
+        }
+        tableView.scrollToRow(at: IndexPath(row: row, section: section), at: .middle, animated: true)
     }
     
     
@@ -97,7 +103,7 @@ internal extension CountryPickerWithSectionViewController {
             .removeDuplicates()
             .sorted(by: <)
         for section in sections {
-            let sectionCountries = countries.filter({ $0.countryName.first! == section })
+            let sectionCountries = countries.filter({ $0.countryName.first! == section }).removeDuplicates()
             sectionCoutries[section] = sectionCountries
         }
     }
@@ -122,7 +128,7 @@ extension CountryPickerWithSectionViewController {
     func numberOfRowFor(section: Int) -> Int {
         if isFavoriteEnable {
             if section == 0 {
-               return favoriteCountry.count
+               return favoriteCountries.count
             }
             let character = sections[section-1]
             return sectionCoutries[character]!.count
@@ -162,7 +168,7 @@ extension CountryPickerWithSectionViewController {
             country = filterCountries[indexPath.row]
         } else if isFavoriteEnable {
             if indexPath.section == 0 {
-                country = favoriteCountry[indexPath.row]
+                country = favoriteCountries[indexPath.row]
             } else {
                 let character = sections[indexPath.section-1]
                 country = sectionCoutries[character]![indexPath.row]
@@ -207,14 +213,12 @@ extension CountryPickerWithSectionViewController {
         switch applySearch {
         case true:
             let country = filterCountries[indexPath.row]
-            self.callBack?(country)
-            CountryManager.shared.lastCountrySelected = country
-            self.dismiss(animated: false, completion: nil)
+            triggerCallbackAndDismiss(with: country)
         case false:
             var country: Country?
             if isFavoriteEnable {
                 if indexPath.section == 0 {
-                    country = favoriteCountry[indexPath.row]
+                    country = favoriteCountries[indexPath.row]
                 } else {
                     let character = sections[indexPath.section-1]
                     country = sectionCoutries[character]![indexPath.row]
@@ -229,10 +233,15 @@ extension CountryPickerWithSectionViewController {
                 #endif
                 return
             }
-            callBack?(_country)
-            self.dismiss(animated: true, completion: nil)
+            triggerCallbackAndDismiss(with: _country)
         }
      }
+    
+    private func triggerCallbackAndDismiss(with country: Country) {
+        callBack?(country)
+        CountryManager.shared.lastCountrySelected = country
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - Array Extenstion
