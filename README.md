@@ -29,7 +29,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Best practices followed
 - [x] Dark mode supported in iOS 13
 - [x] Support Dynamic font size for ContentSizeCategory
-- [x] Unit tested added
+- [x] Unit tests coverage 94%
 - [x] Picker view support added with customization 
 
 ## Requirements
@@ -116,49 +116,52 @@ Add the following line to your Package.swift file in the dependencies section:
 ## Getting Started
 Example:
 Please  check [example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/Example) project for customization and different option available.
-```swift
-import UIKit
-import SKCountryPicker
-class ViewController: UIViewController  {
-  //MARK:- IBOutlet
-  @IBOutlet weak var countryCodeButton: UIButton!
-  @IBOutlet weak var countryImageView: UIImageView!
-
-  //MARK:- Func
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-
-    guard let country = CountryManager.shared.currentCountry else {
-        self.countryCodeButton.setTitle("Pick Country", for: .normal)
-        self.countryImageView.isHidden = true
-        return
+```swift 
+private extension ViewController {
+    
+    /// Dynamically presents country picker scene with an option of including `Selection Control`.
+    ///
+    /// By default, invoking this function without defining `selectionControlEnabled` parameter. Its set to `True`
+    /// unless otherwise and the `Selection Control` will be included into the list view.
+    ///
+    /// - Parameter selectionControlEnabled: Section Control State. By default its set to `True` unless otherwise.
+    
+    func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = true) {
+        switch selectionControlEnabled {
+        case true:
+            // Present country picker with `Section Control` enabled
+            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+                
+                guard let self = self else { return }
+                
+                self.countryImageView.isHidden = false
+                self.countryImageView.image = country.flag
+                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+            }
+            
+            countryController.flagStyle = .circular
+            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
+            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+        case false:
+            // Present country picker without `Section Control` enabled
+            let countryController = CountryPickerController.presentController(on: self) { [weak self] (country: Country) in
+                
+                guard let self = self else { return }
+                
+                self.countryImageView.isHidden = false
+                self.countryImageView.image = country.flag
+                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
+            }
+            
+            countryController.flagStyle = .corner
+            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
+            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+        }
     }
-
-    countryCodeButton.setTitle(country.dialingCode, for: .normal)
-    countryImageView.image = country.flag
-    countryCodeButton.clipsToBounds = true
-  }
-
-
-  @IBAction func countryCodeButtonClicked(_ sender: UIButton) {
-
-    // Invoke below static method to present country picker without section control
-    // CountryPickerController.presentController(on: self) { ... }
-
-    let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
-
-      guard let self = self else { return }
-
-      self.countryImageView.image = country.flag
-      self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
-
-    }
-
-    // can customize the countryPicker here e.g font and color
-    countryController.detailColor = UIColor.red
-   }
 }
+
 ```
 
 ## Filter Options
