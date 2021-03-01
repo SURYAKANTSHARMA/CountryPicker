@@ -101,7 +101,7 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "GT": "502",
     "GN": "224",
     "GW": "245",
-    "GY": "595",
+    "GY": "592",
     "HT": "509",
     "HN": "504",
     "HU": "36",
