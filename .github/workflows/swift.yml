@@ -14,5 +14,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build app
-      run: xcodebuild clean build test -enableCodeCoverage YES -project CountryPicker/CountryPicker.xcodeproj -scheme CountryPicker -destination 'platform=iOS Simulator,OS=13.0,name=iPhone 8' ONLY_ACTIVE_ARCH=YES
+      run: xcodebuild clean build test -enableCodeCoverage YES -project CountryPicker/CountryPicker.xcodeproj -scheme CountryPicker -destination 'platform=iOS Simulator,name=iPhone 8' ONLY_ACTIVE_ARCH=YES
 
