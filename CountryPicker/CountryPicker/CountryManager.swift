@@ -71,10 +71,21 @@ open class CountryManager {
     internal var filters: Set<CountryFilterOption> = [.countryName]
     
     
-    private init() {}
+    public init() {}
     
-    func loadCountries() throws {
+    open func loadCountries() throws {
+        let countryCodes = try! getCountryCodes()
         
+        // Clear old loaded countries
+        countries.removeAll()
+        
+        // Request for fresh copy of sorted country list
+        let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
+        countries.append(contentsOf: sortedCountries)
+        
+    }
+    
+    open func getCountryCodes() throws -> [String] {
         guard let countriesFilePath = countriesFilePath else {
             throw "Missing contries file path"
         }
@@ -86,13 +97,7 @@ open class CountryManager {
                 throw "Missing array of countries plist in CountryPicker"
         }
         
-        // Clear old loaded countries
-        countries.removeAll()
-        
-        // Request for fresh copy of sorted country list
-        let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
-        countries.append(contentsOf: sortedCountries)
-        
+        return countryCodes
     }
 
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country] {
