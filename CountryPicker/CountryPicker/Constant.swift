@@ -114,7 +114,7 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "JM": "876",
     "JP": "81",
     "JO": "962",
-    "KZ": "77",
+    "KZ": "7",
     "KE": "254",
     "KI": "686",
     "KW": "965",
