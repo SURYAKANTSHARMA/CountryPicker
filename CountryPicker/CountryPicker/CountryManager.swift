@@ -69,70 +69,59 @@ open class CountryManager {
     ///
     /// - Note: By default, countries can be filtered by there country names
     internal var filters: Set<CountryFilterOption> = [.countryName]
-    
-    
+        
     private init() {}
+
+}
+
+
+public extension CountryManager {
     
-    func loadCountries() throws {
-        
-        guard let countriesFilePath = countriesFilePath else {
-            throw "Missing contries file path"
-        }
-        
-        let url = URL(fileURLWithPath: countriesFilePath)
-        
-        guard let rawData = try? Data(contentsOf: url),
+    /// Fetch country list from a given property list file path
+    ///
+    /// - Parameter path: URL for the country plist file path
+    /// - Returns: A list of countries sorted by `CountryName`
+    
+    func fetchCountries(fromURLPath path: URL) throws -> [Country] {
+        guard let rawData = try? Data(contentsOf: path),
             let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
-                throw "Missing array of countries plist in CountryPicker"
+            throw "[CountryManager] ❌ Missing countries plist file from path: \(path)"
         }
         
-        // Clear old loaded countries
-        countries.removeAll()
-        
-        // Request for fresh copy of sorted country list
+        // Sort country list by `countryName`
         let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
-        countries.append(contentsOf: sortedCountries)
         
+        #if DEBUG
+        print("[CountryManager] ✅ Succefully prepared list of \(sortedCountries.count) countries")
+        #endif
+        
+        return sortedCountries
+    }
+    
+    /// Prepares a country list object for usage while clearing any cached countries
+    ///
+    /// - Throws: Incase country list preperation fails to determine or convert data from a given URL file path.
+    func loadCountries() throws {
+        let url = URL(fileURLWithPath: countriesFilePath ?? "")
+        let fetchedCountries = try fetchCountries(fromURLPath: url)
+        countries.removeAll()
+        countries.append(contentsOf: fetchedCountries)
     }
 
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country] {
-          favoriteCountriesLocaleIdentifiers.compactMap {
-            country(withCode: $0) } + countries
+        favoriteCountriesLocaleIdentifiers
+            .compactMap { country(withCode: $0) } + countries
     }
     
+    /// As the function name, resets the last selected country
+    func resetLastSelectedCountry() {
+        lastCountrySelected = nil
+    }
 }
 
 
 // MARK: - Country Filter Methods
 public extension CountryManager {
-    
-    ///  Adds a new filter into `filters` collection with no duplicates
-    ///
-    /// - Parameter filter: New filter to be added
-    
-    func addFilter(_ filter: CountryFilterOption) {
-        filters.insert(filter)
-    }
-    
-    
-    /// Removes a given filter from `filters` collection
-    ///
-    /// - Parameter filter: A filter to b removed
-    
-    func removeFilter(_ filter: CountryFilterOption) {
-        filters = filters.filter { $0 != filter }
-    }
-    
-    
-    /// Removes all stored filters from `filter` collection
-    ///
-    /// - Note: By default, it configures a default filter ~ `CountryFilterOptions.countryName`
-    
-    func clearAllFilters() {
-        filters.removeAll()
-        filters.insert(defaultFilter) // Set default filter option
-    }
-    
     
     /// Requests for a `Country` instance based on country code
     ///
@@ -172,6 +161,38 @@ public extension CountryManager {
             
             return dialCode == countryDialCode
         })
+    }
+}
+
+
+// MARK: - CountryFilterOption Methods
+public extension CountryManager {
+    
+    ///  Adds a new filter into `filters` collection with no duplicates
+    ///
+    /// - Parameter filter: New filter to be added
+    
+    func addFilter(_ filter: CountryFilterOption) {
+        filters.insert(filter)
+    }
+    
+    
+    /// Removes a given filter from `filters` collection
+    ///
+    /// - Parameter filter: A filter to b removed
+    
+    func removeFilter(_ filter: CountryFilterOption) {
+        filters.remove(filter)
+    }
+    
+    
+    /// Removes all stored filters from `filter` collection
+    ///
+    /// - Note: By default, it configures a default filter ~ `CountryFilterOptions.countryName`
+    
+    func clearAllFilters() {
+        filters.removeAll()
+        filters.insert(defaultFilter) // Set default filter option
     }
 }
 

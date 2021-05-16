@@ -12,6 +12,16 @@ import XCTest
 class CountryPickerTests: XCTestCase {
     var countryManager: CountryManager!
     
+    var validCountryFilePath: String? {
+        let bundle = Bundle(for: CountryManager.self)
+        return bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
+    }
+    
+    var invalidCountryFilePath: String? {
+        let bundle = Bundle(for: CountryManager.self)
+        return bundle.path(forResource: "CountryPickerController.bundle/countriess", ofType: "plist")
+    }
+    
     override func setUp() {
         super.setUp()
         countryManager = CountryManager.shared
@@ -23,7 +33,6 @@ class CountryPickerTests: XCTestCase {
     }
     
     func test_afterloadMethod_countriesShoulLoadCorrectly() {
-        
         XCTAssertFalse(countryManager.countries.isEmpty)
         XCTAssert(countryManager.allCountries([]).count != 0, "Cann't load countries")
         XCTAssertEqual(countryManager.defaultFilter, .countryName)
@@ -78,6 +87,36 @@ class CountryPickerTests: XCTestCase {
         XCTAssertEqual(countryManager.country(withName: "India"), country)
         XCTAssertEqual(countryManager.country(withDigitCode: "+91"), country)
         XCTAssertNil(countryManager.country(withDigitCode: "+3232"))
+    }
+    
+    func test_countryLoading_withValidPath() {
+        let urlPath = URL(fileURLWithPath: validCountryFilePath ?? "")
+        let countries = try? countryManager.fetchCountries(fromURLPath: urlPath)
+        XCTAssertNotNil(countries)
+        XCTAssertEqual(countries?.count, 250)
+    }
+    
+    func test_countryLoading_withInvalidPath() {
+        let urlPath = URL(fileURLWithPath: invalidCountryFilePath ?? "")
+        let countries = try? countryManager.fetchCountries(fromURLPath: urlPath)
+        XCTAssertNil(countries)
+        XCTAssertEqual(countries?.count, nil)
+    }
+    
+    func test_lastCountrySelected() {
+        
+        let countrySelected = countryManager.country(withCode: "TZ")
+        countryManager.lastCountrySelected = countrySelected
+        XCTAssertEqual(countryManager.lastCountrySelected?.countryCode, countrySelected?.countryCode)
+    }
+    
+    func test_resetLastCountrySelected() {
+        let countrySelected = countryManager.country(withCode: "TZ")
+        countryManager.lastCountrySelected = countrySelected
+        XCTAssertEqual(countryManager.lastCountrySelected?.countryCode, countrySelected?.countryCode)
+        
+        countryManager.resetLastSelectedCountry()
+        XCTAssertNil(countryManager.lastCountrySelected)
     }
     
     func testPerformanceLoadAndSortCountries() {
