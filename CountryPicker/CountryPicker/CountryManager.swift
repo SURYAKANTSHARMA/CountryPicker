@@ -82,7 +82,7 @@ public extension CountryManager {
     /// - Parameter path: URL for the country plist file path
     /// - Returns: A list of countries sorted by `CountryName`
     
-    private func fetchCountries(fromURLPath path: URL) throws -> [Country] {
+    func fetchCountries(fromURLPath path: URL) throws -> [Country] {
         guard let rawData = try? Data(contentsOf: path),
             let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
             throw "[CountryManager] ❌ Missing countries plist file from path: \(path)"
