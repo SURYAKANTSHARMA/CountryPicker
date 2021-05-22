@@ -10,7 +10,7 @@ import Foundation
 
 // ISO 3166-1 alpha-2 two-letter country codes.
 let isoToDigitCountryCodeDictionary: [String: String] = [
-    "AX": "352",
+    "AX": "358",
     "AQ": "672",
     "AS": "1684",
     "AI": "1264",
@@ -52,7 +52,7 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "CA": "1",
     "CV": "238",
     "CW": "599",
-    "KY": "345",
+    "KY": "1345",
     "CF": "236",
     "TD": "235",
     "TF": "262",
@@ -111,7 +111,7 @@ let isoToDigitCountryCodeDictionary: [String: String] = [
     "IQ": "964",
     "IE": "353",
     "IT": "39",
-    "JM": "876",
+    "JM": "1876",
     "JP": "81",
     "JO": "962",
     "KZ": "7",
