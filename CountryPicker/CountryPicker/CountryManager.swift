@@ -23,7 +23,7 @@ public enum CountryFilterOption {
 }
 
 
-open class CountryManager {
+open class CountryManager: CountryManagerInterface {
     
     // MARK: - variable
     public var countries = [Country]()
@@ -60,7 +60,7 @@ open class CountryManager {
     }
     
     
-    internal var lastCountrySelected: Country?
+    public var lastCountrySelected: Country?
     
     /// Default country filter option
     internal let defaultFilter: CountryFilterOption = .countryName

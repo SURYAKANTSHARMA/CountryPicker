@@ -8,6 +8,14 @@
 
 import UIKit
 
+typealias CountryCode = String
+
+public protocol CountryManagerInterface {
+    func country(withCode code: String) -> Country?
+    func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
+    var lastCountrySelected: Country? {get set}
+}
+
 
 /// Country flag styles
 public enum CountryFlagStyle {
@@ -61,7 +69,7 @@ open class CountryPickerController: UIViewController {
     internal var isFavoriteEnable: Bool { return !favoriteCountries.isEmpty }
     internal var favoriteCountries: [Country] {
         return self.favoriteCountriesLocaleIdentifiers
-            .compactMap { CountryManager.shared.country(withCode: $0) }
+            .compactMap {manager.country(withCode: $0) }
     }
     /// Properties for countryPicker controller
     public var statusBarStyle: UIStatusBarStyle? = .default
@@ -101,6 +109,16 @@ open class CountryPickerController: UIViewController {
     
     internal var checkMarkImage: UIImage? {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+    }
+    private var manager: CountryManagerInterface
+    
+    init(manager: CountryManagerInterface) {
+        self.manager = manager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - View life cycle
@@ -160,7 +178,7 @@ open class CountryPickerController: UIViewController {
         }
         
         /// Request for previous country and automatically scroll table view to item
-        if let previousCountry = CountryManager.shared.lastCountrySelected {
+        if let previousCountry = manager.lastCountrySelected {
             scrollToCountry(previousCountry)
         }
     }
@@ -203,8 +221,9 @@ open class CountryPickerController: UIViewController {
     
     @discardableResult
     open class func presentController(on viewController: UIViewController,
+                                      manager: CountryManagerInterface = CountryManager.shared,
                                       handler:@escaping (_ country: Country) -> Void) -> CountryPickerController {
-        let controller = CountryPickerController()
+        let controller = CountryPickerController(manager: manager)
         controller.presentingVC = viewController
         controller.callBack = handler
         let navigationController = UINavigationController(rootViewController: controller)
@@ -223,7 +242,7 @@ open class CountryPickerController: UIViewController {
 internal extension CountryPickerController {
 
     func loadCountries() {
-        countries = CountryManager.shared.allCountries(favoriteCountriesLocaleIdentifiers)
+        countries = manager.allCountries(favoriteCountriesLocaleIdentifiers)
     }
     
     ///
@@ -273,7 +292,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             country = countries[indexPath.row]
         }
         
-        if let lastSelectedCountry = CountryManager.shared.lastCountrySelected {
+        if let lastSelectedCountry = manager.lastCountrySelected {
             cell.checkMarkImageView.isHidden = country.countryCode == lastSelectedCountry.countryCode ? false : true
         }
         
@@ -312,7 +331,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         }
         
         callBack?(selectedCountry)
-        CountryManager.shared.lastCountrySelected = selectedCountry
+        manager.lastCountrySelected = selectedCountry
             
         dismiss(animated: dismissWithAnimation, completion: nil)
     }
