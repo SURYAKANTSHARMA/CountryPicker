@@ -38,7 +38,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     
     internal func scrollToPreviousCountryIfNeeded() {
         /// Request for previous country and automatically scroll table view to item
-        if let previousCountry = CountryManager.shared.lastCountrySelected {
+        if let previousCountry = manager.lastCountrySelected {
            let previousCountryFirstCharacter = previousCountry.countryName.first!
            scrollToCountry(previousCountry, withSection: previousCountryFirstCharacter)
         }
@@ -179,7 +179,7 @@ extension CountryPickerWithSectionViewController {
             country = sectionCoutries[character]![indexPath.row]
         }
 
-        if let alreadySelectedCountry = CountryManager.shared.lastCountrySelected {
+        if let alreadySelectedCountry = manager.lastCountrySelected {
             cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
         }
 
@@ -240,7 +240,7 @@ extension CountryPickerWithSectionViewController {
     
     private func triggerCallbackAndDismiss(with country: Country) {
         callBack?(country)
-        CountryManager.shared.lastCountrySelected = country
+        manager.lastCountrySelected = country
         self.dismiss(animated: true, completion: nil)
     }
 }

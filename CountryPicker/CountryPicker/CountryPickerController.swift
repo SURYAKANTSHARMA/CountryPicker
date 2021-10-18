@@ -110,7 +110,7 @@ open class CountryPickerController: UIViewController {
     internal var checkMarkImage: UIImage? {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
-    private var manager: CountryManagerInterface
+    internal var manager: CountryManagerInterface
     
     init(manager: CountryManagerInterface) {
         self.manager = manager
