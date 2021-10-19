@@ -21,7 +21,7 @@ open class CountryPickerView: UIPickerView {
     
     private var allCountryList: [Country] = [Country]()
     
-    private var didSelectCountryCallback: (onSelectCountryCallback)?
+    private var didSelectCountryCallback: (OnSelectCountryCallback)?
     
     private(set) var pickList: [Country] = [Country]() {
         didSet {
@@ -56,7 +56,7 @@ open class CountryPickerView: UIPickerView {
     }
     
     
-    public func onSelectCountry(callback: @escaping onSelectCountryCallback) {
+    public func onSelectCountry(callback: @escaping OnSelectCountryCallback) {
         self.didSelectCountryCallback = callback
     }
     
@@ -87,7 +87,7 @@ open class CountryPickerView: UIPickerView {
         self.countryCodes = codes
     }
     
-    public static func loadPickerView(allCountryList: [Country] = CountryManager.shared.countries, selectedCountry: Country? = CountryManager.shared.currentCountry, didSelectCountry: @escaping onSelectCountryCallback) -> CountryPickerView {
+    public static func loadPickerView(allCountryList: [Country] = CountryManager.shared.countries, selectedCountry: Country? = CountryManager.shared.currentCountry, didSelectCountry: @escaping OnSelectCountryCallback) -> CountryPickerView {
         let countryPicker = CountryPickerView(allCountryList: allCountryList, selectedCountry: selectedCountry)
         countryPicker.didSelectCountryCallback = didSelectCountry
         return countryPicker

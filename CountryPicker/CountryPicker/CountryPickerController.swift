@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias onSelectCountryCallback =  (_ country: Country) -> Void
+public typealias OnSelectCountryCallback =  (_ country: Country) -> Void
 public protocol CountryManagerInterface {
     func country(withCode code: String) -> Country?
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
@@ -221,7 +221,7 @@ open class CountryPickerController: UIViewController {
     @discardableResult
     open class func presentController(on viewController: UIViewController,
                                       manager: CountryManagerInterface = CountryManager.shared,
-                                      handler: @escaping onSelectCountryCallback) -> CountryPickerController {
+                                      handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
         let controller = CountryPickerController(manager: manager)
         controller.presentingVC = viewController
         controller.callBack = handler
