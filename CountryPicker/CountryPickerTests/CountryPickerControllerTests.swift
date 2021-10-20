@@ -154,67 +154,80 @@ class countryPickerControllerTests: XCTestCase {
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
     }
 
-//    func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
-//        let sut = makeSUT()
-//        sut.applySearch = true
-//        CountryManager.shared.filters = [.countryCode]
-//        sut.searchController.searchBar.simulateSearch(text: "")
-//
-//        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), CountryManager.shared.countries.count)
-//    }
-//
-//    func test_searchCancelShould_reloadTableView_withoutFilter() {
-//        let sut = makeSUT()
-//        sut.applySearch = true
-//        CountryManager.shared.filters = [.countryCode]
-//        let searchBar = sut.searchController.searchBar
-//        searchBar.simulateSearch(text: "US")
-//
-//        searchBar.delegate?.searchBarCancelButtonClicked?(searchBar)
-//
-//        XCTAssertEqual(sut.applySearch, false)
-//        XCTAssertEqual(searchBar.text, "")
-//        XCTAssertEqual(searchBar.isFirstResponder, false)
-//
-//        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), CountryManager.shared.countries.count)
-//    }
-//
-//
-//    func test_whenKeyboardsearchbutton_clickedShould_makeResignSearchBarFirstResponder() {
-//        let sut = makeSUT()
-//        let searchBar = sut.searchController.searchBar
-//        searchBar.becomeFirstResponder()
-//
-//        searchBar.delegate?.searchBarSearchButtonClicked?(searchBar)
-//
-//        XCTAssertEqual(searchBar.isFirstResponder, false)
-//    }
-//
-//
-//    func test_scrollToCountry_shouldMakeTableViewScrollToIndex() {
-//        let sut = makeSUT()
-//        let country = Country(countryCode: "IN")
-//        guard let countryIndex = CountryManager.shared.countries.firstIndex(where: { $0.countryCode == country.countryCode}) else { return }
-//        sut.scrollToCountry(country)
-//
-//        XCTAssertTrue(sut.tableView.indexPathsForVisibleRows?.contains(IndexPath(row: countryIndex, section: 0)) ?? false )
-//    }
-//
-//    func test_setFavouriteCountries_shouldReloadCountriesAndTableView() {
-//        let sut = makeSUT()
-//        let favCountries = [Country(countryCode: "US"), Country(countryCode: "IN")]
-//        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
-//
-//        XCTAssertEqual(sut.favoriteCountries, favCountries)
-//        XCTAssertEqual(sut.isFavoriteEnable, true)
-//        let cell1 = sut.tableView.cell(at: 0) as? CountryCell
-//        let cell2 = sut.tableView.cell(at: 1) as? CountryCell
-//
-//        XCTAssertEqual(cell1?.nameLabel.text, "United States")
-//        XCTAssertEqual(cell2?.nameLabel.text, "India")
-//
-//        XCTAssertEqual(sut.tableView.dataSource?.tableView(sut.tableView, numberOfRowsInSection: 0), CountryManager.shared.countries.count + favCountries.count)
-//    }
+    func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
+        let countries = [Country(countryCode: "AF"), Country(countryCode: "IN"), Country(countryCode: "US")]
+        let managerSpy = CountryManagerSpy(countries: countries)
+
+        let sut = makeSUT(manager: managerSpy)
+        sut.applySearch = true
+        CountryManager.shared.filters = [.countryCode]
+        sut.searchController.searchBar.simulateSearch(text: "")
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), countries.count)
+    }
+
+    func test_searchCancelShould_reloadTableView_withoutFilter() {
+        let countries = [Country(countryCode: "AF"), Country(countryCode: "IN"), Country(countryCode: "US")]
+        let managerSpy = CountryManagerSpy(countries: countries)
+
+        let sut = makeSUT(manager: managerSpy)
+        sut.applySearch = true
+        CountryManager.shared.filters = [.countryCode]
+        let searchBar = sut.searchController.searchBar
+        searchBar.simulateSearch(text: "US")
+
+        searchBar.delegate?.searchBarCancelButtonClicked?(searchBar)
+
+        XCTAssertEqual(sut.applySearch, false)
+        XCTAssertEqual(searchBar.text, "")
+        XCTAssertEqual(searchBar.isFirstResponder, false)
+
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), countries.count)
+    }
+
+
+    func test_whenKeyboardsearchbutton_clickedShould_makeResignSearchBarFirstResponder() {
+        let sut = makeSUT()
+        let searchBar = sut.searchController.searchBar
+        searchBar.becomeFirstResponder()
+
+        searchBar.delegate?.searchBarSearchButtonClicked?(searchBar)
+
+        XCTAssertEqual(searchBar.isFirstResponder, false)
+    }
+
+
+    func test_scrollToCountry_shouldMakeTableViewScrollToIndex() {
+        let countries = [Country(countryCode: "AF"), Country(countryCode: "IN"), Country(countryCode: "US")]
+        let managerSpy = CountryManagerSpy(countries: countries)
+
+        let sut = makeSUT(manager: managerSpy)
+        let country = Country(countryCode: "IN")
+        
+        guard let countryIndex = countries.firstIndex(where: { $0.countryCode == country.countryCode}) else { return }
+        sut.scrollToCountry(country)
+
+        XCTAssertTrue(sut.tableView.indexPathsForVisibleRows?.contains(IndexPath(row: countryIndex, section: 0)) ?? false )
+    }
+
+    func test_setFavouriteCountries_shouldReloadCountriesAndTableView() {
+        let countries = [Country(countryCode: "AF"), Country(countryCode: "IN"), Country(countryCode: "US")]
+        let favCountries = [Country(countryCode: "US"), Country(countryCode: "IN")]
+
+        let managerSpy = CountryManagerSpy(countries: countries, favouriteCountries: favCountries)
+
+        let sut = makeSUT(manager: managerSpy)
+        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
+
+        XCTAssertEqual(sut.favoriteCountries, favCountries)
+        XCTAssertEqual(sut.isFavoriteEnable, true)
+        let cell1 = sut.tableView.cell(at: 0) as? CountryCell
+        let cell2 = sut.tableView.cell(at: 1) as? CountryCell
+
+        XCTAssertEqual(cell1?.nameLabel.text, "United States")
+        XCTAssertEqual(cell2?.nameLabel.text, "India")
+        XCTAssertEqual(sut.tableView.dataSource?.tableView(sut.tableView, numberOfRowsInSection: 0), countries.count + favCountries.count)
+        XCTAssertEqual(managerSpy.allCountriesFuncCallerCounter, 2)
+    }
     
     //MARK: - Helpers
     func makeSUT(presentingVC: UIViewController = UIViewController(),
@@ -249,21 +262,25 @@ class CountryManagerSpy: CountryManagerInterface {
     var allCountriesFuncCallerCounter = 0
     
     let countries: [Country]
+    let favouriteCountries: [Country]
     private var _lastCountrySelected: Country?
     
-    init(countries: [Country] = [], lastCountrySelected: Country? = nil) {
+    init(countries: [Country] = [],
+         lastCountrySelected: Country? = nil,
+         favouriteCountries: [Country] = []) {
         self.countries = countries
         _lastCountrySelected = lastCountrySelected
+        self.favouriteCountries = favouriteCountries
     }
     
     func country(withCode code: String) -> Country? {
         countryWithCodeFuncCallerCounter += 1
-        return nil
+        return countries.first { $0.countryCode == code }
     }
     
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country] {
         allCountriesFuncCallerCounter += 1
-        return countries
+        return  favouriteCountries + countries
     }
     
     var lastCountrySelected: Country? {
