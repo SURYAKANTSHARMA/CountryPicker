@@ -197,33 +197,35 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
 
 
-//    func test_sectionForIndexTitles() {
-//
-//        let sut = makeSUT(manager: countryManager)
-//        let tableView = sut.tableView
-//        let sectionTitle = tableView.dataSource?.sectionIndexTitles?(for: tableView) ?? []
-//        XCTAssertEqual(sectionTitle, sut.sections.map {String($0)})
-//    }
+    func test_sectionForIndexTitles() {
+        let sut = makeSUT(manager: makeSpy())
+        let tableView = sut.tableView
+        let sectionTitle = tableView.dataSource?.sectionIndexTitles?(for: tableView) ?? []
+        XCTAssertEqual(sectionTitle, sut.sections.map {String($0)})
+    }
     
-//
-//    func test_titleForSectionIndex() {
-//        let sut = makeSUT()
-//        let tableView = sut.tableView
-//        let character = "A"
-//        let index = tableView.dataSource?.tableView?(tableView, sectionForSectionIndexTitle: character, at: 0)
-//        XCTAssertEqual(index, sut.sections.firstIndex(of: Character(character))!)
-//    }
-//
-//    func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
-//        let sut = makeSUT()
-//        sut.applySearch = true
-//        CountryManager.shared.filters = [.countryCode]
-//        sut.searchController.searchBar.simulateSearch(text: "IN")
-//
-//        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
-//        XCTAssertEqual(sut.searchHeaderTitle, "I")
-//    }
-//
+    func test_titleForSectionIndex() {
+        let sut = makeSUT(manager: makeSpy())
+        let tableView = sut.tableView
+        let character = "A"
+        let index = tableView.dataSource?.tableView?(tableView, sectionForSectionIndexTitle: character, at: 0)
+        let matchIndex = sut.sections.firstIndex(of: Character(character))
+        XCTAssertNotNil(matchIndex)
+        XCTAssertEqual(index, matchIndex!)
+    }
+
+    func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
+        let manager = makeSpy()
+        CountryManager.shared.filters = [.countryCode]
+
+        let sut = makeSUT(manager: manager)
+        sut.applySearch = true
+        sut.searchController.searchBar.simulateSearch(text: "IN")
+
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(sut.searchHeaderTitle, "I")
+    }
+
 //    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withUserSearch() {
 //        var logCallbackCounter = 0
 //        var selectedCountry: Country?
