@@ -25,32 +25,4 @@ class TestCountryPickerFrameworkUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testOpenAndSelectCountry() {
-        let app = XCUIApplication()
-        let selectionButton = app.buttons["Select country picker"]
-        selectionButton.tap()
-        let searchBar = app.searchFields["Search country name here.."]
-        searchBar.doubleTap()
-        searchBar.typeText("ind")
-        let cell = app.tables.cells["India"]
-        cell.tap()
-        XCTAssertFalse(cell.exists,"Cell doesn't load")
-        
-        XCTAssertTrue(app.buttons["Select country picker"].exists)
-        //sleep(1)
-        XCTAssert((app.buttons["Select country picker"].value as! String) != nil)
-    }
-    
-    
-    
-    func testDismiss() {
-        let app = XCUIApplication()
-        let selectionButton = app.buttons["Select country picker"]
-        selectionButton.tap()
-        let crossbutton = app.navigationBars["SKCountryPicker.CountryPickerWithSectionView"].buttons["cross"]
-        crossbutton.tap()
-        XCTAssertFalse(crossbutton.exists,"Cell doesn't load")
-    }
-
 }
