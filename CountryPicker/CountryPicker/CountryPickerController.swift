@@ -8,14 +8,6 @@
 
 import UIKit
 
-public typealias OnSelectCountryCallback =  (_ country: Country) -> Void
-public protocol CountryManagerInterface {
-    func country(withCode code: String) -> Country?
-    func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
-    var lastCountrySelected: Country? {get set}
-}
-
-
 /// Country flag styles
 public enum CountryFlagStyle {
     
