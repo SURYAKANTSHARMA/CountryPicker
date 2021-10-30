@@ -250,7 +250,6 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         sut.tableView.select(row: 0)
 
         XCTAssertEqual(countryManager.lastCountrySelected, totalCountries[1])
-        XCTAssertIdentical(countryManager.lastCountrySelected, totalCountries[1])
         XCTAssertNotNil(selectedCountry)
         XCTAssertEqual(selectedCountry!, totalCountries[1])
         XCTAssertEqual(logCallbackCounter, 1)
