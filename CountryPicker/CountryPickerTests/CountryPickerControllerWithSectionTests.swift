@@ -306,7 +306,6 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         let sut =  makeSUT(manager: makeSpy())
         let india = Country(countryCode: "IN")
         sut.loadCountries()
-        CountryManager.shared.lastCountrySelected = india
         sut.scrollToPreviousCountryIfNeeded()
         let isIndiaCellVisible = sut.tableView.visibleCells.filter { cell in
             guard let cell = cell as? CountryCell else { return false }
