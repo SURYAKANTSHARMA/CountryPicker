@@ -313,12 +313,18 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
 
     func test_scrollToPreviousShould_scrollToPreviousCountryInTableView_whenFavouriteEnable() {
-        let manager = makeSpy([Country(countryCode: "AF"),
-                               Country(countryCode: "US")])
+        let favouriteCountryIdentifiers = ["US",
+                                           "IN"]
+
+        let manager = CountryManagerSpy(countries: [Country(countryCode: "AF"),
+                                      Country(countryCode: "US")],
+                                        favouriteCountries: favouriteCountryIdentifiers.compactMap { Country(countryCode: $0)
+        })
         let sut = makeSUT(manager: manager)
+        sut.favoriteCountriesLocaleIdentifiers = favouriteCountryIdentifiers
         let india = Country(countryCode: "IN")
         sut.loadCountries()
-        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
+        
         manager.lastCountrySelected = india
         sut.scrollToPreviousCountryIfNeeded()
         let isIndiaCellCount = sut.tableView.visibleCells.filter { cell in
