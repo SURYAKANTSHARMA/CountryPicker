@@ -215,10 +215,14 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
 
     func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
+        let totalCountries = [Country(countryCode: "AF"),
+                              Country(countryCode: "IN"),
+                              Country(countryCode: "US")]
+        
         let manager = makeSpy()
-        CountryManager.shared.filters = [.countryCode]
-
         let sut = makeSUT(manager: manager)
+        sut.engine = CountryPickerEngine(countries: totalCountries, filterOptions: [.countryCode])
+
         sut.applySearch = true
         sut.searchController.searchBar.simulateSearch(text: "IN")
 
@@ -227,22 +231,27 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
 
     func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withUserSearch() {
+        let totalCountries = [Country(countryCode: "AF"),
+                              Country(countryCode: "IN"),
+                              Country(countryCode: "US")]
+
         var logCallbackCounter = 0
         var selectedCountry: Country?
-        let india = Country(countryCode: "IN")
         let callback:(Country) -> Void = { country in
             logCallbackCounter += 1
             selectedCountry = country
         }
+        
         let countryManager = makeSpy()
         let sut = makeSUT(manager: countryManager,callback: callback)
+        sut.engine = CountryPickerEngine(countries: totalCountries, filterOptions: [.countryCode])
 
-        CountryManager.shared.filters = [.countryCode]
         sut.searchController.searchBar.simulateSearch(text: "IN")
         sut.tableView.select(row: 0)
 
-        XCTAssertEqual(countryManager.lastCountrySelected, india)
-        XCTAssertEqual(selectedCountry, india)
+        XCTAssertEqual(countryManager.lastCountrySelected, totalCountries[1])
+        XCTAssertNotNil(selectedCountry)
+        XCTAssertEqual(selectedCountry!, totalCountries[1])
         XCTAssertEqual(logCallbackCounter, 1)
     }
 
@@ -303,7 +312,6 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         let sut =  makeSUT(manager: makeSpy())
         let india = Country(countryCode: "IN")
         sut.loadCountries()
-        CountryManager.shared.lastCountrySelected = india
         sut.scrollToPreviousCountryIfNeeded()
         let isIndiaCellVisible = sut.tableView.visibleCells.filter { cell in
             guard let cell = cell as? CountryCell else { return false }
