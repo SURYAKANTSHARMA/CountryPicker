@@ -56,7 +56,7 @@ class CountryPickerEngineTests: XCTestCase {
     
     
     func test_filterCountries_shouldFilterCorrectCountries() {
-        let countries = CountryManager.shared.countries
+        let countries = [Country(countryCode: "IN"), Country(countryCode: "US")]
         let sut = CountryPickerEngine(countries: countries, filterOptions: [.countryCode, .countryName])
         
         let filters = sut.filterCountries(searchText: "us")

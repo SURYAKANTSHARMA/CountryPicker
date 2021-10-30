@@ -102,6 +102,7 @@ open class CountryPickerController: UIViewController {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
     internal var manager: CountryManagerInterface
+    internal var engine = CountryPickerEngine()
     
     init(manager: CountryManagerInterface) {
         self.manager = manager
@@ -351,7 +352,8 @@ extension CountryPickerController: UISearchBarDelegate {
         applySearch = true
         filterCountries.removeAll()
         
-        let filteredCountries = CountryPickerEngine().filterCountries(searchText: searchText)
+        let filteredCountries = engine
+            .filterCountries(searchText: searchText)
     
         // Append filtered countries
         filterCountries.append(contentsOf: filteredCountries)

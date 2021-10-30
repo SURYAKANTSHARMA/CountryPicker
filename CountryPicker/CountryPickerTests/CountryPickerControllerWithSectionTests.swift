@@ -209,9 +209,15 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
     
     func test_searchEmptyShouldAble_toReloadTableView_withRelatedCountries() {
+        let totalCountries = [Country(countryCode: "AF"),
+                              Country(countryCode: "IN"),
+                              Country(countryCode: "US")]
+        
+
         let sut = makeSUT()
+        sut.engine = CountryPickerEngine(countries: totalCountries, filterOptions: [.countryCode])
+
         sut.applySearch = true
-        CountryManager.shared.filters = [.countryCode]
         sut.searchController.searchBar.simulateSearch(text: "IN")
         
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
@@ -228,7 +234,6 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         }
         let sut = makeSUT(callback: callback)
         
-        CountryManager.shared.filters = [.countryCode]
         sut.searchController.searchBar.simulateSearch(text: "IN")
         sut.tableView.select(row: 0)
         
