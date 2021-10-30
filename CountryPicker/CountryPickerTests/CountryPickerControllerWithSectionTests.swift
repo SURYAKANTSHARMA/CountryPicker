@@ -226,104 +226,107 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         XCTAssertEqual(sut.searchHeaderTitle, "I")
     }
 
-//    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withUserSearch() {
-//        var logCallbackCounter = 0
-//        var selectedCountry: Country?
-//        let india = Country(countryCode: "IN")
-//        let callback:(Country) -> Void = { country in
-//            logCallbackCounter += 1
-//            selectedCountry = country
-//        }
-//        let sut = makeSUT(callback: callback)
-//
-//        CountryManager.shared.filters = [.countryCode]
-//        sut.searchController.searchBar.simulateSearch(text: "IN")
-//        sut.tableView.select(row: 0)
-//
-//        XCTAssertEqual(CountryManager.shared.lastCountrySelected, india)
-//        XCTAssertEqual(selectedCountry, india)
-//        XCTAssertEqual(logCallbackCounter, 1)
-//
-//    }
-//
-//    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withoutUserSearch_withFavourite() {
-//        var logCallbackCounter = 0
-//        var selectedCountry: Country?
-//        let india = Country(countryCode: "IN")
-//        let unitedStates = Country(countryCode: "US")
-//        let afganistan = Country(countryCode: "AF")
-//
-//        let callback:(Country) -> Void = { country in
-//            logCallbackCounter += 1
-//            selectedCountry = country
-//        }
-//        CountryManager.shared.lastCountrySelected = nil
-//
-//        let sut = makeSUT(callback: callback)
-//        sut.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
-//        sut.tableView.select(row: 0)
-//
-//        XCTAssertEqual(selectedCountry, india)
-//        XCTAssertEqual(logCallbackCounter, 1)
-//        XCTAssertEqual(CountryManager.shared.lastCountrySelected, india)
-//
-//        sut.tableView.select(row: 1)
-//
-//        XCTAssertEqual(selectedCountry, unitedStates)
-//        XCTAssertEqual(logCallbackCounter, 2)
-//        XCTAssertEqual(CountryManager.shared.lastCountrySelected, unitedStates)
-//
-//        sut.tableView.select(row: 0, section: 1)
-//
-//        XCTAssertEqual(selectedCountry, afganistan)
-//        XCTAssertEqual(logCallbackCounter, 3)
-//        XCTAssertEqual(CountryManager.shared.lastCountrySelected, afganistan)
-//    }
-//
-//    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withoutUserSearch_withoutFavouriteSet() {
-//        var logCallbackCounter = 0
-//        var selectedCountry: Country?
-//        let afganistan = Country(countryCode: "AF")
-//        let callback:(Country) -> Void = { country in
-//            logCallbackCounter += 1
-//            selectedCountry = country
-//        }
-//        CountryManager.shared.lastCountrySelected = nil
-//
-//        let sut = makeSUT(callback: callback)
-//        sut.tableView.select(row: 0)
-//
-//        XCTAssertEqual(selectedCountry, afganistan)
-//        XCTAssertEqual(logCallbackCounter, 1)
-//        XCTAssertEqual(CountryManager.shared.lastCountrySelected, afganistan)
-//    }
-//
-//    func test_scrollToPreviousShould_scrollToPreviousCountryInTableView() {
-//        let sut = makeSUT()
-//        let india = Country(countryCode: "IN")
-//        sut.loadCountries()
-//        CountryManager.shared.lastCountrySelected = india
-//        sut.scrollToPreviousCountryIfNeeded()
-//        let isIndiaCellVisible = sut.tableView.visibleCells.filter { cell in
-//            guard let cell = cell as? CountryCell else { return false }
-//            return cell.country == india
-//        }.compactMap{$0}.first
-//        XCTAssertNotNil(isIndiaCellVisible)
-//    }
-//
-//    func test_scrollToPreviousShould_scrollToPreviousCountryInTableView_whenFavouriteEnable() {
-//        let sut = makeSUT()
-//        let india = Country(countryCode: "IN")
-//        sut.loadCountries()
-//        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
-//        CountryManager.shared.lastCountrySelected = india
-//        sut.scrollToPreviousCountryIfNeeded()
-//        let isIndiaCellCount = sut.tableView.visibleCells.filter { cell in
-//            guard let cell = cell as? CountryCell else { return false }
-//            return cell.country == india
-//        }.compactMap{$0}.count
-//        XCTAssertEqual(isIndiaCellCount, 1)
-//    }
+    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withUserSearch() {
+        var logCallbackCounter = 0
+        var selectedCountry: Country?
+        let india = Country(countryCode: "IN")
+        let callback:(Country) -> Void = { country in
+            logCallbackCounter += 1
+            selectedCountry = country
+        }
+        let countryManager = makeSpy()
+        let sut = makeSUT(manager: countryManager,callback: callback)
+
+        CountryManager.shared.filters = [.countryCode]
+        sut.searchController.searchBar.simulateSearch(text: "IN")
+        sut.tableView.select(row: 0)
+
+        XCTAssertEqual(countryManager.lastCountrySelected, india)
+        XCTAssertEqual(selectedCountry, india)
+        XCTAssertEqual(logCallbackCounter, 1)
+    }
+
+    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withoutUserSearch_withFavourite() {
+        var logCallbackCounter = 0
+        var selectedCountry: Country?
+        let india = Country(countryCode: "IN")
+        let unitedStates = Country(countryCode: "US")
+        let afganistan = Country(countryCode: "AF")
+
+        let callback:(Country) -> Void = { country in
+            logCallbackCounter += 1
+            selectedCountry = country
+        }
+
+        let countryManager = makeSpy()
+        countryManager.lastCountrySelected = nil
+        let sut = makeSUT(manager: countryManager, callback: callback)
+        sut.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+        sut.tableView.select(row: 0)
+
+        XCTAssertEqual(selectedCountry, india)
+        XCTAssertEqual(logCallbackCounter, 1)
+        XCTAssertEqual(countryManager.lastCountrySelected, india)
+
+        sut.tableView.select(row: 1)
+
+        XCTAssertEqual(selectedCountry, unitedStates)
+        XCTAssertEqual(logCallbackCounter, 2)
+        XCTAssertEqual(countryManager.lastCountrySelected, unitedStates)
+
+        sut.tableView.select(row: 0, section: 1)
+
+        XCTAssertEqual(selectedCountry, afganistan)
+        XCTAssertEqual(logCallbackCounter, 3)
+        XCTAssertEqual(countryManager.lastCountrySelected, afganistan)
+    }
+
+    func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withoutUserSearch_withoutFavouriteSet() {
+        var logCallbackCounter = 0
+        var selectedCountry: Country?
+        let afganistan = Country(countryCode: "AF")
+        let callback:(Country) -> Void = { country in
+            logCallbackCounter += 1
+            selectedCountry = country
+        }
+        let countryManager = makeSpy()
+        countryManager.lastCountrySelected = nil
+        let sut = makeSUT(manager: countryManager, callback: callback)
+        sut.tableView.select(row: 0)
+
+        XCTAssertEqual(selectedCountry, afganistan)
+        XCTAssertEqual(logCallbackCounter, 1)
+        XCTAssertEqual(countryManager.lastCountrySelected, afganistan)
+    }
+
+    func test_scrollToPreviousShould_scrollToPreviousCountryInTableView() {
+        let sut =  makeSUT(manager: makeSpy())
+        let india = Country(countryCode: "IN")
+        sut.loadCountries()
+        CountryManager.shared.lastCountrySelected = india
+        sut.scrollToPreviousCountryIfNeeded()
+        let isIndiaCellVisible = sut.tableView.visibleCells.filter { cell in
+            guard let cell = cell as? CountryCell else { return false }
+            return cell.country == india
+        }.compactMap{$0}.first
+        XCTAssertNotNil(isIndiaCellVisible)
+    }
+
+    func test_scrollToPreviousShould_scrollToPreviousCountryInTableView_whenFavouriteEnable() {
+        let manager = makeSpy([Country(countryCode: "AF"),
+                               Country(countryCode: "US")])
+        let sut = makeSUT(manager: manager)
+        let india = Country(countryCode: "IN")
+        sut.loadCountries()
+        sut.favoriteCountriesLocaleIdentifiers = ["US", "IN"]
+        manager.lastCountrySelected = india
+        sut.scrollToPreviousCountryIfNeeded()
+        let isIndiaCellCount = sut.tableView.visibleCells.filter { cell in
+            guard let cell = cell as? CountryCell else { return false }
+            return cell.country == india
+        }.compactMap{$0}.count
+        XCTAssertEqual(isIndiaCellCount, 1)
+    }
     
     //MARK: - Helpers
     func makeSUT(manager: CountryManagerInterface = CountryManagerSpy(),
