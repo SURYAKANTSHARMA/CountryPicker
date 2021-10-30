@@ -231,21 +231,28 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
 
     func test_tableView_didSelectShould_triggerCallbackWithRightCountry_withUserSearch() {
+        let totalCountries = [Country(countryCode: "AF"),
+                              Country(countryCode: "IN"),
+                              Country(countryCode: "US")]
+
         var logCallbackCounter = 0
         var selectedCountry: Country?
-        let india = Country(countryCode: "IN")
         let callback:(Country) -> Void = { country in
             logCallbackCounter += 1
             selectedCountry = country
         }
+        
         let countryManager = makeSpy()
         let sut = makeSUT(manager: countryManager,callback: callback)
-        
+        sut.engine = CountryPickerEngine(countries: totalCountries, filterOptions: [.countryCode])
+
         sut.searchController.searchBar.simulateSearch(text: "IN")
         sut.tableView.select(row: 0)
 
-        XCTAssertEqual(countryManager.lastCountrySelected, india)
-        XCTAssertEqual(selectedCountry, india)
+        XCTAssertEqual(countryManager.lastCountrySelected, totalCountries[1])
+        XCTAssertIdentical(countryManager.lastCountrySelected, totalCountries[1])
+        XCTAssertNotNil(selectedCountry)
+        XCTAssertEqual(selectedCountry!, totalCountries[1])
         XCTAssertEqual(logCallbackCounter, 1)
     }
 
