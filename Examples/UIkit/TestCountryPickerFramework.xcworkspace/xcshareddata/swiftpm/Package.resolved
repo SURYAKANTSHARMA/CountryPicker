@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CountryPicker",
+        "repositoryURL": "https://github.com/SURYAKANTSHARMA/CountryPicker",
+        "state": {
+          "branch": null,
+          "revision": "fa4757cb3f090447082f5dffb5db887bc181f6a9",
+          "version": "1.3.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
