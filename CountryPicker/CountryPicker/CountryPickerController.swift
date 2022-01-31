@@ -102,10 +102,11 @@ open class CountryPickerController: UIViewController {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
     internal var manager: CountryManagerInterface
-    internal var engine = CountryPickerEngine()
+    internal var engine: CountryPickerEngine
     
     init(manager: CountryManagerInterface) {
         self.manager = manager
+        self.engine = CountryPickerEngine(countries: manager.allCountries([]))
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -69,7 +69,8 @@ class countryPickerControllerTests: XCTestCase {
         XCTAssertEqual(cell?.nameLabel.text , "Afghanistan")
         XCTAssertEqual(cell?.diallingCodeLabel.text , "+93")
         XCTAssertNotNil(cell?.flagImageView)
-        XCTAssertEqual(managerSpy.allCountriesFuncCallerCounter, 1)
+        
+        XCTAssertEqual(managerSpy.allCountriesFuncCallerCounter, 2, "Init also use allcountries function so counter will call 2 times")
         XCTAssertEqual(managerSpy.countryWithCodeFuncCallerCounter, 0)
     }
 
@@ -227,7 +228,7 @@ class countryPickerControllerTests: XCTestCase {
         XCTAssertEqual(cell1?.nameLabel.text, "United States")
         XCTAssertEqual(cell2?.nameLabel.text, "India")
         XCTAssertEqual(sut.tableView.dataSource?.tableView(sut.tableView, numberOfRowsInSection: 0), countries.count + favCountries.count)
-        XCTAssertEqual(managerSpy.allCountriesFuncCallerCounter, 2)
+        XCTAssertEqual(managerSpy.allCountriesFuncCallerCounter, 3)
     }
     
     //MARK: - Helpers
