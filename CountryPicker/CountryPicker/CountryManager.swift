@@ -18,11 +18,11 @@ public protocol CountryManagerInterface {
 }
 //
 //// MARK: - CountryManagerInterface extenstion for optional variables and default implementation
-//extension CountryManagerInterface { var lastCountrySelected: Country? {
-//    get { nil }
-//    set {}
-//   }
-//}
+extension CountryManagerInterface { var lastCountrySelected: Country? {
+    get { nil }
+    set {}
+   }
+}
 
 // MARK: - CountryFilterOption
 /// Country filtering options
