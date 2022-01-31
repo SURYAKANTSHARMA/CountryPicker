@@ -147,8 +147,8 @@ open class CountryPickerController: UIViewController {
         // Setup table view and cells
         setUpTableView()
         
-        let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
+//        let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
+//        tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
         
         // Setup search controller view

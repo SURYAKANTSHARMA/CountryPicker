@@ -16,13 +16,13 @@ public protocol CountryManagerInterface {
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
     var lastCountrySelected: Country? {get set}
 }
-
-// MARK: - CountryManagerInterface extenstion for optional variables and default implementation
-extension CountryManagerInterface { var lastCountrySelected: Country? {
-    get { nil }
-    set {}
-   }
-}
+//
+//// MARK: - CountryManagerInterface extenstion for optional variables and default implementation
+//extension CountryManagerInterface { var lastCountrySelected: Country? {
+//    get { nil }
+//    set {}
+//   }
+//}
 
 // MARK: - CountryFilterOption
 /// Country filtering options
