@@ -48,7 +48,6 @@ open class CountryPickerController: UIViewController {
     #endif
     
     //MARK: View and ViewController
-    internal var presentingVC: UIViewController?
     internal var searchController = UISearchController(searchResultsController: nil)
     internal let tableView =  UITableView()
     public var favoriteCountriesLocaleIdentifiers = [String]() {
@@ -192,10 +191,9 @@ open class CountryPickerController: UIViewController {
                                       manager: CountryListDataSource = CountryManager.shared,
                                       handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
         let controller = CountryPickerController(manager: manager)
-        controller.presentingVC = viewController
         controller.callBack = handler
         let navigationController = UINavigationController(rootViewController: controller)
-        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
+        viewController.present(navigationController, animated: true, completion: nil)
         return controller
     }
     /***

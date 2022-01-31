@@ -12,13 +12,7 @@ import XCTest
 @testable import CountryPicker
 
 class countryPickerControllerTests: XCTestCase {
-    
-    func test_presentController_shouldAbleToPresentCountryPickerController() {
-        let vc = UIViewController()
-        let sut = makeSUT(presentingVC: vc)
-        XCTAssertEqual(sut.presentingVC, vc)
-    }
-    
+        
     func test_presentController_shouldAbleToSetCallback_afterSelectCountry() {
 
         var logCallbackCounter = 0

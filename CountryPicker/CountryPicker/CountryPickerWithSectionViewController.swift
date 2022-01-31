@@ -47,11 +47,10 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
                                                manager: CountryListDataSource = CountryManager.shared,
                                                handler:@escaping OnSelectCountryCallback) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController(manager: manager)
-        controller.presentingVC = viewController
         controller.callBack = handler
         
         let navigationController = UINavigationController(rootViewController: controller)
-        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
+        viewController.present(navigationController, animated: true, completion: nil)
         
         return controller
     }
