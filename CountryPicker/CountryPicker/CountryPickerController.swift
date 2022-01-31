@@ -101,10 +101,10 @@ open class CountryPickerController: UIViewController {
     internal var checkMarkImage: UIImage? {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
-    internal var manager: CountryManagerInterface
+    internal var manager: CountryListDataSource
     internal var engine: CountryPickerEngine
     
-    init(manager: CountryManagerInterface) {
+    init(manager: CountryListDataSource) {
         self.manager = manager
         self.engine = CountryPickerEngine(countries: manager.allCountries([]))
         super.init(nibName: nil, bundle: nil)
@@ -189,7 +189,7 @@ open class CountryPickerController: UIViewController {
     
     @discardableResult
     open class func presentController(on viewController: UIViewController,
-                                      manager: CountryManagerInterface = CountryManager.shared,
+                                      manager: CountryListDataSource = CountryManager.shared,
                                       handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
         let controller = CountryPickerController(manager: manager)
         controller.presentingVC = viewController

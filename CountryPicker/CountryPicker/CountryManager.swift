@@ -11,14 +11,14 @@ import UIKit
 
 // MARK: - CountryManagerInterface
 public typealias OnSelectCountryCallback =  (_ country: Country) -> Void
-public protocol CountryManagerInterface {
+public protocol CountryListDataSource {
     func country(withCode code: String) -> Country?
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
     var lastCountrySelected: Country? {get set}
 }
 //
 //// MARK: - CountryManagerInterface extenstion for optional variables and default implementation
-extension CountryManagerInterface {
+extension CountryListDataSource {
     var lastCountrySelected: Country? {
     get { nil }
     set {}
@@ -39,7 +39,7 @@ public enum CountryFilterOption {
 }
 
 // MARK: - CountryManager
-open class CountryManager: CountryManagerInterface {
+open class CountryManager: CountryListDataSource {
     
     // MARK: - variable
     public var countries = [Country]()

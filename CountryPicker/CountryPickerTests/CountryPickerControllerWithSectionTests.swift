@@ -343,7 +343,7 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    func makeSUT(manager: CountryManagerInterface = CountryManagerSpy(),
+    func makeSUT(manager: CountryListDataSource = CountryManagerSpy(),
                  presentingVC: UIViewController = UIViewController(), callback:((Country) -> Void)? = nil) -> CountryPickerWithSectionViewController {
         let sut = CountryPickerWithSectionViewController
             .presentController(on: presentingVC, manager: manager) { country in

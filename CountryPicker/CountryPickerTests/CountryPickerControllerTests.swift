@@ -233,7 +233,7 @@ class countryPickerControllerTests: XCTestCase {
     
     //MARK: - Helpers
     func makeSUT(presentingVC: UIViewController = UIViewController(),
-                 manager: CountryManagerInterface = CountryManagerSpy(),
+                 manager: CountryListDataSource = CountryManagerSpy(),
                  callback: OnSelectCountryCallback? = nil) -> CountryPickerController {
         let sut = CountryPickerController.presentController(on: presentingVC,
                                                             manager: manager) { country in
@@ -259,7 +259,7 @@ extension UISearchBar {
 }
 
 
-class CountryManagerSpy: CountryManagerInterface {
+class CountryManagerSpy: CountryListDataSource {
     var countryWithCodeFuncCallerCounter = 0
     var allCountriesFuncCallerCounter = 0
     

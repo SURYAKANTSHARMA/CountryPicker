@@ -44,7 +44,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     
     @discardableResult
     open override class func presentController(on viewController: UIViewController,
-                                               manager: CountryManagerInterface = CountryManager.shared,
+                                               manager: CountryListDataSource = CountryManager.shared,
                                                handler:@escaping OnSelectCountryCallback) -> CountryPickerWithSectionViewController {
         let controller = CountryPickerWithSectionViewController(manager: manager)
         controller.presentingVC = viewController
