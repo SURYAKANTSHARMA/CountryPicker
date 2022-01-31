@@ -120,12 +120,7 @@ open class CountryPickerController: UIViewController {
         searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
         
-        if #available(iOS 11.0, *) {
-            self.navigationItem.searchController = searchController
-        } else {
-            tableView.tableHeaderView = searchController.searchBar
-        }
-        
+        navigationItem.searchController = searchController
         definesPresentationContext = true
     }
     
@@ -147,8 +142,6 @@ open class CountryPickerController: UIViewController {
         // Setup table view and cells
         setUpTableView()
         
-//        let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
-//        tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
         
         // Setup search controller view
@@ -158,16 +151,12 @@ open class CountryPickerController: UIViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadCountries()
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = false
-        }
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = true
-        }
+        navigationItem.hidesSearchBarWhenScrolling = true
         
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = manager.lastCountrySelected {
@@ -179,12 +168,7 @@ open class CountryPickerController: UIViewController {
         
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
+        tableView.contentInsetAdjustmentBehavior = .never
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -193,22 +177,13 @@ open class CountryPickerController: UIViewController {
         tableView.estimatedRowHeight = 70.0
         tableView.rowHeight = UITableView.automaticDimension
         
-        if #available(iOS 11.0, *) {
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
-        } else {
-            // Fallback on earlier versions
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                tableView.topAnchor.constraint(equalTo: view.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
-        }
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
     }
     
     @discardableResult
