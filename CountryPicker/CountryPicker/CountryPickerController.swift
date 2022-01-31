@@ -198,10 +198,11 @@ open class CountryPickerController: UIViewController {
         controller.presentingVC?.present(navigationController, animated: true, completion: nil)
         return controller
     }
-    
-    open class func create(on viewController: UIViewController,
-                                      manager: CountryListDataSource = CountryManager.shared,
-                                      handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
+    /***
+     This method returns CountryPickerController. Client is reponsible for embeddeding in navigation controller or any other view accordingly.
+     */
+    open class func create(manager: CountryListDataSource = CountryManager.shared,
+                           handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
         let controller = CountryPickerController(manager: manager)
         controller.callBack = handler
         return controller
