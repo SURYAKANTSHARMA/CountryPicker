@@ -199,6 +199,15 @@ open class CountryPickerController: UIViewController {
         return controller
     }
     
+    open class func create(on viewController: UIViewController,
+                                      manager: CountryListDataSource = CountryManager.shared,
+                                      handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
+        let controller = CountryPickerController(manager: manager)
+        controller.callBack = handler
+        return controller
+    }
+    
+    
     // MARK: - Cross Button Action
     @objc private func crossButtonClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
