@@ -15,7 +15,9 @@ struct ContentView: View {
         Button("Select Country") {
             isShowCountryPicker = true
         }.sheet(isPresented: $isShowCountryPicker) {
-            CountryPickerAdapter()
+            CountryPickerAdapter(countryPickerStyle: CountryPickerStyle(callBack: { choosenCountry in
+                 
+            }))
         }
     }
     
@@ -30,8 +32,13 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct CountryPickerStyle {
+    public var callBack: (( _ choosenCountry: Country) -> Void)?
+}
 
 struct CountryPickerAdapter: UIViewControllerRepresentable {
+    let countryPickerStyle: CountryPickerStyle
+    
     func updateUIViewController(_ uiViewController: CountryPickerWithSectionViewController, context: Context) {
         
     }
@@ -41,6 +48,4 @@ struct CountryPickerAdapter: UIViewControllerRepresentable {
     }
         
     typealias UIViewControllerType = CountryPickerWithSectionViewController
-    
-    
 }
