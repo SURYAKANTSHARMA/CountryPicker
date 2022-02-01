@@ -85,6 +85,7 @@ open class CountryPickerController: UIViewController {
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     
+    
     public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal {
         didSet { self.tableView.reloadData() }
     }
