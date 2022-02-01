@@ -85,37 +85,23 @@ open class CountryPickerController: UIViewController {
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     
-    
-    public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal {
-        didSet { self.tableView.reloadData() }
+    public struct Configuration {
+        public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal
+        public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3)
+        public var labelColor: UIColor = UIColor.black
+        public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline)
+        public var detailColor: UIColor = UIColor.lightGray
+        public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0)
+        public var isCountryFlagHidden: Bool = false
+        public var isCountryDialHidden: Bool = false
     }
     
-    public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var labelColor: UIColor = UIColor.black {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var detailColor: UIColor = UIColor.lightGray {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var isCountryFlagHidden: Bool = false {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var isCountryDialHidden: Bool = false {
-        didSet { self.tableView.reloadData() }
+    public var configuration = Configuration() {
+        didSet {
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
     }
     
     internal var checkMarkImage: UIImage? {
@@ -286,20 +272,20 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     
     func setUpCellProperties(cell: CountryCell) {
         // Auto-hide flag & dial labels
-        cell.hideFlag(isCountryFlagHidden)
-        cell.hideDialCode(isCountryDialHidden)
+        cell.hideFlag(configuration.isCountryFlagHidden)
+        cell.hideDialCode(configuration.isCountryDialHidden)
         
-        cell.nameLabel.font = labelFont
+        cell.nameLabel.font = configuration.labelFont
         if #available(iOS 13.0, *) {
             cell.nameLabel.textColor = UIColor.label
         } else {
             // Fallback on earlier versions
-            cell.nameLabel.textColor = labelColor
+            cell.nameLabel.textColor = configuration.labelColor
         }
-        cell.diallingCodeLabel.font = detailFont
-        cell.diallingCodeLabel.textColor = detailColor
-        cell.separatorLineView.backgroundColor = self.separatorLineColor
-        cell.applyFlagStyle(flagStyle)
+        cell.diallingCodeLabel.font = configuration.detailFont
+        cell.diallingCodeLabel.textColor = configuration.detailColor
+        cell.separatorLineView.backgroundColor = configuration.separatorLineColor
+        cell.applyFlagStyle(configuration.flagStyle)
     }
     
     // MARK: - TableView Delegate

@@ -97,9 +97,9 @@ private extension ViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
-            countryController.flagStyle = .circular
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
+            countryController.configuration.flagStyle = .circular
+            countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
             countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         case false:
             // Present country picker without `Section Control` enabled
@@ -112,9 +112,9 @@ private extension ViewController {
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
-            countryController.flagStyle = .corner
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
+            countryController.configuration.flagStyle = .corner
+            countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+            countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
             countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         }
     }
