@@ -39,7 +39,7 @@ open class CountryPickerController: UIViewController {
     
     internal var applySearch = false
     // To be set by client
-    public var onSelectCountry: ((Country) -> Void)?
+    public var onSelectCountry: OnSelectCountryCallback?
     
     #if SWIFT_PACKAGE
         let bundle = Bundle.module
