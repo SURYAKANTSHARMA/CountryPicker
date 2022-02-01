@@ -23,7 +23,7 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         }
         let sut = makeSUT(callback: callback)
         let country = Country(countryCode: "IN")
-        sut.callBack?(country)
+        sut.onSelectCountry?(country)
 
 
         XCTAssertEqual(selectedCountry, country)
@@ -340,7 +340,7 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     func makeSUT(manager: CountryListDataSource = CountryManagerSpy(),
                  presentingVC: UIViewController = UIViewController(), callback:((Country) -> Void)? = nil) -> CountryPickerWithSectionViewController {
         let sut = CountryPickerWithSectionViewController(manager: manager)
-        sut.callBack = callback
+        sut.onSelectCountry = callback
         sut.startLifeCycle()
         return sut
     }

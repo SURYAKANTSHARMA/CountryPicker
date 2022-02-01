@@ -39,7 +39,7 @@ open class CountryPickerController: UIViewController {
     
     internal var applySearch = false
     // To be set by client
-    public var callBack: (( _ choosenCountry: Country) -> Void)?
+    public var onSelectCountry: ((Country) -> Void)?
     
     #if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -185,7 +185,7 @@ open class CountryPickerController: UIViewController {
         handler: @escaping OnSelectCountryCallback)  {
             
         let controller = CountryPickerController(manager: manager)
-        controller.callBack = handler
+        controller.onSelectCountry = handler
         configuration(controller)
         let navigationController = UINavigationController(rootViewController: controller)
         viewController.present(navigationController, animated: true, completion: nil)
@@ -196,7 +196,7 @@ open class CountryPickerController: UIViewController {
     open class func create(manager: CountryListDataSource = CountryManager.shared,
                            handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
         let controller = CountryPickerController(manager: manager)
-        controller.callBack = handler
+        controller.onSelectCountry = handler
         return controller
     }
     
@@ -300,7 +300,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             dismissWithAnimation = false
         }
         
-        callBack?(selectedCountry)
+        onSelectCountry?(selectedCountry)
         manager.lastCountrySelected = selectedCountry
             
         dismiss(animated: dismissWithAnimation, completion: nil)

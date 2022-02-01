@@ -24,7 +24,7 @@ class countryPickerControllerTests: XCTestCase {
         }
         let sut = makeSUT(callback: callback)
         let country = Country(countryCode: "IN")
-        sut.callBack?(country)
+        sut.onSelectCountry?(country)
 
         XCTAssertEqual(selectedCountry, country)
         XCTAssertEqual(logCallbackCounter, 1)
@@ -230,7 +230,7 @@ class countryPickerControllerTests: XCTestCase {
                  manager: CountryListDataSource = CountryManagerSpy(),
                  callback: OnSelectCountryCallback? = nil) -> CountryPickerController {
         let sut = CountryPickerController(manager: manager)
-        sut.callBack = callback
+        sut.onSelectCountry = callback
         sut.startLifeCycle()
         return sut
     }

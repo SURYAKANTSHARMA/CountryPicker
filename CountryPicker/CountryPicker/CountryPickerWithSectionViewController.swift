@@ -49,7 +49,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         handler:@escaping OnSelectCountryCallback) {
         
         let controller = CountryPickerWithSectionViewController(manager: manager)
-        controller.callBack = handler
+        controller.onSelectCountry = handler
         configuration(controller)
         let navigationController = UINavigationController(rootViewController: controller)
         viewController.present(navigationController, animated: true, completion: nil)
@@ -236,7 +236,7 @@ extension CountryPickerWithSectionViewController {
      }
     
     private func triggerCallbackAndDismiss(with country: Country) {
-        callBack?(country)
+        onSelectCountry?(country)
         manager.lastCountrySelected = country
         self.dismiss(animated: true, completion: nil)
     }
