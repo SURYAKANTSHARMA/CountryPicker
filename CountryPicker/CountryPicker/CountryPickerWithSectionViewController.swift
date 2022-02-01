@@ -42,17 +42,17 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         }
     }
     
-    @discardableResult
-    open override class func presentController(on viewController: UIViewController,
-                                               manager: CountryListDataSource = CountryManager.shared,
-                                               handler:@escaping OnSelectCountryCallback) -> CountryPickerWithSectionViewController {
+    open override class func presentController(
+        on viewController: UIViewController,
+        configuration: (CountryPickerController) -> Void = {_ in },
+        manager: CountryListDataSource = CountryManager.shared,
+        handler:@escaping OnSelectCountryCallback) {
+        
         let controller = CountryPickerWithSectionViewController(manager: manager)
         controller.callBack = handler
-        
+        configuration(controller)
         let navigationController = UINavigationController(rootViewController: controller)
         viewController.present(navigationController, animated: true, completion: nil)
-        
-        return controller
     }
 
 }

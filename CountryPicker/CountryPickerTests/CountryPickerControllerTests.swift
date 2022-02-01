@@ -229,10 +229,8 @@ class countryPickerControllerTests: XCTestCase {
     func makeSUT(presentingVC: UIViewController = UIViewController(),
                  manager: CountryListDataSource = CountryManagerSpy(),
                  callback: OnSelectCountryCallback? = nil) -> CountryPickerController {
-        let sut = CountryPickerController.presentController(on: presentingVC,
-                                                            manager: manager) { country in
-            callback?(country)
-        }
+        let sut = CountryPickerController(manager: manager)
+        sut.callBack = callback
         sut.startLifeCycle()
         return sut
     }
