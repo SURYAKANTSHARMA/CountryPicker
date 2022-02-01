@@ -48,8 +48,28 @@ open class CountryPickerController: UIViewController {
     #endif
     
     //MARK: View and ViewController
-    internal var searchController = UISearchController(searchResultsController: nil)
-    internal let tableView =  UITableView()
+    internal lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.barStyle = .default
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        return searchController
+    }()
+    
+    internal lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets.zero
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
+    
     public var favoriteCountriesLocaleIdentifiers = [String]() {
         didSet {
             self.loadCountries()
@@ -115,11 +135,6 @@ open class CountryPickerController: UIViewController {
     
     // MARK: - View life cycle
     private func setUpsSearchController() {
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.barStyle = .default
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.delegate = self
-        
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -167,16 +182,6 @@ open class CountryPickerController: UIViewController {
     private func setUpTableView() {
         
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.contentInsetAdjustmentBehavior = .never
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets.zero
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableView.automaticDimension
-        
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
