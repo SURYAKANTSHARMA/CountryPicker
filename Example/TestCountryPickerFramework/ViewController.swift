@@ -88,22 +88,29 @@ private extension ViewController {
         switch selectionControlEnabled {
         case true:
             // Present country picker with `Section Control` enabled
-            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+            CountryPickerWithSectionViewController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .circular
+                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
                 
                 guard let self = self else { return }
-                
                 self.countryImageView.isHidden = false
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
-            countryController.flagStyle = .circular
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
-            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         case false:
             // Present country picker without `Section Control` enabled
-            let countryController = CountryPickerController.presentController(on: self) { [weak self] (country: Country) in
+            CountryPickerController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .corner
+                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
                 
                 guard let self = self else { return }
                 
@@ -111,11 +118,6 @@ private extension ViewController {
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
-            
-            countryController.flagStyle = .corner
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
-            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         }
     }
 }

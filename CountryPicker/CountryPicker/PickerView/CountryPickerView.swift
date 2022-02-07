@@ -77,7 +77,8 @@ open class CountryPickerView: UIPickerView {
         guard let selectedCountry = selectedCountry else {
             return
         }
-        if let index =  allCountryList.firstIndex(where: { $0 == selectedCountry }) {
+        if let index =  allCountryList.firstIndex(
+            where: { $0 == selectedCountry }) {
             self.selectRow(index, inComponent: 0, animated: false)
         }
     }
@@ -98,11 +99,11 @@ open class CountryPickerView: UIPickerView {
 extension CountryPickerView: UIPickerViewDataSource {
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+         1
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickList.count
+         pickList.count
     }
 
 }

@@ -117,18 +117,11 @@ extension CountryCell {
         addSubview(countryContentStackView)
         addSubview(separatorLineView)
         
-        // Configure constraints on country content stack 
-        if #available(iOS 11.0, *) {
-            countryContentStackView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
-            countryContentStackView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
-            countryContentStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
-            countryContentStackView.bottomAnchor.constraint(equalTo: separatorLineView.topAnchor, constant: -4).isActive = true
-        } else {
-            countryContentStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
-            countryContentStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -30).isActive = true
-            countryContentStackView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
-            countryContentStackView.bottomAnchor.constraint(equalTo: separatorLineView.topAnchor, constant: -4).isActive = true
-        }
+        // Configure constraints on country content stack
+        countryContentStackView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15).isActive = true
+        countryContentStackView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
+        countryContentStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4).isActive = true
+        countryContentStackView.bottomAnchor.constraint(equalTo: separatorLineView.topAnchor, constant: -4).isActive = true
         
         // Configure constraints on separator view
         separatorLineView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
