@@ -189,18 +189,16 @@ CountryManager.shared.country(withCode: "MY")
 ## Styling Options
 There are few styling options provided by the library such auto-hiding or styling views.
 ```swift
-
-let countryController = CountryPickerWithSectionViewController.presentController(on: self) { ... }
-
-// Styling country flag image view
-countryController.flagStyle = .corner    // E.g .corner, ,circular or .normal
-
-// Hide flag image view
-countryController.isCountryFlagHidden = true // False
-
-// Hide country dial code
-countryController.isCountryDialHidden = true  // False
-
+CountryPickerWithSectionViewController.presentController(on: self, configuration: { controller in
+    // Styling country flag image view
+    controller.configuration.flagStyle = .circular 
+    
+    // Hide flag image view
+    controller.configuration.isCountryFlagHidden = true
+    
+    // Hide country dial code
+    controller.configuration.isCountryDialHidden = true
+ })
 ```
 
 ## Contributing
