@@ -61,7 +61,7 @@ Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
-pod 'SKCountryPicker' '~> 1.2.0'
+pod 'SKCountryPicker' '~> 2.0.0'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
