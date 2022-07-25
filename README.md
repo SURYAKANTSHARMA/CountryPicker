@@ -31,7 +31,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Support Dynamic font size for ContentSizeCategory
 - [x] Unit tests coverage 94%
 - [x] Picker view support added with customization 
-
+- [x] Swift UI Support with example project COMING SOON... 
 ## Requirements
 
 - iOS 11.0+ Support latest release iOS 13
