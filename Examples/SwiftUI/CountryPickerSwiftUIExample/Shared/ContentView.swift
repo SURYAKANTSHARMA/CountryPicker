@@ -7,22 +7,28 @@
 
 import SwiftUI
 import CountryPicker
+import Combine
 
 struct ContentView: View {
-    @State private var isShowCountryPicker = false
-    
+    @State private var isShowingCountryPicker = false
+    @State private var country: Country = CountryManager.shared.currentCountry ?? Country.init(countryCode: "IN")
+
+
     var body: some View {
-        Button("Select Country") {
-            isShowCountryPicker = true
-        }.sheet(isPresented: $isShowCountryPicker) {
-            CountryPickerAdapter(countryPickerStyle: CountryPickerStyle(callBack: { choosenCountry in
-                 
-            }))
+        HStack {
+            Image(uiImage: country.flag ?? UIImage())
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32.0, height: 32.0)
+            Text(country.countryName)
         }
-    }
-    
-    func openCountryPicker() {
-        
+        Button("Select Country") {
+            isShowingCountryPicker = true
+        }.sheet(isPresented: $isShowingCountryPicker) {
+            CountryPickerViewProxy { choosenCountry in
+                country = choosenCountry
+          }
+        }
     }
 }
 
@@ -32,20 +38,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct CountryPickerStyle {
-    public var callBack: (( _ choosenCountry: Country) -> Void)?
-}
 
-struct CountryPickerAdapter: UIViewControllerRepresentable {
-    let countryPickerStyle: CountryPickerStyle
-    
-    func updateUIViewController(_ uiViewController: CountryPickerWithSectionViewController, context: Context) {
-        
-    }
-    
-    func makeUIViewController(context: Context) -> CountryPickerWithSectionViewController {
-        CountryPickerWithSectionViewController()
-    }
-        
-    typealias UIViewControllerType = CountryPickerWithSectionViewController
-}
