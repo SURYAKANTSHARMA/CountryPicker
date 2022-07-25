@@ -34,8 +34,8 @@ This library is for country picker used in many app for selecting country code o
 
 ## Requirements
 
-- iOS 10.0+ Support latest release iOS 13
-- Xcode 10.2+ Support latest Xcode 11 with Swift 
+- iOS 11.0+ Support latest release iOS 13
+- latest Xcode 13.x with Swift 
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first.
@@ -61,7 +61,7 @@ Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
-pod 'SKCountryPicker' '~> 1.2.0'
+pod 'SKCountryPicker' '~> 2.0.0'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
@@ -117,35 +117,33 @@ Add the following line to your Package.swift file in the dependencies section:
 Example:
 Please  check [example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/Example) project for customization and different option available.
 ```swift 
-private extension ViewController {
-    
-    /// Dynamically presents country picker scene with an option of including `Selection Control`.
-    ///
-    /// By default, invoking this function without defining `selectionControlEnabled` parameter. Its set to `True`
-    /// unless otherwise and the `Selection Control` will be included into the list view.
-    ///
-    /// - Parameter selectionControlEnabled: Section Control State. By default its set to `True` unless otherwise.
-    
     func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = true) {
         switch selectionControlEnabled {
         case true:
             // Present country picker with `Section Control` enabled
-            let countryController = CountryPickerWithSectionViewController.presentController(on: self) { [weak self] (country: Country) in
+            CountryPickerWithSectionViewController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .circular
+                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
                 
                 guard let self = self else { return }
-                
                 self.countryImageView.isHidden = false
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
             
-            countryController.flagStyle = .circular
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
-            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         case false:
             // Present country picker without `Section Control` enabled
-            let countryController = CountryPickerController.presentController(on: self) { [weak self] (country: Country) in
+            CountryPickerController.presentController(on: self, configuration: { countryController in
+                countryController.configuration.flagStyle = .corner
+                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
+                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
+                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+
+            }) { [weak self] country in
                 
                 guard let self = self else { return }
                 
@@ -153,15 +151,9 @@ private extension ViewController {
                 self.countryImageView.image = country.flag
                 self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
             }
-            
-            countryController.flagStyle = .corner
-            countryController.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-            countryController.isCountryDialHidden = !showDialingCodeSwitch.isOn
-            countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
         }
     }
 }
-
 ```
 
 ## Filter Options
@@ -197,18 +189,16 @@ CountryManager.shared.country(withCode: "MY")
 ## Styling Options
 There are few styling options provided by the library such auto-hiding or styling views.
 ```swift
-
-let countryController = CountryPickerWithSectionViewController.presentController(on: self) { ... }
-
-// Styling country flag image view
-countryController.flagStyle = .corner    // E.g .corner, ,circular or .normal
-
-// Hide flag image view
-countryController.isCountryFlagHidden = true // False
-
-// Hide country dial code
-countryController.isCountryDialHidden = true  // False
-
+CountryPickerWithSectionViewController.presentController(on: self, configuration: { controller in
+    // Styling country flag image view
+    controller.configuration.flagStyle = .circular 
+    
+    // Hide flag image view
+    controller.configuration.isCountryFlagHidden = true
+    
+    // Hide country dial code
+    controller.configuration.isCountryDialHidden = true
+ })
 ```
 
 ## Contributing

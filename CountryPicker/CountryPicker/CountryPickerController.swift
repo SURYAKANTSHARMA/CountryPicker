@@ -39,7 +39,7 @@ open class CountryPickerController: UIViewController {
     
     internal var applySearch = false
     // To be set by client
-    public var callBack: (( _ choosenCountry: Country) -> Void)?
+    public var onSelectCountry: OnSelectCountryCallback?
     
     #if SWIFT_PACKAGE
         let bundle = Bundle.module
@@ -48,9 +48,28 @@ open class CountryPickerController: UIViewController {
     #endif
     
     //MARK: View and ViewController
-    internal var presentingVC: UIViewController?
-    internal var searchController = UISearchController(searchResultsController: nil)
-    internal let tableView =  UITableView()
+    internal lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.barStyle = .default
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        return searchController
+    }()
+    
+    internal lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets.zero
+        tableView.estimatedRowHeight = 70.0
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
+    
     public var favoriteCountriesLocaleIdentifiers = [String]() {
         didSet {
             self.loadCountries()
@@ -66,46 +85,34 @@ open class CountryPickerController: UIViewController {
     public var statusBarStyle: UIStatusBarStyle? = .default
     public var isStatusBarVisible = true
     
-    public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal {
-        didSet { self.tableView.reloadData() }
+    public struct Configuration {
+        public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal
+        public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3)
+        public var labelColor: UIColor = UIColor.black
+        public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline)
+        public var detailColor: UIColor = UIColor.lightGray
+        public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0)
+        public var isCountryFlagHidden: Bool = false
+        public var isCountryDialHidden: Bool = false
     }
     
-    public var labelFont: UIFont = UIFont.preferredFont(forTextStyle: .title3) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var labelColor: UIColor = UIColor.black {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var detailFont: UIFont = UIFont.preferredFont(forTextStyle: .subheadline) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var detailColor: UIColor = UIColor.lightGray {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0) {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var isCountryFlagHidden: Bool = false {
-        didSet { self.tableView.reloadData() }
-    }
-    
-    public var isCountryDialHidden: Bool = false {
-        didSet { self.tableView.reloadData() }
+    public var configuration = Configuration() {
+        didSet {
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
     }
     
     internal var checkMarkImage: UIImage? {
         return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
-    internal var manager: CountryManagerInterface
-    internal var engine = CountryPickerEngine()
+    internal var manager: CountryListDataSource
+    internal var engine: CountryPickerEngine
     
-    init(manager: CountryManagerInterface) {
+    init(manager: CountryListDataSource) {
         self.manager = manager
+        self.engine = CountryPickerEngine(countries: manager.allCountries([]))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -115,17 +122,7 @@ open class CountryPickerController: UIViewController {
     
     // MARK: - View life cycle
     private func setUpsSearchController() {
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.barStyle = .default
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.delegate = self
-        
-        if #available(iOS 11.0, *) {
-            self.navigationItem.searchController = searchController
-        } else {
-            tableView.tableHeaderView = searchController.searchBar
-        }
-        
+        navigationItem.searchController = searchController
         definesPresentationContext = true
     }
     
@@ -147,8 +144,6 @@ open class CountryPickerController: UIViewController {
         // Setup table view and cells
         setUpTableView()
         
-        let nib = UINib(nibName: "CountryTableViewCell", bundle: bundle)
-        tableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.reuseIdentifier)
         
         // Setup search controller view
@@ -158,16 +153,12 @@ open class CountryPickerController: UIViewController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadCountries()
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = false
-        }
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = true
-        }
+        navigationItem.hidesSearchBarWhenScrolling = true
         
         /// Request for previous country and automatically scroll table view to item
         if let previousCountry = manager.lastCountrySelected {
@@ -178,50 +169,37 @@ open class CountryPickerController: UIViewController {
     private func setUpTableView() {
         
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets.zero
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableView.automaticDimension
-        
-        if #available(iOS 11.0, *) {
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
-        } else {
-            // Fallback on earlier versions
-            NSLayoutConstraint.activate([
-                tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                tableView.topAnchor.constraint(equalTo: view.topAnchor),
-                tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
-        }
     }
     
-    @discardableResult
-    open class func presentController(on viewController: UIViewController,
-                                      manager: CountryManagerInterface = CountryManager.shared,
-                                      handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
+    open class func presentController(
+        on viewController: UIViewController,
+        configuration: (CountryPickerController) -> Void = {_ in },
+        manager: CountryListDataSource = CountryManager.shared,
+        handler: @escaping OnSelectCountryCallback)  {
+            
         let controller = CountryPickerController(manager: manager)
-        controller.presentingVC = viewController
-        controller.callBack = handler
+        controller.onSelectCountry = handler
+        configuration(controller)
         let navigationController = UINavigationController(rootViewController: controller)
-        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
+        viewController.present(navigationController, animated: true, completion: nil)
+    }
+    /***
+     This method returns CountryPickerController. Client is reponsible for embeddeding in navigation controller or any other view accordingly.
+     */
+    open class func create(manager: CountryListDataSource = CountryManager.shared,
+                           handler: @escaping OnSelectCountryCallback) -> CountryPickerController {
+        let controller = CountryPickerController(manager: manager)
+        controller.onSelectCountry = handler
         return controller
     }
+    
     
     // MARK: - Cross Button Action
     @objc private func crossButtonClicked(_ sender: UIBarButtonItem) {
@@ -296,20 +274,20 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
     
     func setUpCellProperties(cell: CountryCell) {
         // Auto-hide flag & dial labels
-        cell.hideFlag(isCountryFlagHidden)
-        cell.hideDialCode(isCountryDialHidden)
+        cell.hideFlag(configuration.isCountryFlagHidden)
+        cell.hideDialCode(configuration.isCountryDialHidden)
         
-        cell.nameLabel.font = labelFont
+        cell.nameLabel.font = configuration.labelFont
         if #available(iOS 13.0, *) {
             cell.nameLabel.textColor = UIColor.label
         } else {
             // Fallback on earlier versions
-            cell.nameLabel.textColor = labelColor
+            cell.nameLabel.textColor = configuration.labelColor
         }
-        cell.diallingCodeLabel.font = detailFont
-        cell.diallingCodeLabel.textColor = detailColor
-        cell.separatorLineView.backgroundColor = self.separatorLineColor
-        cell.applyFlagStyle(flagStyle)
+        cell.diallingCodeLabel.font = configuration.detailFont
+        cell.diallingCodeLabel.textColor = configuration.detailColor
+        cell.separatorLineView.backgroundColor = configuration.separatorLineColor
+        cell.applyFlagStyle(configuration.flagStyle)
     }
     
     // MARK: - TableView Delegate
@@ -322,7 +300,7 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             dismissWithAnimation = false
         }
         
-        callBack?(selectedCountry)
+        onSelectCountry?(selectedCountry)
         manager.lastCountrySelected = selectedCountry
             
         dismiss(animated: dismissWithAnimation, completion: nil)

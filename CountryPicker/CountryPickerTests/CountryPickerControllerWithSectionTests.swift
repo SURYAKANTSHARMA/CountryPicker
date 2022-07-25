@@ -2,7 +2,7 @@
 //  CountryPickerControllerWithSectionTests.swift
 //  CountryPickerTests
 //
-//  Created by tokopedia on 08/01/21.
+//  Created by Github on 08/01/21.
 //  Copyright © 2021 SuryaKant Sharma. All rights reserved.
 //
 
@@ -11,13 +11,7 @@ import XCTest
 @testable import CountryPicker
 
 class CountryPickerControllerWithSectionTests: XCTestCase {
-        
-    func test_presentController_shouldAbleToPresent() {
-        let vc = UIViewController()
-        let sut = makeSUT(presentingVC: vc)
-        XCTAssertEqual(sut.presentingVC, vc)
-    }
-    
+            
     func test_presentController_shouldAbleToSetCallback() {
 
         var logCallbackCounter = 0
@@ -29,7 +23,7 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         }
         let sut = makeSUT(callback: callback)
         let country = Country(countryCode: "IN")
-        sut.callBack?(country)
+        sut.onSelectCountry?(country)
 
 
         XCTAssertEqual(selectedCountry, country)
@@ -343,12 +337,10 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
     }
     
     //MARK: - Helpers
-    func makeSUT(manager: CountryManagerInterface = CountryManagerSpy(),
+    func makeSUT(manager: CountryListDataSource = CountryManagerSpy(),
                  presentingVC: UIViewController = UIViewController(), callback:((Country) -> Void)? = nil) -> CountryPickerWithSectionViewController {
-        let sut = CountryPickerWithSectionViewController
-            .presentController(on: presentingVC, manager: manager) { country in
-            callback?(country)
-        }
+        let sut = CountryPickerWithSectionViewController(manager: manager)
+        sut.onSelectCountry = callback
         sut.startLifeCycle()
         return sut
     }

@@ -1,0 +1,16 @@
+PODS:
+  - SKCountryPicker (1.3.2)
+
+DEPENDENCIES:
+  - SKCountryPicker (from `../`)
+
+EXTERNAL SOURCES:
+  SKCountryPicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SKCountryPicker: 6e32ecd33d22be625d4ccc89476037780c6f5e15
+
+PODFILE CHECKSUM: 16385f4b34bef6e866f4c999a74ee4e4e39bfbc8
+
+COCOAPODS: 1.10.1

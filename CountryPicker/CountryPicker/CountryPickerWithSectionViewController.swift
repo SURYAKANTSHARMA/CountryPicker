@@ -30,9 +30,7 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
     }
 
     open override func viewDidAppear(_ animated: Bool) {
-        if #available(iOS 11.0, *) {
-            navigationItem.hidesSearchBarWhenScrolling = true
-        }
+        navigationItem.hidesSearchBarWhenScrolling = true
         scrollToPreviousCountryIfNeeded()
     }
     
@@ -44,18 +42,17 @@ open class CountryPickerWithSectionViewController: CountryPickerController {
         }
     }
     
-    @discardableResult
-    open override class func presentController(on viewController: UIViewController,
-                                               manager: CountryManagerInterface = CountryManager.shared,
-                                               handler:@escaping OnSelectCountryCallback) -> CountryPickerWithSectionViewController {
+    open override class func presentController(
+        on viewController: UIViewController,
+        configuration: (CountryPickerController) -> Void = {_ in },
+        manager: CountryListDataSource = CountryManager.shared,
+        handler:@escaping OnSelectCountryCallback) {
+        
         let controller = CountryPickerWithSectionViewController(manager: manager)
-        controller.presentingVC = viewController
-        controller.callBack = handler
-        
+        controller.onSelectCountry = handler
+        configuration(controller)
         let navigationController = UINavigationController(rootViewController: controller)
-        controller.presentingVC?.present(navigationController, animated: true, completion: nil)
-        
-        return controller
+        viewController.present(navigationController, animated: true, completion: nil)
     }
 
 }
@@ -239,7 +236,7 @@ extension CountryPickerWithSectionViewController {
      }
     
     private func triggerCallbackAndDismiss(with country: Country) {
-        callBack?(country)
+        onSelectCountry?(country)
         manager.lastCountrySelected = country
         self.dismiss(animated: true, completion: nil)
     }
