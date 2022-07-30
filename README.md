@@ -200,6 +200,9 @@ CountryPickerWithSectionViewController.presentController(on: self, configuration
     controller.configuration.isCountryDialHidden = true
  })
 ```
+## Dependency Graph 
+
+![Dependecy graph](https://user-images.githubusercontent.com/6416095/181878996-43ef2361-5d81-4bef-9f84-f4c54a640ed6.png)
 
 ## Contributing
 
