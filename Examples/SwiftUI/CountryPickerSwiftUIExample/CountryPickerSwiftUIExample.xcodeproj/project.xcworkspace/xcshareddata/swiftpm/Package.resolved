@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "countrypicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SURYAKANTSHARMA/CountryPicker",
+      "state" : {
+        "revision" : "cf9190d83d4d10598bdfc3cf6325590c6ae0f504",
+        "version" : "1.4.1"
+      }
+    }
+  ],
+  "version" : 2
+}
