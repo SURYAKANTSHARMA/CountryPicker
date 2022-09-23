@@ -34,8 +34,8 @@ This library is for country picker used in many app for selecting country code o
 - [x] Swift UI Support with example project 
 ## Requirements
 
-- iOS 11.0+ Support latest release iOS 13
-- latest Xcode 13.x with Swift 
+- iOS 11.0+ Support latest release iOS 16
+- latest Xcode 14.x with Swift 
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first.
