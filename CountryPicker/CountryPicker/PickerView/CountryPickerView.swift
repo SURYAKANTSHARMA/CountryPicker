@@ -88,6 +88,10 @@ open class CountryPickerView: UIPickerView {
         self.countryCodes = codes
     }
     
+    public func setSelectedCountry(_ selectedCountry: Country?) {
+        self.selectedCountry = selectedCountry
+    }
+    
     public static func loadPickerView(allCountryList: [Country] = CountryManager.shared.countries, selectedCountry: Country? = CountryManager.shared.currentCountry, didSelectCountry: @escaping OnSelectCountryCallback) -> CountryPickerView {
         let countryPicker = CountryPickerView(allCountryList: allCountryList, selectedCountry: selectedCountry)
         countryPicker.didSelectCountryCallback = didSelectCountry

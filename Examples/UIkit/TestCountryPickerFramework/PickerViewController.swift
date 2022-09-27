@@ -58,6 +58,8 @@ class PickerViewController: UIViewController {
     }
     
     private func setupStoryboardPickerViewCallback() {
+        // Use setSelectedCountry to set a default country code
+        storyboardPickerView.setSelectedCountry(Country(countryCode: "GB"))
         storyboardPickerView.onSelectCountry { [weak self] (country) in
             guard let self = self,
                 let digitCountrycode = country.digitCountrycode else {
