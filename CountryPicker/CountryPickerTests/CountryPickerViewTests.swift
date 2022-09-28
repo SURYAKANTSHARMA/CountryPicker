@@ -96,9 +96,13 @@ class CountryPickerViewTests: XCTestCase {
     
     func test_setSelectedCountry() {
         let sut = makeSUT()
-        XCTAssertEqual(sut.dataSource?.pickerView(sut, numberOfRowsInComponent: 0), 2)
-        sut.setSelectedCountry(Country(countryCode: "US"))
-        XCTAssertEqual(makeSUT(selectedCountry: countries[1]).selectedRow(inComponent: 0), 1)
+        let selectedCountry = Country(countryCode: "US")
+        sut.setSelectedCountry(selectedCountry)
+        let selectedRowInUI = sut.selectedRow(inComponent: 0)
+        let selectedCountryInUI = countries[selectedRowInUI]
+        
+        XCTAssertEqual(selectedCountryInUI.countryName, selectedCountry.countryName)
+        XCTAssertEqual(selectedCountryInUI.countryCode, selectedCountry.countryCode)
     }
     
     func test_scrollToSelectCountry_shouldNotScroll_ifSelectedCountryIsNil() {
