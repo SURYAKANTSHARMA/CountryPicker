@@ -26,7 +26,8 @@ let package = Package(
             dependencies: [],
             path: "CountryPicker/CountryPicker",
             resources: [
-                .copy("CountryPickerController.bundle")
+                .copy("CountryPickerController.bundle"),
+                .process("tickMark.png")
             ]
         ),
             
