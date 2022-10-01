@@ -31,11 +31,11 @@ This library is for country picker used in many app for selecting country code o
 - [x] Support Dynamic font size for ContentSizeCategory
 - [x] Unit tests coverage 94%
 - [x] Picker view support added with customization 
-
+- [x] Swift UI Support with example project 
 ## Requirements
 
-- iOS 11.0+ Support latest release iOS 13
-- latest Xcode 13.x with Swift 
+- iOS 11.0+ Support latest release iOS 16
+- latest Xcode 14.x with Swift 
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first.
@@ -61,7 +61,7 @@ Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
-pod 'SKCountryPicker' '~> 1.2.0'
+pod 'SKCountryPicker' '~> 2.0.0'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
@@ -200,6 +200,9 @@ CountryPickerWithSectionViewController.presentController(on: self, configuration
     controller.configuration.isCountryDialHidden = true
  })
 ```
+## Dependency Graph 
+
+![Dependecy graph](https://user-images.githubusercontent.com/6416095/181878996-43ef2361-5d81-4bef-9f84-f4c54a640ed6.png)
 
 ## Contributing
 
