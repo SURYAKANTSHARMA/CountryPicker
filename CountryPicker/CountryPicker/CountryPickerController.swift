@@ -62,6 +62,7 @@ open class CountryPickerController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.delegate = self
+        tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets.zero
