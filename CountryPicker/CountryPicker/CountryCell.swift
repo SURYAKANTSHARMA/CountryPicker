@@ -42,7 +42,6 @@ class CountryCell: UITableViewCell {
 
     let separatorLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 1).isActive = true
         return view
@@ -100,6 +99,8 @@ class CountryCell: UITableViewCell {
 extension CountryCell {
     
     func setupViews() {
+        backgroundColor = .clear
+        countryContentStackView.backgroundColor = .clear
         
         // Add country flag & check mark views
         countryFlagStackView.addArrangedSubview(flagImageView)

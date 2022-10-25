@@ -41,11 +41,11 @@ open class CountryPickerController: UIViewController {
     // To be set by client
     public var onSelectCountry: OnSelectCountryCallback?
     
-    #if SWIFT_PACKAGE
-        let bundle = Bundle.module
-    #else
-        let bundle = Bundle(for: CountryPickerController.self)
-    #endif
+#if SWIFT_PACKAGE
+    let bundle = Bundle.module
+#else
+    let bundle = Bundle(for: CountryPickerController.self)
+#endif
     
     //MARK: View and ViewController
     internal lazy var searchController: UISearchController = {
@@ -94,6 +94,13 @@ open class CountryPickerController: UIViewController {
         public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0)
         public var isCountryFlagHidden: Bool = false
         public var isCountryDialHidden: Bool = false
+        public var backgroundColor:UIColor {
+            if #available(iOS 13, *){
+                return .systemBackground
+            }else {
+                return .white
+            }
+        }
     }
     
     public var configuration = Configuration() {
@@ -128,12 +135,7 @@ open class CountryPickerController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = UIColor.systemBackground
-        } else {
-            view.backgroundColor = UIColor.white
-        }
-        
+        view.backgroundColor = configuration.backgroundColor
         // Setup view bar buttons
         let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
                                               target: self,
@@ -184,12 +186,12 @@ open class CountryPickerController: UIViewController {
         manager: CountryListDataSource = CountryManager.shared,
         handler: @escaping OnSelectCountryCallback)  {
             
-        let controller = CountryPickerController(manager: manager)
-        controller.onSelectCountry = handler
-        configuration(controller)
-        let navigationController = UINavigationController(rootViewController: controller)
-        viewController.present(navigationController, animated: true, completion: nil)
-    }
+            let controller = CountryPickerController(manager: manager)
+            controller.onSelectCountry = handler
+            configuration(controller)
+            let navigationController = UINavigationController(rootViewController: controller)
+            viewController.present(navigationController, animated: true, completion: nil)
+        }
     /***
      This method returns CountryPickerController. Client is reponsible for embeddeding in navigation controller or any other view accordingly.
      */
@@ -210,7 +212,7 @@ open class CountryPickerController: UIViewController {
 
 // MARK: - Internal Methods 
 internal extension CountryPickerController {
-
+    
     func loadCountries() {
         countries = manager.allCountries(favoriteCountriesLocaleIdentifiers)
     }
@@ -302,12 +304,12 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         
         onSelectCountry?(selectedCountry)
         manager.lastCountrySelected = selectedCountry
-            
+        
         dismiss(animated: dismissWithAnimation, completion: nil)
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath)
-        -> CGFloat {
+    -> CGFloat {
         return 60.0
     }
     
@@ -332,7 +334,7 @@ extension CountryPickerController: UISearchBarDelegate {
         
         let filteredCountries = engine
             .filterCountries(searchText: searchText)
-    
+        
         // Append filtered countries
         filterCountries.append(contentsOf: filteredCountries)
     }
@@ -343,7 +345,7 @@ extension CountryPickerController: UISearchBarDelegate {
         applySearch = false
         tableView.reloadData()
     }
-
+    
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
