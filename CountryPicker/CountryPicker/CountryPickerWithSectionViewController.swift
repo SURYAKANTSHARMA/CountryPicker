@@ -238,7 +238,14 @@ extension CountryPickerWithSectionViewController {
     private func triggerCallbackAndDismiss(with country: Country) {
         onSelectCountry?(country)
         manager.lastCountrySelected = country
-        self.dismiss(animated: true, completion: nil)
+        if let presentedVC = self.presentedViewController {
+            presentedVC.dismiss(animated: false) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+
     }
 }
 
