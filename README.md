@@ -2,9 +2,11 @@
 
 # CountryPicker
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/vsouza/awesome-ios)
-[![Travis CI](https://api.travis-ci.org/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://travis-ci.org/SURYAKANTSHARMA/CountryPicker)
+[![Build Status](https://app.travis-ci.com/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://app.travis-ci.com/github/SURYAKANTSHARMA/CountryPicker)
+
 [![codecov](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker/branch/master/graph/badge.svg)](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker)
-[![Version](https://img.shields.io/cocoapods/v/SKCountryPicker.svg?style=flat)](https://cocoapods.org/pods/SKCountryPicker)
+![Version Badge](https://img.shields.io/github/v/release/SURYAKANTSHARMA/CountryPicker?style=flat)
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
