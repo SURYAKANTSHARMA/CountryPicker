@@ -336,12 +336,48 @@ class CountryPickerControllerWithSectionTests: XCTestCase {
         XCTAssertEqual(isIndiaCellCount, 1)
     }
     
+//    func test_inFilterCountries_whenSelected_shouldDismissCountryController() {
+//        
+//        // Given
+//        var logCallbackCounter = 0
+//        var selectedCountry: Country?
+//        let india = Country(countryCode: "IN")
+//        let callback:(Country) -> Void = { country in
+//            logCallbackCounter += 1
+//            selectedCountry = country
+//        }
+//        let countryManager = makeSpy()
+//        countryManager.lastCountrySelected = nil
+//        let rootVC = UIViewController()
+//        
+//        let navigation = UINavigationController(rootViewController: rootVC)
+//        
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        window.rootViewController = navigation
+//        window.makeKeyAndVisible()
+//
+//        
+//        let sut = makeSUT(manager: countryManager,
+//                          presentingVC: rootVC, callback: callback)
+//
+//        XCTAssertEqual(sut.presentingViewController, navigation)
+//
+//        // when
+//        sut.searchController.searchBar.becomeFirstResponder()
+//        sut.searchController.searchBar.simulateSearch(text: "IN")
+//        sut.tableView.select(row: 0)
+//
+//        // then
+//        XCTAssertNil(sut.presentingViewController)
+//    }
+    
     //MARK: - Helpers
     func makeSUT(manager: CountryListDataSource = CountryManagerSpy(),
                  presentingVC: UIViewController = UIViewController(), callback:((Country) -> Void)? = nil) -> CountryPickerWithSectionViewController {
         let sut = CountryPickerWithSectionViewController(manager: manager)
         sut.onSelectCountry = callback
         sut.startLifeCycle()
+        presentingVC.present(sut, animated: false)
         return sut
     }
 
@@ -361,3 +397,10 @@ private let defaultCountries =
     [Country(countryCode: "IN"),
      Country(countryCode: "AF"),
      Country(countryCode: "US")]
+
+extension CountryPickerWithSectionViewController {
+    open override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: false,
+                      completion: completion)
+    }
+}

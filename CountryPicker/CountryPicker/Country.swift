@@ -61,7 +61,8 @@ open class Country {
     func countryName(with locale: Locale) -> String {
         guard let localisedCountryName = locale.localizedString(forRegionCode: self.countryCode) else {
             let message = "Failed to localised country name for Country Code:- \(self.countryCode)"
-            fatalError(message)
+            assertionFailure(message)
+            return ""
         }
         return localisedCountryName
     }
@@ -76,7 +77,8 @@ func mapCountryName(_ countryCode: String) -> String {
     let locale = Locale(identifier: Locale.preferredLanguages.first!)
     guard let localisedCountryName = locale.localizedString(forRegionCode: countryCode) else {
         let message = "Failed to localised country name for Country Code:- \(countryCode)"
-        fatalError(message)
+        assertionFailure(message)
+        return ""
     }
     return localisedCountryName
 }
