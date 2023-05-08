@@ -11,7 +11,7 @@ import CountryPicker
 
 struct CountryPickerViewProxy: UIViewControllerRepresentable {
     
-    let onSelect: (( _ choosenCountry: Country) -> Void)?
+    let onSelect: (( _ chosenCountry: Country) -> Void)?
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
         
