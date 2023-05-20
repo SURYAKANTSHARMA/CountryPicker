@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SKCountryPicker"
-  s.version      = "2.0.1"
+  s.version      = "2.0.2"
   s.summary      = "A simple, customizable Country picker for picking country or dialing code."
 
   # This description is used to generate tags and improve search results.
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "2.0.1", :branch => 'master'}
+  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "2.0.2", :branch => 'master'}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
