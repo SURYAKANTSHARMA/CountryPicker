@@ -17,61 +17,55 @@ enum CountryFlagStyle {
 
 
 struct CountryPickerView: View {
-    @StateObject private var manager = CountryManager.shared
+    private var manager = CountryManager.shared
     @State private var filterCountries = [Country]()
     @State private var applySearch = false
     @State private var searchText = ""
     @State private var selectedCountry: Country?
     
     private var searchResults: [Country] {
-        if searchText.isEmpty {
-            return manager.countries
-        } else {
-            return filterCountries
-        }
+        searchText.isEmpty ? manager.countries : filterCountries
     }
     
     var body: some View {
         NavigationView {
             List(searchResults) { country in
-              CountryCell(country: country, isFavorite: true)
+                CountryCell(country: country,
+                            isFavorite: selectedCountry == country, selectedCountry: $selectedCountry)
+                .onTapGesture {
+                    selectedCountry = country
+                }
             }
-//            List(searchResults) { country in
-//                CountryCell(country: country, isFavorite: $manager.isFavorite(country))
-//                    .onTapGesture {
-//                        selectedCountry = country
-//                    }
-//            }
-//            .searchable(text: $searchText)
-//            .navigationTitle("Country Picker")
-//            .onReceive(Just(searchText)) { text in
-//                filterCountries = manager.filterCountriesByName(text)
-//            }
-//            .onDisappear {
-//                if let country = selectedCountry {
-//                    manager.setLastCountrySelected(country)
-//                }
-//            }
-            
-            Text("hello word ")
+            .searchable(text: $searchText)
+            .navigationTitle("Country Picker")
+            .onChange(of: searchText) { newValue in
+                filterCountries = manager.filterCountries(searchText: newValue)
+            }
+            .onDisappear {
+                manager.lastCountrySelected = selectedCountry
+            }
         }
     }
 }
-
 struct CountryCell: View {
     let country: Country
-    var isFavorite: Bool
+    let isFavorite: Bool
+    @Binding var selectedCountry: Country?
     
     var body: some View {
-        HStack {
-            Image(uiImage: country.flag ?? .init())
-                .resizable()
-                .frame(width: 40, height: 26)
-                .scaledToFit()
-            Text(country.countryName)
-            Spacer()
-            if isFavorite {
-                Image(uiImage: UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) ?? .init())
+        Button {
+            selectedCountry = country
+        } label: {
+            HStack {
+                Image(uiImage: country.flag ?? .init())
+                    .resizable()
+                    .frame(width: 40, height: 26)
+                    .scaledToFit()
+                Text(country.countryName)
+                Spacer()
+                if isFavorite {
+                    Image(uiImage: UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) ?? .init())
+                }
             }
         }
     }

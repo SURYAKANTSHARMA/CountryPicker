@@ -135,6 +135,31 @@ public extension CountryManager {
     func resetLastSelectedCountry() {
         lastCountrySelected = nil
     }
+    
+    func filterCountries(searchText: String) -> [Country] {
+         countries.compactMap { (country) -> Country? in
+            
+            // Filter country by country name first character
+            if  filters.contains(.countryName),  country.countryName.capitalized.contains(searchText.capitalized) {
+                return country
+            }
+
+            // Filter country by country code and utilise `CountryFilterOptions`
+            if filters.contains(.countryCode),
+               country.countryCode.capitalized.contains(searchText.capitalized) {
+                return country
+            }
+
+            // Filter country by digit country code and utilise `CountryFilterOptions`
+            if filters.contains(.countryDialCode),
+                let digitCountryCode = country.digitCountrycode,
+                digitCountryCode.contains(searchText) {
+                return country
+            }
+
+            return nil
+         }.removeDuplicates()
+    }
 }
 
 
@@ -219,4 +244,18 @@ public extension CountryManager {
 extension String: Error {}
 extension String: LocalizedError {
     public var errorDescription: String? { return self }
+}
+
+
+// MARK: - Array Extenstion
+extension Array where Element: Equatable {
+    func removeDuplicates() -> [Element] {
+        var uniqueValues = [Element]()
+        forEach {
+            if !uniqueValues.contains($0) {
+                uniqueValues.append($0)
+            }
+        }
+        return uniqueValues
+    }
 }
