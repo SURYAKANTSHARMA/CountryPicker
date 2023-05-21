@@ -15,13 +15,14 @@ enum CountryFlagStyle {
 }
 
 
-
 struct CountryPickerView: View {
+    
     private var manager = CountryManager.shared
     @State private var filterCountries = [Country]()
     @State private var applySearch = false
     @State private var searchText = ""
     @State private var selectedCountry: Country?
+    let configuration: Configuration
     
     private var searchResults: [Country] {
         searchText.isEmpty ? manager.countries : filterCountries
@@ -31,7 +32,7 @@ struct CountryPickerView: View {
         NavigationView {
             List(searchResults) { country in
                 CountryCell(country: country,
-                            isFavorite: selectedCountry == country, selectedCountry: $selectedCountry)
+                            isFavorite: selectedCountry == country, selectedCountry: $selectedCountry, configuration: configuration)
                 .onTapGesture {
                     selectedCountry = country
                 }
@@ -51,17 +52,33 @@ struct CountryCell: View {
     let country: Country
     let isFavorite: Bool
     @Binding var selectedCountry: Country?
+    let configuration: CountryPickerView.Configuration
+    
     
     var body: some View {
         Button {
             selectedCountry = country
         } label: {
             HStack {
-                Image(uiImage: country.flag ?? .init())
-                    .resizable()
-                    .frame(width: 40, height: 26)
-                    .scaledToFit()
-                Text(country.countryName)
+                if !configuration.isCountryFlagHidden {
+                    Image(uiImage: country.flag ?? .init())
+                        .resizable()
+                        .frame(width: 40, height: 26)
+                        .scaledToFit()
+
+                }
+                VStack(alignment: .leading) {
+                    Text(country.countryName)
+                        .font(configuration.labelFont)
+                        .foregroundColor(configuration.labelColor)
+
+                    if !configuration.isCountryDialHidden {
+                        Text(country.dialingCode ?? "")
+                            .font(configuration.detailFont)
+                            .foregroundColor(configuration.detailColor)
+                    }
+                }
+
                 Spacer()
                 if isFavorite {
                     Image(uiImage: UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) ?? .init())
@@ -69,6 +86,24 @@ struct CountryCell: View {
             }
         }
     }
+}
+
+extension CountryPickerView {
+    public init(configuration: CountryPickerView.Configuration) {
+        self.configuration = configuration
+    }
+    
+    public struct Configuration {
+        public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal
+        public var labelFont: Font = .title3
+        public var labelColor: Color = .black
+        public var detailFont: Font = .footnote
+        public var detailColor: Color = .gray
+        
+        public var isCountryFlagHidden: Bool = true
+        public var isCountryDialHidden: Bool = false
+    }
+
 }
 
 //struct ContentView: View {
@@ -92,6 +127,6 @@ struct CountryCell: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryPickerView()
+        CountryPickerView(configuration: CountryPickerView.Configuration())
     }
 }
