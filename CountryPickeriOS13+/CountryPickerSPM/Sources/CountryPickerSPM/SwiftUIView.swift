@@ -69,11 +69,25 @@ struct CountryCell: View {
         } label: {
             HStack {
                 if !configuration.isCountryFlagHidden {
-                    Image(uiImage: country.flag ?? .init())
-                        .resizable()
-                        .frame(width: 40, height: 26)
-                        .scaledToFit()
+                    switch configuration.flagStyle {
+                    case .normal:
+                        Image(uiImage: country.flag ?? .init())
+                            .resizable()
+                            .frame(width: 40, height: 26)
+                            .scaledToFit()
+                    case .circular:
+                        Image(uiImage: country.flag ?? .init())
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
 
+                    case .corner:
+                        Image(uiImage: country.flag ?? .init())
+                            .resizable()
+                            .frame(width: 40, height: 26)
+                            .scaledToFit()
+                            .cornerRadius(8)
+                    }
                 }
                 VStack(alignment: .leading) {
                     Text(country.countryName)
@@ -99,7 +113,7 @@ struct CountryCell: View {
 extension CountryPickerView {
     
     public struct Configuration {
-        public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal
+        public var flagStyle: CountryFlagStyle = CountryFlagStyle.corner
         public var labelFont: Font = .title3
         public var labelColor: Color = .black
         public var detailFont: Font = .footnote
