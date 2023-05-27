@@ -144,7 +144,7 @@ extension CountryPickerView {
 //    }
 //}
 
-struct ContentView_Previews: PreviewProvider {
+struct CountryPickerView_Previews: PreviewProvider {
     static var previews: some View {
         CountryPickerView(configuration: CountryPickerView.Configuration())
     }
