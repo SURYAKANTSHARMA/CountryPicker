@@ -16,26 +16,33 @@ enum CountryFlagStyle {
 
 
 struct CountryPickerView: View {
-    
-    private var manager = CountryManager.shared
+    let manager: any CountryListDataSource
     @State private var filterCountries = [Country]()
     @State private var applySearch = false
     @State private var searchText = ""
     @State private var selectedCountry: Country?
     let configuration: Configuration
-    
+
     private var searchResults: [Country] {
-        searchText.isEmpty ? manager.countries : filterCountries
+        searchText.isEmpty ? manager.allCountries([]) : filterCountries
     }
-    
+
+    init(manager: any CountryListDataSource = CountryManager.shared,
+         configuration: Configuration) {
+        self.manager = manager
+        self.configuration = configuration
+    }
+
     var body: some View {
         NavigationView {
             List(searchResults) { country in
                 CountryCell(country: country,
-                            isFavorite: selectedCountry == country, selectedCountry: $selectedCountry, configuration: configuration)
-                .onTapGesture {
-                    selectedCountry = country
-                }
+                            isFavorite: selectedCountry == country,
+                            selectedCountry: $selectedCountry,
+                            configuration: configuration)
+                    .onTapGesture {
+                        selectedCountry = country
+                    }
             }
             .searchable(text: $searchText)
             .navigationTitle("Country Picker")
@@ -48,6 +55,7 @@ struct CountryPickerView: View {
         }
     }
 }
+
 struct CountryCell: View {
     let country: Country
     let isFavorite: Bool
@@ -89,9 +97,6 @@ struct CountryCell: View {
 }
 
 extension CountryPickerView {
-    public init(configuration: CountryPickerView.Configuration) {
-        self.configuration = configuration
-    }
     
     public struct Configuration {
         public var flagStyle: CountryFlagStyle = CountryFlagStyle.normal
@@ -100,7 +105,7 @@ extension CountryPickerView {
         public var detailFont: Font = .footnote
         public var detailColor: Color = .gray
         
-        public var isCountryFlagHidden: Bool = true
+        public var isCountryFlagHidden: Bool = false
         public var isCountryDialHidden: Bool = false
     }
 

@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 // MARK: - CountryManagerInterface
-public protocol CountryListDataSource {
+public protocol CountryListDataSource: ObservableObject {
     func country(withCode code: String) -> Country?
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
     var lastCountrySelected: Country? { get set }
+    func filterCountries(searchText: String) -> [Country]
 }
 
 // MARK: - CountryManagerInterface extension for optional variables and default implementation
@@ -44,7 +45,7 @@ let bundle = Bundle(for: Country.self)
 #endif
 
 // MARK: - CountryManager
-open class CountryManager: CountryListDataSource, ObservableObject {
+open class CountryManager: CountryListDataSource {
     
     // MARK: - Variables
     @Published public var countries = [Country]()
