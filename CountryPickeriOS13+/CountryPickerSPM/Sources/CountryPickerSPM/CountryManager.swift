@@ -10,19 +10,18 @@ import Foundation
 import UIKit
 
 // MARK: - CountryManagerInterface
-public typealias OnSelectCountryCallback =  (_ country: Country) -> Void
 public protocol CountryListDataSource {
     func country(withCode code: String) -> Country?
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
-    var lastCountrySelected: Country? {get set}
+    var lastCountrySelected: Country? { get set }
 }
-//
-//// MARK: - CountryManagerInterface extenstion for optional variables and default implementation
+
+// MARK: - CountryManagerInterface extension for optional variables and default implementation
 extension CountryListDataSource {
     var lastCountrySelected: Country? {
-    get { nil }
-    set {}
-   }
+        get { nil }
+        set {}
+    }
 }
 
 // MARK: - CountryFilterOption
@@ -39,31 +38,29 @@ public enum CountryFilterOption {
 }
 
 #if SWIFT_PACKAGE
-    let bundle = Bundle.module
+let bundle = Bundle.module
 #else
-    let bundle = Bundle(for: Country.self)
+let bundle = Bundle(for: Country.self)
 #endif
-
 
 // MARK: - CountryManager
 open class CountryManager: CountryListDataSource, ObservableObject {
     
-    // MARK: - variable
-    public var countries = [Country]()
+    // MARK: - Variables
+    @Published public var countries = [Country]()
     
     private var countriesFilePath: String? {
-        
         let countriesPath = bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
         return countriesPath
     }
     
-    public static var shared: CountryManager = {
+    public static let shared: CountryManager = {
         let countryManager = CountryManager()
         do {
             try countryManager.loadCountries()
         } catch {
             #if DEBUG
-              print(error.localizedDescription)
+            print(error.localizedDescription)
             #endif
         }
         return countryManager
@@ -77,7 +74,6 @@ open class CountryManager: CountryListDataSource, ObservableObject {
         return Country(countryCode: countryCode)
     }
     
-    
     public var lastCountrySelected: Country?
     
     /// Default country filter option
@@ -85,13 +81,11 @@ open class CountryManager: CountryListDataSource, ObservableObject {
     
     /// Exposed country filter options and should be configured by user
     ///
-    /// - Note: By default, countries can be filtered by there country names
+    /// - Note: By default, countries can be filtered by their country names
     internal var filters: Set<CountryFilterOption> = [.countryName]
-        
+    
     private init() {}
-
 }
-
 
 public extension CountryManager {
     
@@ -102,7 +96,7 @@ public extension CountryManager {
     
     func fetchCountries(fromURLPath path: URL) throws -> [Country] {
         guard let rawData = try? Data(contentsOf: path),
-            let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
+              let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
             throw "[CountryManager] ❌ Missing countries plist file from path: \(path)"
         }
         
@@ -110,7 +104,7 @@ public extension CountryManager {
         let sortedCountries = countryCodes.map { Country(countryCode: $0) }.sorted { $0.countryName < $1.countryName }
         
         #if DEBUG
-        print("[CountryManager] ✅ Succefully prepared list of \(sortedCountries.count) countries")
+        print("[CountryManager] ✅ Successfully prepared list of \(sortedCountries.count) countries")
         #endif
         
         return sortedCountries
@@ -125,43 +119,37 @@ public extension CountryManager {
         countries.removeAll()
         countries.append(contentsOf: fetchedCountries)
     }
-
+    
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country] {
         favoriteCountriesLocaleIdentifiers
             .compactMap { country(withCode: $0) } + countries
     }
     
-    /// As the function name, resets the last selected country
+    /// As the function name suggests, resets the last selected country
     func resetLastSelectedCountry() {
         lastCountrySelected = nil
     }
     
     func filterCountries(searchText: String) -> [Country] {
-         countries.compactMap { (country) -> Country? in
-            
+        countries.compactMap { (country) -> Country? in
             // Filter country by country name first character
-            if  filters.contains(.countryName),  country.countryName.capitalized.contains(searchText.capitalized) {
+            if filters.contains(.countryName), country.countryName.capitalized.contains(searchText.capitalized) {
                 return country
             }
-
-            // Filter country by country code and utilise `CountryFilterOptions`
-            if filters.contains(.countryCode),
-               country.countryCode.capitalized.contains(searchText.capitalized) {
+            
+            // Filter country by country code and utilize `CountryFilterOptions`
+            if filters.contains(.countryCode), country.countryCode.capitalized.contains(searchText.capitalized) {
                 return country
             }
-
-            // Filter country by digit country code and utilise `CountryFilterOptions`
-            if filters.contains(.countryDialCode),
-                let digitCountryCode = country.digitCountrycode,
-                digitCountryCode.contains(searchText) {
+            
+            // Filter country by digit country code and utilize `CountryFilterOptions`
+            if filters.contains(.countryDialCode), let digitCountryCode = country.digitCountrycode, digitCountryCode.contains(searchText) {
                 return country
             }
-
             return nil
-         }.removeDuplicates()
+        }.removeDuplicates()
     }
 }
-
 
 // MARK: - Country Filter Methods
 public extension CountryManager {
@@ -172,17 +160,14 @@ public extension CountryManager {
     /// - Returns: A country instance
     
     func country(withCode code: String) -> Country? {
-         countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
+        countries.first(where: { $0.countryCode.lowercased() == code.lowercased() })
     }
-    
     
     /// Requests for a `Country` instance based on country name
     ///
-    ///
     func country(withName countryName: String) -> Country? {
-         countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
+        countries.first(where: { $0.countryName.lowercased() == countryName.lowercased() })
     }
-    
     
     /// Requests for a `Country` instance based on country digit code
     ///
@@ -190,14 +175,14 @@ public extension CountryManager {
     ///
     /// - Parameter dialCode:
     func country(withDigitCode dialCode: String) -> Country? {
-         countries.first(where: { (country) -> Bool in
+        countries.first(where: { (country) -> Bool in
             guard let countryDialCode = country.digitCountrycode else {
                 return false
             }
             
             var dialCode = dialCode
             
-            // Remove a plus sign if does exists
+            // Remove a plus sign if it exists
             if dialCode.contains("+"), let plusSignIndex = dialCode.firstIndex(of: "+") {
                 dialCode.remove(at: plusSignIndex)
             }
@@ -207,11 +192,10 @@ public extension CountryManager {
     }
 }
 
-
 // MARK: - CountryFilterOption Methods
 public extension CountryManager {
     
-    ///  Adds a new filter into `filters` collection with no duplicates
+    /// Adds a new filter into `filters` collection with no duplicates
     ///
     /// - Parameter filter: New filter to be added
     
@@ -219,15 +203,13 @@ public extension CountryManager {
         filters.insert(filter)
     }
     
-    
     /// Removes a given filter from `filters` collection
     ///
-    /// - Parameter filter: A filter to b removed
+    /// - Parameter filter: A filter to be removed
     
     func removeFilter(_ filter: CountryFilterOption) {
         filters.remove(filter)
     }
-    
     
     /// Removes all stored filters from `filter` collection
     ///
@@ -239,15 +221,13 @@ public extension CountryManager {
     }
 }
 
-
 // MARK: - Error Handling
 extension String: Error {}
 extension String: LocalizedError {
     public var errorDescription: String? { return self }
 }
 
-
-// MARK: - Array Extenstion
+// MARK: - Array Extension
 extension Array where Element: Equatable {
     func removeDuplicates() -> [Element] {
         var uniqueValues = [Element]()
