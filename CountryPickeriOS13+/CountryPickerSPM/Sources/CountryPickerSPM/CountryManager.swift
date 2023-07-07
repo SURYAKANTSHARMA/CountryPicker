@@ -126,7 +126,7 @@ public extension CountryManager {
             .compactMap { country(withCode: $0) } + countries
     }
     
-    /// As the function name suggests, resets the last selected country
+     /// As the function name suggests, resets the last selected country
     func resetLastSelectedCountry() {
         lastCountrySelected = nil
     }

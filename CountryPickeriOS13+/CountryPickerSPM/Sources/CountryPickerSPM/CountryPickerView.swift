@@ -8,13 +8,14 @@
 import SwiftUI
 import Combine
 
+public
 enum CountryFlagStyle {
     case corner
     case circular
     case normal
 }
 
-
+public
 struct CountryPickerView: View {
     let manager: any CountryListDataSource
     @State private var filterCountries = [Country]()
@@ -33,7 +34,7 @@ struct CountryPickerView: View {
         self.configuration = configuration
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationView {
             List(searchResults) { country in
                 CountryCell(country: country,
@@ -60,7 +61,7 @@ struct CountryCell: View {
     let country: Country
     let isFavorite: Bool
     @Binding var selectedCountry: Country?
-    let configuration: CountryPickerView.Configuration
+    let configuration: Configuration
     
     
     var body: some View {
@@ -110,21 +111,6 @@ struct CountryCell: View {
     }
 }
 
-extension CountryPickerView {
-    
-    public struct Configuration {
-        public var flagStyle: CountryFlagStyle = CountryFlagStyle.corner
-        public var labelFont: Font = .title3
-        public var labelColor: Color = .black
-        public var detailFont: Font = .footnote
-        public var detailColor: Color = .gray
-        
-        public var isCountryFlagHidden: Bool = false
-        public var isCountryDialHidden: Bool = false
-    }
-
-}
-
 //struct ContentView: View {
 //    @State private var showCountryPicker = false
 //    @State private var selectedCountry: Country?
@@ -146,6 +132,22 @@ extension CountryPickerView {
 
 struct CountryPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryPickerView(configuration: CountryPickerView.Configuration())
+        CountryPickerView(configuration: Configuration())
+    }
+}
+
+public
+struct Configuration {
+    public var flagStyle: CountryFlagStyle = CountryFlagStyle.corner
+    public var labelFont: Font = .title3
+    public var labelColor: Color = .black
+    public var detailFont: Font = .footnote
+    public var detailColor: Color = .gray
+    
+    public var isCountryFlagHidden: Bool = false
+    public var isCountryDialHidden: Bool = false
+    
+    public init() {
+        
     }
 }
