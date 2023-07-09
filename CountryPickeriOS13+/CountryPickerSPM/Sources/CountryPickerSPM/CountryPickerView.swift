@@ -138,16 +138,33 @@ struct CountryPickerView_Previews: PreviewProvider {
 
 public
 struct Configuration {
-    public var flagStyle: CountryFlagStyle = CountryFlagStyle.corner
-    public var labelFont: Font = .title3
-    public var labelColor: Color = .black
-    public var detailFont: Font = .footnote
-    public var detailColor: Color = .gray
     
-    public var isCountryFlagHidden: Bool = false
-    public var isCountryDialHidden: Bool = false
+    public let flagStyle: CountryFlagStyle
+    public let labelFont: Font
+    public let labelColor: Color
+    public let detailFont: Font
+    public let detailColor: Color
+    public let isCountryFlagHidden: Bool
+    public let isCountryDialHidden: Bool
+    public let navigationTitleText: String
     
-    public init() {
-        
+    public init(
+        flagStyle: CountryFlagStyle = CountryFlagStyle.corner,
+        labelFont: Font = .title3,
+        labelColor: Color = .black,
+        detailFont: Font = .footnote,
+        detailColor: Color = .gray,
+        isCountryFlagHidden: Bool = false,
+        isCountryDialHidden: Bool = false,
+        navigationTitleText: String = "CountryPicker"
+    ) {
+        self.flagStyle = flagStyle
+        self.labelFont = labelFont
+        self.labelColor = labelColor
+        self.detailFont = detailFont
+        self.detailColor = detailColor
+        self.isCountryFlagHidden = isCountryFlagHidden
+        self.isCountryDialHidden = isCountryDialHidden
+        self.navigationTitleText = navigationTitleText
     }
 }
