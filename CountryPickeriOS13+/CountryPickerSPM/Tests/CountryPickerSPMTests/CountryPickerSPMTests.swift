@@ -81,10 +81,9 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
             Country(countryCode: "IN"),
             Country(countryCode: "IS")
         ])
-        let sut = CountryPickerWithSectionViewModel(
-            dataService: mockService,
-            mapper: SectionMapper())
         
+        let sut = makeSUT(countries: countries, mockService: mockService)
+
         let expectation = expectation(description: "Section should publish correct value")
         
         let expectationOutput = [
@@ -106,6 +105,34 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 0.1)
     }
     
+    func test_WhenViewModelFilterWithEmpty_shouldReturnSectionWithAllCountries() {
+        let countries = [
+            Country(countryCode: "IN"),
+            Country(countryCode: "AF"),
+            Country(countryCode: "US"),
+            Country(countryCode: "IS")
+        ]
+        
+        let mockService = MockService(countries: countries,
+                                      filteredCountries: [
+            Country(countryCode: "IN"),
+            Country(countryCode: "IS")
+        ])
+        
+        let sut = makeSUT(countries: countries, mockService: mockService)
+        
+        sut.filterWithText("")
+        
+        let expectationOutput = [
+            Section(title: "I", countries: [
+                Country(countryCode: "IN"),
+                Country(countryCode: "IS")
+            ]),
+        ]
+        
+        XCTAssertEqual(sut.sections, expectationOutput)
+    }
+    
     private func makeSUT(countries: [Country] = [])
        -> CountryPickerWithSectionViewModel {
         let mockService = MockService(countries: countries)
@@ -116,6 +143,14 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         return sut
     }
     
+    
+    private func makeSUT(countries: [Country] = [], mockService: MockService)
+       -> CountryPickerWithSectionViewModel {
+        let sut = CountryPickerWithSectionViewModel(
+            dataService: mockService,
+            mapper: SectionMapper())
+        return sut
+    }
 }
 
 
