@@ -8,7 +8,7 @@ class CountryPickerWithSectionViewModel: ObservableObject {
     @Published var sections: [Section] = []
     
     let dataService: any CountryListDataSource
-    let mapper: SectionMapper
+    private let mapper: SectionMapper
     
     internal init(dataService: any CountryListDataSource,
                   mapper: SectionMapper
@@ -33,11 +33,7 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
     
     func test_WhenViewModelLoadedWithEmptyCountries_ShouldBeAbleToReturnEmptySection() {
-        let countries: [Country] = []
-        let mockService = MockService(countries: countries)
-        let sut = CountryPickerWithSectionViewModel(
-            dataService: mockService,
-            mapper: SectionMapper())
+        let sut = makeSUT()
         let expectationOutput: [Section] = [
         ]
 
@@ -52,10 +48,7 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
             Country(countryCode: "IS")
          ]
         
-        let mockService = MockService(countries: countries)
-        let sut = CountryPickerWithSectionViewModel(
-            dataService: mockService,
-            mapper: SectionMapper())
+        let sut = makeSUT(countries: countries)
         let expectationOutput = [
             Section(title: "A", countries: [
                 Country(countryCode: "AF"),
@@ -111,6 +104,16 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         sut.filterWithText("I")
         
         wait(for: [expectation], timeout: 0.1)
+    }
+    
+    private func makeSUT(countries: [Country] = [])
+       -> CountryPickerWithSectionViewModel {
+        let mockService = MockService(countries: countries)
+        let sut = CountryPickerWithSectionViewModel(
+            dataService: mockService,
+            mapper: SectionMapper())
+        
+        return sut
     }
     
 }
