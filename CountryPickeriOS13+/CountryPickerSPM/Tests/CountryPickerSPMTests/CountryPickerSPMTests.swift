@@ -1,4 +1,6 @@
 import XCTest
+import Combine
+
 @testable import CountryPickerSPM
 
 class CountryPickerWithSectionViewModel: ObservableObject {
@@ -14,29 +16,101 @@ class CountryPickerWithSectionViewModel: ObservableObject {
         self.dataService = dataService
         self.mapper = mapper
         
-//        defer {
-//            sections = mapper.mapIntoSection()
-//        }
+        defer {
+            sections = mapper.mapIntoSection(countries: dataService.allCountries([]))
+        }
+    }
+    
+    func filterWithText(_ text: String) {
+        let filteredCountries = dataService.filterCountries(searchText: text)
+        sections = mapper.mapIntoSection(countries: filteredCountries)
     }
 }
 
 
 
 final class CountryPickerWithSectionViewModelTests: XCTestCase {
+    var cancellables = Set<AnyCancellable>()
     
-    func test_WhenViewModelLoadedWithAllCountries_ShouldBeAbleToReturnAllCountries() {
-        let countries = [
-            Country(countryCode: "IN"),
-            Country(countryCode: "AF"),
-            Country(countryCode: "US")
-            
-         ]
+    func test_WhenViewModelLoadedWithEmptyCountries_ShouldBeAbleToReturnEmptySection() {
+        let countries: [Country] = []
         let mockService = MockService(countries: countries)
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
             mapper: SectionMapper())
+        let expectationOutput: [Section] = [
+        ]
+
+        XCTAssertEqual(sut.sections, expectationOutput)
+    }
     
-//        XCTAssertEqual(sut.sections, ["": []])
+    func test_WhenViewModelLoadedWithSomeCountries_shouldReturnSectionAccordingly() {
+        let countries = [
+            Country(countryCode: "IN"),
+            Country(countryCode: "AF"),
+            Country(countryCode: "US"),
+            Country(countryCode: "IS")
+         ]
+        
+        let mockService = MockService(countries: countries)
+        let sut = CountryPickerWithSectionViewModel(
+            dataService: mockService,
+            mapper: SectionMapper())
+        let expectationOutput = [
+            Section(title: "A", countries: [
+                Country(countryCode: "AF"),
+            ]),
+            Section(title: "I", countries: [
+                Country(countryCode: "IN"),
+                Country(countryCode: "IS")
+            ]),
+            
+            Section(title: "U", countries: [
+                Country(countryCode: "US")
+            ])
+        ]
+
+        XCTAssertEqual(sut.sections, expectationOutput)
+
+    }
+    
+    
+    func test_WhenViewModelFilterWithText_shouldReturnSectionWithRelaventCountries() {
+        let countries = [
+            Country(countryCode: "IN"),
+            Country(countryCode: "AF"),
+            Country(countryCode: "US"),
+            Country(countryCode: "IS")
+        ]
+        
+        let mockService = MockService(countries: countries,
+                                      filteredCountries: [
+            Country(countryCode: "IN"),
+            Country(countryCode: "IS")
+        ])
+        let sut = CountryPickerWithSectionViewModel(
+            dataService: mockService,
+            mapper: SectionMapper())
+        
+        let expectation = expectation(description: "Section should publish correct value")
+        
+        let expectationOutput = [
+            Section(title: "I", countries: [
+                Country(countryCode: "IN"),
+                Country(countryCode: "IS")
+            ]),
+        ]
+        
+        sut.$sections
+            .dropFirst()
+            .sink { value  in
+                XCTAssertEqual(value, expectationOutput)
+                expectation.fulfill()
+            }.store(in: &cancellables)
+
+        sut.filterWithText("I")
+        
+        wait(for: [expectation], timeout: 0.1)
     }
     
 }
