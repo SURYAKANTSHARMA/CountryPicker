@@ -11,20 +11,15 @@ import XCTest
 final class SectionMapperTests: XCTestCase {
     
     func test_sectionmapperWhenInitWithEmptyCountries_shouldAbleToReturnEmptySectionWithGivenCountriesInAlphabeticOrder() {
-        let sut = SectionMapper(countries: [
-        ])
+        let sut = SectionMapper()
         
-        XCTAssertEqual(sut.mapIntoSection(), [])
+        XCTAssertEqual(sut.mapIntoSection(countries: [
+        ]), [])
     }
     
     
     func test_sectionmapperWhenInitWithCountries_shouldAbleToReturnSectionWithGivenCountriesInAlphabeticOrder() {
-        let sut = SectionMapper(countries: [
-            Country(countryCode: "IN"),
-            Country(countryCode: "IS"),
-            Country(countryCode: "AF"),
-            Country(countryCode: "US")
-        ])
+        let sut = SectionMapper()
 
         let expectationOutput = [
             Section(title: "A", countries: [
@@ -40,6 +35,11 @@ final class SectionMapperTests: XCTestCase {
             ])
         ]
 
-        XCTAssertEqual(sut.mapIntoSection(), expectationOutput)
+        XCTAssertEqual(sut.mapIntoSection(countries: [
+            Country(countryCode: "IN"),
+            Country(countryCode: "IS"),
+            Country(countryCode: "AF"),
+            Country(countryCode: "US")
+        ]), expectationOutput)
     }
 }

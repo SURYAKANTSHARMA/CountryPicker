@@ -13,6 +13,10 @@ class CountryPickerWithSectionViewModel: ObservableObject {
     ) {
         self.dataService = dataService
         self.mapper = mapper
+        
+//        defer {
+//            sections = mapper.mapIntoSection()
+//        }
     }
 }
 
@@ -28,10 +32,11 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
             
          ]
         let mockService = MockService(countries: countries)
-        let sut = CountryPickerWithSectionViewModel(dataService: mockService,
-                                                    mapper: SectionMapper(countries: countries))
+        let sut = CountryPickerWithSectionViewModel(
+            dataService: mockService,
+            mapper: SectionMapper())
     
-//        XCTAssertEqual(sut.countries, ["": []])
+//        XCTAssertEqual(sut.sections, ["": []])
     }
     
 }

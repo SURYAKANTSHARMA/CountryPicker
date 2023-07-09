@@ -13,9 +13,8 @@ struct Section: Equatable {
 }
 
 struct SectionMapper {
-    let countries: [Country]
     
-    func mapIntoSection() -> [Section] {
+    func mapIntoSection(countries: [Country]) -> [Section] {
                 
         let titles = countries
             .map { String($0.countryName.prefix(1)).first! }
