@@ -8,11 +8,13 @@
 import Foundation
 
 struct Section: Equatable {
-    let title: String
-    let countries: [Country]
+    let title: String?
+    var countries: [Country]
 }
 
 struct SectionMapper {
+    
+    let favoriteCountriesLocaleIdentifiers: [String]
     
     func mapIntoSection(countries: [Country]) -> [Section] {
                 
@@ -32,6 +34,18 @@ struct SectionMapper {
                                       countries: countries)
                 return section
             }
-        return sections
+        
+        guard !favoriteCountriesLocaleIdentifiers.isEmpty else {
+            return sections
+        }
+        let favouriteSection = favoriteCountriesLocaleIdentifiers
+            .map { Country(countryCode: $0) }
+            .reduce(Section(title: nil,
+                            countries: []),
+                    { partialResult, country in
+                return Section(title: partialResult.title,
+                               countries: partialResult.countries + [country])
+            })
+        return [favouriteSection] + sections
     }
 }

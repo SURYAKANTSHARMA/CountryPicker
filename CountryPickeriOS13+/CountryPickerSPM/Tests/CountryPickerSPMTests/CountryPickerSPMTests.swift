@@ -9,15 +9,14 @@ class CountryPickerWithSectionViewModel: ObservableObject {
     
     let dataService: any CountryListDataSource
     private let mapper: SectionMapper
-    
     internal init(dataService: any CountryListDataSource,
+                  favoriteCountriesLocaleIdentifiers: [String],
                   mapper: SectionMapper
     ) {
         self.dataService = dataService
         self.mapper = mapper
-        
         defer {
-            sections = mapper.mapIntoSection(countries: dataService.allCountries([]))
+            sections = mapper.mapIntoSection(countries: dataService.allCountries(favoriteCountriesLocaleIdentifiers))
         }
     }
     
@@ -133,22 +132,65 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         XCTAssertEqual(sut.sections, expectationOutput)
     }
     
-    private func makeSUT(countries: [Country] = [])
+    func test_withFavouriteCountryGiven_sectionShouldReturnItInIndex0AndWithoutSectionTitle() {
+        let favoriteCountriesLocaleIdentifiers = ["IN"]
+        
+        let countries = [
+            Country(countryCode: "IN"),
+            Country(countryCode: "AF"),
+            Country(countryCode: "US"),
+            Country(countryCode: "IS")
+        ]
+
+        let mockService = MockService(countries: countries)
+
+        let sut = makeSUT(countries: countries,
+                          mockService: mockService,
+                          favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers)
+
+
+        let expectationOutput = [
+            Section(title: nil,
+                    countries: [
+                        Country(countryCode: "IN")
+                    ]),
+            Section(title: "A", countries: [
+                Country(countryCode: "AF"),
+            ]),
+            Section(title: "I", countries: [
+                Country(countryCode: "IN"),
+                Country(countryCode: "IS")
+            ]),
+            
+            Section(title: "U", countries: [
+                Country(countryCode: "US")
+            ])
+        ]
+
+        XCTAssertEqual(sut.sections, expectationOutput)
+
+    }
+    
+    private func makeSUT(countries: [Country] = [],
+                         favoriteCountriesLocaleIdentifiers: [String] = [])
        -> CountryPickerWithSectionViewModel {
         let mockService = MockService(countries: countries)
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            mapper: SectionMapper())
+            favoriteCountriesLocaleIdentifiers: [],
+            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
         
         return sut
     }
     
     
-    private func makeSUT(countries: [Country] = [], mockService: MockService)
+    private func makeSUT(countries: [Country] = [], mockService: MockService,
+                         favoriteCountriesLocaleIdentifiers: [String] = [])
        -> CountryPickerWithSectionViewModel {
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            mapper: SectionMapper())
+            favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers,
+            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
         return sut
     }
 }
