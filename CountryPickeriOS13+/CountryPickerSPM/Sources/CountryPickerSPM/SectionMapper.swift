@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct Section: Equatable {
+struct Section: Equatable, Identifiable {
     let title: String?
     var countries: [Country]
+    
+    var id: String {
+        title ?? ""
+    }
 }
 
 struct SectionMapper {
