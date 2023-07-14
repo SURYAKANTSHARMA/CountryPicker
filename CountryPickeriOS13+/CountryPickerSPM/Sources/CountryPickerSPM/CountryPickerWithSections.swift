@@ -18,18 +18,24 @@ struct CountryPickerWithSections: View {
             ScrollViewReader { scrollView in
                 List {
                     ForEach(viewModel.sections) { section in
-                        ForEach(section.countries) { country in
-                            CountryCell(country: country,
-                                        isFavorite: false,
-                                        selectedCountry: $viewModel.selectedCountry,
-                                        configuration: configuration)
-                            .onTapGesture {
-                                viewModel.selectedCountry = country
+                        SwiftUI.Section {
+                            
+                            ForEach(section.countries) { country in
+                                CountryCell(country: country,
+                                            isFavorite: false,
+                                            selectedCountry: $viewModel.selectedCountry,
+                                            configuration: configuration)
+                                .onTapGesture {
+                                    viewModel.selectedCountry = country
+                                }
+                            }
+                        } header: {
+                            if let sectionTitle = section.title {
+                                Text(sectionTitle)
                             }
                         }
                     }
                 }
-                .searchable(text: $searchText)
                 .navigationTitle("Country Picker")
                 .onChange(of: searchText) {
                     viewModel.filterWithText($0)
@@ -49,6 +55,8 @@ struct CountryPickerWithSections: View {
                 .listStyle(GroupedListStyle())
             }
         }
+       
+
     }
 }
 
