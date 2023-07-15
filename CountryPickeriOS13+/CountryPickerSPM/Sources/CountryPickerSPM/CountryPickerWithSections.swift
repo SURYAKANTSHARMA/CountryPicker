@@ -55,8 +55,7 @@ struct CountryPickerWithSections: View {
                 .listStyle(GroupedListStyle())
             }
         }
-       
-
+        .searchable(text: $searchText)
     }
 }
 
