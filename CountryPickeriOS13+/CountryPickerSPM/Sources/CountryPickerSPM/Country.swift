@@ -51,7 +51,7 @@ open class Country: Identifiable {
     var imagePath: String
     private var image: UIImage?
 
-    // MARK: - Functions
+    // MARK: - Initializers
     public init(countryCode code: String) {
         self.countryCode = code
         countryName = mapCountryName(self.countryCode)
