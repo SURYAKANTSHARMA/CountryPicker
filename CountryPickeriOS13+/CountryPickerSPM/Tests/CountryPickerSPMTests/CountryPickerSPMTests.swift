@@ -147,26 +147,61 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         XCTAssertEqual(sut.sections, expectationOutput)
 
     }
+
+//    func test_withFavouriteCountryGiven_whenSearchWithEmptyTextAfterTypingSomething_sectionShouldReturnAllCountriesWithFavouriteCountry() {
+//        let countries = [
+//            Country(countryCode: "IN"),
+//            Country(countryCode: "AF"),
+//            Country(countryCode: "US"),
+//            Country(countryCode: "IS")
+//        ]
+//        
+//        let sut = makeSUT(countries: countries,
+//                          favoriteCountriesLocaleIdentifiers: ["IN"])
+//        
+//        sut.filterWithText("abc")
+//        sut.filterWithText("")
+//        
+//        let expectationOutput = [
+//            Section(title: nil,
+//                    countries: [
+//                        Country(countryCode: "IN")
+//                    ]),
+//            Section(title: "A", countries: [
+//                Country(countryCode: "AF"),
+//            ]),
+//            Section(title: "I", countries: [
+//                Country(countryCode: "IN"),
+//                Country(countryCode: "IS")
+//            ]),
+//            
+//            Section(title: "U", countries: [
+//                Country(countryCode: "US")
+//            ])
+//        ]
+//        
+//        XCTAssertEqual(sut.sections, expectationOutput)
+//    }
     
+    // MARK: - SUT private function
     private func makeSUT(countries: [Country] = [],
                          favoriteCountriesLocaleIdentifiers: [String] = [])
        -> CountryPickerWithSectionViewModel {
         let mockService = MockService(countries: countries)
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            favoriteCountriesLocaleIdentifiers: [],
             mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
         
         return sut
     }
     
     
-    private func makeSUT(countries: [Country] = [], mockService: MockService,
+    private func makeSUT(countries: [Country] = [],
+                         mockService: MockService,
                          favoriteCountriesLocaleIdentifiers: [String] = [])
        -> CountryPickerWithSectionViewModel {
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers,
             mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
         return sut
     }

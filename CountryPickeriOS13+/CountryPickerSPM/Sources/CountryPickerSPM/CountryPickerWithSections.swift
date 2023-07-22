@@ -65,7 +65,6 @@ struct CountryPickerWithSections_Previews: PreviewProvider {
         CountryPickerWithSections(
             viewModel: CountryPickerWithSectionViewModel(
                 dataService: CountryManager.shared,
-                favoriteCountriesLocaleIdentifiers: ["IN"],
                 mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: ["IN"])),
             configuration: Configuration(), searchText: ""
         )
