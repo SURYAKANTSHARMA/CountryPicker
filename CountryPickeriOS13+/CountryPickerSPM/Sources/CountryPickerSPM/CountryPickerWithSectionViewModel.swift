@@ -27,11 +27,8 @@ class CountryPickerWithSectionViewModel: ObservableObject {
         }
     }
     
-    func filterWithText(_ text: String) {
-        let filteredCountries = dataService.filterCountries(searchText: text)
-        
-//        let filteredCountries = text.isEmpty ? dataService.allCountries(<#T##favoriteCountriesLocaleIdentifiers: [String]##[String]#>) :  dataService.filterCountries(searchText: text)
-
+    func filterWithText(_ text: String) {        
+        let filteredCountries = text.isEmpty ? dataService.allCountries(mapper.favoriteCountriesLocaleIdentifiers) :  dataService.filterCountries(searchText: text)
         sections = mapper.mapIntoSection(countries: filteredCountries)
     }
     
