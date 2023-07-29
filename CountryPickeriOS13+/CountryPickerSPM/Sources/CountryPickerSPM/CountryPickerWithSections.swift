@@ -16,7 +16,7 @@ struct CountryPickerWithSections: View {
     public init(configuration: Configuration,
          searchText: String = "") {
         self.configuration = configuration
-        self.searchText = searchText
+         _searchText = State(initialValue: searchText)
     }
 
     public var body: some View {
