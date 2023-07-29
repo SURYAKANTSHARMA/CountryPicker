@@ -8,11 +8,17 @@
 import SwiftUI
 public
 struct CountryPickerWithSections: View {
-
-    @StateObject var viewModel: CountryPickerWithSectionViewModel
+    
+    @StateObject var viewModel: CountryPickerWithSectionViewModel = .default
     let configuration: Configuration
     @State var searchText: String
     
+    public init(configuration: Configuration,
+         searchText: String = "") {
+        self.configuration = configuration
+        self.searchText = searchText
+    }
+
     public var body: some View {
         NavigationView {
             ScrollViewReader { scrollView in
@@ -63,9 +69,6 @@ struct CountryPickerWithSections: View {
 struct CountryPickerWithSections_Previews: PreviewProvider {
     static var previews: some View {
         CountryPickerWithSections(
-            viewModel: CountryPickerWithSectionViewModel(
-                dataService: CountryManager.shared,
-                mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: ["IN"])),
             configuration: Configuration(), searchText: ""
         )
     }

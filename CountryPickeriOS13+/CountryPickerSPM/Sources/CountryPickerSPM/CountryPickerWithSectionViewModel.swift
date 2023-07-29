@@ -7,7 +7,12 @@
 
 import Combine
 
+public 
 class CountryPickerWithSectionViewModel: ObservableObject {
+    
+    public static let `default` = CountryPickerWithSectionViewModel(
+        dataService: CountryManager.shared,
+        mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: []))
     
     @Published var sections: [Section] = []
     @Published var selectedCountry: Country?
