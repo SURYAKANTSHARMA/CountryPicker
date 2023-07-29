@@ -28,6 +28,7 @@ struct CountryPickerView: View {
         searchText.isEmpty ? manager.allCountries([]) : filterCountries
     }
 
+    public
     init(manager: any CountryListDataSource = CountryManager.shared,
          configuration: Configuration) {
         self.manager = manager
