@@ -58,7 +58,7 @@ struct CountryPickerWithSections: View {
                         }
                     }
                 }
-                .listStyle(GroupedListStyle())
+                .listStyle(.grouped)
             }
         }
         .searchable(text: $searchText)

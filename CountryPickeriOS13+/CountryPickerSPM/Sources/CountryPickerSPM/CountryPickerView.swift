@@ -45,7 +45,7 @@ struct CountryPickerView: View {
                     .onTapGesture {
                         selectedCountry = country
                     }
-            }
+            }.listStyle(.grouped)
             .searchable(text: $searchText)
             .navigationTitle("Country Picker")
             .onChange(of: searchText) { newValue in
