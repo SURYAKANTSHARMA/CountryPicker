@@ -112,60 +112,9 @@ struct CountryCell: View {
     }
 }
 
-//struct ContentView: View {
-//    @State private var showCountryPicker = false
-//    @State private var selectedCountry: Country?
-//
-//    var body: some View {
-//        Button("Present Country Picker") {
-//            showCountryPicker = true
-//        }
-//        .sheet(isPresented: $showCountryPicker) {
-//            CountryPickerController()
-//                .environmentObject(CountryManager.shared)
-//                .onReceive(CountryManager.shared.$lastCountrySelected) { country in
-//                    selectedCountry = country
-//                    showCountryPicker = false
-//                }
-//        }
-//    }
-//}
-
 struct CountryPickerView_Previews: PreviewProvider {
     static var previews: some View {
         CountryPickerView(configuration: Configuration())
     }
 }
 
-public
-struct Configuration {
-    
-    public let flagStyle: CountryFlagStyle
-    public let labelFont: Font
-    public let labelColor: Color
-    public let detailFont: Font
-    public let detailColor: Color
-    public let isCountryFlagHidden: Bool
-    public let isCountryDialHidden: Bool
-    public let navigationTitleText: String
-    
-    public init(
-        flagStyle: CountryFlagStyle = CountryFlagStyle.corner,
-        labelFont: Font = .title3,
-        labelColor: Color = .black,
-        detailFont: Font = .footnote,
-        detailColor: Color = .gray,
-        isCountryFlagHidden: Bool = false,
-        isCountryDialHidden: Bool = false,
-        navigationTitleText: String = "CountryPicker"
-    ) {
-        self.flagStyle = flagStyle
-        self.labelFont = labelFont
-        self.labelColor = labelColor
-        self.detailFont = detailFont
-        self.detailColor = detailColor
-        self.isCountryFlagHidden = isCountryFlagHidden
-        self.isCountryDialHidden = isCountryDialHidden
-        self.navigationTitleText = navigationTitleText
-    }
-}
