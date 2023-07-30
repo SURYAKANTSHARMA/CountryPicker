@@ -36,7 +36,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Swift UI Support with example project 
 ## Requirements
 
-- iOS 11.0+ Support latest release iOS 16
+- iOS 11.0+ Support latest release iOS 17
 - latest Xcode 14.x with Swift 
 
 ## Demo Project
