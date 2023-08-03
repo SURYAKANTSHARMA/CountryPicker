@@ -8,12 +8,13 @@
 import SwiftUI
 public
 struct CountryPickerWithSections: View {
-    
+    @Environment(\.presentationMode) var presentationMode
+
     @StateObject var viewModel: CountryPickerWithSectionViewModel = .default
     let configuration: Configuration
     @State var searchText: String
     
-    public init(configuration: Configuration,
+    public init(configuration: Configuration = Configuration(),
          searchText: String = "") {
         self.configuration = configuration
          _searchText = State(initialValue: searchText)
