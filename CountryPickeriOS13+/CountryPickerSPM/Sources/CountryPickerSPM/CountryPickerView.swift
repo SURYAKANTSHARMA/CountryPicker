@@ -70,23 +70,22 @@ struct CountryCell: View {
             selectedCountry = country
         } label: {
             HStack {
+                let image = Image(uiImage: country.flag ?? .init())
+                    .resizable()
+
                 if !configuration.isCountryFlagHidden {
                     switch configuration.flagStyle {
                     case .normal:
-                        Image(uiImage: country.flag ?? .init())
-                            .resizable()
+                           image
                             .frame(width: 40, height: 26)
                             .scaledToFit()
                     case .circular:
-                        Image(uiImage: country.flag ?? .init())
-                            .resizable()
+                        image
                             .frame(width: 40, height: 40)
                             .clipShape(Circle())
 
                     case .corner:
-                        Image(uiImage: country.flag ?? .init())
-                            .resizable()
-                            .frame(width: 40, height: 26)
+                        image.frame(width: 40, height: 26)
                             .scaledToFit()
                             .cornerRadius(8)
                     }
