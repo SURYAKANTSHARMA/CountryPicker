@@ -52,7 +52,6 @@ struct CountryPickerWithSections: View {
                         scrollView.scrollTo($0)
                     }
                 }
-                .navigationTitle("Country Picker")
                 .onChange(of: searchText) {
                     viewModel.filterWithText($0)
                 }
