@@ -9,7 +9,7 @@ import Foundation
 
 final class CountryPickerWheelViewModel: ObservableObject {
     
-    @Published var countries: [Country]
+    let countries: [Country]
     @Published var selected: Int
     
     init(countries: [Country], selected: Int) {
