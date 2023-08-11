@@ -88,3 +88,11 @@ extension Country: Equatable {
         return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
     }
 }
+
+extension Country: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(countryCode)
+        hasher.combine(countryName)
+    }
+}
