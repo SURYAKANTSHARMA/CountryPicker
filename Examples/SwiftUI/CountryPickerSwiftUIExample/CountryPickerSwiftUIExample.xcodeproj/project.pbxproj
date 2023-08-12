@@ -13,7 +13,6 @@
 		B7F150EE2784697700B04FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F150DC2784697200B04FEB /* ContentView.swift */; };
 		B7F150EF2784697700B04FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7F150DD2784697700B04FEB /* Assets.xcassets */; };
 		B7F150F02784697700B04FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7F150DD2784697700B04FEB /* Assets.xcassets */; };
-		B7F150FB27847C1500B04FEB /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = B7F150FA27847C1500B04FEB /* CountryPicker */; };
 		E0C62EB9288EC52D0057216B /* CountryPickerViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C62EB8288EC52D0057216B /* CountryPickerViewProxy.swift */; };
 		E0C62EBA288EC52D0057216B /* CountryPickerViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C62EB8288EC52D0057216B /* CountryPickerViewProxy.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7F150FB27847C1500B04FEB /* CountryPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +99,6 @@
 			);
 			name = "CountryPickerSwiftUIExample (iOS)";
 			packageProductDependencies = (
-				B7F150FA27847C1500B04FEB /* CountryPicker */,
 			);
 			productName = "CountryPickerSwiftUIExample (iOS)";
 			productReference = B7F150E22784697700B04FEB /* CountryPickerSwiftUIExample.app */;
@@ -323,8 +320,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -340,6 +339,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.-CountryPickerSwiftUIExample.CountryPickerSwiftUIExample";
 				PRODUCT_NAME = CountryPickerSwiftUIExample;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -352,8 +352,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -369,6 +371,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.-CountryPickerSwiftUIExample.CountryPickerSwiftUIExample";
 				PRODUCT_NAME = CountryPickerSwiftUIExample;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -384,6 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -411,6 +415,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -473,14 +478,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B7F150FA27847C1500B04FEB /* CountryPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B7F150F927847C1500B04FEB /* XCRemoteSwiftPackageReference "CountryPicker" */;
-			productName = CountryPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7F150D62784697100B04FEB /* Project object */;
 }
