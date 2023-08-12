@@ -15,19 +15,21 @@ struct ContentView: View {
 
 
     var body: some View {
-        HStack {
-            Image(uiImage: country.flag ?? UIImage())
-                .resizable()
-                .scaledToFit()
-                .frame(width: 32.0, height: 32.0)
-            Text(country.countryName)
-        }
-        Button("Select Country") {
-            isShowingCountryPicker = true
-        }.sheet(isPresented: $isShowingCountryPicker) {
-            CountryPickerViewProxy { choosenCountry in
-                country = choosenCountry
-          }
+        VStack {
+            HStack {
+                Image(uiImage: country.flag ?? UIImage())
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 32.0, height: 32.0)
+                Text(country.countryName)
+            }
+            Button("Select Country") {
+                isShowingCountryPicker = true
+            }.sheet(isPresented: $isShowingCountryPicker) {
+                CountryPickerViewProxy { choosenCountry in
+                    country = choosenCountry
+              }
+            }
         }
     }
 }
