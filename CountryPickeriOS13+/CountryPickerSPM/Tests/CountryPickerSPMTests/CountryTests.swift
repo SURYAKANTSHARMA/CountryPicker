@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import CountryPicker
+@testable import CountryPickerSPM
 
 class CountryTests: XCTestCase {
     
@@ -48,7 +48,7 @@ class CountryTests: XCTestCase {
     }
     
     func test_mapCountryCode_returnRightCountryName() {
-        XCTAssertEqual(mapCountryName("US"), "United States")
+        XCTAssertEqual(Country.mapCountryName("US"), "United States")
     }
     
     func test_equalCountries() {

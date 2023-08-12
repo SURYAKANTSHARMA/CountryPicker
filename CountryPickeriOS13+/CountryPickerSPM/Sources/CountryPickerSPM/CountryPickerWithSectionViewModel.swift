@@ -7,7 +7,7 @@
 
 import Combine
 
-public 
+public final
 class CountryPickerWithSectionViewModel: ObservableObject {
     
     public static let `default` = CountryPickerWithSectionViewModel(
@@ -27,9 +27,7 @@ class CountryPickerWithSectionViewModel: ObservableObject {
         self.mapper = mapper
         self.selectedCountry = dataService.lastCountrySelected
         self.selectedCountry = selectedCountry
-        defer {
-            sections = mapper.mapIntoSection(countries: dataService.allCountries(mapper.favoriteCountriesLocaleIdentifiers))
-        }
+        sections = mapper.mapIntoSection(countries: dataService.allCountries(mapper.favoriteCountriesLocaleIdentifiers))
     }
     
     func filterWithText(_ text: String) {        

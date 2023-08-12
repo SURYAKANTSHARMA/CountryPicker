@@ -54,7 +54,7 @@ open class Country: Identifiable {
     // MARK: - Initializers
     public init(countryCode code: String) {
         self.countryCode = code
-        countryName = mapCountryName(self.countryCode)
+        countryName = Self.mapCountryName(self.countryCode)
         imagePath = "CountryPickerController.bundle/\(self.countryCode)"
     }
 
@@ -71,17 +71,19 @@ open class Country: Identifiable {
         let locale = Locale(identifier: localeIdentifier)
         return self.countryName(with: locale)
     }
+    
+    static func mapCountryName(_ countryCode: String) -> String {
+        let locale = Locale(identifier: Locale.preferredLanguages.first!)
+        guard let localisedCountryName = locale.localizedString(forRegionCode: countryCode) else {
+            let message = "Failed to localised country name for Country Code:- \(countryCode)"
+            assertionFailure(message)
+            return ""
+        }
+        return localisedCountryName
+    }
+
 }
 
-func mapCountryName(_ countryCode: String) -> String {
-    let locale = Locale(identifier: Locale.preferredLanguages.first!)
-    guard let localisedCountryName = locale.localizedString(forRegionCode: countryCode) else {
-        let message = "Failed to localised country name for Country Code:- \(countryCode)"
-        assertionFailure(message)
-        return ""
-    }
-    return localisedCountryName
-}
 
 extension Country: Equatable {
     public static func == (lhs: Country, rhs: Country) -> Bool {
