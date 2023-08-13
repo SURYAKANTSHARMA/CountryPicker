@@ -8,7 +8,7 @@
 import SwiftUI
 import SKCountryPicker
 
-struct ContentView: View {
+struct MainView: View {
     @State private var isCountryPickerPresented = false
     @State private var selectedCountry: Country? = CountryManager.shared.lastCountrySelected ??  CountryManager.shared.currentCountry
     
@@ -26,7 +26,6 @@ struct ContentView: View {
                     }
                 }
                 .sheet(isPresented: $isCountryPickerPresented) {
-//                    CountryPickerWheelView()
 //                    CountryPickerView(configuration: Configuration(),
 //                                      selectedCountry: $selectedCountry)
                     CountryPickerWithSections(
@@ -42,6 +41,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

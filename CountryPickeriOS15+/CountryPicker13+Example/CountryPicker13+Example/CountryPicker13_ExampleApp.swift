@@ -12,7 +12,7 @@ import SKCountryPicker
 struct CountryPicker13_ExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootContainerView()
         }
     }
 }
