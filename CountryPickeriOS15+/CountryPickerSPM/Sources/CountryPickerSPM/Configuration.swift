@@ -22,10 +22,10 @@ struct Configuration {
     
     public init(
         flagStyle: CountryFlagStyle = CountryFlagStyle.corner,
-        labelFont: Font = .title3,
-        labelColor: Color = .black,
+        labelFont: Font = .title2,
+        labelColor: Color = .primary,
         detailFont: Font = .footnote,
-        detailColor: Color = .gray,
+        detailColor: Color = .secondary,
         isCountryFlagHidden: Bool = false,
         isCountryDialHidden: Bool = false,
         navigationTitleText: String = "CountryPicker"
