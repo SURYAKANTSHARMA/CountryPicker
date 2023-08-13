@@ -10,8 +10,8 @@ import SKCountryPicker
 
 struct ContentView: View {
     @State private var isCountryPickerPresented = false
-    @State private var selectedCountry: Country? = CountryManager.shared.currentCountry
-
+    @State private var selectedCountry: Country? = CountryManager.shared.lastCountrySelected ??  CountryManager.shared.currentCountry
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,13 +27,15 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $isCountryPickerPresented) {
 //                    CountryPickerWheelView()
-                    CountryPickerView(configuration: Configuration())
+                    CountryPickerView(configuration: Configuration(),
+                                      selectedCountry: $selectedCountry)
 //                    CountryPickerWithSections()
                     
                 }
                 .padding(.bottom, 50)
                 NavigationLink(destination:
-                  CountryPickerView(configuration: Configuration())) {
+                                CountryPickerView(configuration: Configuration(),
+                                                  selectedCountry: $selectedCountry)) {
                         Text("Select country Picker")
                 }
             }

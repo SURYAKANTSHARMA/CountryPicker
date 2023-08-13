@@ -17,12 +17,16 @@ enum CountryFlagStyle {
 
 public
 struct CountryPickerView: View {
-    let manager: any CountryListDataSource
+    
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var filterCountries = [Country]()
     @State private var applySearch = false
     @State private var searchText = ""
-    @State private var selectedCountry: Country?
+    @Binding private var selectedCountry: Country?
+    
     let configuration: Configuration
+    let manager: any CountryListDataSource
 
     private var searchResults: [Country] {
         searchText.isEmpty ? manager.allCountries([]) : filterCountries
@@ -30,9 +34,11 @@ struct CountryPickerView: View {
 
     public
     init(manager: any CountryListDataSource = CountryManager.shared,
-         configuration: Configuration) {
+         configuration: Configuration = Configuration(),
+         selectedCountry: Binding<Optional<Country>>) {
         self.manager = manager
         self.configuration = configuration
+        self._selectedCountry = selectedCountry
     }
 
     public var body: some View {
@@ -42,9 +48,6 @@ struct CountryPickerView: View {
                             isFavorite: selectedCountry == country,
                             selectedCountry: $selectedCountry,
                             configuration: configuration)
-                    .onTapGesture {
-                        selectedCountry = country
-                    }
             }.listStyle(.grouped)
             .searchable(text: $searchText)
             .navigationTitle("Country Picker")
@@ -53,6 +56,11 @@ struct CountryPickerView: View {
             }
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
+            }
+        }
+        .onChange(of: selectedCountry) { newValue in
+            if newValue != nil {
+                presentationMode.wrappedValue.dismiss()
             }
         }
     }
@@ -113,7 +121,9 @@ struct CountryCell: View {
 
 struct CountryPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryPickerView(configuration: Configuration())
+        CountryPickerView(
+            configuration: Configuration(),
+            selectedCountry: .constant(Country(countryCode: "IN")))
     }
 }
 
