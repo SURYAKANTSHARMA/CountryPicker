@@ -37,8 +37,8 @@ struct CountryPickerWithSections: View {
                                 ForEach(section.countries) { country in
                                     CountryCell(country: country,
                                                 isSelected: selectedCountry == country,
-                                                selectedCountry: $viewModel.selectedCountry,
-                                                configuration: configuration)
+                                                configuration: configuration,
+                                                selectedCountry: $viewModel.selectedCountry)
                                 }
                             } header: {
                                 if let sectionTitle = section.title {

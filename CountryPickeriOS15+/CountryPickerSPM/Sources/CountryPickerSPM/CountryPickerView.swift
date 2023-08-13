@@ -46,8 +46,8 @@ struct CountryPickerView: View {
             List(searchResults) { country in
                 CountryCell(country: country,
                             isSelected: selectedCountry == country,
-                            selectedCountry: $selectedCountry,
-                            configuration: configuration)
+                            configuration: configuration,
+                            selectedCountry: $selectedCountry)
             }.listStyle(.grouped)
             .searchable(text: $searchText)
             .navigationTitle("Country Picker")
