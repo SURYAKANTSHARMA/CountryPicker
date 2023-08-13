@@ -113,7 +113,8 @@ struct CountryCell: View {
 
                 Spacer()
                 if isSelected {
-                    Image(uiImage: UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) ?? .init())
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.green) 
                 }
             }
         }
