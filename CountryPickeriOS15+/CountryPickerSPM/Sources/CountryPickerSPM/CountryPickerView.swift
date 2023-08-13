@@ -67,11 +67,12 @@ struct CountryPickerView: View {
 }
 
 struct CountryCell: View {
+    
     let country: Country
     let isSelected: Bool
-    @Binding var selectedCountry: Country?
     let configuration: Configuration
     
+    @Binding var selectedCountry: Country?
     
     var body: some View {
         Button {
