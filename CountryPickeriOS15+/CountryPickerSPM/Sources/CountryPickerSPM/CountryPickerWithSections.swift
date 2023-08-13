@@ -68,6 +68,7 @@ struct CountryPickerWithSections: View {
                 
                 .onDisappear {
                     viewModel.setLastSelectedCountry()
+                    viewModel.reset()
                 }
                 .listStyle(.grouped)
                 .toolbar {

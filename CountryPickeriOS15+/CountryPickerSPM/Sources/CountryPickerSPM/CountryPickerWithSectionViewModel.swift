@@ -39,5 +39,9 @@ class CountryPickerWithSectionViewModel: ObservableObject {
     func setLastSelectedCountry() {
         dataService.lastCountrySelected = selectedCountry
     }
+    
+    func reset() {
+        filterWithText("")
+    }
 }
 
