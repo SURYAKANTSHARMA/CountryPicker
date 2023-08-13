@@ -27,17 +27,13 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $isCountryPickerPresented) {
 //                    CountryPickerWheelView()
-                    CountryPickerView(configuration: Configuration(),
-                                      selectedCountry: $selectedCountry)
-//                    CountryPickerWithSections()
+//                    CountryPickerView(configuration: Configuration(),
+//                                      selectedCountry: $selectedCountry)
+                    CountryPickerWithSections(
+                        selectedCountry: $selectedCountry)
                     
                 }
                 .padding(.bottom, 50)
-                NavigationLink(destination:
-                                CountryPickerView(configuration: Configuration(),
-                                                  selectedCountry: $selectedCountry)) {
-                        Text("Select country Picker")
-                }
             }
         }
        

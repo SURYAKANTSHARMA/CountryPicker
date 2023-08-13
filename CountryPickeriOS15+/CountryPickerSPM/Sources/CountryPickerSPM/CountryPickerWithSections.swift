@@ -11,7 +11,7 @@ struct CountryPickerWithSections: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @StateObject var viewModel: CountryPickerWithSectionViewModel = .default
+    @ObservedObject var viewModel: CountryPickerWithSectionViewModel = .default
     @State var searchText: String
     @Binding private var selectedCountry: Country?
 
@@ -24,6 +24,7 @@ struct CountryPickerWithSections: View {
          self.configuration = configuration
          _searchText = State(initialValue: searchText)
         _selectedCountry = selectedCountry
+        viewModel.selectedCountry = selectedCountry.wrappedValue
     }
 
     public var body: some View {
@@ -58,22 +59,27 @@ struct CountryPickerWithSections: View {
                 .onChange(of: searchText) {
                     viewModel.filterWithText($0)
                 }
-                .onChange(of: viewModel.selectedCountry) {
-                    selectedCountry = $0
-                    presentationMode.wrappedValue.dismiss()
+                .onChange(of: viewModel.selectedCountry) { newValue in
+                    if newValue != nil {
+                        selectedCountry = newValue
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
+                
                 .onDisappear {
                     viewModel.setLastSelectedCountry()
                 }
-                .onAppear {
-                    // Scroll to the selected country when appearing
-                    if let selectedCountry = viewModel.selectedCountry {
-                        withAnimation {
-                            scrollView.scrollTo(selectedCountry.countryName, anchor: .top)
-                        }
-                    }
-                }
                 .listStyle(.grouped)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Image(systemName: "xmark")
+                                    .font(.callout)
+                            }
+                        }
+                }
             }
         }
         .searchable(text: $searchText)

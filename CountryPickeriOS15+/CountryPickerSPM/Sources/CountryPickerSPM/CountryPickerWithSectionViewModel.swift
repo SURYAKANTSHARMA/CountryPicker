@@ -20,13 +20,14 @@ class CountryPickerWithSectionViewModel: ObservableObject {
     private let dataService: any CountryListDataSource
     private let mapper: SectionMapper
     
-    internal init(dataService: any CountryListDataSource,
-                  mapper: SectionMapper
+    internal init(dataService: any CountryListDataSource = CountryManager.shared,
+                  mapper: SectionMapper = SectionMapper(favoriteCountriesLocaleIdentifiers: []),
+                  lastCountry: Country? = CountryManager.shared.lastCountrySelected ??
+                  CountryManager.shared.currentCountry
     ) {
         self.dataService = dataService
         self.mapper = mapper
-        self.selectedCountry = dataService.lastCountrySelected
-        self.selectedCountry = selectedCountry
+        self.selectedCountry = lastCountry
         sections = mapper.mapIntoSection(countries: dataService.allCountries(mapper.favoriteCountriesLocaleIdentifiers))
     }
     
