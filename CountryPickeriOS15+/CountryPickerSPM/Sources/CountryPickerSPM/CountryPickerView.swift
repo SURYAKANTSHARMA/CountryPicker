@@ -45,7 +45,7 @@ struct CountryPickerView: View {
         NavigationView {
             List(searchResults) { country in
                 CountryCell(country: country,
-                            isFavorite: selectedCountry == country,
+                            isSelected: selectedCountry == country,
                             selectedCountry: $selectedCountry,
                             configuration: configuration)
             }.listStyle(.grouped)
@@ -68,7 +68,7 @@ struct CountryPickerView: View {
 
 struct CountryCell: View {
     let country: Country
-    let isFavorite: Bool
+    let isSelected: Bool
     @Binding var selectedCountry: Country?
     let configuration: Configuration
     
@@ -111,7 +111,7 @@ struct CountryCell: View {
                 }
 
                 Spacer()
-                if isFavorite {
+                if isSelected {
                     Image(uiImage: UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate) ?? .init())
                 }
             }

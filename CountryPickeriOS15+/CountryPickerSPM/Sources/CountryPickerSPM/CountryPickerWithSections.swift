@@ -8,16 +8,22 @@
 import SwiftUI
 public
 struct CountryPickerWithSections: View {
+    
     @Environment(\.presentationMode) var presentationMode
 
     @StateObject var viewModel: CountryPickerWithSectionViewModel = .default
-    let configuration: Configuration
     @State var searchText: String
-    
-    public init(configuration: Configuration = Configuration(),
-         searchText: String = "") {
-        self.configuration = configuration
+    @Binding private var selectedCountry: Country?
+
+    let configuration: Configuration
+
+    public init(
+         configuration: Configuration = Configuration(),
+         searchText: String = "",
+         selectedCountry: Binding<Optional<Country>>) {
+         self.configuration = configuration
          _searchText = State(initialValue: searchText)
+        _selectedCountry = selectedCountry
     }
 
     public var body: some View {
@@ -30,12 +36,9 @@ struct CountryPickerWithSections: View {
                                 
                                 ForEach(section.countries) { country in
                                     CountryCell(country: country,
-                                                isFavorite: false,
+                                                isSelected: selectedCountry == country,
                                                 selectedCountry: $viewModel.selectedCountry,
                                                 configuration: configuration)
-                                    .onTapGesture {
-                                        viewModel.selectedCountry = country
-                                    }
                                 }
                             } header: {
                                 if let sectionTitle = section.title {
@@ -55,9 +58,11 @@ struct CountryPickerWithSections: View {
                 .onChange(of: searchText) {
                     viewModel.filterWithText($0)
                 }
+                .onChange(of: viewModel.selectedCountry) {
+                    selectedCountry = $0
+                }
                 .onDisappear {
                     viewModel.setLastSelectedCountry()
-                    
                 }
                 .onAppear {
                     // Scroll to the selected country when appearing
@@ -78,7 +83,9 @@ struct CountryPickerWithSections: View {
 struct CountryPickerWithSections_Previews: PreviewProvider {
     static var previews: some View {
         CountryPickerWithSections(
-            configuration: Configuration(), searchText: ""
+            configuration: Configuration(),
+            searchText: "",
+            selectedCountry: .constant(.none)
         )
     }
 }
@@ -92,7 +99,6 @@ struct SectionIndexView: View {
             ForEach(titles, id: \.self) { title in
                 HStack {
                     Spacer()
-                    //need to figure out if there is a name in this section before I allow scrollto or it will crash
                         Button(action: {
                             withAnimation {
                                 onClick(title)
