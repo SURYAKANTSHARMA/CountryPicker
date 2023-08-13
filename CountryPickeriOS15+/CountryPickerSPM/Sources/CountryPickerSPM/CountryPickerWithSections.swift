@@ -60,6 +60,7 @@ struct CountryPickerWithSections: View {
                 }
                 .onChange(of: viewModel.selectedCountry) {
                     selectedCountry = $0
+                    presentationMode.wrappedValue.dismiss()
                 }
                 .onDisappear {
                     viewModel.setLastSelectedCountry()
