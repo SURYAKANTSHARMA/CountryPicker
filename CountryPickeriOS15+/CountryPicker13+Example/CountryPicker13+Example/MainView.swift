@@ -9,12 +9,61 @@ import SwiftUI
 import SKCountryPicker
 
 struct MainView: View {
-    @State private var isCountryPickerPresented = false
+    
     @State private var selectedCountry: Country = CountryManager.shared.preferredCountry ?? Country(countryCode: "IN")
     
+    @State var shouldShowDialingCode: Bool = true
+    @State var shouldShowCountryFlag: Bool = true
+    @State var shouldShowWithSection: Bool = true
+    
+    @State private var isCountryPickerPresented = false
+
+    @State var shouldFilterByCountryCode: Bool = false
+    @State var shouldFilterByDialCode: Bool = false
+    
+
     var body: some View {
         NavigationView {
             VStack {
+                
+                Text("Style Controls")
+                    .font(.title)
+                    .bold()
+                    .padding(20)
+                 
+                Toggle("Show Dialing Code",
+                       isOn: $shouldShowDialingCode)
+                .frame(width: 300, alignment: .center)
+                .padding(8)
+                
+                Toggle("Show Country Flag",
+                       isOn: $shouldShowCountryFlag)
+                .frame(width: 300, alignment: .center)
+                .padding(8)
+
+                Toggle("Show With Section",
+                       isOn: $shouldShowWithSection)
+                .frame(width: 300, alignment: .center)
+                .padding(8)
+                
+                
+                Text("Filter Controls")
+                    .font(.title)
+                    .bold()
+                    .padding(20)
+                 
+                Toggle("Filter by Country Code",
+                       isOn: $shouldFilterByCountryCode)
+                .frame(width: 300, alignment: .center)
+                .padding(8)
+                
+                Toggle("Filter by dail Code",
+                       isOn: $shouldFilterByDialCode)
+                .frame(width: 300, alignment: .center)
+                .padding(8)
+
+                .padding(.bottom, 50)
+
                 Button(action: {
                     isCountryPickerPresented.toggle()
                 }) {
