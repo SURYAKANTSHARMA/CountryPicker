@@ -69,10 +69,18 @@ open class CountryManager: CountryListDataSource {
     
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
-        guard let countryCode = Locale.current.regionCode else {
-            return nil
+        if #available(iOS 16, *) {
+            guard let countryCode = Locale.current.language.region?.identifier else {
+                return nil
+            }
+            return Country(countryCode: countryCode)
+
+        } else {
+            guard let countryCode = Locale.current.regionCode else {
+                return nil
+            }
+            return Country(countryCode: countryCode)
         }
-        return Country(countryCode: countryCode)
     }
     
     public var lastCountrySelected: Country?
