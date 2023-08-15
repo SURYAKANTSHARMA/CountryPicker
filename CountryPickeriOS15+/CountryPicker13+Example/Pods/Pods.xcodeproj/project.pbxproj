@@ -121,7 +121,6 @@
 		39F53840F95619F584B7C7C94AE96E2C /* CF.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C524CF24EB0A6FBB9F058CC02F4CE3E /* CF.png */; };
 		3A3195111DCEF9FC250B08608693533F /* HN.png in Resources */ = {isa = PBXBuildFile; fileRef = A7F6B270F940CE0D439651B5197DBC2B /* HN.png */; };
 		3A44EDF734257D08A451ECA7DB2E237D /* MR.png in Resources */ = {isa = PBXBuildFile; fileRef = ECC4BF99C0D84508E79622EA3B31E23E /* MR.png */; };
-		3A4B31BADF16221241ACE8DA9AA5F14E /* tickMark.png in Resources */ = {isa = PBXBuildFile; fileRef = AC8CAEF95EAE109A2F9B34415A52557B /* tickMark.png */; };
 		3B72D5C8799FB2757A8D1E8C34E981B1 /* LS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3014E18F19183A03FA6738FF15E9A5A3 /* LS@2x.png */; };
 		3C2802B469B2A9439B1FDD0F826FE9CB /* IS.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ADEFE34B8410DAD417118F0AF5E6C02 /* IS.png */; };
 		3C882377AAF1DAFCAAB0DB5607553565 /* NP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 081A454BB57CEE18CD504C30460D1C22 /* NP@2x.png */; };
@@ -785,7 +784,7 @@
 		7275ECDFE00D2621A11EF128AC99361B /* AD@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "AD@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/AD@2x.png"; sourceTree = "<group>"; };
 		7287FE62F49CDB992111C281C46F2899 /* FJ.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = FJ.png; path = CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/FJ.png; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		733F7A699A216CAD26ECBC709516B8D3 /* SKCountryPicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SKCountryPicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		733F7A699A216CAD26ECBC709516B8D3 /* SKCountryPicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SKCountryPicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		73D2F12EDC70B56ECECFAB56991F5750 /* LB.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = LB.png; path = CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/LB.png; sourceTree = "<group>"; };
 		740097BE6C330986376687EF13EBB33E /* SJ@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "SJ@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/SJ@2x.png"; sourceTree = "<group>"; };
 		7464E1EA5DA2205269B73FE563A68EAD /* MC@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MC@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/MC@2x.png"; sourceTree = "<group>"; };
@@ -874,7 +873,7 @@
 		9CC8AC1B11BC048F6EABF979FEBC6E87 /* ST.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = ST.png; path = CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/ST.png; sourceTree = "<group>"; };
 		9D230D98346FA5FFDE11730E809BE2C5 /* PW@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "PW@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/PW@2x.png"; sourceTree = "<group>"; };
 		9D706AB1E94E866630F0D1DB8BBFB7BF /* MD@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "MD@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/MD@2x.png"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9FE50AB63B51233180F7359840D981 /* SC.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = SC.png; path = CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/SC.png; sourceTree = "<group>"; };
 		A00981FB5266333D2FBD164968716CEF /* LC@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "LC@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/LC@2x.png"; sourceTree = "<group>"; };
 		A03FED9836A8D4D77CCC068DD49F0B3E /* PS.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = PS.png; path = CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/PS.png; sourceTree = "<group>"; };
@@ -901,7 +900,6 @@
 		A9BFEFD22AD7218ED67C96347BEFFE96 /* VG@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "VG@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/VG@2x.png"; sourceTree = "<group>"; };
 		AAC1450254974D18E8BAF215CE4DBB29 /* NI@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NI@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/NI@2x.png"; sourceTree = "<group>"; };
 		AAF9AD4C3A37CF8117A49DCD3D184B0E /* BY@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "BY@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/BY@2x.png"; sourceTree = "<group>"; };
-		AC8CAEF95EAE109A2F9B34415A52557B /* tickMark.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = tickMark.png; path = CountryPickerSPM/Sources/CountryPickerSPM/tickMark.png; sourceTree = "<group>"; };
 		AD635FFC8167C1056B47D6972DE403AA /* LV@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "LV@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/LV@2x.png"; sourceTree = "<group>"; };
 		AE4B43CB855614F3864DF021EB1CD549 /* DM@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "DM@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/DM@2x.png"; sourceTree = "<group>"; };
 		AECA554D9EE7C9D752F09C2C0E1531F8 /* SB@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "SB@2x.png"; path = "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/SB@2x.png"; sourceTree = "<group>"; };
@@ -1576,7 +1574,6 @@
 				326E838B7B92E1F00E1C516FBB722EB0 /* TG@2x.png */,
 				CCE8715F8DB1C7345DC150D228CB01F5 /* TH.png */,
 				33ADFE8D6B5CD982DF46C659A4F4516C /* TH@2x.png */,
-				AC8CAEF95EAE109A2F9B34415A52557B /* tickMark.png */,
 				198F242FA2B47886C419E6A0DAC8B965 /* TJ.png */,
 				D31F2CD072DC7FDE0CEA8662B808AE7F /* TJ@2x.png */,
 				7C0EC122C46528D3138AA5F99AFB8444 /* TK.png */,
@@ -1854,7 +1851,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA591B4F0E29F5E913E329A7DF56F75 /* SKCountryPicker-CountryPickerController in Resources */,
-				3A4B31BADF16221241ACE8DA9AA5F14E /* tickMark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
