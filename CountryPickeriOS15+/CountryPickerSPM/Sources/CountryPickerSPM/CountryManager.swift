@@ -83,6 +83,10 @@ open class CountryManager: CountryListDataSource {
         }
     }
     
+    open var preferredCountry: Country? {
+        lastCountrySelected ?? currentCountry
+    }
+    
     public var lastCountrySelected: Country?
     
     /// Default country filter option

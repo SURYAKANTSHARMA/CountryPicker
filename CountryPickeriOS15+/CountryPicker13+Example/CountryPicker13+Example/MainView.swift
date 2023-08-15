@@ -10,8 +10,7 @@ import SKCountryPicker
 
 struct MainView: View {
     @State private var isCountryPickerPresented = false
-    @State private var selectedCountry: Country =
-    CountryManager.shared.lastCountrySelected ??  CountryManager.shared.currentCountry ?? Country(countryCode: "IN")
+    @State private var selectedCountry: Country = CountryManager.shared.preferredCountry ?? Country(countryCode: "IN")
     
     var body: some View {
         NavigationView {
