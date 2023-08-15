@@ -10,7 +10,8 @@ import SKCountryPicker
 
 struct MainView: View {
     @State private var isCountryPickerPresented = false
-    @State private var selectedCountry: Country? = CountryManager.shared.lastCountrySelected ??  CountryManager.shared.currentCountry
+    @State private var selectedCountry: Country =
+    CountryManager.shared.lastCountrySelected ??  CountryManager.shared.currentCountry ?? Country(countryCode: "IN")
     
     var body: some View {
         NavigationView {
@@ -19,8 +20,8 @@ struct MainView: View {
                     isCountryPickerPresented.toggle()
                 }) {
                     HStack {
-                        Text(selectedCountry?.dialingCode ?? "Select country")
-                        Image(uiImage: selectedCountry?.flag ?? .init())
+                        Text(selectedCountry.dialingCode ?? "Select country")
+                        Image(uiImage: selectedCountry.flag ?? .init())
                             .resizable()
                             .frame(width: 40, height: 25)
                     }

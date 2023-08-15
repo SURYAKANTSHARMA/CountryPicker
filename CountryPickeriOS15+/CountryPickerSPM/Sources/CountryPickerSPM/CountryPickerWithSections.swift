@@ -11,20 +11,20 @@ struct CountryPickerWithSections: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: CountryPickerWithSectionViewModel = .default
+    @ObservedObject var viewModel: CountryPickerWithSectionViewModel
     @State var searchText: String
-    @Binding private var selectedCountry: Country?
+    @Binding private var selectedCountry: Country
 
     let configuration: Configuration
 
     public init(
          configuration: Configuration = Configuration(),
          searchText: String = "",
-         selectedCountry: Binding<Optional<Country>>) {
+         selectedCountry: Binding<Country>) {
          self.configuration = configuration
          _searchText = State(initialValue: searchText)
         _selectedCountry = selectedCountry
-        viewModel.selectedCountry = selectedCountry.wrappedValue
+        viewModel = .init(selectedCountry: selectedCountry.wrappedValue)
     }
 
     public var body: some View {
@@ -59,11 +59,9 @@ struct CountryPickerWithSections: View {
                 .onChange(of: searchText) {
                     viewModel.filterWithText($0)
                 }
-                .onChange(of: viewModel.selectedCountry) { newValue in
-                    if newValue != nil {
-                        selectedCountry = newValue
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                .onChange(of: viewModel.selectedCountry) {
+                   selectedCountry = $0
+                   presentationMode.wrappedValue.dismiss()
                 }
                 
                 .onDisappear {
@@ -93,7 +91,7 @@ struct CountryPickerWithSections_Previews: PreviewProvider {
         CountryPickerWithSections(
             configuration: Configuration(),
             searchText: "",
-            selectedCountry: .constant(.none)
+            selectedCountry: .constant(Country(countryCode: "IN"))
         )
     }
 }
