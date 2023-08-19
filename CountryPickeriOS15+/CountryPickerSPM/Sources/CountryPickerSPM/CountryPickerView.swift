@@ -23,7 +23,7 @@ struct CountryPickerView: View {
     @State private var filterCountries = [Country]()
     @State private var applySearch = false
     @State private var searchText = ""
-    @Binding private var selectedCountry: Country?
+    @Binding private var selectedCountry: Country
     
     let configuration: Configuration
     let manager: any CountryListDataSource
@@ -35,7 +35,7 @@ struct CountryPickerView: View {
     public
     init(manager: any CountryListDataSource = CountryManager.shared,
          configuration: Configuration = Configuration(),
-         selectedCountry: Binding<Optional<Country>>) {
+         selectedCountry: Binding<Country>) {
         self.manager = manager
         self.configuration = configuration
         self._selectedCountry = selectedCountry
@@ -68,10 +68,8 @@ struct CountryPickerView: View {
                     }
             }
         }
-        .onChange(of: selectedCountry) { newValue in
-            if newValue != nil {
-                presentationMode.wrappedValue.dismiss()
-            }
+        .onChange(of: selectedCountry) { _ in
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
@@ -82,7 +80,7 @@ struct CountryCell: View {
     let isSelected: Bool
     let configuration: Configuration
     
-    @Binding var selectedCountry: Country?
+    @Binding var selectedCountry: Country
     
     var body: some View {
         Button {
