@@ -1,3 +1,3 @@
 # CountryPickerSPM
 
-A description of this package.
+CountryPicker iOS 15+ with latest combine and swiftui 
