@@ -21,10 +21,10 @@ struct CountryPickerWheelView: View {
             }
             .pickerStyle(.wheel)
         }
-        .onChange(of: viewModel.selected) {
-            print("viewModel.selected change")
-            selectedCountry = viewModel.countries[$0]
-        }.padding()
+        .onChange(of: selectedCountry) { 
+            viewModel.dataSource.lastCountrySelected = $0
+        }
+        .padding()
     }
     
     public init(selectedCountry: Binding<Country>,
