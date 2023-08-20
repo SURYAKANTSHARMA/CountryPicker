@@ -26,10 +26,10 @@ let package = Package(
             dependencies: [],
             resources: [
                 .copy("CountryPickerController.bundle"),
-                .process("tickMark.png")
             ]),
         .testTarget(
             name: "CountryPickerSPMTests",
             dependencies: ["CountryPickerSPM"]),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
