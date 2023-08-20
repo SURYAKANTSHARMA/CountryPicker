@@ -6,10 +6,30 @@
 //
 
 import SwiftUI
+import SKCountryPicker
 
 struct CountryPickerWheelDemoView: View {
+    
+    @State private var selectedCountry: Country = CountryManager.shared.preferredCountry ?? Country(countryCode: "IN")
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            VStack {
+                Text("Select a Country:")
+                    .font(.title)
+                    .bold()
+                    .padding(20)
+
+                HStack {
+                    Text(selectedCountry.dialingCode ?? "Select country")
+                    Image(uiImage: selectedCountry.flag ?? .init())
+                        .resizable()
+                        .frame(width: 40, height: 25)
+                }.padding(20)
+            }
+            CountryPickerWheelView(selectedCountry: $selectedCountry)
+        }.padding()
+        
     }
 }
 

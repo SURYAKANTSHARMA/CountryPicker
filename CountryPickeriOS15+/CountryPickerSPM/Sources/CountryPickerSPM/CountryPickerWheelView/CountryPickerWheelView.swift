@@ -6,23 +6,33 @@
 //
 
 import SwiftUI
-
+public
 struct CountryPickerWheelView: View {
     
-    @ObservedObject var viewModel: CountryPickerWheelViewModel
+    @ObservedObject public var viewModel: CountryPickerWheelViewModel
+    @Binding public var selectedCountry: Country
     
-    var body: some View {
+    public var body: some View {
         VStack {
-            Picker("", selection: $viewModel.selected) {
-                ForEach(0..<viewModel.countries.count,
-                        id: \.self) { index in
-                    CountryPickerWheelItem(country: viewModel.countries[index])
+            Picker("", selection: $selectedCountry) {
+                ForEach(viewModel.countries, id: \.self) {
+                    CountryPickerWheelItem(country: $0)
                 }
             }
             .pickerStyle(.wheel)
         }
-        
+        .onChange(of: viewModel.selected) {
+            print("viewModel.selected change")
+            selectedCountry = viewModel.countries[$0]
+        }.padding()
     }
+    
+    public init(selectedCountry: Binding<Country>,
+        viewModel: CountryPickerWheelViewModel = CountryPickerWheelViewModel()) {
+        self._selectedCountry = selectedCountry
+        self.viewModel = viewModel
+    }
+    
 }
 
 struct CountryPickerWheelItem: View {
@@ -42,9 +52,6 @@ struct CountryPickerWheelItem: View {
 
 struct CountryPickerWheelView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager = CountryManager.shared
-        let viewModel = CountryPickerWheelViewModel(countries: manager.allCountries([]),
-                                                    selected: 0)
-        return CountryPickerWheelView(viewModel: viewModel)
+        return CountryPickerWheelView(selectedCountry: .constant(.init(countryCode: "IN")))
     }
 }

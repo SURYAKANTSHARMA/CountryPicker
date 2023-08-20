@@ -6,14 +6,27 @@
 //
 
 import Foundation
+import Combine
 
-final class CountryPickerWheelViewModel: ObservableObject {
+final
+public class CountryPickerWheelViewModel: ObservableObject {
     
-    let countries: [Country]
+    internal let countries: [Country]
+    private var anyCancellable: AnyCancellable?
+    private let dataSource: any CountryListDataSource
+    
     @Published var selected: Int
-    
-    init(countries: [Country], selected: Int) {
-        self.countries = countries
-        self.selected = selected
+
+    public init(dataSource: any CountryListDataSource = CountryManager.shared,
+         currentCountry: Country? = CountryManager.shared.preferredCountry) {
+        self.countries = dataSource.allCountries([])
+        self.selected = dataSource.allCountries([])
+            .firstIndex( where: { $0 == currentCountry }) ?? 0
+        self.dataSource = dataSource
+        anyCancellable = self.$selected
+            .sink { [weak self] in
+                self?.dataSource.lastCountrySelected = self?.countries[$0]
+            }
     }
+    
 }
