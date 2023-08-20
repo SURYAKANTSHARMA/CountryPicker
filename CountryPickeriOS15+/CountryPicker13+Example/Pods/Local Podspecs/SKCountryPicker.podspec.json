@@ -23,10 +23,10 @@
   },
   "source_files": "CountryPickerSPM/Sources/CountryPickerSPM/**/*.{swift}",
   "exclude_files": "Classes/Exclude",
-  "resources": "CountryPickerSPM/Sources/CountryPickerSPM/*.{png}",
+  "resources": "CountryPickerSPM/Sources/CountryPickerSPM/ImagesBundle/*.{png}",
   "resource_bundles": {
     "CountryPickerController": [
-      "CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/*"
+      "CountryPickerSPM/Sources/CountryPickerSPM/ImagesBundle/CountryPickerController.bundle/*"
     ]
   },
   "swift_version": "5.0"

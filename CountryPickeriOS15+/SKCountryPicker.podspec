@@ -103,9 +103,9 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  s.resource  = "CountryPickerSPM/Sources/CountryPickerSPM/*.{png}"
+  s.resource  = "CountryPickerSPM/Sources/CountryPickerSPM/ImagesBundle/*.{png}"
   s.resource_bundles = {
-    'CountryPickerController' => ['CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/*']
+    'CountryPickerController' => ['CountryPickerSPM/Sources/CountryPickerSPM/ImagesBundle/CountryPickerController.bundle/*']
 }
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
