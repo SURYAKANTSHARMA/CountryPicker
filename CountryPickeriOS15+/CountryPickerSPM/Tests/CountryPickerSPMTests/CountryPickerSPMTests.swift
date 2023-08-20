@@ -197,7 +197,7 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
         let mockService = MockService(countries: countries)
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
+            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers), selectedCountry: Country(countryCode: "IN"))
         
         return sut
     }
@@ -209,7 +209,7 @@ final class CountryPickerWithSectionViewModelTests: XCTestCase {
        -> CountryPickerWithSectionViewModel {
         let sut = CountryPickerWithSectionViewModel(
             dataService: mockService,
-            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers))
+            mapper: SectionMapper(favoriteCountriesLocaleIdentifiers: favoriteCountriesLocaleIdentifiers), selectedCountry: Country(countryCode: "IN"))
         return sut
     }
 }
