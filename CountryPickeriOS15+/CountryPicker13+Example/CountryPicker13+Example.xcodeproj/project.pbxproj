@@ -8,18 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		5443296EC08E0D102E3BDA04 /* Pods_CountryPicker13_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D397B4D5701AB2358F150419 /* Pods_CountryPicker13_Example.framework */; };
+		963F9EDB2A890CFE0044ECE8 /* CountryPickerWheelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F9EDA2A890CFE0044ECE8 /* CountryPickerWheelDemoView.swift */; };
+		963F9EDD2A890D550044ECE8 /* RootContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F9EDC2A890D550044ECE8 /* RootContainerView.swift */; };
 		D80BAE282A3F0EA5006E41F2 /* CountryPicker13_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80BAE272A3F0EA5006E41F2 /* CountryPicker13_ExampleApp.swift */; };
-		D80BAE2A2A3F0EA5006E41F2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80BAE292A3F0EA5006E41F2 /* ContentView.swift */; };
+		D80BAE2A2A3F0EA5006E41F2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80BAE292A3F0EA5006E41F2 /* MainView.swift */; };
 		D80BAE2C2A3F0EA6006E41F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80BAE2B2A3F0EA6006E41F2 /* Assets.xcassets */; };
 		D80BAE2F2A3F0EA6006E41F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80BAE2E2A3F0EA6006E41F2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		81F5C4CEDA78413D8739541E /* Pods-CountryPicker13+Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryPicker13+Example.release.xcconfig"; path = "Target Support Files/Pods-CountryPicker13+Example/Pods-CountryPicker13+Example.release.xcconfig"; sourceTree = "<group>"; };
+		963F9EDA2A890CFE0044ECE8 /* CountryPickerWheelDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerWheelDemoView.swift; sourceTree = "<group>"; };
+		963F9EDC2A890D550044ECE8 /* RootContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainerView.swift; sourceTree = "<group>"; };
 		D397B4D5701AB2358F150419 /* Pods_CountryPicker13_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryPicker13_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80BAE242A3F0EA5006E41F2 /* CountryPicker13+Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CountryPicker13+Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80BAE272A3F0EA5006E41F2 /* CountryPicker13_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPicker13_ExampleApp.swift; sourceTree = "<group>"; };
-		D80BAE292A3F0EA5006E41F2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D80BAE292A3F0EA5006E41F2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D80BAE2B2A3F0EA6006E41F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D80BAE2E2A3F0EA6006E41F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EEF3316BA36FAB0479525EB1 /* Pods-CountryPicker13+Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryPicker13+Example.debug.xcconfig"; path = "Target Support Files/Pods-CountryPicker13+Example/Pods-CountryPicker13+Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,7 +47,6 @@
 				EEF3316BA36FAB0479525EB1 /* Pods-CountryPicker13+Example.debug.xcconfig */,
 				81F5C4CEDA78413D8739541E /* Pods-CountryPicker13+Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -69,9 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				D80BAE272A3F0EA5006E41F2 /* CountryPicker13_ExampleApp.swift */,
-				D80BAE292A3F0EA5006E41F2 /* ContentView.swift */,
+				D80BAE292A3F0EA5006E41F2 /* MainView.swift */,
 				D80BAE2B2A3F0EA6006E41F2 /* Assets.xcassets */,
 				D80BAE2D2A3F0EA6006E41F2 /* Preview Content */,
+				963F9EDA2A890CFE0044ECE8 /* CountryPickerWheelDemoView.swift */,
+				963F9EDC2A890D550044ECE8 /* RootContainerView.swift */,
 			);
 			path = "CountryPicker13+Example";
 			sourceTree = "<group>";
@@ -206,8 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D80BAE2A2A3F0EA5006E41F2 /* ContentView.swift in Sources */,
+				963F9EDD2A890D550044ECE8 /* RootContainerView.swift in Sources */,
+				D80BAE2A2A3F0EA5006E41F2 /* MainView.swift in Sources */,
 				D80BAE282A3F0EA5006E41F2 /* CountryPicker13_ExampleApp.swift in Sources */,
+				963F9EDB2A890CFE0044ECE8 /* CountryPickerWheelDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

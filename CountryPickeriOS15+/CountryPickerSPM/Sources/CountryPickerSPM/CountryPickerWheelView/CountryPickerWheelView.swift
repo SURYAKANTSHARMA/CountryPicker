@@ -16,12 +16,27 @@ struct CountryPickerWheelView: View {
             Picker("", selection: $viewModel.selected) {
                 ForEach(0..<viewModel.countries.count,
                         id: \.self) { index in
-                    Text("\(viewModel.countries[index].countryName)")
+                    CountryPickerWheelItem(country: viewModel.countries[index])
                 }
             }
             .pickerStyle(.wheel)
         }
         
+    }
+}
+
+struct CountryPickerWheelItem: View {
+    
+    let country: Country
+    
+    var body: some View {
+        HStack {
+            Image(uiImage: country.flag ?? UIImage())
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32.0, height: 32.0)
+            Text("\(country.countryName)")
+        }
     }
 }
 
