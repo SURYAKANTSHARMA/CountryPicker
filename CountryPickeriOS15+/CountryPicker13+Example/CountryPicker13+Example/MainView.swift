@@ -75,16 +75,53 @@ struct MainView: View {
                     }
                 }
                 .sheet(isPresented: $isCountryPickerPresented) {
-//                    CountryPickerView(configuration: Configuration(),
-//                                      selectedCountry: $selectedCountry)
-                    CountryPickerWithSections(
-                        selectedCountry: $selectedCountry)
+                    let configuration = Configuration(
+                        isCountryFlagHidden: !shouldShowCountryFlag,
+                        isCountryDialHidden: !shouldShowDialingCode)
                     
+                    if shouldShowWithSection {
+                        CountryPickerWithSections(
+                            configuration: configuration,
+                            selectedCountry: $selectedCountry)
+                    } else {
+                        CountryPickerView(configuration: configuration,
+                                          selectedCountry: $selectedCountry)
+
+                    }
                 }
                 .padding(.bottom, 50)
+                
+                Button(action: {
+                    isCountryPickerPresented.toggle()
+                }) {
+                    Text("Pick Country")
+                        .font(.title3)
+                        .padding()
+                        .padding(.horizontal)
+                        .frame(minWidth: 300)
+                        .bold()
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10) // Apply corner radius
+
+                }
+                
+                .onChange(of: shouldFilterByCountryCode) { newValue in
+                    if newValue {
+                        CountryManager.shared.addFilter(.countryCode)
+                    } else {
+                        CountryManager.shared.removeFilter(.countryCode)
+                    }
+                }
+                .onChange(of: shouldFilterByDialCode) { newValue in
+                    if newValue {
+                        CountryManager.shared.addFilter(.countryDialCode)
+                    } else {
+                        CountryManager.shared.removeFilter(.countryDialCode)
+                    }
+                }
             }
         }
-       
     }
 }
 
