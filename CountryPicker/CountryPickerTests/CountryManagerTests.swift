@@ -1,6 +1,6 @@
 //
-//  CountryPickerTests.swift
-//  CountryPickerTests
+//  CountryManagerTests.swift
+//  CountryManagerTests
 //
 //  Created by Mac mini on 7/6/18.
 //  Copyright © 2018 SuryaKant Sharma. All rights reserved.
@@ -9,11 +9,15 @@
 import XCTest
 @testable import CountryPicker
 
-class CountryPickerTests: XCTestCase {
+class CountryManagerTests: XCTestCase {
     var countryManager: CountryManager!
     
     var validCountryFilePath: String? {
-        let bundle = Bundle(for: CountryManager.self)
+#if SWIFT_PACKAGE
+        let bundle = Bundle.module
+#else
+        let bundle = Bundle(for: Country.self)
+#endif
         return bundle.path(forResource: "CountryPickerController.bundle/countries", ofType: "plist")
     }
     
@@ -89,11 +93,11 @@ class CountryPickerTests: XCTestCase {
         XCTAssertNil(countryManager.country(withDigitCode: "+3232"))
     }
     
-    func test_countryLoading_withValidPath() {
+    func test_countryLoading_withValidPath() throws {
         let urlPath = URL(fileURLWithPath: validCountryFilePath ?? "")
-        let countries = try? countryManager.fetchCountries(fromURLPath: urlPath)
+        let countries = try countryManager.fetchCountries(fromURLPath: urlPath)
         XCTAssertNotNil(countries)
-        XCTAssertEqual(countries?.count, 250)
+        XCTAssertEqual(countries.count, 250)
     }
     
     func test_countryLoading_withInvalidPath() {
