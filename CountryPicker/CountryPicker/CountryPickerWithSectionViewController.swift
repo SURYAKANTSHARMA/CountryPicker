@@ -88,7 +88,6 @@ internal extension CountryPickerWithSectionViewController {
         if isFavoriteEnable { // If favourite enable first section is by default reserved for favourite
             section += 1
         }
-        tableView.scrollToRow(at: IndexPath(row: row, section: section), at: .middle, animated: true)
     }
     
     

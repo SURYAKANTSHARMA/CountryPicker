@@ -105,9 +105,6 @@ open class CountryPickerController: UIViewController {
         }
     }
     
-    internal var checkMarkImage: UIImage? {
-        return UIImage(named: "tickMark", in: bundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-    }
     internal var manager: CountryListDataSource
     internal var engine: CountryPickerEngine
     

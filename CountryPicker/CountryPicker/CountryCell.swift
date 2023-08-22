@@ -103,7 +103,6 @@ extension CountryCell {
         
         // Add country flag & check mark views
         countryFlagStackView.addArrangedSubview(flagImageView)
-        countryCheckStackView.addArrangedSubview(checkMarkImageView)
         
         // Add country info sub views
         countryInfoStackView.addArrangedSubview(nameLabel)
