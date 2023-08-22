@@ -94,6 +94,7 @@ open class CountryPickerController: UIViewController {
         public var separatorLineColor: UIColor = UIColor(red: 249/255.0, green: 248/255.0, blue: 252/255.0, alpha: 1.0)
         public var isCountryFlagHidden: Bool = false
         public var isCountryDialHidden: Bool = false
+        public var closeButton: UIImage?
     }
     
     public var configuration = Configuration() {
@@ -135,11 +136,9 @@ open class CountryPickerController: UIViewController {
         }
         
         // Setup view bar buttons
-        let uiBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
-                                              target: self,
-                                              action: #selector(self.crossButtonClicked(_:)))
+        let uiBarButtonItem = UIBarButtonItem(image: configuration.closeButton, style: .plain, target: self, action: #selector(self.crossButtonClicked(_:)))
         
-        navigationItem.leftBarButtonItem = uiBarButtonItem
+        navigationItem.rightBarButtonItem = uiBarButtonItem
         
         // Setup table view and cells
         setUpTableView()
@@ -228,11 +227,6 @@ internal extension CountryPickerController {
         
         // Find country index
         let countryMatchIndex = countries.firstIndex(where: { $0.countryCode == country.countryCode})
-        
-        if let itemIndexPath = countryMatchIndex {
-            let previousCountryIndex = IndexPath(item: itemIndexPath, section: 0)
-            tableView.scrollToRow(at: previousCountryIndex, at: .middle, animated: animated)
-        }
     }
 }
 
@@ -260,10 +254,6 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
             country = filterCountries[indexPath.row]
         } else {
             country = countries[indexPath.row]
-        }
-        
-        if let lastSelectedCountry = manager.lastCountrySelected {
-            cell.checkMarkImageView.isHidden = country.countryCode == lastSelectedCountry.countryCode ? false : true
         }
         
         cell.country = country

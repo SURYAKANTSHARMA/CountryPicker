@@ -52,8 +52,8 @@ class CountryCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         return imageView
     }()
 
@@ -85,8 +85,8 @@ class CountryCell: UITableViewCell {
     // MARK: - Model
     var country: Country! {
         didSet {
-            nameLabel.text = country.countryName
-            diallingCodeLabel.text = country.dialingCode
+            diallingCodeLabel.text = country.countryName
+            nameLabel.text = country.dialingCode
             flagImageView.image = country.flag
         }
     }
@@ -145,8 +145,8 @@ extension CountryCell {
         switch style {
         case .corner:
             // Corner style
-            flagImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            flagImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+            flagImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+            flagImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
             flagImageView.layer.cornerRadius = 4
             flagImageView.clipsToBounds = true
             flagImageView.contentMode = .scaleAspectFill
