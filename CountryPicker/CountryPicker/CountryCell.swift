@@ -160,7 +160,7 @@ extension CountryCell {
             // Apply default styling
             flagImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
             flagImageView.heightAnchor.constraint(equalToConstant: 26).isActive = true
-            flagImageView.contentMode = .scaleToFill
+            flagImageView.contentMode = .scaleAspectFill
         }
     }
     

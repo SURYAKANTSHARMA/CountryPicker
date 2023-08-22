@@ -243,7 +243,6 @@ extension CountryPickerController: UITableViewDelegate, UITableViewDataSource {
         
         cell.accessoryType = .none
         cell.checkMarkImageView.isHidden = true
-        cell.checkMarkImageView.image = checkMarkImage
         
         var country: Country
         

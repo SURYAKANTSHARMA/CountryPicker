@@ -157,7 +157,6 @@ extension CountryPickerWithSectionViewController {
         
         cell.accessoryType = .none
         cell.checkMarkImageView.isHidden = true
-        cell.checkMarkImageView.image = checkMarkImage
 
         var country: Country
         
@@ -173,10 +172,6 @@ extension CountryPickerWithSectionViewController {
         } else {
             let character = sections[indexPath.section]
             country = sectionCoutries[character]![indexPath.row]
-        }
-
-        if let alreadySelectedCountry = manager.lastCountrySelected {
-            cell.checkMarkImageView.isHidden = country.countryCode == alreadySelectedCountry.countryCode ? false : true
         }
 
         cell.country = country
