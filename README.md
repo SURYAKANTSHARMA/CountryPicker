@@ -66,9 +66,10 @@ If you want support Swift 4.1/3.3
 For supporting iOS 14 or below 
 pod 'SKCountryPicker'
 
-```
 For iOS 15 and above (Combine and Swiftui version)
 pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker', :branch => 'iOS15AndAbove'
+
+```
 
 Please note iOS 14 will be discontinued after in 2024. 
 #### [Carthage](https://github.com/Carthage/Carthage)
