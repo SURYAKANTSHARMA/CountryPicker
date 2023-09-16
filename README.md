@@ -63,9 +63,14 @@ Current version compatible with Swift 5.
 If you want support Swift 4.1/3.3
 
 ```ruby
-pod 'SKCountryPicker' '~> 2.0.0'
-```
+For supporting iOS 14 or below 
+pod 'SKCountryPicker'
 
+```
+For iOS 15 and above (Combine and Swiftui version)
+pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker', :branch => 'iOS15AndAbove'
+
+Please note iOS 14 will be discontinued after in 2024. 
 #### [Carthage](https://github.com/Carthage/Carthage)
 The steps required to use Carthage for dependency management are described [here](https://github.com/Carthage/Carthage#getting-started) but lets add them to this README as well for good measure.
 
