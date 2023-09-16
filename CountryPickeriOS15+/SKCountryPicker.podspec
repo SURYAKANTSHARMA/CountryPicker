@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "3.0.0", :branch => 'master'}
+  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "3.0.0", :branch => 'iOS15AndAbove'}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
