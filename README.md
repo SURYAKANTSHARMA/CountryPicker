@@ -12,9 +12,8 @@
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 
 
-A simple, customizable Country picker for picking country or dialing code.  
+CountryPicker is a Swift library that provides a simple and easy-to-use interface for selecting countries from a predefined list. It's perfect for adding country selection functionality to your iOS app with minimal effort.
 
-This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
 ## If you like CountryPicker, give it a ★ at the top right of this page.
 
@@ -29,7 +28,7 @@ This library is for country picker used in many app for selecting country code o
 - [x] Carthage integrated
 - [x] Swift package manager integrated
 - [x] Best practices followed
-- [x] Dark mode supported in iOS 13
+- [x] Dark mode supported 
 - [x] Support Dynamic font size for ContentSizeCategory
 - [x] Unit tests coverage 94%
 - [x] Picker view support added with customization 
@@ -39,7 +38,7 @@ This library is for country picker used in many app for selecting country code o
 
 - iOS 11.0+ Support latest release iOS 17
 - iOS 15+ for 3.0.0 and above version of cocoapod
-- latest Xcode 14.x with Swift 
+- latest Xcode 15.x with Swift 
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first.
@@ -66,7 +65,7 @@ CountryPicker is available through Cocoapods and Carthage.
 Add the following line to your Podfile:
 
 ```ruby
-For supporting iOS 14 or below 
+For supporting iOS 15 or below 
 pod 'SKCountryPicker'
 
 For iOS 15 and above (Combine and Swiftui version) currently only supported by cocoapods 
@@ -74,7 +73,7 @@ pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker
 
 ```
 
-Please note iOS 14 will be discontinued after in 2024. 
+Please note iOS 15 will be discontinued after in 2024. 
 #### [Carthage](https://github.com/Carthage/Carthage)
 The steps required to use Carthage for dependency management are described [here](https://github.com/Carthage/Carthage#getting-started) but lets add them to this README as well for good measure.
 
@@ -164,7 +163,7 @@ CountryManager.shared.country(withCode: "MY")
 ![Dependecy graph](https://user-images.githubusercontent.com/6416095/181878996-43ef2361-5d81-4bef-9f84-f4c54a640ed6.png)
 #### For swift ui 
 
-- [ ] TBD
+- [x] use 3.0.0 and above version 
 
 ## Contributing
 
