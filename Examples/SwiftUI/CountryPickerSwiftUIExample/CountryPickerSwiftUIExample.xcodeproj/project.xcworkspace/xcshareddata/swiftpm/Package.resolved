@@ -1,14 +1,15 @@
 {
+  "originHash" : "9763fccce63045a388fb651cea524c335b31d3accb6e3419ca15970dc6bf6819",
   "pins" : [
     {
       "identity" : "countrypicker",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SURYAKANTSHARMA/CountryPicker",
       "state" : {
-        "revision" : "cf9190d83d4d10598bdfc3cf6325590c6ae0f504",
-        "version" : "1.4.1"
+        "branch" : "iOS15AndAbove",
+        "revision" : "6dfc4e25d1a257090e52556ca4808c0710b6e27c"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
