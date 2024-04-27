@@ -24,10 +24,10 @@ let package = Package(
         .target(
             name: "CountryPicker",
             dependencies: [],
-            path: "CountryPicker/CountryPicker",
+            path: "CountryPicker/CountryPickeriOS15+/CountryPicker13+Example/Pods/SKCountryPicker/CountryPickeriOS15+/CountryPickerSPM/Sources/CountryPickerSPM",
+            
             resources: [
                 .copy("CountryPickerController.bundle"),
-                .process("tickMark.png")
             ]
         ),
             
