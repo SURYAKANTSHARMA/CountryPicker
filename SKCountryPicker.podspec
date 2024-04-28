@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  =  "CountryPickeriOS15+/CountryPickerSPM/Sources/CountryPickerSPM/**/*.{swift}"
+  s.source_files  =  "CountryPicker/Sources/**/*.{swift}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -104,7 +104,7 @@ Pod::Spec.new do |s|
   #
 
   s.resource_bundles = {
-    'CountryPickerController' => ['CountryPickeriOS15+/CountryPickerSPM/Sources/CountryPickerSPM/CountryPickerController.bundle/*']
+    'CountryPickerController' => ['CountryPicker/Sources/CountryPickerController.bundle/*']
   }
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
