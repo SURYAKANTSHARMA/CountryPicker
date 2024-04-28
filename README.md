@@ -12,9 +12,8 @@
 [![License](https://img.shields.io/badge/License-MIT-8D6E63.svg)](LICENSE)  
 
 
-A simple, customizable Country picker for picking country or dialing code.  
+CountryPicker is a Swift library that provides a simple and easy-to-use interface for selecting countries from a predefined list. It's perfect for adding country selection functionality to your iOS app with minimal effort.
 
-This library is for country picker used in many app for selecting country code of user. User can select country by searching and then selecting country in list.
 
 ## If you like CountryPicker, give it a ★ at the top right of this page.
 
@@ -29,20 +28,28 @@ This library is for country picker used in many app for selecting country code o
 - [x] Carthage integrated
 - [x] Swift package manager integrated
 - [x] Best practices followed
-- [x] Dark mode supported in iOS 13
+- [x] Dark mode supported 
 - [x] Support Dynamic font size for ContentSizeCategory
 - [x] Unit tests coverage 94%
 - [x] Picker view support added with customization 
-- [x] Swift UI Support with example project 
+- [x] Swift UI Support with example project
+- [x] Rewritten with swiftUI and combine in version 3.0.0  
 ## Requirements
 
 - iOS 11.0+ Support latest release iOS 17
-- latest Xcode 14.x with Swift 
+- iOS 15+ for 3.0.0 and above version of cocoapod
+- latest Xcode 15.x with Swift 
 
 ## Demo Project
 To run the example project, clone the repo, and run pod update from the Example directory first.
 
 <img src= "Usage Resource/SKCountryPickerDemo.gif" width="200" height = "400">
+
+#### Swift UI Combine new project 
+<img src= "Usage Resource/SKCountryPicker15Plus.gif" width="200" height = "400">|
+
+
+##  
 
 ## Screenshots
 | Home Scene        | Country Picker Scene  | Filtering Scene | Dark Mode Scene | Picker View |
@@ -56,16 +63,17 @@ CountryPicker is available through Cocoapods and Carthage.
 
 #### [CocoaPods](http://cocoapods.org):
 Add the following line to your Podfile:
+
 ```ruby
+For supporting iOS 15 or below 
 pod 'SKCountryPicker'
-```
-Current version compatible with Swift 5.
-If you want support Swift 4.1/3.3
 
-```ruby
-pod 'SKCountryPicker' '~> 2.0.0'
+For iOS 15 and above (Combine and Swiftui version) currently only supported by cocoapods 
+pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker', :branch => 'iOS15AndAbove'
+
 ```
 
+Please note iOS 15 will be discontinued after in 2024. 
 #### [Carthage](https://github.com/Carthage/Carthage)
 The steps required to use Carthage for dependency management are described [here](https://github.com/Carthage/Carthage#getting-started) but lets add them to this README as well for good measure.
 
@@ -116,47 +124,10 @@ Add the following line to your Package.swift file in the dependencies section:
 ```
 
 ## Getting Started
-Example:
-Please  check [example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/Example) project for customization and different option available.
-```swift 
-    func presentCountryPickerScene(withSelectionControlEnabled selectionControlEnabled: Bool = true) {
-        switch selectionControlEnabled {
-        case true:
-            // Present country picker with `Section Control` enabled
-            CountryPickerWithSectionViewController.presentController(on: self, configuration: { countryController in
-                countryController.configuration.flagStyle = .circular
-                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
-                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+Please  check [baseiOS11Example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/Examples) project for customization and different option available for using with old uikit.
 
-            }) { [weak self] country in
-                
-                guard let self = self else { return }
-                self.countryImageView.isHidden = false
-                self.countryImageView.image = country.flag
-                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
-            }
-            
-        case false:
-            // Present country picker without `Section Control` enabled
-            CountryPickerController.presentController(on: self, configuration: { countryController in
-                countryController.configuration.flagStyle = .corner
-                countryController.configuration.isCountryFlagHidden = !showCountryFlagSwitch.isOn
-                countryController.configuration.isCountryDialHidden = !showDialingCodeSwitch.isOn
-                countryController.favoriteCountriesLocaleIdentifiers = ["IN", "US"]
+Please check [baseiOS15Example](https://github.com/SURYAKANTSHARMA/CountryPicker/tree/master/CountryPickeriOS15%2B/CountryPicker13%2BExample) project for using it in swift ui app with minimum deployment target iOS 15
 
-            }) { [weak self] country in
-                
-                guard let self = self else { return }
-                
-                self.countryImageView.isHidden = false
-                self.countryImageView.image = country.flag
-                self.countryCodeButton.setTitle(country.dialingCode, for: .normal)
-            }
-        }
-    }
-}
-```
 
 ## Filter Options
 There are 3 main filter options `countryName`, `countryCode`, `countryDialCode` and  by default country picker has been configured to filter countries based on `countryName`.
@@ -187,24 +158,12 @@ CountryManager.shared.country(withName: "Tanzania")
 CountryManager.shared.country(withCode: "MY")
 
 ```
-
-## Styling Options
-There are few styling options provided by the library such auto-hiding or styling views.
-```swift
-CountryPickerWithSectionViewController.presentController(on: self, configuration: { controller in
-    // Styling country flag image view
-    controller.configuration.flagStyle = .circular 
-    
-    // Hide flag image view
-    controller.configuration.isCountryFlagHidden = true
-    
-    // Hide country dial code
-    controller.configuration.isCountryDialHidden = true
- })
-```
 ## Dependency Graph 
 
 ![Dependecy graph](https://user-images.githubusercontent.com/6416095/181878996-43ef2361-5d81-4bef-9f84-f4c54a640ed6.png)
+#### For swift ui 
+
+- [x] use 3.0.0 and above version 
 
 ## Contributing
 
