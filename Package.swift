@@ -24,16 +24,16 @@ let package = Package(
         .target(
             name: "CountryPicker",
             dependencies: [],
-            path: "CountryPicker/CountryPickeriOS15+/CountryPicker13+Example/Pods/SKCountryPicker/CountryPickeriOS15+/CountryPickerSPM/Sources/CountryPickerSPM",
-            
+            path: "CountryPicker/Sources",
+            exclude: ["CountryPicker/Example"], // Exclude the Example directory
             resources: [
                 .copy("CountryPickerController.bundle"),
             ]
         ),
-            
-        .testTarget(
-            name: "CountryPicker/CountryPicker",
-            dependencies: ["CountryPicker"],
-            path: "CountryPicker/CountryPickerTests"),
+//            
+//        .testTarget(
+//            name: "",
+//            dependencies: [""],
+//            path: ""),
     ]
 )
