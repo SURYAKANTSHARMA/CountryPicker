@@ -25,15 +25,9 @@ let package = Package(
             name: "CountryPicker",
             dependencies: [],
             path: "CountryPicker/Sources",
-            exclude: ["CountryPicker/Example"], // Exclude the Example directory
             resources: [
                 .copy("CountryPickerController.bundle"),
             ]
         ),
-//            
-//        .testTarget(
-//            name: "",
-//            dependencies: [""],
-//            path: ""),
     ]
 )
