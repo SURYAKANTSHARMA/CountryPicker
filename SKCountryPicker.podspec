@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SKCountryPicker"
-  s.version      = "2.0.2"
+  s.version      = "3.0.0"
   s.summary      = "A simple, customizable Country picker for picking country or dialing code."
 
   # This description is used to generate tags and improve search results.
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "11.0"
+  s.platform     = :ios, "15.0"
   s.swift_version       = '5.0'
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "2.0.2", :branch => 'master'}
+  s.source = { :git => "https://github.com/SURYAKANTSHARMA/CountryPicker", :tag => "3.0.0", :branch => 'iOS15AndAbove'}
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,7 +89,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  =  "CountryPicker/CountryPicker/**/*.{swift}"
+  s.source_files  =  "CountryPicker/Sources/**/*.{swift}"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
@@ -103,10 +103,9 @@ Pod::Spec.new do |s|
   #  non-essential files like tests, examples and documentation.
   #
 
-  s.resource  = "CountryPicker/CountryPicker/*.{png}"
   s.resource_bundles = {
-    'CountryPickerController' => ['CountryPicker/CountryPicker/CountryPickerController.bundle/*']
-}
+    'CountryPickerController' => ['CountryPicker/Sources/CountryPickerController.bundle/*']
+  }
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 end
