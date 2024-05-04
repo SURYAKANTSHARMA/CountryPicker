@@ -2,7 +2,9 @@
 
 # CountryPicker
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/vsouza/awesome-ios)
-[![Build Status](https://app.travis-ci.com/SURYAKANTSHARMA/CountryPicker.svg?branch=master)](https://app.travis-ci.com/github/SURYAKANTSHARMA/CountryPicker)
+[![Build Status](https://img.shields.io/badge/Build-BUILD_STATUS_PLACEHOLDER-red)](https://github.com/SURYAKANTSHARMA/CountryPicker/actions)
+
+<!-- Your project description and other contents below -->
 
 [![codecov](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker/branch/master/graph/badge.svg)](https://codecov.io/gh/SURYAKANTSHARMA/CountryPicker)
 ![Version Badge](https://img.shields.io/github/v/release/SURYAKANTSHARMA/CountryPicker?style=flat)
