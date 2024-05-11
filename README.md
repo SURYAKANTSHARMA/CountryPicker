@@ -38,8 +38,7 @@ CountryPicker is a Swift library that provides a simple and easy-to-use interfac
 - [x] Rewritten with swiftUI and combine in version 3.0.0  
 ## Requirements
 
-- iOS 11.0+ Support latest release iOS 17
-- iOS 15+ for 3.0.0 and above version of cocoapod
+- iOS 15.0+ Support latest release iOS 17 for older user older than 3.0.0
 - latest Xcode 15.x with Swift 
 
 ## Demo Project
@@ -67,11 +66,8 @@ CountryPicker is available through Cocoapods and Carthage.
 Add the following line to your Podfile:
 
 ```ruby
-For supporting iOS 15 or below 
-pod 'SKCountryPicker'
-
 For iOS 15 and above (Combine and Swiftui version) currently only supported by cocoapods 
-pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker', :branch => 'iOS15AndAbove'
+pod 'SKCountryPicker'
 
 ```
 
@@ -122,7 +118,7 @@ Done!
 Add the following line to your Package.swift file in the dependencies section:
 
 ```
-.package(url: "https://github.com/SURYAKANTSHARMA/CountryPicker.git, from "1.2.7")
+.package(url: "https://github.com/SURYAKANTSHARMA/CountryPicker.git, from "4.0.0")
 ```
 
 ## Getting Started
