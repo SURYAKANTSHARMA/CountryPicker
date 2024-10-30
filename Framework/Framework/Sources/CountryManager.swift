@@ -111,7 +111,7 @@ public extension CountryManager {
     func fetchCountries(fromURLPath path: URL) throws -> [Country] {
         guard let rawData = try? Data(contentsOf: path),
               let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
-            throw "[CountryManager] ❌ Missing countries plist file from path: \(path)"
+            throw CountryPickerError.couldNotLoadCountries
         }
         
         // Sort country list by `countryName`
@@ -236,9 +236,15 @@ public extension CountryManager {
 }
 
 // MARK: - Error Handling
-extension String: Error {}
-extension String: LocalizedError {
-    public var errorDescription: String? { return self }
+enum CountryPickerError: Error, LocalizedError {
+    case couldNotLoadCountries
+    
+    var errorDescription: String? {
+        switch self {
+        case .couldNotLoadCountries:
+            return "[CountryManager] ❌ Missing countries plist file from path"
+        }
+    }
 }
 
 // MARK: - Array Extension
