@@ -51,8 +51,8 @@ struct CountryPickerView: View {
             }.listStyle(.grouped)
             .searchable(text: $searchText)
             .navigationTitle("Country Picker")
-            .onChange(of: searchText) { newValue in
-                filterCountries = manager.filterCountries(searchText: newValue)
+            .onChange(of: searchText) {
+                filterCountries = manager.filterCountries(searchText: searchText)
             }
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
@@ -68,7 +68,7 @@ struct CountryPickerView: View {
                     }
             }
         }
-        .onChange(of: selectedCountry) { _ in
+        .onChange(of: selectedCountry) {
             presentationMode.wrappedValue.dismiss()
         }
     }

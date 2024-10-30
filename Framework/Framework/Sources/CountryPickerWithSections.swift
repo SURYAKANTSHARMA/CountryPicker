@@ -57,10 +57,10 @@ struct CountryPickerWithSections: View {
                     }
                 }
                 .onChange(of: searchText) {
-                    viewModel.filterWithText($0)
+                    viewModel.filterWithText(searchText)
                 }
                 .onChange(of: viewModel.selectedCountry) {
-                   selectedCountry = $0
+                   selectedCountry = viewModel.selectedCountry
                    presentationMode.wrappedValue.dismiss()
                 }
                 

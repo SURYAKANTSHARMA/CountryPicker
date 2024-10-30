@@ -22,7 +22,7 @@ struct CountryPickerWheelView: View {
             .pickerStyle(.wheel)
         }
         .onChange(of: selectedCountry) { 
-            viewModel.dataSource.lastCountrySelected = $0
+            viewModel.dataSource.lastCountrySelected = selectedCountry
         }
         .padding()
     }
