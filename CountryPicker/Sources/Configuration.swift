@@ -28,7 +28,7 @@ struct Configuration {
         detailColor: Color = .secondary,
         isCountryFlagHidden: Bool = false,
         isCountryDialHidden: Bool = false,
-        navigationTitleText: String = "CountryPicker"
+        navigationTitleText: String = "Country Picker"
     ) {
         self.flagStyle = flagStyle
         self.labelFont = labelFont
