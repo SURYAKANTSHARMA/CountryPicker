@@ -50,7 +50,7 @@ struct CountryPickerView: View {
                             selectedCountry: $selectedCountry)
             }.listStyle(.grouped)
             .searchable(text: $searchText)
-            .navigationTitle("Country Picker")
+            .navigationTitle(configuration.navigationTitleText)
             .onChange(of: searchText) { newValue in
                 filterCountries = manager.filterCountries(searchText: newValue)
             }
