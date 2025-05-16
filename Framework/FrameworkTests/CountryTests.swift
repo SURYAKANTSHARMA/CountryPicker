@@ -10,6 +10,7 @@ import Foundation
 import XCTest
 @testable import Framework
 
+@MainActor
 class CountryTests: XCTestCase {
     
     func test_afterInit() {

@@ -11,10 +11,11 @@ import UIKit
 import Combine
 
 // MARK: - CountryManagerInterface
+@MainActor
 public protocol CountryListDataSource: ObservableObject {
     func country(withCode code: String) -> Country?
     func allCountries(_ favoriteCountriesLocaleIdentifiers: [String]) -> [Country]
-    var lastCountrySelected: Country? { get set }
+    var lastCountrySelected: Country? { get }
     func filterCountries(searchText: String) -> [Country]
 }
 
@@ -46,7 +47,8 @@ let bundle = Bundle(for: Country.self)
 #endif
 
 // MARK: - CountryManager
-open class CountryManager: CountryListDataSource {
+@MainActor
+public class CountryManager: CountryListDataSource {
     
     // MARK: - Variables
     @Published public var countries = [Country]()
@@ -56,18 +58,8 @@ open class CountryManager: CountryListDataSource {
         return countriesPath
     }
     
-    public static let shared: CountryManager = {
-        let countryManager = CountryManager()
-        do {
-            try countryManager.loadCountries()
-        } catch {
-            #if DEBUG
-            print(error.localizedDescription)
-            #endif
-        }
-        return countryManager
-    }()
-    
+    public static let shared: CountryManager = CountryManager()
+  
     /// Current country returns the country object from Phone/Simulator locale
     open var currentCountry: Country? {
         if #available(iOS 16, *) {
@@ -98,7 +90,15 @@ open class CountryManager: CountryListDataSource {
     /// - Note: By default, countries can be filtered by their country names
     internal var filters: Set<CountryFilterOption> = [.countryName]
     
-    private init() {}
+    private init() {
+        do {
+            try loadCountries()
+        } catch {
+            #if DEBUG
+            print(error.localizedDescription)
+            #endif
+        }
+    }
 }
 
 public extension CountryManager {

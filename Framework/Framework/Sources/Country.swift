@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 open class Country: Identifiable {
 
     // MARK:- Variable
@@ -84,15 +85,14 @@ open class Country: Identifiable {
 
 }
 
-
-extension Country: Equatable {
-    public static func == (lhs: Country, rhs: Country) -> Bool {
+extension Country: @preconcurrency Equatable {
+     public static func == (lhs: Country, rhs: Country) -> Bool {
         return (lhs.countryCode == rhs.countryCode && lhs.dialingCode == rhs.dialingCode)
     }
 }
 
-extension Country: Hashable {
-    
+@MainActor
+extension Country: @preconcurrency Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(countryCode)
         hasher.combine(countryName)

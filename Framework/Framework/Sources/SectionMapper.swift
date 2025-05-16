@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Section: Equatable, Identifiable {
+@MainActor
+struct Section: Equatable, @preconcurrency Identifiable {
     let title: String?
     var countries: [Country]
     
@@ -16,6 +17,7 @@ struct Section: Equatable, Identifiable {
     }
 }
 
+@MainActor
 struct SectionMapper {
     
     let favoriteCountriesLocaleIdentifiers: [String]

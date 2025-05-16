@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final
+@MainActor final
 public class CountryPickerWheelViewModel: ObservableObject {
     
     internal let countries: [Country]

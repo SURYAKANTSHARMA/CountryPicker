@@ -7,7 +7,7 @@
 
 import Combine
 
-public final
+@MainActor public final
 class CountryPickerWithSectionViewModel: ObservableObject {
         
     @Published var sections: [Section] = []

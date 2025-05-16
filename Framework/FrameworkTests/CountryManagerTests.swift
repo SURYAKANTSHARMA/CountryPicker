@@ -9,6 +9,7 @@
 import XCTest
 @testable import Framework
 
+@MainActor
 class CountryManagerTests: XCTestCase {
     var countryManager: CountryManager!
     
