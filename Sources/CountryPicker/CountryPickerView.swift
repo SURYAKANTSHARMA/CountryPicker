@@ -51,24 +51,24 @@ struct CountryPickerView: View {
             }.listStyle(.grouped)
             .searchable(text: $searchText)
             .navigationTitle(configuration.navigationTitleText)
-            .onChange(of: searchText) {
+            .onChange(of: searchText) { _ in
                 filterCountries = manager.filterCountries(searchText: searchText)
             }
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
             }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "xmark")
-                                .font(.callout)
-                        }
-                    }
+        }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.callout)
+                }
             }
         }
-        .onChange(of: selectedCountry) {
+        .onChange(of: selectedCountry) {  _ in
             presentationMode.wrappedValue.dismiss()
         }
     }

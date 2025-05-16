@@ -57,16 +57,16 @@ struct CountryPickerView: View {
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
             }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "xmark")
-                                .font(.callout)
-                        }
+        }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.callout)
                     }
-            }
+                }
         }
         .onChange(of: selectedCountry) { _ in
             presentationMode.wrappedValue.dismiss()

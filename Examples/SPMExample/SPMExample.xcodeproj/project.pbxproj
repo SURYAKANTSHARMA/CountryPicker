@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A1A5D8F2DD75FFD00863F29 /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1A5D8E2DD75FFD00863F29 /* CountryPicker */; };
 		8A4F36EF2DD758E800FC68F7 /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A4F36EE2DD758E800FC68F7 /* CountryPicker */; };
+		8A4F36F22DD75EEF00FC68F7 /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8A4F36F12DD75EEF00FC68F7 /* CountryPicker */; };
 		D8CBB17D2BDE2B3A00D46CB9 /* SPMExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CBB17C2BDE2B3A00D46CB9 /* SPMExampleApp.swift */; };
 		D8CBB1812BDE2B3B00D46CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8CBB1802BDE2B3B00D46CB9 /* Assets.xcassets */; };
 		D8CBB1842BDE2B3B00D46CB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8CBB1832BDE2B3B00D46CB9 /* Preview Assets.xcassets */; };
@@ -32,6 +34,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4F36EF2DD758E800FC68F7 /* CountryPicker in Frameworks */,
+				8A1A5D8F2DD75FFD00863F29 /* CountryPicker in Frameworks */,
+				8A4F36F22DD75EEF00FC68F7 /* CountryPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +97,8 @@
 			name = SPMExample;
 			packageProductDependencies = (
 				8A4F36EE2DD758E800FC68F7 /* CountryPicker */,
+				8A4F36F12DD75EEF00FC68F7 /* CountryPicker */,
+				8A1A5D8E2DD75FFD00863F29 /* CountryPicker */,
 			);
 			productName = SPMExample;
 			productReference = D8CBB1792BDE2B3A00D46CB9 /* SPMExample.app */;
@@ -123,7 +129,7 @@
 			);
 			mainGroup = D8CBB1702BDE2B3A00D46CB9;
 			packageReferences = (
-				8A4F36ED2DD758E800FC68F7 /* XCLocalSwiftPackageReference "../../../CountryPicker" */,
+				8A1A5D8D2DD75FFD00863F29 /* XCRemoteSwiftPackageReference "CountryPicker" */,
 			);
 			productRefGroup = D8CBB17A2BDE2B3A00D46CB9 /* Products */;
 			projectDirPath = "";
@@ -295,6 +301,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +330,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -359,15 +367,28 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		8A4F36ED2DD758E800FC68F7 /* XCLocalSwiftPackageReference "../../../CountryPicker" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../CountryPicker;
+/* Begin XCRemoteSwiftPackageReference section */
+		8A1A5D8D2DD75FFD00863F29 /* XCRemoteSwiftPackageReference "CountryPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SURYAKANTSHARMA/CountryPicker";
+			requirement = {
+				branch = refactor/sdk;
+				kind = branch;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A1A5D8E2DD75FFD00863F29 /* CountryPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A1A5D8D2DD75FFD00863F29 /* XCRemoteSwiftPackageReference "CountryPicker" */;
+			productName = CountryPicker;
+		};
 		8A4F36EE2DD758E800FC68F7 /* CountryPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CountryPicker;
+		};
+		8A4F36F12DD75EEF00FC68F7 /* CountryPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CountryPicker;
 		};

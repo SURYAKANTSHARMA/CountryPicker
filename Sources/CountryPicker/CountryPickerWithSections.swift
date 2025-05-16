@@ -56,28 +56,27 @@ struct CountryPickerWithSections: View {
                         scrollView.scrollTo($0)
                     }
                 }
-                .onChange(of: searchText) {
+                .onChange(of: searchText) { _ in
                     viewModel.filterWithText(searchText)
                 }
-                .onChange(of: viewModel.selectedCountry) {
+                .onChange(of: viewModel.selectedCountry) { _ in
                    selectedCountry = viewModel.selectedCountry
                    presentationMode.wrappedValue.dismiss()
                 }
-                
                 .onDisappear {
                     viewModel.setLastSelectedCountry()
                     viewModel.reset()
                 }
                 .listStyle(.grouped)
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) {
-                            Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Image(systemName: "xmark")
-                                    .font(.callout)
-                            }
-                        }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.callout)
                 }
             }
         }
