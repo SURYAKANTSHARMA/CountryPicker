@@ -47,6 +47,28 @@
 		8A9B80962DD80A960034A8A6 /* SectionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8AC53C932DD8A15000B056BA /* Exceptions for "Tests" folder in "CountryPickerTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CountryPickerTests/CountryManagerTests.swift,
+				CountryPickerTests/CountryTests.swift,
+			);
+			target = 8A9B806F2DD809ED0034A8A6 /* CountryPickerTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8AC53C902DD8A14100B056BA /* Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8AC53C932DD8A15000B056BA /* Exceptions for "Tests" folder in "CountryPickerTests" target */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		8A9B80622DD809EB0034A8A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -70,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				8A9B80982DD80A960034A8A6 /* Sources */,
+				8AC53C902DD8A14100B056BA /* Tests */,
 				8A9B80662DD809EB0034A8A6 /* Products */,
 			);
 			sourceTree = "<group>";
