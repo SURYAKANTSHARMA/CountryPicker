@@ -6,7 +6,7 @@ target 'CountryPickerExample' do
   use_frameworks!
 
 #   pod 'SKCountryPicker', :git => 'https://github.com/SURYAKANTSHARMA/CountryPicker', :branch => 'iOS15AndAbove'
-   pod 'SKCountryPicker', path: '../../..'
+    pod 'SKCountryPicker', :path => '../../'
 
   # Pods for CountryPickerExample
 

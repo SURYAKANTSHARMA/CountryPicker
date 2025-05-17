@@ -1,6 +1,6 @@
 {
   "name": "SKCountryPicker",
-  "version": "3.0.0",
+  "version": "5.0.0-beta1",
   "summary": "A simple, customizable Country picker for picking country or dialing code.",
   "description": "CountryPicker is module for selecting country of the user by searching",
   "homepage": "https://github.com/SURYAKANTSHARMA/CountryPicker",
@@ -13,20 +13,18 @@
     "SuryaKant Sharma": "suryakantsharma84@gmail.com"
   },
   "platforms": {
-    "ios": "15.0"
+    "ios": "15.6"
   },
-  "swift_versions": "5.0",
+  "swift_versions": "6.0",
   "source": {
-    "git": "https://github.com/SURYAKANTSHARMA/CountryPicker",
-    "tag": "3.0.0",
-    "branch": "iOS15AndAbove"
+    "git": "https://github.com/SURYAKANTSHARMA/CountryPicker.git",
+    "tag": "5.0.0-beta1"
   },
-  "source_files": "CountryPicker/Sources/**/*.{swift}",
-  "exclude_files": "Classes/Exclude",
+  "source_files": "Sources/CountryPicker/**/*.{swift}",
   "resource_bundles": {
     "CountryPickerController": [
-      "CountryPicker/Sources/CountryPickerController.bundle/*"
+      "Sources/CountryPicker/CountryPickerController.bundle/*"
     ]
   },
-  "swift_version": "5.0"
+  "swift_version": "6.0"
 }
