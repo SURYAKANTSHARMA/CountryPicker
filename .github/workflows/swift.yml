@@ -25,21 +25,20 @@ jobs:
     - name: Clean Previous Builds
       run: |
         xcodebuild clean -project CountryPicker.xcodeproj \
-        -scheme CountryPicker \
-        -configuration Release
-             
-    - name: Build CountryPicker
+          -scheme CountryPicker \
+          -configuration Release
+          
+    - name: Build Framework
       run: |
-        xcodebuild clean build \
-        -project CountryPicker.xcodeproj \
-        -scheme CountryPicker \
-        -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
-        ONLY_ACTIVE_ARCH=YES | xcpretty
-        
+        xcodebuild build -project CountryPicker.xcodeproj \
+          -scheme CountryPicker \
+          -configuration Release \
+          -destination 'generic/platform=iOS'
+                  
     - name: Run iOS Unit Tests
       run: |
         xcodebuild test \
         -project CountryPicker.xcodeproj \
         -scheme CountryPickerTests \
-        -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+        -destination 'platform=iOS Simulator,name=iPhone 16' \
         -enableCodeCoverage YES | xcpretty
