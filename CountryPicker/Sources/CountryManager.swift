@@ -45,6 +45,11 @@ let bundle = Bundle(for: Country.self)
 #endif
 
 // MARK: - CountryManager
+
+public enum CountryManagerError: Error {
+    case missingCountriesFile(path: String)
+}
+
 open class CountryManager: CountryListDataSource {
     
     // MARK: - Variables
@@ -110,7 +115,7 @@ public extension CountryManager {
     func fetchCountries(fromURLPath path: URL) throws -> [Country] {
         guard let rawData = try? Data(contentsOf: path),
               let countryCodes = try? PropertyListSerialization.propertyList(from: rawData, format: nil) as? [String] else {
-            throw "[CountryManager] ❌ Missing countries plist file from path: \(path)"
+            throw CountryManagerError.missingCountriesFile(path: path.absoluteString)
         }
         
         // Sort country list by `countryName`
@@ -234,19 +239,15 @@ public extension CountryManager {
     }
 }
 
-// MARK: - Error Handling
-extension String: Error {}
-extension String: LocalizedError {
-    public var errorDescription: String? { return self }
-}
-
 // MARK: - Array Extension
-extension Array where Element: Equatable {
+extension Array where Element: Hashable {
     func removeDuplicates() -> [Element] {
+        var seen = Set<Element>()
         var uniqueValues = [Element]()
-        forEach {
-            if !uniqueValues.contains($0) {
-                uniqueValues.append($0)
+        for element in self {
+            if !seen.contains(element) {
+                uniqueValues.append(element)
+                seen.insert(element)
             }
         }
         return uniqueValues
