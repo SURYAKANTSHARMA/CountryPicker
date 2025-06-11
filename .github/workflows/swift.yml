@@ -4,17 +4,41 @@ on:
   push:
     branches: [ main ]
   pull_request:
+    types: [opened, synchronize, ready_for_review]
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
-
+    name: SuryakantKumar-CountryPicker
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build app
-      run: xcodebuild clean build test -enableCodeCoverage YES -project Framework/CountryPicker.xcodeproj -scheme Framework -destination 'platform=iOS Simulator,name=iPhone 15' ONLY_ACTIVE_ARCH=YES
-
-    - name: Run tests
-      run: xcodebuild -project 'Framework/CountryPicker.xcodeproj' -scheme 'Framework' -destination 'platform=iOS Simulator,name=iPhone 15' test | xcpretty
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    
+    - name: Set up Xcode Environment
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.2.0'
+        
+    - name: Clean Previous Builds
+      run: |
+        xcodebuild clean -project CountryPicker.xcodeproj \
+          -scheme CountryPicker \
+          -configuration Release
+          
+    - name: Build Framework
+      run: |
+        xcodebuild build -project CountryPicker.xcodeproj \
+          -scheme CountryPicker \
+          -configuration Release \
+          -destination 'generic/platform=iOS'
+                  
+    - name: Run iOS Unit Tests
+      run: |
+        xcodebuild test \
+        -project CountryPicker.xcodeproj \
+        -scheme CountryPickerTests \
+        -destination 'platform=iOS Simulator,name=iPhone 16' \
+        -enableCodeCoverage YES | xcpretty
