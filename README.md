@@ -2,7 +2,7 @@
 
 # CountryPicker
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/vsouza/awesome-ios)
-[![Build Status](https://img.shields.io/badge/Build-BUILD_STATUS_PLACEHOLDER-red)](https://github.com/SURYAKANTSHARMA/CountryPicker/actions)
+[![Build Status](https://img.shields.io/badge/Build-failed-red)](https://github.com/SURYAKANTSHARMA/CountryPicker/actions)
 
 <!-- Your project description and other contents below -->
 

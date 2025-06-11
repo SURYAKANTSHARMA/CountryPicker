@@ -113,9 +113,16 @@ class CountryManagerTests: XCTestCase {
     func test_countryLoading_withInvalidPath() {
         let countryManager = makeSUT()
         let urlPath = URL(fileURLWithPath: invalidCountryFilePath ?? "")
-        let countries = try? countryManager.fetchCountries(fromURLPath: urlPath)
-        XCTAssertNil(countries)
-        XCTAssertEqual(countries?.count, nil)
+        XCTAssertThrowsError(try countryManager.fetchCountries(fromURLPath: urlPath)) { error in
+            guard let countryManagerError = error as? CountryManagerError else {
+                XCTFail("Error is not of type CountryManagerError")
+                return
+            }
+            switch countryManagerError {
+            case .missingCountriesFile(let path):
+                XCTAssertEqual(path, urlPath.absoluteString)
+            }
+        }
     }
     
     func test_lastCountrySelected() {
