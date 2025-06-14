@@ -18,6 +18,20 @@ public struct CountryPickerAccessibilityConfiguration {
     public enum FlagDescriptionStyle {
         case country, emoji, none
     }
+
+    public init(
+        announceCountryChanges: Bool = true,
+        useDetailedLabels: Bool = true,
+        enableCustomActions: Bool = true,
+        announceSearchResults: Bool = true,
+        flagDescriptionStyle: FlagDescriptionStyle = .country
+    ) {
+        self.announceCountryChanges = announceCountryChanges
+        self.useDetailedLabels = useDetailedLabels
+        self.enableCustomActions = enableCustomActions
+        self.announceSearchResults = announceSearchResults
+        self.flagDescriptionStyle = flagDescriptionStyle
+    }
 }
 
 public

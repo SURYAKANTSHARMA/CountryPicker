@@ -15,6 +15,7 @@ struct CountryPickerWithSections: View {
 
     @ObservedObject var viewModel: CountryPickerWithSectionViewModel
     @State var searchText: String
+    @State private var searchWorkItem: DispatchWorkItem?
     @Binding private var selectedCountry: Country
 
     let configuration: Configuration
@@ -60,20 +61,30 @@ struct CountryPickerWithSections: View {
                         scrollView.scrollTo($0)
                     }
                 }
-                .onChange(of: searchText) { newValue in
-                    viewModel.filterWithText(newValue)
-                    if configuration.accessibility.announceSearchResults && !newValue.isEmpty {
-                        let count = viewModel.sections.reduce(0) { $0 + $1.countries.count }
-                        let announcementString: String
-                        if count > 0 {
-                            let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for search results found")
-                            announcementString = String(format: format, count)
-                        } else {
-                            let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_NOT_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for no search results found")
-                            announcementString = String(format: format, newValue)
+                .onChange(of: searchText) { _ in // Use _ if newValue is not directly used, searchText state var is used instead
+                    searchWorkItem?.cancel()
+
+                    let workItem = DispatchWorkItem {
+                        // Perform filtering using the current value of searchText
+                        viewModel.filterWithText(searchText)
+
+                        // Make announcement
+                        if configuration.accessibility.announceSearchResults && !searchText.isEmpty {
+                            // Calculate count from viewModel.sections
+                            let count = viewModel.sections.reduce(0) { $0 + $1.countries.count }
+                            let announcementString: String
+                            if count > 0 {
+                                let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for search results found")
+                                announcementString = String(format: format, count)
+                            } else {
+                                let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_NOT_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for no search results found")
+                                announcementString = String(format: format, searchText)
+                            }
+                            UIAccessibility.post(notification: .announcement, argument: announcementString)
                         }
-                        UIAccessibility.post(notification: .announcement, argument: announcementString)
                     }
+                    searchWorkItem = workItem
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: workItem)
                 }
                 .onChange(of: viewModel.selectedCountry) {
                    selectedCountry = $0
