@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import UIKit // For UIAccessibility
+
 public
 struct CountryPickerWithSections: View {
     
@@ -44,6 +46,8 @@ struct CountryPickerWithSections: View {
                             } header: {
                                 if let sectionTitle = section.title {
                                     Text(sectionTitle)
+                                        .font(.headline) // Ensure dynamic type support
+                                        .accessibilityAddTraits(.isHeader)
                                 }
                             }
                         }
@@ -56,8 +60,20 @@ struct CountryPickerWithSections: View {
                         scrollView.scrollTo($0)
                     }
                 }
-                .onChange(of: searchText) {
-                    viewModel.filterWithText($0)
+                .onChange(of: searchText) { newValue in
+                    viewModel.filterWithText(newValue)
+                    if configuration.accessibility.announceSearchResults && !newValue.isEmpty {
+                        let count = viewModel.sections.reduce(0) { $0 + $1.countries.count }
+                        let announcementString: String
+                        if count > 0 {
+                            let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for search results found")
+                            announcementString = String(format: format, count)
+                        } else {
+                            let format = NSLocalizedString("ACC_ANNOUNCE_SEARCH_RESULTS_NOT_FOUND", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Announcement for no search results found")
+                            announcementString = String(format: format, newValue)
+                        }
+                        UIAccessibility.post(notification: .announcement, argument: announcementString)
+                    }
                 }
                 .onChange(of: viewModel.selectedCountry) {
                    selectedCountry = $0
@@ -114,6 +130,10 @@ struct SectionIndexView: View {
                                 .font(.system(size: 12))
                                 .padding(.trailing, 7)
                         })
+                        .accessibilityLabel({
+                            let format = NSLocalizedString("ACC_LABEL_SECTION_INDEX", bundle: AccessibilityUtil.pickerAccessibilityBundle, comment: "Accessibility label for section index button")
+                            return String(format: format, title)
+                        }())
                 }
             }
         }

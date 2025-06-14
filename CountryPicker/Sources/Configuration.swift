@@ -8,6 +8,18 @@
 import Foundation
 import SwiftUI
 
+public struct CountryPickerAccessibilityConfiguration {
+    public var announceCountryChanges: Bool = true
+    public var useDetailedLabels: Bool = true
+    public var enableCustomActions: Bool = true
+    public var announceSearchResults: Bool = true
+    public var flagDescriptionStyle: FlagDescriptionStyle = .country
+
+    public enum FlagDescriptionStyle {
+        case country, emoji, none
+    }
+}
+
 public
 struct Configuration {
     
@@ -19,6 +31,7 @@ struct Configuration {
     public let isCountryFlagHidden: Bool
     public let isCountryDialHidden: Bool
     public let navigationTitleText: String
+    public let accessibility: CountryPickerAccessibilityConfiguration
     
     public init(
         flagStyle: CountryFlagStyle = CountryFlagStyle.corner,
@@ -28,7 +41,8 @@ struct Configuration {
         detailColor: Color = .secondary,
         isCountryFlagHidden: Bool = false,
         isCountryDialHidden: Bool = false,
-        navigationTitleText: String = "Country Picker"
+        navigationTitleText: String = "Country Picker",
+        accessibility: CountryPickerAccessibilityConfiguration = CountryPickerAccessibilityConfiguration()
     ) {
         self.flagStyle = flagStyle
         self.labelFont = labelFont
@@ -38,5 +52,6 @@ struct Configuration {
         self.isCountryFlagHidden = isCountryFlagHidden
         self.isCountryDialHidden = isCountryDialHidden
         self.navigationTitleText = navigationTitleText
+        self.accessibility = accessibility
     }
 }

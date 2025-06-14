@@ -1,0 +1,9 @@
+"ACC_HINT_DOUBLE_TAP_SELECT" = "Double tap to select %@";
+"ACC_ACTION_COPY_DIAL_CODE" = "Copy dial code";
+"ACC_ACTION_SELECT_AND_DISMISS" = "Select and dismiss";
+"ACC_LABEL_FLAG_SUFFIX_COUNTRY" = "%@ flag";
+"ACC_LABEL_FLAG_SUFFIX_EMOJI" = "Flag emoji";
+"ACC_LABEL_DIAL_CODE_SUFFIX" = "dial code %@";
+"ACC_ANNOUNCE_SEARCH_RESULTS_FOUND" = "Found %ld results.";
+"ACC_ANNOUNCE_SEARCH_RESULTS_NOT_FOUND" = "No results found for %@.";
+"ACC_LABEL_SECTION_INDEX" = "Section %@";
