@@ -52,7 +52,9 @@
 #
 # In particular, if you're using CocoaPods, you'll want to comment-out this line:
 *.lock
-
+Pods/
+Examples/CoCoaPods/Pods/
+Examples/CoCoaPods/Podfile.lock
 
 #
 # profile - REMOVED temporarily (on double-checking, I can't find it in OS X docs?)
