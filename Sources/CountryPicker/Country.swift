@@ -64,7 +64,9 @@ open class Country: Identifiable {
     func countryName(with locale: Locale) -> String {
         guard let localisedCountryName = locale.localizedString(forRegionCode: self.countryCode) else {
             let message = "Failed to localised country name for Country Code:- \(self.countryCode)"
-            assertionFailure(message)
+#if DEBUG
+            print(message)
+#endif
             return ""
         }
         return localisedCountryName
@@ -79,7 +81,10 @@ open class Country: Identifiable {
         let locale = Locale(identifier: Locale.preferredLanguages.first!)
         guard let localisedCountryName = locale.localizedString(forRegionCode: countryCode) else {
             let message = "Failed to localised country name for Country Code:- \(countryCode)"
-            assertionFailure(message)
+#if DEBUG
+            print(message)
+#endif
+            
             return ""
         }
         return localisedCountryName

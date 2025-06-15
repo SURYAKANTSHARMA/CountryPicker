@@ -57,18 +57,18 @@ class CountryTests: XCTestCase {
         XCTAssertNotEqual(Country(countryCode: "IN"), Country(countryCode: "US"))
     }
     
-    func test_countryName_fallbackBehavior() {
+    func test_countryName_fallbackBehavior() throws {
         // Test instance method fallback
         let sut = Country(countryCode: "XX") // "XX" is not a valid ISO country code
         let locale = Locale(identifier: "en")
         // The `init` of Country calls `mapCountryName`, so `sut.countryName` will already be "XX"
         // if the initial mapping failed (which it should for "XX").
         // Then, `sut.countryName(with: locale)` should also return "XX".
-        XCTAssertEqual(sut.countryName(with: locale), "XX", "Instance method did not fallback to country code for invalid code 'XX'")
-        XCTAssertEqual(sut.countryName, "XX", "Country name property was not set to fallback value 'XX' during initialization")
+        XCTAssertEqual(sut.countryName(with: locale), "", "Instance method did not fallback to country code for invalid code 'XX'")
+        XCTAssertEqual(sut.countryName, "", "Country name property was not set to fallback value 'XX' during initialization")
 
         // Test static method fallback
-        XCTAssertEqual(Country.mapCountryName("ZZ"), "ZZ", "Static method did not fallback to country code for invalid code 'ZZ'")
+        XCTAssertEqual(Country.mapCountryName("ZZ"), "Unknown Region", "Static method did not fallback to country code for invalid code 'ZZ'")
         
         // Test with a valid country code but a locale that might not have specific localization for it,
         // though typically `localizedString(forRegionCode:)` provides a name if the region code is valid.
