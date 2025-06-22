@@ -44,6 +44,9 @@ struct CountryPickerWithSections: View {
                             } header: {
                                 if let sectionTitle = section.title {
                                     Text(sectionTitle)
+                                        .font(.headline)
+                                        .accessibilityLabel(sectionTitle)
+                                        .accessibilityAddTraits(.isHeader)
                                 }
                             }
                         }
@@ -59,7 +62,7 @@ struct CountryPickerWithSections: View {
                 .onChange(of: searchText) { _ in
                     viewModel.filterWithText(searchText)
                 }
-                .onChange(of: viewModel.selectedCountry) { _ in
+                .onChange(of: viewModel.selectedCountry) { newCountry in
                    selectedCountry = viewModel.selectedCountry
                    presentationMode.wrappedValue.dismiss()
                 }
@@ -68,6 +71,9 @@ struct CountryPickerWithSections: View {
                     viewModel.reset()
                 }
                 .listStyle(.grouped)
+                .searchable(text: $searchText)
+                .accessibilityLabel("Country search")
+                .accessibilityHint("Search for a country by name or code")
             }
         }
         .toolbar {
@@ -77,10 +83,12 @@ struct CountryPickerWithSections: View {
                 }) {
                     Image(systemName: "xmark")
                         .font(.callout)
+                        .accessibilityLabel("Close")
+                        .accessibilityHint("Dismiss country picker")
                 }
             }
         }
-        .searchable(text: $searchText)
+        .navigationTitle(configuration.navigationTitleText)
     }
 }
 
@@ -104,17 +112,21 @@ struct SectionIndexView: View {
             ForEach(titles, id: \.self) { title in
                 HStack {
                     Spacer()
-                        Button(action: {
-                            withAnimation {
-                                onClick(title)
-                            }
-                        }, label: {
-                            Text(title)
-                                .font(.system(size: 12))
-                                .padding(.trailing, 7)
-                        })
+                    Button(action: {
+                        withAnimation {
+                            onClick(title)
+                        }
+                    }, label: {
+                        Text(title)
+                            .font(.system(size: 12))
+                            .padding(.trailing, 7)
+                            .accessibilityLabel("Jump to section \(title)")
+                            .accessibilityHint("Double tap to jump to section \(title)")
+                    })
                 }
             }
         }
+        .accessibilityLabel("Section Index")
+        .accessibilityHint("Quick navigation to country sections")
     }
 }

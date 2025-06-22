@@ -14,15 +14,19 @@ struct CountryPickerWheelView: View {
     
     public var body: some View {
         VStack {
-            Picker("", selection: $selectedCountry) {
+            Picker("Select Country", selection: $selectedCountry) {
                 ForEach(viewModel.countries, id: \.self) {
                     CountryPickerWheelItem(country: $0)
                 }
             }
             .pickerStyle(.wheel)
+            .accessibilityLabel("Country Picker")
+            .accessibilityHint("Swipe up or down to change country selection")
         }
-        .onChange(of: selectedCountry) {
-            viewModel.dataSource.lastCountrySelected = $0
+        .onChange(of: selectedCountry) { newCountry in
+            viewModel.dataSource.lastCountrySelected = newCountry
+            // Announce the selection for VoiceOver users
+            UIAccessibility.post(notification: .announcement, argument: "Selected \(newCountry.countryName)")
         }
         .padding()
     }
@@ -46,7 +50,10 @@ struct CountryPickerWheelItem: View {
                 .scaledToFit()
                 .frame(width: 32.0, height: 32.0)
             Text("\(country.countryName)")
+                .accessibilityLabel(country.countryName)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(country.countryName), flag of \(country.countryName)")
     }
 }
 
