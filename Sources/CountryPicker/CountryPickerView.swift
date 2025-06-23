@@ -48,11 +48,20 @@ struct CountryPickerView: View {
                             isSelected: selectedCountry == country,
                             configuration: configuration,
                             selectedCountry: $selectedCountry)
-            }.listStyle(.grouped)
+            }
+            .listStyle(.grouped)
             .searchable(text: $searchText)
+            .accessibilityLabel("Country list")
+            .accessibilityHint("List of countries to choose from")
             .navigationTitle(configuration.navigationTitleText)
             .onChange(of: searchText) { _ in
                 filterCountries = manager.filterCountries(searchText: searchText)
+                if configuration.accessibilityConfiguration?.enableVoiceOverAnnouncements == true {
+                    let announcement = searchText.isEmpty ? 
+                        "Showing all countries" : 
+                        "Found \(filterCountries.count) countries matching '\(searchText)'"
+                    UIAccessibility.post(notification: .announcement, argument: announcement)
+                }
             }
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
@@ -65,10 +74,16 @@ struct CountryPickerView: View {
                 }) {
                     Image(systemName: "xmark")
                         .font(.callout)
+                        .accessibilityLabel("Close")
+                        .accessibilityHint("Dismiss country picker")
                 }
             }
         }
-        .onChange(of: selectedCountry) {  _ in
+        .onChange(of: selectedCountry) { newCountry in
+            if configuration.accessibilityConfiguration?.enableVoiceOverAnnouncements == true {
+                let announcement = "Selected \(newCountry.countryName)"
+                UIAccessibility.post(notification: .announcement, argument: announcement)
+            }
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -111,6 +126,7 @@ struct CountryCell: View {
                     Text(country.countryName)
                         .font(configuration.labelFont)
                         .foregroundColor(configuration.labelColor)
+                        .accessibilityLabel(country.countryName)
 
                     if !configuration.isCountryDialHidden {
                         Text(country.dialingCode ?? "")
@@ -122,10 +138,14 @@ struct CountryCell: View {
                 Spacer()
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green) 
+                        .foregroundColor(.green)
+                        .accessibilityLabel("Selected")
+                        .accessibilityAddTraits(.isSelected)
                 }
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(country.countryName) \(isSelected ? ", selected" : "")")
     }
 }
 
@@ -136,4 +156,5 @@ struct CountryPickerView_Previews: PreviewProvider {
             selectedCountry: .constant(Country(countryCode: "IN")))
     }
 }
+
 

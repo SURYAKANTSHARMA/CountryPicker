@@ -19,6 +19,7 @@ struct Configuration {
     public let isCountryFlagHidden: Bool
     public let isCountryDialHidden: Bool
     public let navigationTitleText: String
+    public let accessibilityConfiguration: AccessibilityConfiguration?
     
     public init(
         flagStyle: CountryFlagStyle = CountryFlagStyle.corner,
@@ -28,7 +29,8 @@ struct Configuration {
         detailColor: Color = .secondary,
         isCountryFlagHidden: Bool = false,
         isCountryDialHidden: Bool = false,
-        navigationTitleText: String = "CountryPicker"
+        navigationTitleText: String = "CountryPicker",
+        accessibilityConfiguration: AccessibilityConfiguration? = AccessibilityConfiguration()
     ) {
         self.flagStyle = flagStyle
         self.labelFont = labelFont
@@ -38,5 +40,6 @@ struct Configuration {
         self.isCountryFlagHidden = isCountryFlagHidden
         self.isCountryDialHidden = isCountryDialHidden
         self.navigationTitleText = navigationTitleText
+        self.accessibilityConfiguration = accessibilityConfiguration
     }
 }

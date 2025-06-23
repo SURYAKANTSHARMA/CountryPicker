@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18A6B1A92DFF20DE00857340 /* AccessibilityModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6B1A82DFF20DE00857340 /* AccessibilityModifiers.swift */; };
 		8A9B80712DD809ED0034A8A6 /* CountryPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B80652DD809EB0034A8A6 /* CountryPicker.framework */; };
 		8A9B80992DD80AA40034A8A6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B808C2DD80A960034A8A6 /* Configuration.swift */; };
 		8A9B809A2DD80AA40034A8A6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B808D2DD80A960034A8A6 /* Constant.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A6B1A82DFF20DE00857340 /* AccessibilityModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityModifiers.swift; sourceTree = "<group>"; };
 		8A9B80652DD809EB0034A8A6 /* CountryPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CountryPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9B80702DD809ED0034A8A6 /* CountryPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9B808C2DD80A960034A8A6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		8A9B80972DD80A960034A8A6 /* CountryPicker */ = {
 			isa = PBXGroup;
 			children = (
+				18A6B1A82DFF20DE00857340 /* AccessibilityModifiers.swift */,
 				8A9B808C2DD80A960034A8A6 /* Configuration.swift */,
 				8A9B808D2DD80A960034A8A6 /* Constant.swift */,
 				8A9B808E2DD80A960034A8A6 /* Country.swift */,
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A6B1A92DFF20DE00857340 /* AccessibilityModifiers.swift in Sources */,
 				8A9B80992DD80AA40034A8A6 /* Configuration.swift in Sources */,
 				8A9B809A2DD80AA40034A8A6 /* Constant.swift in Sources */,
 				8A9B809B2DD80AA40034A8A6 /* Country.swift in Sources */,
@@ -331,7 +335,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -392,7 +395,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -418,7 +420,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +458,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +490,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.Crypto.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,7 +512,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.Crypto.Framework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
