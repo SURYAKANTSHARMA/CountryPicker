@@ -13,14 +13,14 @@ struct CountryPickerWithSections: View {
 
     @ObservedObject var viewModel: CountryPickerWithSectionViewModel
     @State var searchText: String
-    @Binding private var selectedCountry: Country
+    @Binding private var selectedCountry: Country?
 
     let configuration: Configuration
 
     public init(
          configuration: Configuration = Configuration(),
          searchText: String = "",
-         selectedCountry: Binding<Country>) {
+         selectedCountry: Binding<Country?>) {
          self.configuration = configuration
          _searchText = State(initialValue: searchText)
         _selectedCountry = selectedCountry
