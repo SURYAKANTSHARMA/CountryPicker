@@ -10,7 +10,7 @@ import CountryPicker
 
 struct MainView: View {
     
-    @State private var selectedCountry: Country = CountryManager.shared.preferredCountry ?? Country(countryCode: "IN")
+    @State private var selectedCountry: Country? = CountryManager.shared.preferredCountry ?? Country(countryCode: "IN")
     
     @State var shouldShowDialingCode: Bool = true
     @State var shouldShowCountryFlag: Bool = true
@@ -68,8 +68,8 @@ struct MainView: View {
                     isCountryPickerPresented.toggle()
                 }) {
                     HStack {
-                        Text(selectedCountry.dialingCode ?? "Select country")
-                        Image(uiImage: selectedCountry.flag ?? .init())
+                        Text(selectedCountry?.dialingCode ?? "Select country")
+                        Image(uiImage: selectedCountry?.flag ?? .init())
                             .resizable()
                             .frame(width: 40, height: 25)
                     }
