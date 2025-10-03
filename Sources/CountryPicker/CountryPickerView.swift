@@ -53,6 +53,18 @@ struct CountryPickerView: View {
             .searchable(text: $searchText)
             .accessibilityLabel("Country list")
             .accessibilityHint("List of countries to choose from")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.callout)
+                            .accessibilityLabel("Close")
+                            .accessibilityHint("Dismiss country picker")
+                    }
+                }
+            }
             .navigationTitle(configuration.navigationTitleText)
             .onChange(of: searchText) { _ in
                 filterCountries = manager.filterCountries(searchText: searchText)
@@ -65,18 +77,6 @@ struct CountryPickerView: View {
             }
             .onDisappear {
                 manager.lastCountrySelected = selectedCountry
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.callout)
-                        .accessibilityLabel("Close")
-                        .accessibilityHint("Dismiss country picker")
-                }
             }
         }
         .onChange(of: selectedCountry) { newCountry in
