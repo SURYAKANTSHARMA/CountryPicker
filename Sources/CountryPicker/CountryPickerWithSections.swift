@@ -74,21 +74,21 @@ struct CountryPickerWithSections: View {
                 .searchable(text: $searchText)
                 .accessibilityLabel("Country search")
                 .accessibilityHint("Search for a country by name or code")
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.callout)
-                        .accessibilityLabel("Close")
-                        .accessibilityHint("Dismiss country picker")
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "xmark")
+                                .font(.callout)
+                                .accessibilityLabel("Close")
+                                .accessibilityHint("Dismiss country picker")
+                        }
+                    }
                 }
+                .navigationTitle(configuration.navigationTitleText)
             }
         }
-        .navigationTitle(configuration.navigationTitleText)
     }
 }
 
